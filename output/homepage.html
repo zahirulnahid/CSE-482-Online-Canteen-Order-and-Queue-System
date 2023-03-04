@@ -4,56 +4,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Home </title>
     <link rel="stylesheet" href="outputstyles.css">
 </head>
 
-<body class="bg-pink-100">
+<body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full" style="background-image: url('../images/Homepage bg .png');" >
     <!-- Navbar -->
-    <nav class="bg-pink-700 py-4">
-        <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="#" class="text-white text-2xl font-bold">NSU Canteen</a>
-            <div>
-                <a href="#" class="text-white font-semibold mr-4">Home</a>
-                <a href="#" class="text-white font-semibold mr-4">Menu</a>
-                <a href="#" class="text-white font-semibold mr-4">About Us</a>
-                <a href="#" class="text-white font-semibold">Contact Us</a>
-            </div>
+<!-- Navbar -->
+<nav class="bg-pink-600 py-4 px-14">
+    <div class="container mx-auto flex font-serif justify-between items-center px-4">
+        <a href="#" class="text-white text-2xl font-bold">NSU Canteen</a>
+        <div>
+            <button class="bg-white hover:bg-pink-900 hover:text-white text-black font-bold py-2 px-4 rounded-2xl focus:outline-black 
+                                focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
+                        type="submit">Log Out</button>
+                       
         </div>
-    </nav>
+       
+    </div>
+   
+</nav>
 
     <!-- Cart -->
-    <div class="fixed bottom-0 right-0 mr-4 mb-4">
+    <div class="fixed my-auto right-0 mr-4 mb-4 p-14">
         <a href="#" class="cart">Cart (0)</a>
     </div>
 
+    
     <!-- Menu -->
-    <div class="container mx-auto my-8">
-        <h1 class="text-4xl font-bold text-center mb-8">Our Menu</h1>
-        <div class="grid grid-cols-3 gap-8">
-            <div class="menu-item rounded-lg p-4">
-                <img src="https://via.placeholder.com/200" alt="Menu Item">
-                <h2 class="text-xl font-bold mt-4 mb-2">Menu Item 1</h2>
-                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacinia
-                    felis, id convallis felis tempus eget.</p>
-                <p class="text-pink-500 font-semibold mt-4">$10</p>
+<div class="container mx-auto my-8  ">
+    <!-- search bar -->
+        <div class="p-14">
+        <label class="block text-gray-700 font-bold mb-2 " for="password">Search</label>
+        <input class="border-2 border-gray-400 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+            type="password" name="search" id="search">
+        </div>
+            
+    <h1 class="text-4xl  text-center mb-8">Our Menu</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  gap-10  rounded-3xl p-10 text-center">
+       
+        <div class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 ">
+            <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+            <div class="p-10">
+                <h2 class="text-xl font-bold mb-2">Burger</h2>
+                <p class="text-gray-700">A huge single or triple burger with all the fixings, cheese, lettuce, tomato, onions and special sauce or mayonnaise!</p>
+                <p class="text-pink-500 font-semibold mt-4">100 BDT</p>
+                <div class="flex items-center mt-4">
+                  
+                <button class="bg-pink-500 text-center mx-auto hover:bg-pink-600 hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add to Cart</button>
+                </div>
+                
             </div>
-            <div class="menu-item rounded-lg p-4">
-                <img src="https://via.placeholder.com/200" alt="Menu Item">
-                <h2 class="text-xl font-bold mt-4 mb-2">Menu Item 2</h2>
-                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacinia
-                    felis, id convallis felis tempus eget.</p>
-                <p class="text-pink-500 font-semibold mt-4">$12</p>
+        </div>
+        
+        <div
+            class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105  ">
+            <img src="../images/chicken curry.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+            <div class="p-10">
+                <h2 class="text-xl font-bold mb-2">Chicken Curry</h2>
+                <p class="text-gray-700">A typical curry from the Indian subcontinent consists of chicken stewed in an onion- and tomato-based sauce</p>
+                <p class="text-pink-500 font-semibold mt-4">70 BDT</p>
+                <div class="flex items-center mt-4">
+        
+                    <button
+                        class="bg-pink-500 text-center mx-auto hover:bg-pink-600  hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add
+                        to Cart</button>
+                </div>
+        
             </div>
-            <div class="menu-item rounded-lg p-4">
-                <img src="https://via.placeholder.com/200" alt="Menu Item">
-                <h2 class="text-xl font-bold mt-4 mb-2">Menu Item 3</h2>
-                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacinia
-                    felis, id convallis felis tempus eget.</p>
-                <p class="text-pink-500 font-semibold mt-4">$8</p>
+        </div>
+
+        <div
+            class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105  ">
+            <img src="../images/pizza.jpg" alt="Menu Item" class="rounded-t-lg mx-auto">
+            <div class="p-10">
+                <h2 class="text-xl font-bold mb-2">Pizza</h2>
+                <p class="text-gray-700"> consists of a flattened disk of bread dough topped with some combination of olive oil, oregano, tomato, olives, mozzarella</p>
+                <p class="text-pink-500 font-semibold mt-4">90 BDT</p>
+                <div class="flex items-center mt-4">
+        
+                    <button
+                        class="bg-pink-500 text-center mx-auto hover:bg-pink-600  hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add
+                        to Cart</button>
+                </div>
+        
+            </div>
+        </div>
+
+        <div
+            class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105  ">
+            <img src="../images/pasta.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+            <div class="p-10">
+                <h2 class="text-xl font-bold mb-2">Pasta</h2>
+                <p class="text-gray-700">This Spicy Chicken Pasta is the perfect level of spice, whilst absolutely bursting with flavour. It’s easy, creamy,
+                hearty and delicious!.</p>
+                <p class="text-pink-500 font-semibold mt-4">80 BDT</p>
+                <div class="flex items-center mt-4">
+        
+                    <button
+                        class="bg-pink-500 text-center mx-auto hover:bg-pink-600  hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add
+                        to Cart</button>
+                </div>
+        
+            </div>
+        </div>
+
+        <div
+            class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105  ">
+            <img src="../images/CHicken biriyani.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+            <div class="p-10">
+                <h2 class="text-xl font-bold mb-2">Chicken Biriyani</h2>
+                <p class="text-gray-700">A savory chicken and rice dish that includes layers of chicken, rice, and aromatics that are steamed together.</p>
+                <p class="text-pink-500 font-semibold mt-4">90 BDT</p>
+                <div class="flex items-center mt-4">
+        
+                    <button
+                        class="bg-pink-500 text-center mx-auto hover:bg-pink-600  hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add
+                        to Cart</button>
+                </div>
+        
+            </div>
+        </div>
+        
+        <div
+            class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105  ">
+            <img src="../images/kacchi.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+            <div class="p-10">
+                <h2 class="text-xl font-bold mb-2">Dhakaiya Kacchi</h2>
+                <p class="text-gray-700">Introducing the spicy and tender dhakaiya kacchi where l,ayers of meat, rice, and potatoes are infused with delicious blends of aromatic spices.</p>
+                <p class="text-pink-500 font-semibold mt-4">110 BDT</p>
+                <div class="flex items-center mt-4">
+        
+                    <button
+                        class="bg-pink-500 text-center mx-auto hover:bg-pink-600  hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add
+                        to Cart</button>
+                </div>
+        
+            </div>
+        </div>
+        
+        <div
+            class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 ">
+            <img src="../images/kalabhuna.png" alt=" Beef kalabhuna" class="rounded-t-lg mx-auto">
+            <div class="p-10">
+                <h2 class="text-xl font-bold mb-2">Kala Bhuna</h2>
+                <p class="text-gray-700">Authentic and spicy chatgaiya beef kalabhuna. Exclusive dark, flavourful and tender dish prepared with chunks of beef and traditional spices </p>
+                <p class="text-pink-500 font-semibold mt-4">80 BDT</p>
+                <div class="flex items-center mt-4">
+        
+                    <button
+                        class="bg-pink-500 text-center mx-auto hover:bg-pink-600  hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add
+                        to Cart</button>
+                </div>
+        
+            </div>
+        </div>
+        
+        <div
+            class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 ">
+            <img src="../images/khichuri.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+            <div class="p-10">
+                <h2 class="text-xl font-bold mb-2">Khichuri</h2>
+                <p class="text-gray-700">Authentic bangali khichuri with all the original flavors of Bengal. Made of rice and lentils (dal) with numerous variations</p>
+                <p class="text-pink-500 font-semibold mt-4">40 BDT</p>
+                <div class="flex items-center mt-4">
+        
+                    <button
+                        class="bg-pink-500 text-center mx-auto hover:bg-pink-600  hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add
+                        to Cart</button>
+                </div>
+        
             </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>
