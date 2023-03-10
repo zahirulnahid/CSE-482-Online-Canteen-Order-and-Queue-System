@@ -71,7 +71,7 @@
                         </button>
                     </form>
                     <p class="text-gray-800 mt-4">Already have an account?
-                        <a href="login.html" class="text-pink-500 font-bold hover:text-pink-700">Log in here.</a>
+                        <a href="login.php" class="text-pink-500 font-bold hover:text-pink-700">Log in here.</a>
                     </p>
                 </div>
             </div>

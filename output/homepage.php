@@ -17,10 +17,10 @@
     <!-- Navbar -->
     <nav class="bg-pink-600 bg-opacity-40 py-4 px-14 z-10">
         <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="homepage.html" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
+            <a href="homepage.php" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
            
             <div>
-                <a href="login.html" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
+                <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
                                 focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
                     >Log Out</a>
             </div>
@@ -44,7 +44,7 @@
                 <input
                     class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                     type="search" name="search" id="search">   
-                    <a href="invoice.html"
+                    <a href="invoice.php"
                         class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                         font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
                         <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
