@@ -17,7 +17,7 @@
       <div class="flex flex-col justify-center items-center h-full">
         <div class="bg-white p-6 rounded-lg shadow-2xl w-full md:w-96 sm:px-10 ">
           <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">NSU cafeteria</h2>
-          <form action="authentication.php" method="post">
+          <form action="homepage.html" method="post">
             <div class="mb-4">
               <label class="block text-gray-700 font-bold mb-2" for="username">Username</label>
               <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="text" name="username" id="username" required>
@@ -31,7 +31,7 @@
           </form>
           <a href="#" class="text-pink-500 font-bold hover:text-pink-700 block mt-4 hover:translate-x-1">Forgot Password</a>
           <p class="text-gray-800 mt-4 text-center">Don't have an account?
-            <a href="#" class="text-pink-500 font-bold hover:text-pink-700 hover:translate-x-1">Sign up here.</a>
+            <a href="signUp.html" class="text-pink-500 font-bold hover:text-pink-700 hover:translate-x-1">Sign up here.</a>
           </p>
         </div>
       </div>
