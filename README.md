@@ -1,1 +1,1 @@
-#CSE482 (Internet & Web Technology) LAB Project.
+CSE482 (Internet & Web Technology) LAB Project
