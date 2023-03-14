@@ -43,7 +43,7 @@
     <!-- menu list view -->
     <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/Burger.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">2 x Burger</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">2011068</h3>
@@ -54,7 +54,7 @@
             </div>
         </li>
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/CHicken biriyani.png" alt="Product"
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product"
                 class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">1 x Chicken Biriyani</h3>
@@ -66,7 +66,7 @@
             </div>
         </li>
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/chicken curry.png" alt="Product"
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product"
                 class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">1 x Chicken Curry</h3>
@@ -78,7 +78,7 @@
             </div>
         </li>
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/daal.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">1 x Daal</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">2013421</h3>
