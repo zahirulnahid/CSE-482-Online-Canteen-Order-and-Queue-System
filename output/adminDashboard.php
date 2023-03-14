@@ -53,7 +53,7 @@
                 </div>
               </div>
             </div></a>
-            <a href="sellsInfo.php">  
+            <a href="salesInfo.php">  
             <div class="w-full md:w-1/4 mx-2 my-2 md:my-0">
               <div class="bg-pink-100 rounded-lg shadow-lg p-4 h-full flex flex-col justify-between" style="margin-right: 10px; margin-left: 10px;margin-top: 10px;margin-bottom: 10px;">
                 <div>

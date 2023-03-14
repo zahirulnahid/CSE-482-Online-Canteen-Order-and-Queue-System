@@ -28,103 +28,53 @@
     </nav>
 
     <div class="flex m-14">
-        <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
-        <!-- search bar -->
-        <div class="px-20 my-4 p-4 w-full float-left">
-            <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
-            <input
-                class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                type="search" name="search" id="search">
-            <button href="invoice.php" class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
-                <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24"
-                    width="24">
-                Cart(0)
-            </button>
-        </div>
+
     
     
     </div>
 
     <!-- menu list view -->
-    <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/Burger.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Burger</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/CHicken biriyani.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Biriyani</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/chicken curry.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Curry</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/daal.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Daal</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kacchi.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kacchi</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kalabhuna.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kalabhuna</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/khichuri.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Khichuri</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pasta.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pasta</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pizza.jpg" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pizza</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-    </ul>
+    <div class="container mx-auto px-4">
+        <h1 class="text-2xl font-bold mb-4">Sales Report</h1>
+        <table class="table-auto w-full">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2">Product Name</th>
+                    <th class="px-4 py-2">Units Sold</th>
+                    <th class="px-4 py-2">Price per Unit</th>
+                    <th class="px-4 py-2">Total Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white">
+                    <td class="px-4 py-2">Product A</td>
+                    <td class="px-4 py-2">100</td>
+                    <td class="px-4 py-2">$10</td>
+                    <td class="px-4 py-2">$1000</td>
+                </tr>
+                <tr class="bg-gray-100">
+                    <td class="px-4 py-2">Product B</td>
+                    <td class="px-4 py-2">50</td>
+                    <td class="px-4 py-2">$20</td>
+                    <td class="px-4 py-2">$1000</td>
+                </tr>
+                <tr class="bg-white">
+                    <td class="px-4 py-2">Product C</td>
+                    <td class="px-4 py-2">75</td>
+                    <td class="px-4 py-2">$15</td>
+                    <td class="px-4 py-2">$1125</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="bg-gray-200">
+                    <td class="px-4 py-2 font-bold">Total</td>
+                    <td class="px-4 py-2 font-bold"></td>
+                    <td class="px-4 py-2 font-bold"></td>
+                    <td class="px-4 py-2 font-bold">$3125</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </body>
 </head>
 </html>
