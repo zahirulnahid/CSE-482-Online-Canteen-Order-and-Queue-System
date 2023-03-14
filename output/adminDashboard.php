@@ -28,7 +28,8 @@
         <div class="container mx-auto my-8">
           <center><h1 class="text-4xl mb-4"><strong> 📊DASHBOARD </strong></h1></center>
           <div class="flex flex-col md:flex-row md:justify-between lg:justify-start">
-            <div class="w-full md:w-1/4 mx-2 my-2 md:my-0">
+          <a href="pendingAccount.php">  
+          <div class="w-full md:w-1/4 mx-2 my-2 md:my-0">
               <div class="bg-pink-100 rounded-lg shadow-lg p-4 h-full flex flex-col justify-between" style="margin-right: 10px; margin-left: 10px;margin-top: 10px;margin-bottom: 10px;">
                 <div>
                   <h2 class="text-lg font-bold mb-2">🔁Pending Account</h2>
@@ -38,7 +39,8 @@
                   <h3 class="text-lg font-bold">25,000</h3>
                 </div>
               </div>
-            </div>
+            </div></a>
+            <a href="manageAccount.php">  
             <div class="w-full md:w-1/4 mx-2 my-2 md:my-0">
               <div class="bg-pink-100 rounded-lg shadow-lg p-4 h-full flex flex-col justify-between" style="margin-right: 10px; margin-left: 10px;margin-top: 10px;margin-bottom: 10px;">
                 <div>
@@ -50,7 +52,8 @@
                   <h3 class="text-lg font-bold">BDT 50,000</h3>
                 </div>
               </div>
-            </div>
+            </div></a>
+            <a href="sellsInfo.php">  
             <div class="w-full md:w-1/4 mx-2 my-2 md:my-0">
               <div class="bg-pink-100 rounded-lg shadow-lg p-4 h-full flex flex-col justify-between" style="margin-right: 10px; margin-left: 10px;margin-top: 10px;margin-bottom: 10px;">
                 <div>
@@ -62,7 +65,8 @@
                   <h3 class="text-lg font-bold">1,000</h3>
                 </div>
               </div>
-            </div>
+            </div></a>
+            <a href="updateMenu.php">  
             <div class="w-full md:w-1/4 mx-2 my-2 md:my-0">
               <div class="bg-pink-100 rounded-lg shadow-lg p-4 h-full flex flex-col justify-between" style="margin-right: 10px; margin-left: 10px;margin-top: 10px;margin-bottom: 10px;">
                 <div>
