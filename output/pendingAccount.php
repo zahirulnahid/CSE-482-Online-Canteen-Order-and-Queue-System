@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <title>Menu List view</title>
+    <title>Pending Accounts</title>
     <link rel="stylesheet" href="outputstyles.css">
 
 
@@ -35,12 +35,6 @@
             <input
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="search" name="search" id="search">
-            <button href="invoice.php" class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
-                <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24"
-                    width="24">
-                Cart(0)
-            </button>
         </div>
     
     
@@ -51,79 +45,26 @@
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
             <img src="../images/Burger.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Burger</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
+                <h3 class="text-base font-bold text-gray-900 mb-1">Labib Hasan</h3>
+               
+                <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Aproved</button>
+                            <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Decline</button>                            
             </div>
         </li>
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/CHicken biriyani.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
+            <img src="../images/Burger.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Biriyani</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
+                <h3 class="text-base font-bold text-gray-900 mb-1">Zahirul Islam Nahid</h3>
+               
+                <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Aproved</button>
+                            <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Decline</button>                            
             </div>
         </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/chicken curry.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Curry</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/daal.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Daal</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kacchi.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kacchi</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kalabhuna.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kalabhuna</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/khichuri.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Khichuri</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pasta.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pasta</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pizza.jpg" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pizza</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
+        
     </ul>
 </body>
 </head>

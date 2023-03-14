@@ -12,7 +12,7 @@
   <!-- Navbar -->
   <nav class="bg-pink-600 bg-opacity-40 py-4 px-14 z-10">
     <div class="container mx-auto flex font-serif justify-between items-center px-4">
-      <a href="homepage.php" class="text-gray-800 text-2xl font-bold">🍽 <b> NSU Canteen</b></a>
+      <a href="homepage.php" class="text-gray-800 text-2xl font-bold">🍽 <b> NSU Canteen Admin</b></a>
       <div>
         <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">Log Out</a>
       </div>
@@ -48,8 +48,8 @@
                   <p class="text-gray-700">Click here to manage your account settings.</p>
                 </div>
                 <div class="mt-4">
-                  <p class="text-gray-600">💸Total Income</p>
-                  <h3 class="text-lg font-bold">BDT 50,000</h3>
+                  <p class="text-gray-600">👥Total User</p>
+                  <h3 class="text-lg font-bold">1</h3>
                 </div>
               </div>
             </div></a>

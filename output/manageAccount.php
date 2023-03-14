@@ -16,7 +16,7 @@
     <!-- Navbar -->
     <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
         <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="#" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
+            <a href="#" class="text-gray-800 text-2xl font-bold">NSU Canteen - Manage Account/a>
           
             <div>
             <button class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
@@ -51,79 +51,13 @@
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
             <img src="../images/Burger.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Burger</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
+                <h3 class="text-base font-bold text-gray-900 mb-1">Zahirul Islam Nahid</h3>
+                <p class="text-gray-700 font-medium">2013421</p>
+                <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Edit</button>
             </div>
         </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/CHicken biriyani.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Biriyani</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/chicken curry.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Curry</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/daal.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Daal</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kacchi.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kacchi</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kalabhuna.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kalabhuna</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/khichuri.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Khichuri</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pasta.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pasta</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pizza.jpg" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pizza</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
+      
     </ul>
 </body>
 </head>
