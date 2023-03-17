@@ -16,10 +16,10 @@
     <!-- Navbar -->
     <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
         <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="#" class="text-gray-800 text-2xl font-bold">NSU Canteen Server</a>
+            <a href="#" class="text-gray-700 text-2xl font-bold">NSU Canteen</a>
           
             <div>
-            <button class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
+            <button class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold ml-5 py-3 px-5 float-right rounded-full focus:outline-black 
                                             focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
                 type="submit">Log Out</button>
             </div>
@@ -30,7 +30,7 @@
     <div class="flex m-14">
         <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
         <!-- search bar -->
-        <div class="px-20 my-4 p-4 w-full float-left">
+        <div class="px-20 mx-auto p-4 w-full">
             <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
             <input
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
@@ -41,14 +41,14 @@
     </div>
 
     <!-- menu list view -->
-    <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
+    <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none p-16">
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
             <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
+            <div class=" flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">2 x Burger</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">2011068</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">Queue No: 71</h3>
-                <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                <button class=" p-5 m-10 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Served</button>
                 <p class="text-gray-700 font-medium">Dequeue</p>
             </div>
@@ -56,11 +56,11 @@
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
             <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product"
                 class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
+            <div class=" flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">1 x Chicken Biriyani</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">2016548</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">Queue No: 72</h3>
-                                <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                                <button class=" p-5 m-10 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Served</button>
                 <p class="text-gray-700 font-medium">Dequeue</p>
             </div>
@@ -68,22 +68,22 @@
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
             <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product"
                 class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
+            <div class=" flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">1 x Chicken Curry</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">2015418</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">Queue No: 73</h3>
-                                <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                                <button class=" p-5 m-10 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Served</button>
                 <p class="text-gray-700 font-medium">Dequeue</p>
             </div>
         </li>
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
             <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
+            <div class=" flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">1 x Daal</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">2013421</h3>
                 <h3 class="text-base font-bold text-gray-900 mb-1">Queue No: 74</h3>
-                                <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                                <button class=" p-5 m-10 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Served</button>
                 <p class="text-gray-700 font-medium">Dequeue</p>
             </div>

@@ -47,9 +47,9 @@
             <div class="p-5 flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">Labib Hasan</h3>
                
-                <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                <button class=" p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Aproved</button>
-                            <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                            <button class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Decline</button>                            
             </div>
         </li>
@@ -58,9 +58,9 @@
             <div class="p-5 flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">Zahirul Islam Nahid</h3>
                
-                <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                <button class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Aproved</button>
-                            <button class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                            <button class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Decline</button>                            
             </div>
         </li>
