@@ -17,10 +17,10 @@
       <div class="flex flex-col justify-center items-center h-full">
         <div class="bg-white p-6 rounded-lg shadow-2xl w-full md:w-96 sm:px-10 ">
           <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">NSU cafeteria</h2>
-          <form action="homepage.php" method="post">
+          <form action="authentication.php" method="post">
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="username">Username</label>
-              <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="text" name="username" id="username" required>
+              <label class="block text-gray-700 font-bold mb-2" for="phone">Phone</label>
+              <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="text" name="phone" id="phone" required>
             </div>
             <div class="mb-6">
               <label class="block text-gray-700 font-bold mb-2" for="password">Password</label>
