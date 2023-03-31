@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function validateForm() {
+
+            if (document.forms["myForm"]["name"].value == "") {
+                alert("Name must be filled out");
+                return false;
+            }
+            if (document.forms["myForm"]["username"].value == "") {
+                alert("Username must be filled out");
+                return false;
+            }
+            if (/\s/g.test(document.forms["myForm"]["username"].value)) {
+                alert("Username has white space");
+                return false;
+            }
+            let x = document.forms["myForm"]["password"].value.length;
+            var value = document.getElementById('password').value;
+
+            if (!(value.length <= 32 && value.length >= 8)) {
+                alert("Password length must between 8-32 chars");
+                return false;
+            }
+            if ((document.forms["myForm"]["password"].value != document.forms["myForm"]["rpassword"].value)) {
+                alert("Password Not Matched");
+                return false;
+            }
+            if (document.forms["myForm"]["gender"].value == "") {
+                alert("Gender must Seleted");
+                return false;
+            }
+            var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            if (!document.forms["myForm"]["email"].value.match(mailformat)) {
+                alert("Email Not Valid");
+                return false;
+            }
+            if (document.forms["myForm"]["contact"].value == "") {
+                alert("Contact Number Must Filled");
+                return false;
+            }
+            var numbers = /^[0-9]+$/;
+            if (!document.forms["myForm"]["contact"].value.match(numbers)) {
+                alert('Please input numeric characters only');
+                return false;
+            }
+        }
+    </script>
+
+    <form name="myForm" method="GET" onsubmit="return validateForm()">
+        <table width="100%">
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="username" id="username"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" id="password"></td>
+            </tr>
+            <tr>
+                <td>Re-type password:</td>
+                <td><input type="password" name="rpassword" id="rpassword"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" id="gender" name="gender" value="M">Male
+                    <input type="radio" id="gender" name="gender" value="F">Female
+                    <input type="radio" id="gender" name="gender" value="O">Other
+                </td>
+            </tr>
+            <tr>
+                <td>Programming skills:</td>
+                <td>
+                    <input type="checkbox" name="skills" value="Java">Java
+                    <input type="checkbox" name="skills" value="Android">Android
+                    <input type="checkbox" name="skills" value="Ruby">Ruby
+                    <input type="checkbox" name="skills" value="dotNet">.Net
+                </td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>Contact no:</td>
+                <td><input type="text" name="contact"></td>
+            </tr>
+            <tr>
+                <td>College</td>
+                <td>
+                    <select name="college">
+                        <option>Select college</option>
+                        <option value="Dania College">Dania College</option>
+                        <option value="Mastermind College">Mastermind College</option>
+                        <option value="Rajendro Govt. College">Rajendro Govt. College</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>

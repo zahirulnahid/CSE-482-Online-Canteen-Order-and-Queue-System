@@ -49,7 +49,7 @@
 
     function validateForm(){   
 
-      Email field
+      // Email field
         var email = document.forms["myForm"]["email"].value;
       var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
       if (!email.match(mailformat)) {

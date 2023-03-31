@@ -50,7 +50,7 @@ $conn->close();
           <h4 class="modal-title"> Account Created successfully</h4>
         </div>
         <div class="modal-body">
-          <p>Just wait for verification.</p>
+          <!-- <p>Just wait for verification.</p> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -88,6 +88,37 @@ $conn->close();
         <?php endif; ?>
     
     });
+
+     function validateForm(){
+        // PASSWORD LENGTH MUST BE BETWEEN 8-32 CHARACTERS
+        let x = document.forms["myForm"]["password"].value.length;
+        var password = document.getElementById('password').value;
+         if (!(password.length <= 32 && password.length >= 8)) {
+                alert("Password length must between 8-32 chars");
+                return false;
+                }
+
+        // password confirm
+                 if ((document.forms["myForm"]["password"].value != document.forms["myForm"]["confirmPassword"].value)) {
+                alert("Password Not Matched");
+                return false;
+            }
+
+        //EMAIL VALIDATION
+                var email = document.forms["myForm"]["email"].value;
+          var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            if (!email.match(mailformat)) {
+                alert("Email Not Valid");
+                return false;
+            }
+
+        //PHONE NUMBER SHOULD BE NUMERIC CHARS ONLY 
+         var numbers = /^[0-9]+$/;
+            if (!document.forms["myForm"]["contact"].value.match(numbers)) {
+                alert('Please input numeric characters only');
+                return false;
+            }
+    }
 </script>
 
 
@@ -105,19 +136,19 @@ $conn->close();
                     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Register</h2>
 
                     <!-- FORM STARTS -->
-                    <form method="POST">
+                    <form name="myForm" method="POST" onsubmit="return validateForm()">
 
-                    
+
                         <!-- TYPE OF ACCOUNT -->
-                        <div class="mb-4">
+                        <div class="mb-4" >
                             <label class="block text-gray-700 font-bold mb-2" for="actor">
                                Create Account As
                             </label>
-                            <input type="radio" id="Student" name="category" value="1">
+                            <input type="radio" id="Student" name="category" value="1" required>
                             <label for="Student">Student</label>
-                            <input type="radio" id="Faculty" name="category" value="2">
+                            <input type="radio" id="Faculty" name="category" value="2" required>
                             <label for="Faculty">Faculty</label>
-                            <input type="radio" id="Staff" name="category" value="3">
+                            <input type="radio" id="Staff" name="category" value="3" required>
                             <label for="Staff">Staff</label>
                         </div>      
                         
@@ -141,15 +172,16 @@ $conn->close();
                                 type="email" name="email" id="email" required>
                         </div>
 
-                        <!-- PHONE NUMBER -->
+                         <!-- PHONE NUMBER -->
                         <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="email">
+                            <label class="block text-gray-700 font-bold mb-2" for="phone">
                                 Phone Number
                             </label>
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="text" name="phone" id="phone" required>
                         </div>  
+
                         <!--PASSWORD -->
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="password">
@@ -162,18 +194,19 @@ $conn->close();
 
                         <!-- CONFIRM PASSWORD -->
                         <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="confirm-password">
+                            <label class="block text-gray-700 font-bold mb-2" for="confirmPassword">
                                 Confirm Password
                             </label>
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                                type="password" name="confirm-password" id="confirm-password" required>
+                                type="password" name="confirmPassword" id="confirmPassword" required>
                         </div>
 
                         <!-- REGISTER BUTTON -->
                         <input type="submit" value="Register"
                             class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
+                            > 
+                        
                     </form>
 
                     <!-- FORM ENDS -->
@@ -184,7 +217,6 @@ $conn->close();
             </div>
         </div>
     </div>
-
 
 
 
