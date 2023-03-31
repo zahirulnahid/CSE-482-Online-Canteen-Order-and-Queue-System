@@ -50,7 +50,7 @@ $conn->close();
           <h4 class="modal-title"> Account Created successfully</h4>
         </div>
         <div class="modal-body">
-          <p>Just wait for varifification.</p>
+          <p>Just wait for verification.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -103,7 +103,12 @@ $conn->close();
             <div class="flex flex-col justify-center items-center h-full">
                 <div class="bg-white p-6 rounded-lg shadow-2xl w-96">
                     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Register</h2>
+
+                    <!-- FORM STARTS -->
                     <form method="POST">
+
+                    
+                        <!-- TYPE OF ACCOUNT -->
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="actor">
                                Create Account As
@@ -114,7 +119,9 @@ $conn->close();
                             <label for="Faculty">Faculty</label>
                             <input type="radio" id="Staff" name="category" value="3">
                             <label for="Staff">Staff</label>
-                        </div>                        
+                        </div>      
+                        
+                        <!-- NAME OF ACCOUNT -->
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="name">
                                 Name
@@ -123,6 +130,8 @@ $conn->close();
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="text" name="name" id="name" required>
                         </div>
+
+                        <!-- EMAIL -->
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="email">
                                 Email
@@ -131,6 +140,8 @@ $conn->close();
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="email" name="email" id="email" required>
                         </div>
+
+                        <!-- PHONE NUMBER -->
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="email">
                                 Phone Number
@@ -138,7 +149,8 @@ $conn->close();
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="text" name="phone" id="phone" required>
-                        </div>                        
+                        </div>  
+                        <!--PASSWORD -->
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="password">
                                 Password
@@ -147,6 +159,8 @@ $conn->close();
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="password" name="password" id="password" required>
                         </div>
+
+                        <!-- CONFIRM PASSWORD -->
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="confirm-password">
                                 Confirm Password
@@ -156,12 +170,13 @@ $conn->close();
                                 type="password" name="confirm-password" id="confirm-password" required>
                         </div>
 
-                        <button
+                        <!-- REGISTER BUTTON -->
+                        <input type="submit" value="Register"
                             class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            type="submit">
-                            Register
-                        </button>
+                            >
                     </form>
+
+                    <!-- FORM ENDS -->
                     <p class="text-gray-800 mt-4">Already have an account?
                         <a href="login.php" class="text-pink-500 font-bold hover:text-pink-700">Log in here.</a>
                     </p>

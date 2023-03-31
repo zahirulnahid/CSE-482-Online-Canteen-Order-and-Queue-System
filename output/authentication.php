@@ -2,7 +2,7 @@
 session_start();
 include('connection.php');
 
-$sql = "SELECT * FROM `user` WHERE `phone`='$_POST[phone]' AND `password`='$_POST[password]'";
+$sql = "SELECT * FROM `users` WHERE `phone`='$_POST[phone]' AND `password`='$_POST[password]'";
 
 $result = $conn->query($sql);
 

@@ -17,18 +17,25 @@
       <div class="flex flex-col justify-center items-center h-full">
         <div class="bg-white p-6 rounded-lg shadow-2xl w-full md:w-96 sm:px-10 ">
           <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">NSU cafeteria</h2>
-          <form action="authentication.php" method="post">
+          
+    <!-- LOGIN FORM STARTS  -->
+          <form name="myForm" method="GET" onsubmit="return validateForm()" action="authentication.php" >
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="phone">Phone</label>
-              <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="text" name="phone" id="phone" required>
+              <label class="block text-gray-700 font-bold mb-2" for="email">Email</label>
+              <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="text" name="email" id="email" required>
             </div>
             <div class="mb-6">
               <label class="block text-gray-700 font-bold mb-2" for="password">Password</label>
               <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="password" name="password" id="password" required>
             </div>
-            <button class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none 
-            focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow" type="submit">Login</button>
+
+            <!-- log in button -->
+            <input type="submit" value="Login" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none 
+            focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">
           </form>
+      <!--LOGIN FORM ENDS  -->
+
+
           <a href="#" class="text-pink-500 font-bold hover:text-pink-700 block mt-4 hover:translate-x-1">Forgot Password</a>
           <p class="text-gray-800 mt-4 text-center">Don't have an account?
             <a href="signUp.php" class="text-pink-500 font-bold hover:text-pink-700 hover:translate-x-1">Sign up here.</a>
@@ -37,6 +44,31 @@
       </div>
     </div>
   </div>
+
+  <script>
+
+    function validateForm(){   
+
+      Email field
+        var email = document.forms["myForm"]["email"].value;
+      var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+      if (!email.match(mailformat)) {
+        alert("Email Not Valid");
+        return false;
+      }
+
+      // password field
+
+      let x = document.forms["myForm"]["password"].value.length;
+      var password = document.getElementById('password').value;
+
+      if (!(password.length <= 32 && password.length >= 8)) {
+        alert("Password length must between 8-32 chars");
+        return false;
+      }
+    
+    }
+  </script>
 </body>
 
 
