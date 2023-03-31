@@ -165,11 +165,11 @@ $conn->close();
                         <!-- EMAIL -->
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="email">
-                                Email
+                                Email 
                             </label>
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                                type="email" name="email" id="email" required>
+                                type="email" name="email" id="email"  placeholder="Enter valid email" required>
                         </div>
 
                          <!-- PHONE NUMBER -->
@@ -179,7 +179,7 @@ $conn->close();
                             </label>
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                                type="text" name="phone" id="phone" required>
+                                type="text" name="phone" id="phone"  placeholder="Enter valid Phone number" required>
                         </div>  
 
                         <!--PASSWORD -->
@@ -189,7 +189,7 @@ $conn->close();
                             </label>
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                                type="password" name="password" id="password" required>
+                                type="password" name="password" id="password"  placeholder="8-32 charcter password" required>
                         </div>
 
                         <!-- CONFIRM PASSWORD -->
@@ -199,7 +199,7 @@ $conn->close();
                             </label>
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                                type="password" name="confirmPassword" id="confirmPassword" required>
+                                type="password" name="confirmPassword" id="confirmPassword"  placeholder="Re-enter Password" required>
                         </div>
 
                         <!-- REGISTER BUTTON -->
