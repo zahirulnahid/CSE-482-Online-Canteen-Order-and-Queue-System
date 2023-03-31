@@ -46,11 +46,29 @@
                 </tr>
             </thead>
             <tbody>
+                <?php
+                    include('connection.php');
+
+                    $sql = "SELECT * FROM `Sales_Report`;";
+                    $result = $conn->query($sql);
+
+                //declare array to store the data of database
+                $row = [];
+                $total_Revenue = 0;
+                if ($result->num_rows > 0) {
+                    // fetch all data from db into array 
+                    $row = $result->fetch_all(MYSQLI_ASSOC);
+                }
+
+                if (!empty($row))
+                    foreach ($row as $rows){
+                        $total_Revenue += $rows['Total_Revenue'];
+                ?>
                 <tr class="bg-white">
-                    <td class="px-4 py-2">Product A</td>
-                    <td class="px-4 py-2">100</td>
-                    <td class="px-4 py-2">$10</td>
-                    <td class="px-4 py-2">$1000</td>
+                    <td class="px-4 py-2"><?php echo $rows['Item_Name'];?></td>
+                    <td class="px-4 py-2"><?php echo $rows['Units_Sold'];?></td>
+                    <td class="px-4 py-2"><?php echo $rows['Price'];?> BDT</td>
+                    <td class="px-4 py-2"><?php echo $rows['Total_Revenue'];}?> BDT</td>
                 </tr>
                 <tr class="bg-gray-100">
                     <td class="px-4 py-2">Product B</td>
@@ -70,7 +88,7 @@
                     <td class="px-4 py-2 font-bold">Total</td>
                     <td class="px-4 py-2 font-bold"></td>
                     <td class="px-4 py-2 font-bold"></td>
-                    <td class="px-4 py-2 font-bold">$3125</td>
+                    <td class="px-4 py-2 font-bold"><?php echo $total_Revenue?> BDT</td>
                 </tr>
             </tfoot>
         </table>

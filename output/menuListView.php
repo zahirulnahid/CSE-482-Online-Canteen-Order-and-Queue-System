@@ -48,82 +48,34 @@
 
     <!-- menu list view -->
     <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/Burger.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
+        <?php
+        include('connection.php');
+        
+        $sql = "SELECT * FROM `Food_List`";
+        $result = $conn->query($sql);
+
+        //declare array to store the data of database
+        $row = [];
+
+        if ($result->num_rows > 0) {
+            // fetch all data from db into array 
+            $row = $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        if(!empty($row))
+        foreach($row as $rows){
+       
+     ?>
+
+     <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
+            <img src="../images/<?php echo $rows['Item_Name'];?>.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Burger</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
+                <h3 class="text-base font-bold text-gray-900 mb-1"><?php echo $rows['Item_Name']; ?></h3>
+                <p class="text-gray-700 font-medium"><?php echo $rows['Price']; ?> BDT</p>
 
             </div>
         </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/CHicken biriyani.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Biriyani</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/chicken curry.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Curry</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/daal.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Daal</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kacchi.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kacchi</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kalabhuna.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kalabhuna</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/khichuri.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Khichuri</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pasta.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pasta</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pizza.jpg" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pizza</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
-
-            </div>
-        </li>
+        <?php }?>                
     </ul>
 </body>
 </head>

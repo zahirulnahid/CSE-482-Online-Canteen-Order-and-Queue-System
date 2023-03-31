@@ -48,8 +48,29 @@
             <div class="p-5 flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1">Zahirul Islam Nahid</h3>
                 <p class="text-gray-700 font-medium">2013421</p>
-                <button class=" px-5 py-2 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Edit</button>
+                <?php
+
+                if (isset($_POST['edit'])) {
+                    edit();
+                }
+                if (isset($_POST['delete'])) {
+                    delete();
+                }
+                function edit()
+                {
+                    echo "This is edit that is selected";
+                }
+                function delete()
+                {
+                    echo "This is delete that is selected";
+                }
+                ?>
+                <form method="post">
+                    <input type="submit" name="delete" value="Delete Account" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
+                    <input type="submit" name="edit" value="Edit" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
+                </form>
             </div>
         </li>
       

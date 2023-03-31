@@ -42,12 +42,34 @@
 
     <!-- menu list view -->
     <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none p-16">
+        <?php
+        include ('connection.php');
+        $sql= "SELECT `QUEUE`.*, `ORDER`.Item, `ORDER`.Quantity
+        FROM `ORDER`
+        INNER JOIN `QUEUE` ON `ORDER`.OrderID= `QUEUE`.OrderID;";
+        $result = $conn->query($sql);
+
+        //declare array to store the data of database
+        $row = [];
+
+        if ($result->num_rows > 0) {
+            // fetch all data from db into array 
+            $row = $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        if(!empty($row))
+        foreach($row as $rows){
+            echo count($rows);
+            echo $rows["Customer_Name"]." s<br>";
+
+     ?>
+    
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class=" flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">2 x Burger</h3>
-                <h3 class="text-base font-bold text-gray-900 mb-1">2011068</h3>
-                <h3 class="text-base font-bold text-gray-900 mb-1">Queue No: 71</h3>
+                <h3 class="text-base font-bold text-gray-900 mb-1"><?php echo $rows['Quantity']." x ";echo $rows['Item'];?></h3>
+                <h3 class="text-base font-bold text-gray-900 mb-1"><?php echo $rows['Customer_Name'];?></h3>
+                <p class="text-base font-bold text-gray-900 mb-1"><?php echo $rows['Customer_Email'];?></p>
+                <h3 class="text-base font-bold text-gray-900 mb-1">Queue No: <?php echo $rows['QueueNo'];}?></h3>
                 <button class=" p-5 m-10 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Served</button>
                 <p class="text-gray-700 font-medium">Dequeue</p>
