@@ -46,9 +46,12 @@
         <?php
         include('connection.php');
         //join queue table and order table
-        $sql = "SELECT `QUEUE`.*, `ORDER`.Item, `ORDER`.Quantity
+        $sql = "SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `ORDER`.Item, `ORDER`.Quantity
         FROM `ORDER`
-        INNER JOIN `QUEUE` ON `ORDER`.OrderID= `QUEUE`.OrderID;";
+        INNER JOIN `QUEUE` ON `ORDER`.OrderID= `QUEUE`.OrderID
+        INNER JOIN `BILL` on `ORDER`.`OrderID`=`BILL`.OrderID
+        INNER JOIN `users`  ON `bill`.`Customer_Email`= `users`.Email
+        ;";
         $result = $conn->query($sql);
         $current = 0;
         //fetch results and store in an array
@@ -60,7 +63,7 @@
         for ($index = 0; $index < $length; $index++) {
             $current = $index;
             ?>
-            <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
+            <li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
                 <div class=" flex-grow">
                     <?php
                     //all items in the same Order Number will be served in one queue
