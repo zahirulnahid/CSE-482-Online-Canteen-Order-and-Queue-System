@@ -94,29 +94,36 @@ $conn->close();
         let x = document.forms["myForm"]["password"].value.length;
         var password = document.getElementById('password').value;
          if (!(password.length <= 32 && password.length >= 8)) {
-                alert("Password length must between 8-32 chars");
-                return false;
+                  document.getElementById("passwordError").innerHTML=  
+      "Password length must between 8-32 characters";
+      return false;  
                 }
 
         // password confirm
                  if ((document.forms["myForm"]["password"].value != document.forms["myForm"]["confirmPassword"].value)) {
-                alert("Password Not Matched");
-                return false;
+                  document.getElementById("confirmPasswordError").innerHTML=  
+      "Password not matched";
+      return false;  
             }
 
         //EMAIL VALIDATION
                 var email = document.forms["myForm"]["email"].value;
           var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-            if (!email.match(mailformat)) {
-                alert("Email Not Valid");
-                return false;
-            }
+
+          if (!email.match(mailformat)) {
+       document.getElementById("emailError").innerHTML=  
+      "Please enter a valid Email";  
+      return false;  
+      }
 
         //PHONE NUMBER SHOULD BE NUMERIC CHARS ONLY 
          var numbers = /^[0-9]+$/;
-            if (!document.forms["myForm"]["contact"].value.match(numbers)) {
-                alert('Please input numeric characters only');
-                return false;
+         var numLen= document.forms["myForm"]["phone"].value.length;
+
+            if (!document.forms["myForm"]["phone"].value.match(numbers) || numLen!=11) {
+                  document.getElementById("numberError").innerHTML=  
+      "Please enter a valid number";  
+      return false;  
             }
     }
 </script>
@@ -159,7 +166,7 @@ $conn->close();
                             </label>
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                                type="text" name="name" id="name" required>
+                                type="text" name="name" id="name" placeholder="Enter name" required>
                         </div>
 
                         <!-- EMAIL -->
@@ -167,19 +174,23 @@ $conn->close();
                             <label class="block text-gray-700 font-bold mb-2" for="email">
                                 Email 
                             </label>
-                            <input
+                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="email" name="email" id="email"  placeholder="Enter valid email" required>
-                        </div>
+                        <!-- email error -->
+                         <p  id="emailError" class="text-pink-500 font-bold "></p>
+                            </div>
 
                          <!-- PHONE NUMBER -->
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="phone">
                                 Phone Number
                             </label>
+                            <!--   NUMBER ERROR -->
+                             <p  id="numberError" class="text-pink-500 font-bold "></p>
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                                type="text" name="phone" id="phone"  placeholder="Enter valid Phone number" required>
+                                type="text" name="phone" id="phone"  placeholder="11-digit Phone number" required>
                         </div>  
 
                         <!--PASSWORD -->
@@ -187,6 +198,10 @@ $conn->close();
                             <label class="block text-gray-700 font-bold mb-2" for="password">
                                 Password
                             </label>
+
+                            <!-- PASSWORD ERROR -->
+                             <p  id="passwordError" class="text-pink-500 font-bold "></p>
+
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="password" name="password" id="password"  placeholder="8-32 charcter password" required>
@@ -197,6 +212,8 @@ $conn->close();
                             <label class="block text-gray-700 font-bold mb-2" for="confirmPassword">
                                 Confirm Password
                             </label>
+                            <!-- CONFIRM PASSWORD ERROR -->
+                             <p  id="confirmPasswordError" class="text-pink-500 font-bold "></p>
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="password" name="confirmPassword" id="confirmPassword"  placeholder="Re-enter Password" required>

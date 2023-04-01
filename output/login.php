@@ -23,12 +23,16 @@
             <div class="mb-4">
               <label class="block text-gray-700 font-bold mb-2" for="email">Email</label>
               <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="text" name="email" id="email" required>
+              <!-- error message if email is not valid -->
+              <p  id="emailError" class="text-pink-500 font-bold"></p>
             </div>
             <div class="mb-6">
               <label class="block text-gray-700 font-bold mb-2" for="password">Password</label>
               <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="password" name="password" id="password" required>
+              <!-- error message is password is not valid -->
+              <p  id="passwordError" class="text-pink-500 font-bold "></p>
             </div>
-
+          
             <!-- log in button -->
             <input type="submit" value="Login" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none 
             focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">
@@ -45,6 +49,8 @@
     </div>
   </div>
 
+
+                                                <!-- java script -->
   <script>
 
     function validateForm(){   
@@ -52,9 +58,12 @@
       // Email field
         var email = document.forms["myForm"]["email"].value;
       var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+      // var error= document.getElementById("error").innerHTML;
+      
       if (!email.match(mailformat)) {
-        alert("Email Not Valid");
-        return false;
+       document.getElementById("emailError").innerHTML=  
+      "Please enter a valid Email";  
+      return false;  
       }
 
       // password field
@@ -63,11 +72,17 @@
       var password = document.getElementById('password').value;
 
       if (!(password.length <= 32 && password.length >= 8)) {
-        alert("Password length must between 8-32 chars");
-        return false;
+
+         document.getElementById("passwordError").innerHTML=  
+      "Password length must between 8-32 characters";
+      return false;  
+        
       }
-    
     }
+    
+    
+
+    
   </script>
 </body>
 
