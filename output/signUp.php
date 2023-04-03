@@ -24,7 +24,7 @@ if(isset($_POST["email"])){
     $password = $_POST['password'];
 
     // Hash the password for security
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = md5($password);
 
     // Insert data into the "users" table
     $sql = "INSERT INTO users (`category`, `name`, `email`, `phone`, `password`) 
