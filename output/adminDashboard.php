@@ -37,6 +37,14 @@
       <h1 class="text-4xl m-10"><strong> 📊DASHBOARD </strong></h1>
     </center>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 rounded-3xl   text-center">
+      <?php
+      include("connection.php");
+
+      $sql = "SELECT COUNT(email) from users;";
+
+      $result = $conn->query($sql);
+      $result = mysqli_fetch_column($result);
+      ?>
       <div
         class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
@@ -45,7 +53,7 @@
 
           <!-- <p class="text-pink-500 font-semibold mt-4">100 BDT</p> -->
           <div class="flex items-center mt-4">
-            👥Pending users - 25000
+            <a href="pendingAccount.php"> 👥Pending users - 25000</a>
           </div>
         </div>
       </div>
@@ -55,10 +63,12 @@
         <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <div class="p-10">
           <h2 class="text-xl font-bold mb-2">Manage Account</h2>
-          <p class="text-pink-500 font-semibold mt-4">Click here to manage your account settings</p>
+          <a href="manageAccount.php" class="text-pink-500 font-semibold mt-4">Click here to manage your account
+            settings</a>
           <!-- <p class="text-pink-500 font-semibold mt-4">70 BDT</p> -->
           <div class="flex items-center mt-4">
-            👥Total users: - 1
+            👥Total users: -
+            <?php echo $result; ?>
           </div>
         </div>
       </div>
@@ -68,11 +78,11 @@
         <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <div class="p-10">
           <h2 class="text-xl font-bold mb-2">Get sales Information</h2>
-          <p class="text-pink-500 font-semibold mt-4">Click here to view sales information</p>
-
+          <a href="salesInfo.php" class="text-pink-500 font-semibold mt-4">Click here to view sales information</a>
+          <!-- 
           <div class="flex items-center justify-center mt-4">
             Total sales: - 1000
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -81,10 +91,17 @@
         <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <div class="p-10">
           <h2 class="text-xl font-bold mb-2">Update Menu</h2>
-          <p class="text-pink-500 font-semibold mt-4">Click here to update your menu items</p>
+          <a href="updateMenu.php" class="text-pink-500 font-semibold mt-4">Click here to update your menu items</a>
 
           <div class="flex items-center justify-center mt-4">
-            💰Total menu items:- 50
+            💰Total menu items:-
+            <?php
+            $sql = "SELECT COUNT(Item_Name) from FOOD_LIST;";
+
+            $result = $conn->query($sql);
+            $result = mysqli_fetch_column($result);
+            echo $result;
+            ?>
           </div>
         </div>
       </div>
@@ -95,119 +112,57 @@
 
 
 
-    <!-- menu cards -->
-    <div class="container mt-5 mx-auto">
-      <center>
-        <h1 class="text-4xl mb-8"><b> 🍴EXPLORE ON-GOING ITEMS </b></h1>
-      </center>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
-        <div
-          class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-          <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto">
-          <div class="p-10">
-            <h2 class="text-xl font-bold mb-2">Burger</h2>
-            <p class="text-gray-700">A huge single or triple burger with all the fixings, cheese, lettuce, tomato,
-              onions and special sauce or mayonnaise!</p>
-            <p class="text-pink-500 font-semibold mt-4">100 BDT</p>
-            <div class="flex items-center mt-4">
-              💰Total Sold: -
+  <!-- menu cards -->
+  <div class="container mt-5 mx-auto">
+    <center>
+      <h1 class="text-4xl mb-8"><b> 🍴EXPLORE ON-GOING ITEMS </b></h1>
+    </center>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
+      <?php
+      $sql = "SELECT * FROM `Food_List`";
+      $result = $conn->query($sql);
+
+      //declare array to store the data of database
+      $row = [];
+
+      if ($result->num_rows > 0) {
+        // fetch all data from db into array 
+        $row = $result->fetch_all(MYSQLI_ASSOC);
+      }
+
+      if (!empty($row))
+        foreach ($row as $rows) {
+          ?>
+          <div
+            class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+            <img src="../images/<?php echo $rows["Item_Name"]; ?>.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+            <div class="p-10">
+              <h2 class="text-xl font-bold mb-2">
+                <?php echo $rows["Item_Name"]; ?>
+              </h2>
+              <p class="text-gray-700">
+                <?php echo $rows["Description"]; ?>
+              </p>
+              <p class="text-pink-500 font-semibold mt-4">
+                <?php echo $rows["Price"]; ?> BDT
+              </p>
+              <div class="flex items-center mt-4">
+                💰Total Sold: -
+                <?php
+                $salesQuery = "SELECT units_sold FROM `SALES_REPORT` WHERE Item_Name = '" . $rows["Item_Name"] . "'";
+                $sold = $conn->query($salesQuery);
+                $sold = mysqli_fetch_column($sold);
+                echo $sold;
+                ?>
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-          <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto">
-          <div class="p-10">
-            <h2 class="text-xl font-bold mb-2">Chicken Curry</h2>
-            <p class="text-gray-700">A typical curry from the Indian subcontinent consists of chicken stewed in an
-              onion- and tomato-based sauce</p>
-            <p class="text-pink-500 font-semibold mt-4">70 BDT</p>
-            <div class="flex items-center mt-4">
-              💰Total Sold: -
-            </div>
-          </div>
-        </div>
-        <div
-          class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-          <img src="../images/pizza.jpg" alt="Menu Item" class="rounded-t-lg mx-auto">
-          <div class="p-10">
-            <h2 class="text-xl font-bold mb-2">Pizza</h2>
-            <p class="text-gray-700">consists of a flattened disk of bread dough topped with some combination of olive
-              oil, oregano, tomato, olives, mozzarella</p>
-            <p class="text-pink-500 font-semibold mt-4">90 BDT</p>
-            <div class="flex items-center mt-4">
-              💰Total Sold: -
-            </div>
-          </div>
-        </div>
-        <div
-          class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-          <img src="../images/pasta.png" alt="Menu Item" class="rounded-t-lg mx-auto">
-          <div class="p-10">
-            <h2 class="text-xl font-bold mb-2">Pasta</h2>
-            <p class="text-gray-700">This Spicy Chicken Pasta is the perfect level of spice, whilst absolutely bursting
-              with flavour. It’s easy, creamy, hearty and delicious!.</p>
-            <p class="text-pink-500 font-semibold mt-4">80 BDT</p>
-            <div class="flex items-center mt-4">
-              💰Total Sold: -
-            </div>
-          </div>
-        </div>
-        <div
-          class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-          <img src="../images/CHicken%20biriyani.png" alt="Menu Item" class="rounded-t-lg mx-auto">
-          <div class="p-10">
-            <h2 class="text-xl font-bold mb-2">Chicken Biriyani</h2>
-            <p class="text-gray-700">A savory chicken and rice dish that includes layers of chicken, rice, and aromatics
-              that are steamed together.</p>
-            <p class="text-pink-500 font-semibold mt-4">90 BDT</p>
-            <div class="flex items-center mt-4">
-              💰Total Sold: -
-            </div>
-          </div>
-        </div>
-        <div
-          class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-          <img src="../images/kacchi.png" alt="Menu Item" class="rounded-t-lg mx-auto">
-          <div class="p-10">
-            <h2 class="text-xl font-bold mb-2">Dhakaiya Kacchi</h2>
-            <p class="text-gray-700">Introducing the spicy and tender dhakaiya kacchi where l,ayers of meat, rice, and
-              potatoes are infused with delicious blends of aromatic spices.</p>
-            <p class="text-pink-500 font-semibold mt-4">110 BDT</p>
-            <div class="flex items-center mt-4">
-              💰Total Sold: -
-            </div>
-          </div>
-        </div>
-        <div
-          class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-          <img src="../images/kalabhuna.png" alt=" Beef kalabhuna" class="rounded-t-lg mx-auto">
-          <div class="p-10">
-            <h2 class="text-xl font-bold mb-2">Kala Bhuna</h2>
-            <p class="text-gray-700">Authentic and spicy chatgaiya beef kalabhuna. Exclusive dark, flavourful and tender
-              dish prepared with chunks of beef and traditional spices</p>
-            <p class="text-pink-500 font-semibold mt-4">80 BDT</p>
-            <div class="flex items-center mt-4">
-              💰Total Sold: -
-            </div>
-          </div>
-        </div>
-        <div
-          class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-          <img src="../images/khichuri.png" alt="Menu Item" class="rounded-t-lg mx-auto">
-          <div class="p-10">
-            <h2 class="text-xl font-bold mb-2">Khichuri</h2>
-            <p class="text-gray-700">Authentic bangali khichuri with all the original flavors of Bengal. Made of rice
-              and lentils (dal) with numerous variations</p>
-            <p class="text-pink-500 font-semibold mt-4">40 BDT</p>
-            <div class="flex items-center mt-4">
-              💰Total Sold: -
-            </div>
-          </div>
-        </div>
-      </div>
+        <?php } ?>
     </div>
   </div>
+  </div>
+  </div>
+
   <footer class="bg-pink-600 py-5 px-14">
     <div class="mx-auto">
       <h1 class="text-gray-200 font-bold">Contact Zahirul islam Nahid</h1>
