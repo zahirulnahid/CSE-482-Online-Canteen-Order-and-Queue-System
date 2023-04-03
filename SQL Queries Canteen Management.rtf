@@ -9,14 +9,16 @@
 \
 CREATE DATABASE canteen;\
 \
-CREATE TABLE users (\
-Category varchar(30) NOT NULL,\
-Name VARCHAR(30) NOT NULL,\
-Email VARCHAR(50) NOT NULL,\
-Phone VARCHAR(11) NOT NULL,\
-Password text NOT NULL,\
-Primary key(Email)\
-);\
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `category` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `verified` varchar(255) NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 \
 CREATE TABLE pending_users (\
     Category varchar(30) NOT NULL,\

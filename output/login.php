@@ -19,7 +19,7 @@
           <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">NSU cafeteria</h2>
           
     <!-- LOGIN FORM STARTS  -->
-          <form name="myForm" method="GET" onsubmit="return validateForm()" action="authentication.php" >
+          <form name="myForm" method="POST" onsubmit="return validateForm()" action="authentication.php" >
             <div class="mb-4">
               <label class="block text-gray-700 font-bold mb-2" for="email">Email</label>
               <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="text" name="email" id="email" required>
