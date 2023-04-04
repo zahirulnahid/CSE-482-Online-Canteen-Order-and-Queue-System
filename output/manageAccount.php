@@ -8,6 +8,7 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Manage Account</title>
     <link rel="stylesheet" href="outputstyles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 
@@ -50,21 +51,6 @@
         <?php
         include('connection.php');
 
-        // if (isset($_POST['edit'])) {
-        //     edit();
-        // }
-        // if (isset($_POST['delete'])) {
-        //     delete();
-        // }
-        // function edit()
-        // {
-        //     echo "This is edit that is selected";
-        // }
-        // function delete()
-        // {
-        //     echo "This is delete that is selected";
-        // }
-
         $sql = "SELECT * FROM `users`;";
         $result = $conn->query($sql);
 
@@ -78,8 +64,7 @@
             foreach ($row as $rows) {
                 ?>
                 <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-                        alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
+
                     <div class="p-5 flex-grow">
                         <h3 class="text-base font-bold text-gray-900 mb-1">Name:
                             <?php echo $rows["Name"]; ?>
@@ -87,24 +72,22 @@
                         <p class="text-gray-700 font-medium">Email:
                             <?php echo $rows["Email"]; ?>
                         </p>
+                        <p class="text-gray-700 font-medium">Phone:
+                            <?php echo $rows["Phone"]; ?>
+                        </p>
                         <p class="text-gray-700 font-medium">Category:
                             <?php echo $rows["Category"]; ?>
                         </p>
 
-
-                        <form method="post">
-                            <a href="deleteAccount.php?id=<?php echo $rows["Email"]; ?>" name="delete" value="Delete Account" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                        <a href="deleteAccount.php?id=<?php echo $rows["Email"]; ?>" name="delete" value="Delete Account" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                     font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Delete</a>
-                            <input type="submit" name="edit" value="Edit" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
-                        </form>
-                        
+
                     </div>
+
                 </li>
 
-                <?php }?>
+            <?php } ?>
     </ul>
-
 
 </body>
 
