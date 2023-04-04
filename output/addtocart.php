@@ -1,4 +1,5 @@
 1<?php
+//
 include("protection.php");
 include("connection.php");
 $cookie_name="user";
