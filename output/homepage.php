@@ -27,7 +27,7 @@
         </div>
     </nav>
 
-    <!-- Cart -->
+    <!-- Cart --->
 
     <!-- side cart -->
 
