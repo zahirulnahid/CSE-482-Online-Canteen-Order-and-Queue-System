@@ -41,15 +41,31 @@
             <!-- search bar -->
             <div class="px-20 my-4 p-4 w-full float-left">
                 <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
-                <input
+                <form method="post"><input
                     class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                     type="search" name="search" id="search">
-                <a href="invoice.php" class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                <input type="submit" value="search" class=" p-3 min-w-fit  bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                         font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
-                    <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2"
-                        height="24" width="24">
-                    Cart(0)
-                </a>
+                </form>
+                <a href="invoice.php" class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
+  <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
+  Cart(<span id="cart-count"><?php include('connection.php');
+  $cookie_name="user";
+  $cookie_email = $_COOKIE[$cookie_name];
+ $sql = "SELECT count(id)as `total` FROM cart where email='$cookie_email'";
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      echo  $row["total"];
+    }
+  } else {
+    echo "0";
+  }
+  ?></span>)
+</a>
+
             </div>
 
 
@@ -58,48 +74,54 @@
 
         <!-- menu cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10  rounded-3xl p-16 text-center">
-            <?php
-            include('connection.php');
+        <?php
+    
 
-            $sql = "SELECT * FROM `Food_List`";
-            $result = $conn->query($sql);
+    $sql = "SELECT * FROM `Food_List`";
+    if(isset($_POST["search"])) {
+        $search = mysqli_real_escape_string($conn, $_POST["search"]);
+        $sql = "SELECT * FROM `Food_List` WHERE Item_Name LIKE '%$search%' OR id ='$search'";
+    }
+    $result = $conn->query($sql);
 
-            //declare array to store the data of database
-            $row = [];
-
-            if ($result->num_rows > 0) {
-                // fetch all data from db into array 
-                $row = $result->fetch_all(MYSQLI_ASSOC);
-            }
-
-            if (!empty($row))
-                foreach ($row as $rows) {
-
-                    ?>
-
-                    <div
-                        class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 ">
-                        <img src="../images/<?php echo $rows['Item_Name']; ?>.png" alt="Menu Item" class="rounded-t-lg mx-auto">
-                        <div class="p-10">
-                            <h2 class="text-xl font-bold mb-2">
-                                <?php echo $rows['Item_Name']; ?>
-                            </h2>
-                            <p class="text-gray-700">
-                                <?php echo $rows['Description']; ?>
-                            </p>
-                            <p class="text-pink-500 font-semibold mt-4">
-                                <?php echo $rows['Price']; ?> BDT
-                            </p>
-                            <div class="flex items-center mt-4">
-
-                                <button
-                                    class="bg-pink-500 text-center mx-auto hover:bg-pink-600 hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add
-                                    to Cart</button>
-                            </div>
-
-                        </div>
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+?>
+            <div class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                <img src="../images/<?php echo $row['Item_Name']; ?>.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+                <div class="p-10">
+                    <h2 class="text-xl font-bold mb-2"><?php echo $row['Item_Name']; ?></h2>
+                    <p class="text-gray-700"><?php echo $row['Description']; ?></p>
+                    <p class="text-pink-500 font-semibold mt-4"><?php echo $row['Price']; ?> BDT</p>
+                    <div class="flex items-center mt-4">
+                        <button onClick="addtocart('<?php echo $row['id']; ?>')" class="bg-pink-500 text-center mx-auto hover:bg-pink-600 hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add to Cart</button>
                     </div>
-                <?php } ?>
+                </div>
+            </div>
+<?php
+        }
+    } else {
+        echo "<center>No food Found</center>";
+    }
+?>
+<script>
+    function addtocart(id) {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "addtocart.php?foodID="+id);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+        console.log(xhr.responseText);
+        const count = parseInt(xhr.responseText);
+        document.getElementById("cart-count").textContent = count.toString();;
+    }
+  };
+  xhr.send();
+}
+</script>
+
+                    </div>
+              
         </div>
     </div>
 
