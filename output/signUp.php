@@ -14,7 +14,7 @@
  
 
 </head>
-<?php include("connection.php");//Created connection with DB
+<?php include("connection.php");//Created connection with DB//
 if(isset($_POST["email"])){
     // Get form data
     $category = $_POST['category'];
