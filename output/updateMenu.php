@@ -74,11 +74,11 @@
                 <h3 class="text-base font-bold text-gray-900 mb-1"><?php echo $rows['Item_Name']; ?></h3>
                 <p class="text-gray-700 font-medium"><?php echo $rows['Price']; ?> BDT</p>
 
-                <button onclick="openModal()" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                <button onclick="openModal(<?php echo $rows['id']?>)" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                     font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Edit</button>
 
                     <!-- The modal -->
-<div id="myModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
+<div id="myModal_<?php echo $rows['id']?>" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
   <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 
     <!-- Modal content -->
@@ -104,15 +104,15 @@
 
 <!-- Script to open and close the modal -->
 <script>
-  function openModal() {
-    document.getElementById("myModal").classList.remove("hidden");
+  function openModal(x) {
+    document.getElementById("myModal_"+x).classList.remove("hidden");
   }
 
-  function closeModal() {
-    document.getElementById("myModal").classList.add("hidden");
+  function closeModal(x) {
+    document.getElementById("myModal_"+x).classList.add("hidden");
   }
 
-  function updateItem() {
+  function updateItem(x) {
     // Call PHP function to delete item
   }
 </script>
