@@ -69,10 +69,11 @@
      ?>
 
      <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/<?php echo $rows['Item_Name'];?>.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
+            <img src="<?php echo $rows['Image_url'];?>" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1"><?php echo $rows['Item_Name']; ?></h3>
                 <p class="text-gray-700 font-medium"><?php echo $rows['Price']; ?> BDT</p>
+                <p class="text-gray-700"><?php echo $rows['Description']; ?></p>
 
                 <button onclick="openModal(<?php echo $rows['id']?>)" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                     font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Edit</button>
@@ -84,23 +85,30 @@
     <!-- Modal content -->
     <div class="modal-content bg-white rounded-lg shadow-xl px-6 py-4">
       <p class="text-lg font-bold mb-2">Update item</p>
-      <form>
+      <form method="POST">
+        <input type="hidden" name="itemID" id="itemID" value="<?php echo $rows['id'];?>">
           <label for="itemName">Item Name: </label>
-          <input type="text" name="itemName" id="itemName" placeholder="<?php echo $rows['Item_Name'];?>" class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br>
+          <input type="text" name="itemName" id="itemName" placeholder="<?php echo $rows['Item_Name'];?>" class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br><br>
           <label for="price">Price: </label>
-          <input type="text" name="price" id="price" placeholder="<?php echo $rows['Price'];?>" class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br>
+          <input type="text" name="price" id="price" placeholder="<?php echo $rows['Price'];?>" class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br><br>
           <label for="description">Description: </label>
-          <input type="text" name="description" id="description" placeholder="<?php echo $rows["Description"];?>" class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br>
+          <input type="text" name="description" id="description" placeholder="<?php echo $rows["Description"];?>" class="box-content border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br><br>
           <div class="flex justify-between">
-            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="updateItem(<?php echo $rows['id']?>)">Delete</button>
+            <button class="px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="updateItem(<?php echo $rows['id'];?>)">Update</button>
+            <button class="px-5 py-2 min-w-fit  float-right bg-red-700 text-gray-100 hover:text-gray-800 hover:bg-red-100 rounded-full border-spacing-2
+                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="deleteItem()">Delete</button>
           </form>
-        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" onclick="closeModal(<?php echo $rows['id']?>)">Close</button>
+        <button class="px-5 py-2 bg-gray-500 text-white-100 hover:text-gray-800 hover:bg-gray-100 rounded-full border-spacing-2
+                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="closeModal(<?php echo $rows['id']?>)">Close</button>
       </div>
     </div>
   </div>
 </div>
 
-
+</li>
+<?php }?>          
+</ul>
 
 <!-- Script to open and close the modal -->
 <script>
@@ -113,12 +121,42 @@
   }
 
   function updateItem(x) {
-    // Call PHP function to delete item
+
+    <?php 
+    $itemName = $_POST['itemName'];
+    $price = $_POST['price'];
+    $description = $_POST['description'];
+  
+    foreach($row as $rows){
+      if($rows['id'] == $_POST['itemID']){
+        if(empty(trim($itemName))){
+          $itemName = $rows['Item_Name'];
+        }
+        if(empty(trim($price))){
+          $price = $rows['Price'];
+        }
+        if(empty(trim($description))){
+          $description = $rows['Description'];
+        }
+      }
+    }
+    $update = "UPDATE `food_list` SET `Item_Name`='".$itemName."',`Price`='".$price."',`Description`='".$description."' WHERE `food_list`.`id` = '".$_POST['itemID']."';";
+    $result = $conn->query($update);
+    ?>
+    setTimeout(function(){
+   window.location.reload();
+}, 5000);
+  }
+
+  function deleteItem(){
+    <?php
+    $delete = "DELETE FROM `food_list` WHERE `food_list`.`id`= '".$_POST['itemID']."';";
+    $result = $conn->query($delete);
+    $conn->close();
+    ?>
   }
 </script>
-</li>
-<?php }?>          
-</ul>
+
 </body>
 
 </html>

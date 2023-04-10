@@ -34,22 +34,36 @@
             <div class="text-2xl text-gray-900 font-bold mb-4">Cart</div>
             <ul class="flex-1 overflow-y-auto">
                 <!-- Add items dynamically using JavaScript -->
+                <?php
+                    include("connection.php");
+                    $sql= "SELECT cart.*, food_list.Item_Name, food_list.Price 
+                    FROM cart INNER JOIN food_list ON cart.foodID = food_list.id;";
+
+                    $total= 0;
+
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            $total += $row["Price"];
+                ?>
                 <li class="flex justify-between items-center py-2 px-4 border-b border-gray-500">
-                    <span class="text-gray-800 font-medium">Item 1</span>
-                    <span class="text-pink-500 font-medium">$10</span>
+                    <span class="text-gray-800 font-medium"><?php echo $row["Item_Name"];?></span>
+                    <span class="text-pink-500 font-medium"><?php echo $row["Price"];?> BDT</span>
+                    <div class="flex item mt-0.5">
+                    <button class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
+                                focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow mt-4">Remove</button>
+                    </div>
                 </li>
-                <li class="flex justify-between items-center py-2 px-4 border-b border-gray-500">
-                    <span class="text-gray-800 font-medium">Item 2</span>
-                    <span class="text-pink-500 font-medium">$20</span>
-                </li>
-                <li class="flex justify-between items-center py-2 px-4 border-b border-gray-500">
-                    <span class="text-gray-800 font-medium">Item 3</span>
-                    <span class="text-pink-500 font-medium">$30</span>
-                </li>
+                <?PHP 
+                }}
+                $conn->close();
+                ?>
             </ul>
             <div class="py-4 px-6 flex justify-between items-center">
                 <span class="text-gray-800 font-bold text-xl">Total:</span>
-                <span class="text-pink-500 font-bold text-xl">$60</span>
+                <span class="text-pink-500 font-bold text-xl"><?php echo $total;?> BDT</span>
             </div>
 
             <button class="bg-pink-700 hover:bg-pink-300 hover:text-black text-white font-bold mx-auto py-3 px-5 rounded-full focus:outline-black 

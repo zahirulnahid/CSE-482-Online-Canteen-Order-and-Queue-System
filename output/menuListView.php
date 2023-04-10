@@ -70,14 +70,16 @@
      ?>
 
      <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/<?php echo $rows['Item_Name'];?>.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
+            <img src="<?php echo $rows['Image_url'];?>" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
                 <h3 class="text-base font-bold text-gray-900 mb-1"><?php echo $rows['Item_Name']; ?></h3>
                 <p class="text-gray-700 font-medium"><?php echo $rows['Price']; ?> BDT</p>
 
             </div>
         </li>
-        <?php }?>                
+        <?php }
+        $conn->close();
+        ?>                
     </ul>
 </body>
 </head>

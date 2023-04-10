@@ -48,11 +48,12 @@
         <?php
         include('connection.php');
         //join queue table and order table
-        $sql = "SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `ORDER`.Item, `ORDER`.Quantity
-        FROM `ORDER`
-        INNER JOIN `QUEUE` ON `ORDER`.OrderID= `QUEUE`.OrderID
-        INNER JOIN `BILL` on `ORDER`.`OrderID`=`BILL`.OrderID
-        INNER JOIN `users`  ON `bill`.`Customer_Email`= `users`.Email
+        $sql = "SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`
+        FROM `Orders`
+        INNER JOIN food_list ON Orders.ItemID= food_list.id
+        INNER JOIN `QUEUE` ON `Orders`.OrderID= `QUEUE`.OrderID
+        INNER JOIN `BILL` on `Orders`.`OrderID`=`BILL`.OrderID
+        INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
         ;";
         $result = $conn->query($sql);
         $current = 0;
@@ -75,7 +76,7 @@
                             ?>
                             <h3 class="text-base font-bold text-gray-900 mb-1">
                                 <?php echo $rows[$j]["Quantity"] . " x ";
-                                echo $rows[$j]["Item"];
+                                echo $rows[$j]["Item_Name"];
                         }
                         if ($rows[$j + 1]["OrderID"] == $rows[$current]["OrderID"])
                             $index++;
@@ -95,7 +96,9 @@
                 </div>
             </li>
             <?php
-        } ?>
+        } 
+        $conn->close();
+        ?>
 
     </ul>
 </body>

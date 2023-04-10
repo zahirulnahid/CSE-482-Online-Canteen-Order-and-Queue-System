@@ -86,7 +86,9 @@
 
                 </li>
 
-            <?php } ?>
+            <?php } 
+            $conn->close();
+            ?>
     </ul>
 
 </body>

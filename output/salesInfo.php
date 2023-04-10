@@ -51,7 +51,11 @@
                 <?php
                     include('connection.php');
 
-                    $sql = "SELECT * FROM `Sales_Report`;";
+                    $sql = "SELECT `SALES_REPORT`.*, `food_list`.`Item_Name`,`food_list`.`Price` 
+                    FROM `SALES_REPORT`
+                    INNER JOIN `food_list` ON `SALES_REPORT`.`ItemID`= `food_list`.`id`;
+                    
+                    ";
                     $result = $conn->query($sql);
 
                 //declare array to store the data of database
@@ -70,20 +74,9 @@
                     <td class="px-4 py-2"><?php echo $rows['Item_Name'];?></td>
                     <td class="px-4 py-2"><?php echo $rows['Units_Sold'];?></td>
                     <td class="px-4 py-2"><?php echo $rows['Price'];?> BDT</td>
-                    <td class="px-4 py-2"><?php echo $rows['Total_Revenue'];}?> BDT</td>
+                    <td class="px-4 py-2"><?php echo $rows['Total_Revenue'];?> BDT</td>
                 </tr>
-                <tr class="bg-gray-100">
-                    <td class="px-4 py-2">Product B</td>
-                    <td class="px-4 py-2">50</td>
-                    <td class="px-4 py-2">$20</td>
-                    <td class="px-4 py-2">$1000</td>
-                </tr>
-                <tr class="bg-white">
-                    <td class="px-4 py-2">Product C</td>
-                    <td class="px-4 py-2">75</td>
-                    <td class="px-4 py-2">$15</td>
-                    <td class="px-4 py-2">$1125</td>
-                </tr>
+                <?php }?>
             </tbody>
             <tfoot>
                 <tr class="bg-gray-200">
@@ -95,6 +88,8 @@
             </tfoot>
         </table>
     </div>
+    <?php 
+    $conn->close();?> 
 </body>
 </head>
 </html>

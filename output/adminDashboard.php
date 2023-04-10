@@ -160,7 +160,9 @@
               </div>
             </div>
           </div>
-        <?php } ?>
+        <?php } 
+        $conn->close();
+        ?>
     </div>
   </div>
   </div>

@@ -91,7 +91,7 @@ include('protection.php');?>
         while($row = $result->fetch_assoc()) {
 ?>
             <div class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                <img src="../images/<?php echo $row['Item_Name']; ?>.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+                <img src="<?php echo $row['Image_url'];?>" alt="Menu Item" class="rounded-t-lg mx-auto">
                 <div class="p-10">
                     <h2 class="text-xl font-bold mb-2"><?php echo $row['Item_Name']; ?></h2>
                     <p class="text-gray-700"><?php echo $row['Description']; ?></p>
@@ -135,6 +135,7 @@ include('protection.php');?>
             <h1 class="text-gray-200 font-bold">Contact Zahirul islam Nahid</h1>
         </div>
     </footer>
+    <?php $conn->close();?>
 </body>
 
 </html>
