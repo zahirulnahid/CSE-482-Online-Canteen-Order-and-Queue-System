@@ -17,6 +17,7 @@ if ($result->num_rows > 0) {
     if($row["password"]==$hashed_password){
     $_SESSION["loggedin"]=true;
     $_SESSION["loginas"]="user";
+    $_SESSION["email"]=$email;
     header("location: homepage.php");
     $cookie_name = "user";
     $cookie_value = $_POST["email"];

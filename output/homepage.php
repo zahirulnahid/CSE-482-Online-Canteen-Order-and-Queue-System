@@ -1,3 +1,5 @@
+<?php 
+include('protection.php');?>
 <!DOCTYPE html>
 <html>
 
@@ -51,10 +53,8 @@
                 </form>
                 <a href="invoice.php" class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
   <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
-  Cart(<span id="cart-count"><?php include('connection.php');
-  $cookie_name="user";
-  $cookie_email = $_COOKIE[$cookie_name];
- $sql = "SELECT count(id)as `total` FROM cart where email='$cookie_email'";
+  Cart(<span id="cart-count"><?php 
+ $sql = "SELECT count(id)as `total` FROM cart where email='".$_SESSION["email"]."'";
   $result = $conn->query($sql);
   
   if ($result->num_rows > 0) {
@@ -114,8 +114,9 @@
   xhr.onload = function() {
     if (xhr.status === 200) {
         console.log(xhr.responseText);
-        const count = parseInt(xhr.responseText);
-        document.getElementById("cart-count").textContent = count.toString();;
+        const count = xhr.responseText;
+        document.getElementById("cart-count").innerHTML = "000";
+        document.getElementById("cart-count").innerHTML = count.toString();
     }
   };
   xhr.send();

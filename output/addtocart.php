@@ -1,4 +1,4 @@
-1<?php
+<?php
 //
 include("protection.php");
 include("connection.php");

@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 
@@ -94,6 +95,7 @@
     
   </script>
 </body>
+<?php session_destroy();?>
 
 
 

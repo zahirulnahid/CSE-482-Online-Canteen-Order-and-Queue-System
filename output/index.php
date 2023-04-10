@@ -14,7 +14,8 @@ if ($result->num_rows > 0) {
     $_SESSION["loginas"] = "user";
     $cookie_name = "user";
     $cookie_value = $_POST["email"];
-    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+    $_SESSION["email"]=$email;
+    if($_POST["remember_me"])setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
   }
    //Redirect to homepage if user is logged in
  header("location: homepage.php");
