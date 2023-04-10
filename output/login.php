@@ -1,4 +1,6 @@
-<?php session_start();?><?php session_destroy();
+<?php session_start();
+if(isset($_SESSION["errorMessage"]))$errorMessage=$_SESSION["errorMessage"];else $errorMessage="";
+session_destroy();
 setcookie("user", "", time() - 3600);unset($_COOKIE['user']);?>
 <!DOCTYPE html>
 <html>
@@ -37,6 +39,7 @@ setcookie("user", "", time() - 3600);unset($_COOKIE['user']);?>
             <!-- error message is password is not valid -->
             <p id="passwordError" class="text-pink-500 font-bold "></p>
           </div>
+          <h6 class="text-2xl font-bold mb-2 text-center text-gray-800"><?=$errorMessage;?></h6>
           <!-- "Remember me" checkbox -->
           <div class="mb-4 flex items-center">
             <input class="form-checkbox w-4 h-4  border-gray-400 text-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-400"
