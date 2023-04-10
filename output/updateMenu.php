@@ -92,9 +92,9 @@
           <label for="description">Description: </label>
           <input type="text" name="description" id="description" placeholder="<?php echo $rows["Description"];?>" class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br>
           <div class="flex justify-between">
-            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="updateItem()">Delete</button>
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="updateItem(<?php echo $rows['id']?>)">Delete</button>
           </form>
-        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" onclick="closeModal()">Close</button>
+        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" onclick="closeModal(<?php echo $rows['id']?>)">Close</button>
       </div>
     </div>
   </div>
