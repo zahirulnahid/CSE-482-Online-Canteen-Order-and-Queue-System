@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start();?><?php session_destroy();
+setcookie("user", "", time() - 3600);unset($_COOKIE['user']);?>
 <!DOCTYPE html>
 <html>
 
@@ -95,7 +96,7 @@
     
   </script>
 </body>
-<?php session_destroy();?>
+
 
 
 
