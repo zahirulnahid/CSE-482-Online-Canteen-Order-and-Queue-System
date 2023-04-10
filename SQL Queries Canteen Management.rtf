@@ -30,40 +30,43 @@ CREATE TABLE FOOD_LIST (\
 CREATE TABLE BILL (\
     OrderID int AUTO_INCREMENT NOT NULL,\
     Order_Date DATE NOT NULL,\
-    Customer_Email VARCHAR(50) NOT NULL,\
+    CustomerID int(11) NOT NULL,\
     Total_Amount int NOT NULL,\
     PRIMARY KEY(OrderID),\
-    FOREIGN KEY(Customer_Email) REFERENCES users(Email)\
+    FOREIGN KEY(CustomerID) REFERENCES users(id)\
     );\
 \
 \
-CREATE TABLE `ORDER` (\
+CREATE TABLE `Orders` (\
     OrderID int NOT NULL,\
-    Item VARCHAR(30) NOT NULL,\
+    ItemID int NOT NULL,\
     Quantity int NOT NULL,\
     FOREIGN KEY(`OrderID`) REFERENCES `BILL`(`OrderID`),\
-    FOREIGN KEY(`Item`) REFERENCES `FOOD_LIST`(`Item_Name`)\
+    FOREIGN KEY(`ItemID`) REFERENCES `FOOD_LIST`(`id`)\
     );\
 \
 CREATE TABLE SALES_REPORT (\
-    Item_Name VARCHAR(30) NOT NULL,\
+    ItemID int NOT NULL,\
     Units_Sold int NOT NULL,\
-    Price int NOT NULL,\
     Total_Revenue int NOT NULL,\
-    FOREIGN KEY(Item_Name) REFERENCES `FOOD_LIST`(`Item_Name`)\
+    FOREIGN KEY(ItemID) REFERENCES `FOOD_LIST`(`id`)\
     );\
+\
 CREATE TABLE `QUEUE` (\
     QueueNo int NOT NULL,\
     OrderID int NOT NULL,\
-    FOREIGN KEY(`OrderID`) REFERENCES `ORDER`(`OrderID`)\
+    FOREIGN KEY(`OrderID`) REFERENCES `Orders`(`OrderID`)\
     );\
 \
-SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `ORDER`.Item, `ORDER`.Quantity\
-FROM `ORDER`\
-INNER JOIN `QUEUE` ON `ORDER`.OrderID= `QUEUE`.OrderID\
+SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Item, `Orders`.Quantity\
+FROM `Orders`\
+INNER JOIN `QUEUE` ON `Orders`.OrderID= `QUEUE`.OrderID\
 INNER JOIN `BILL` on `ORDER`.`OrderID`=`BILL`.OrderID\
 INNER JOIN `users`  ON `bill`.`Customer_Email`= `users`.Email\
 ;\
 \
 \
-SELECT COUNT(email) from users;}
+SELECT COUNT(email) from users;\
+\
+SELECT cart.*, food_list.Item_Name, food_list.Price \
+FROM cart INNER JOIN food_list ON cart.foodID = food_list.id;}
