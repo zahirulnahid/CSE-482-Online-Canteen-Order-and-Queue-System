@@ -7,6 +7,8 @@
   <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>password reset</title>
     <link rel="stylesheet" href="outputstyles.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body>
