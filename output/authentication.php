@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
     header("location: homepage.php");
     $cookie_name = "user";
     $cookie_value = $_POST["email"];
-    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");}else  header("location: login.php");
+    if(isset($_POST["remember_me"])) setcookie($cookie_name, $cookie_value, time() + (86400 * 30));}else  header("location: login.php");
   }
 } else {
   header("location: login.php");
