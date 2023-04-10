@@ -8,9 +8,8 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Update Menu</title>
     <link rel="stylesheet" href="outputstyles.css">
-        <script src="https://cdn.tailwindcss.com"></script>
-
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    </head>
 
 <body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
@@ -50,83 +49,76 @@
 
     <!-- menu list view -->
     <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/Burger.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Burger</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
+        <?php
+        include('connection.php');
+        
+        $sql = "SELECT * FROM `Food_List`";
+        $result = $conn->query($sql);
 
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/CHicken biriyani.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Biriyani</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
+        //declare array to store the data of database
+        $row = [];
 
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/chicken curry.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Chicken Curry</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
+        if ($result->num_rows > 0) {
+            // fetch all data from db into array 
+            $row = $result->fetch_all(MYSQLI_ASSOC);
+        }
 
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/daal.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Daal</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
+        if(!empty($row))
+        foreach($row as $key=>$rows){
+       
+     ?>
 
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kacchi.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
+     <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
+            <img src="../images/<?php echo $rows['Item_Name'];?>.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kacchi</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
+                <h3 class="text-base font-bold text-gray-900 mb-1"><?php echo $rows['Item_Name']; ?></h3>
+                <p class="text-gray-700 font-medium"><?php echo $rows['Price']; ?> BDT</p>
 
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/kalabhuna.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Kalabhuna</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
+                <button onclick="openModal()" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Edit</button>
 
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/khichuri.png" alt="Product"
-                class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Khichuri</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
+                    <!-- The modal -->
+<div id="myModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
+  <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pasta.png" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pasta</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
+    <!-- Modal content -->
+    <div class="modal-content bg-white rounded-lg shadow-xl px-6 py-4">
+      <p class="text-lg font-bold mb-2">Update item</p>
+      <form>
+          <label for="itemName">Item Name: </label>
+          <input type="text" name="itemName" id="itemName" placeholder="<?php echo $rows['Item_Name'];?>" class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br>
+          <label for="price">Price: </label>
+          <input type="text" name="price" id="price" placeholder="<?php echo $rows['Price'];?>" class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br>
+          <label for="description">Description: </label>
+          <input type="text" name="description" id="description" placeholder="<?php echo $rows["Description"];?>" class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br>
+          <div class="flex justify-between">
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="updateItem()">Delete</button>
+          </form>
+        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-            </div>
-        </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="../images/pizza.jpg" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Pizza</h3>
-                <p class="text-gray-700 font-medium">$20.99</p>
 
-            </div>
-        </li>
-    </ul>
+
+<!-- Script to open and close the modal -->
+<script>
+  function openModal() {
+    document.getElementById("myModal").classList.remove("hidden");
+  }
+
+  function closeModal() {
+    document.getElementById("myModal").classList.add("hidden");
+  }
+
+  function updateItem() {
+    // Call PHP function to delete item
+  }
+</script>
+</li>
+<?php }?>          
+</ul>
 </body>
-</head>
+
 </html>
