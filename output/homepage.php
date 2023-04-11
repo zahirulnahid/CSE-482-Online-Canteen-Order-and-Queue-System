@@ -38,7 +38,7 @@ include('protection.php');?>
     <!-- Menu -->
     <div class="container mx-auto my-8 ">
 
-    <h1 class="text-2xl mx-auto  text-center mb-8 ">Welcome, "Username"</h1>
+    <h1 class="text-2xl mx-auto  text-center mb-8 ">Welcome, <?=$_SESSION["email"]?></h1>
 
         <div class="flex">
           <!-- search bar -->
