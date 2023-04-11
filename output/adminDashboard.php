@@ -152,7 +152,7 @@
               <div class="flex items-center mt-4">
                 💰Total Sold: -
                 <?php
-                $salesQuery = "SELECT units_sold FROM `SALES_REPORT` WHERE Item_Name = '" . $rows["Item_Name"] . "'";
+                $salesQuery = "SELECT units_sold FROM `SALES_REPORT` WHERE ItemID = '" . $rows["id"] . "'";
                 $sold = $conn->query($salesQuery);
                 $sold = mysqli_fetch_column($sold);
                 echo $sold;
