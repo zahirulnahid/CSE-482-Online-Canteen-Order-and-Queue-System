@@ -9,11 +9,11 @@ include('protection.php');?>
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Home </title>
     <link rel="stylesheet" href="outputstyles.css">
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap" rel="stylesheet">
 
 </head>
 
@@ -24,11 +24,11 @@ include('protection.php');?>
 
     <!-- Navbar -->
     <nav class="bg-gray-900 bg-opacity-40 py-4 px-14 z-10">
-        <div class="container mx-auto flex font-bold justify-between items-center px-4">
-            <a href="homepage.php" class="text-gray-900 text-2xl font-comfortaa">NSU Canteen</a>
+        <div class="container mx-auto flex font-raleway justify-between items-center px-4">
+            <a href="homepage.php" class="text-gray-900 text-2xl font-raleway">NSU Canteen</a>
 
             <div>
-                <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
+                <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full focus:outline-black 
                                 focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">Log
                     Out</a>
             </div>
@@ -49,15 +49,15 @@ include('protection.php');?>
             
             <div class="px-20 my-4 p-4 w-full float-left">
               
-                <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
+                <label class="block text-gray-700 font-raleway mb-2 " for="search">Search</label>
                 <form method="post"><input
                     class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                     type="search" name="search" id="search">
                    
                     
                 <!-- <input type="submit" value="search" class=" p-3 min-w-fit  bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-300 hover:outline-2 rounded-full border-spacing-2
-                        font-bold focus:ring-2 hover:translate-0 hover:transition-shadow"> -->
-                 <input type="image" src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30 border-spacing-2 font-bold focus:ring-2 hover:translate-3 hover:transition-shadow">
+                        font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"> -->
+                 <input type="image" src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30 border-spacing-2 font-raleway focus:ring-2 hover:translate-3 hover:transition-shadow">
 
                         
                 </form>
@@ -67,7 +67,7 @@ include('protection.php');?>
                 <!-- cart button -->
             
                 <a href="invoice.php" class="p-4 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800
-                    hover:bg-pink-300 rounded-md border-spacing-2 font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
+                    hover:bg-pink-300 rounded-md border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">
                     <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
                     Cart(<span id="cart-count"><?php 
                     $sql = "SELECT count(id)as `total` FROM cart where email='".$_SESSION["email"]."'";
@@ -109,11 +109,11 @@ include('protection.php');?>
             <div class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                 <img src="<?php echo $row['Image_url'];?>" alt="Menu Item" class="rounded-t-lg mx-auto">
                 <div class="p-10">
-                    <h2 class="text-xl font-bold mb-2"><?php echo $row['Item_Name']; ?></h2>
+                    <h2 class="text-xl font-raleway mb-2"><?php echo $row['Item_Name']; ?></h2>
                     <p class="text-gray-700"><?php echo $row['Description']; ?></p>
                     <p class="text-pink-500 font-semibold mt-4"><?php echo $row['Price']; ?> BDT</p>
                     <div class="flex items-center mt-4">
-                        <button onClick="addtocart('<?php echo $row['id']; ?>')" class="bg-pink-500 text-center mx-auto hover:bg-pink-600 hover:transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded mt-4">Add to Cart</button>
+                        <button onClick="addtocart('<?php echo $row['id']; ?>')" class="bg-pink-500 text-center mx-auto hover:bg-pink-600 hover:transition duration-200 ease-in-out text-white font-raleway py-2 px-4 rounded mt-4">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@ include('protection.php');?>
 
     <footer class="bg-pink-600 py-5 px-14">
         <div class="mx-auto">
-            <h1 class="text-gray-200 font-bold">Contact Zahirul islam Nahid</h1>
+            <h1 class="text-gray-200 font-raleway">Contact Zahirul islam Nahid </h1>
         </div>
     </footer>
     <?php $conn->close();?>
