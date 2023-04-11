@@ -11,6 +11,10 @@ include('protection.php');?>
     <link rel="stylesheet" href="outputstyles.css">
         <script src="https://cdn.tailwindcss.com"></script>
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+
 </head>
 
 <body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
@@ -21,7 +25,7 @@ include('protection.php');?>
     <!-- Navbar -->
     <nav class="bg-gray-900 bg-opacity-40 py-4 px-14 z-10">
         <div class="container mx-auto flex font-bold justify-between items-center px-4">
-            <a href="homepage.php" class="text-gray-900 text-2xl font-bold">NSU Canteen</a>
+            <a href="homepage.php" class="text-gray-900 text-2xl font-comfortaa">NSU Canteen</a>
 
             <div>
                 <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
@@ -38,7 +42,7 @@ include('protection.php');?>
     <!-- Menu -->
     <div class="container mx-auto my-8 ">
 
-    <h1 class="text-2xl mx-auto  text-center mb-8 ">Welcome, <?=$_SESSION["email"]?></h1>
+    <h1 class="text-2xl mx-auto  text-center mb-8 ">Welcome, <?=$_SESSION["name"]?></h1>
 
         <div class="flex">
           <!-- search bar -->

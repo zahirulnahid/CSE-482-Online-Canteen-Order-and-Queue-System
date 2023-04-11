@@ -15,6 +15,8 @@ if ($result->num_rows > 0) {
     $cookie_name = "user";
     $cookie_value = $cookie_email;
     $_SESSION["email"]=$cookie_email;
+            $_SESSION["name"]=$row["name"];
+
     setcookie($cookie_name, $cookie_value, time() + (86400 * 30));
   }
    //Redirect to homepage if user is logged in
