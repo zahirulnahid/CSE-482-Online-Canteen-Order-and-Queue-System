@@ -2,6 +2,7 @@
 if(isset($_SESSION["errorMessage"]))$errorMessage=$_SESSION["errorMessage"];else $errorMessage="";
 session_destroy();
 setcookie("user", "", time() - 3600);unset($_COOKIE['user']);?>
+
 <!DOCTYPE html>
 <html>
 
@@ -29,24 +30,32 @@ setcookie("user", "", time() - 3600);unset($_COOKIE['user']);?>
             <label class="block text-gray-700 font-bold mb-2" for="email">Email</label>
             <input class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
               type="text" name="email" id="email" required>
+
             <!-- error message if email is not valid -->
+
             <p id="emailError" class="text-pink-500 font-bold"></p>
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 font-bold mb-2" for="password">Password</label>
             <input class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
               type="password" name="password" id="password" required>
+
             <!-- error message is password is not valid -->
+
             <p id="passwordError" class="text-pink-500 font-bold "></p>
           </div>
-          <h6 class="text-2xl font-bold mb-2 text-center text-gray-800"><?=$errorMessage;?></h6>
+
+          <p id="passwordError" class="text-pink-500 font-extrabold "><?=$errorMessage;?></p>
           <!-- "Remember me" checkbox -->
+
           <div class="mb-4 flex items-center">
             <input class="form-checkbox w-4 h-4  border-gray-400 text-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-400"
               type="checkbox" name="remember_me" id="remember_me">
             <label class="ml-2 text-gray-700 font-bold" for="remember_me">Remember me</label>
           </div>
+
           <!-- log in button -->
+
           <input type="submit" value="Login" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none 
                     focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">
         </form>
@@ -54,7 +63,7 @@ setcookie("user", "", time() - 3600);unset($_COOKIE['user']);?>
       <!--LOGIN FORM ENDS  -->
 
 
-          <a href="#" class="text-pink-500 font-bold hover:text-pink-700 block mt-4 hover:translate-x-0">Forgot Password</a>
+          <a href="./forgotPassword.php" class="text-pink-500 font-bold hover:text-pink-700 block mt-4 hover:translate-x-0">Forgot Password</a>
           <p class="text-gray-800 mt-4 text-center">Don't have an account?
             <a href="signUp.php" class="text-pink-500 font-bold hover:text-pink-700 hover:translate-x-0">Sign up here.</a>
           </p>

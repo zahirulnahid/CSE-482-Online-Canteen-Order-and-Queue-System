@@ -19,9 +19,9 @@ include('protection.php');?>
 
 
     <!-- Navbar -->
-    <nav class="bg-pink-600 bg-opacity-40 py-4 px-14 z-10">
-        <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="homepage.php" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
+    <nav class="bg-gray-900 bg-opacity-40 py-4 px-14 z-10">
+        <div class="container mx-auto flex font-bold justify-between items-center px-4">
+            <a href="homepage.php" class="text-gray-900 text-2xl font-bold">NSU Canteen</a>
 
             <div>
                 <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
@@ -31,47 +31,59 @@ include('protection.php');?>
         </div>
     </nav>
 
-    <!-- Cart --->
+ 
 
-    <!-- side cart -->
-
-    <!-- side cart -->
 
 
     <!-- Menu -->
     <div class="container mx-auto my-8 ">
+
+    <h1 class="text-2xl mx-auto  text-center mb-8 ">Welcome, "Username"</h1>
+
         <div class="flex">
-            <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
-            <!-- search bar -->
+          <!-- search bar -->
+            
             <div class="px-20 my-4 p-4 w-full float-left">
+              
                 <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
                 <form method="post"><input
                     class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                     type="search" name="search" id="search">
-                <input type="submit" value="search" class=" p-3 min-w-fit  bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                        font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
+                   
+                    
+                <!-- <input type="submit" value="search" class=" p-3 min-w-fit  bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-300 hover:outline-2 rounded-full border-spacing-2
+                        font-bold focus:ring-2 hover:translate-0 hover:transition-shadow"> -->
+                 <input type="image" src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30 border-spacing-2 font-bold focus:ring-2 hover:translate-3 hover:transition-shadow">
+
+                        
                 </form>
-                <a href="invoice.php" class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
-  <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
-  Cart(<span id="cart-count"><?php 
- $sql = "SELECT count(id)as `total` FROM cart where email='".$_SESSION["email"]."'";
-  $result = $conn->query($sql);
-  
-  if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-      echo  $row["total"];
-    }
-  } else {
-    echo "0";
-  }
-  ?></span>)
-</a>
+</div>
 
-            </div>
+ <div class="px-20 my-4 p-4  w-full float-left">
+                <!-- cart button -->
+            
+                <a href="invoice.php" class="p-4 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800
+                    hover:bg-pink-300 rounded-md border-spacing-2 font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
+                    <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
+                    Cart(<span id="cart-count"><?php 
+                    $sql = "SELECT count(id)as `total` FROM cart where email='".$_SESSION["email"]."'";
+                    $result = $conn->query($sql);
+                    
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                        echo  $row["total"];
+                        }
+                    } else {
+                        echo "0";
+                    }
+                    ?></span>)
+                </a>
 
+                </div>
 
         </div>
+                </div>
 
 
         <!-- menu cards -->
