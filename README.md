@@ -1,1 +1,1 @@
-# __CSE482 (Internet & Web Technology)__
+# __Internet & Web Technology__
