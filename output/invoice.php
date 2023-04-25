@@ -35,9 +35,9 @@
             <ul class="flex-1 overflow-y-auto">
                 <!-- Add items dynamically using JavaScript -->
                 <?php
-                    include("connection.php");
-                    $sql= "SELECT cart.*, food_list.Item_Name, food_list.Price 
-                    FROM cart INNER JOIN food_list ON cart.foodID = food_list.id;";
+                    include("protection.php");
+                    $sql= "SELECT cart.*, food_list.Item_Name, food_list.Price
+                    FROM cart INNER JOIN food_list ON cart.foodID = food_list.id WHERE email='".$_SESSION["email"]."';";
 
                     $total= 0;
 
@@ -46,19 +46,21 @@
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while($row = $result->fetch_assoc()) {
-                            $total += $row["Price"];
+                            $total += $row["Price"]* $row["quantity"];
                 ?>
                 <li class="flex justify-between items-center py-2 px-4 border-b border-gray-500">
                     <span class="text-gray-800 font-medium"><?php echo $row["Item_Name"];?></span>
                     <span class="text-pink-500 font-medium"><?php echo $row["Price"];?> BDT</span>
                     <div class="flex item mt-0.5">
-                    <button class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
-                                focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow mt-4">Remove</button>
+                    <button onclick="updateCart('<?php echo $row['foodID'];?>', 'remove')" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-1 px-3 rounded-full focus:outline-black
+                                focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow mt-4">-</button>
+                    <span id="quantity-<?php echo $row['id'];?>" class="text-pink-500 font-medium"><?php echo $row["quantity"];?> </span>
+                    <button onclick="updateCart('<?php echo $row['foodID'];?>', 'add')" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-1 px-3 rounded-full focus:outline-black 
+                    focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow mt-4">+</button>
                     </div>
                 </li>
                 <?PHP 
                 }}
-                $conn->close();
                 ?>
             </ul>
             <div class="py-4 px-6 flex justify-between items-center">
@@ -69,9 +71,26 @@
             <button class="bg-pink-700 hover:bg-pink-300 hover:text-black text-white font-bold mx-auto py-3 px-5 rounded-full focus:outline-black 
                                             focus:ring-2 focus:ring-pink-400 max-w-fit  hover:translate-0 hover:transition-shadow"
                 type="submit">Proceed to Payment</button>
+        <script>
+        function updateCart(id, scope) {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "updatecart.php?foodID="+id+"&scope="+scope, true);
+      console.log("ID: "+id+" scope: "+scope+"\n");
+      xhr.onload = function(){
+        if (xhr.status === 200) {
+        console.log(xhr.responseText);
+        const count = xhr.responseText;
+        window.location.reload();
+        // console.log(document.getElementById("quantity-"+id).textContent);
+        //= count.toString();
+    }
+      };
+      xhr.send();
+    }
+    </script>
         </div>
     </div>
 
-
 </body>
+<?php $conn->close();?>
 </html>

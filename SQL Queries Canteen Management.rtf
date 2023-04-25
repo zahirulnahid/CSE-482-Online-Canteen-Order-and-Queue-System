@@ -64,9 +64,19 @@ INNER JOIN `QUEUE` ON `Orders`.OrderID= `QUEUE`.OrderID\
 INNER JOIN `BILL` on `ORDER`.`OrderID`=`BILL`.OrderID\
 INNER JOIN `users`  ON `bill`.`Customer_Email`= `users`.Email\
 ;\
-\
+create table cart (\
+    id int not null AUTO_INCREMENT,\
+    foodID int,\
+    email varchar(255) not null,\
+    quantity int,\
+	`timestamp` date NOT NULL DEFAULT current_timestamp(),\
+    PRIMARY KEY(id),\
+	FOREIGN KEY(foodID) REFERENCES food_list(`id`));\
 \
 SELECT COUNT(email) from users;\
 \
 SELECT cart.*, food_list.Item_Name, food_list.Price \
-FROM cart INNER JOIN food_list ON cart.foodID = food_list.id;}
+FROM cart INNER JOIN food_list ON cart.foodID = food_list.id;\
+\
+SELECT cart.*, users.email\
+FROM cart INNER JOIN users ON cart.customerID = users.id;}
