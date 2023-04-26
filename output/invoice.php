@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Invoice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="outputstyles.css">
-        <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap" rel="stylesheet">
+    
 
 </head>
 
@@ -17,21 +22,23 @@
 
 
     <!-- Navbar -->
-    <nav class="bg-pink-600 bg-opacity-40 py-4 px-14 z-10">
-        <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="homepage.php" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
-           
+    <nav class="bg-gray-900 bg-opacity-40 py-4 px-14 z-10">
+        <div class="container mx-auto flex font-raleway justify-between items-center px-4">
+            <a href="homepage.php" class="text-gray-900 text-2xl font-raleway">NSU Canteen</a>
+
             <div>
-                <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
-                                focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
-                    >Log Out</a>
+                <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full focus:outline-black 
+                                focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">Log
+                    Out</a>
             </div>
         </div>
     </nav>
 
+
     <div class="bg-gray-200 shadow-lg rounded-lg bg-opacity-40 py-4 mx-auto my-28 px-14 h-full w-1/2">
+       
         <div class="flex flex-col ">
-            <div class="text-2xl text-gray-900 font-bold mb-4">Cart</div>
+            <div class="text-2xl text-gray-900 font-raleway mb-4">Cart</div>
             <ul class="flex-1 overflow-y-auto">
                 <!-- Add items dynamically using JavaScript -->
                 <?php
@@ -52,10 +59,10 @@
                     <span class="text-gray-800 font-medium"><?php echo $row["Item_Name"];?></span>
                     <span class="text-pink-500 font-medium"><?php echo $row["Price"];?> BDT</span>
                     <div class="flex item mt-0.5">
-                    <button onclick="updateCart('<?php echo $row['foodID'];?>', 'remove')" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-1 px-3 rounded-full focus:outline-black
+                    <button onclick="updateCart('<?php echo $row['foodID'];?>', 'remove')" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-1 px-3 rounded-full focus:outline-black
                                 focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow mt-4">-</button>
                     <span id="quantity-<?php echo $row['foodID'];?>" class="text-pink-500 font-medium"><?php echo $row["quantity"];?> </span>
-                    <button onclick="updateCart('<?php echo $row['foodID'];?>', 'add')" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-1 px-3 rounded-full focus:outline-black 
+                    <button onclick="updateCart('<?php echo $row['foodID'];?>', 'add')" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-1 px-3 rounded-full focus:outline-black 
                     focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow mt-4">+</button>
                     </div>
                 </li>
@@ -72,7 +79,7 @@
         if (xhr.status === 200) {
         console.log(xhr.responseText);
         const count = xhr.responseText;
-        // window.location.reload();
+        window.location.reload();
         // document.getElementById("quantity-"+id).textContent = count.toString();
     }
       };
@@ -80,13 +87,18 @@
     }
     </script>
             <div class="py-4 px-6 flex justify-between items-center">
-                <span class="text-gray-800 font-bold text-xl">Total:</span>
-                <span class="text-pink-500 font-bold text-xl"><?php echo $total;?> BDT</span>
+                <span class="text-gray-800 font-raleway text-xl">Total:</span>
+                <span class="text-pink-500 font-raleway text-xl"><?php echo $total;?> BDT</span>
             </div>
-
-            <button class="bg-pink-700 hover:bg-pink-300 hover:text-black text-white font-bold mx-auto py-3 px-5 rounded-full focus:outline-black 
+            <div class="mx=auto m-5">
+                   <a href="../output/homepage.php" class="bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway mx-auto py-3 px-5 m-4 rounded-full border-pink-600 focus:outline-black 
                                             focus:ring-2 focus:ring-pink-400 max-w-fit  hover:translate-0 hover:transition-shadow"
-                type="submit">Proceed to Payment</button>
+                type="submit">Back to menu</a>
+            <a href="payment.php?price=<?php echo $total?>" class="bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway mx-auto py-3 px-5 ml-4 rounded-full  focus:outline-4 focus:outline-pink-700 
+                                            focus:ring-2 focus:ring-pink-400 max-w-sm  hover:translate-0 hover:transition-shadow"
+                type="submit">Proceed to Payment</a>
+            </div>
+          
 
         </div>
     </div>
