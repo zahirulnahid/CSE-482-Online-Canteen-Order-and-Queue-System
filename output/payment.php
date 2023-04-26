@@ -65,7 +65,7 @@ $post_data['convenience_fee'] = "3";
 
 
 # REQUEST SEND TO SSLCOMMERZ
-$direct_api_url = "https://sandbox.sslcommerz.com/gwprocess/v3/api.php";
+$direct_api_url = "https://sandbox.sslcommerz.com/gwprocess/v4/api.php";
 
 $handle = curl_init();
 curl_setopt($handle, CURLOPT_URL, $direct_api_url );

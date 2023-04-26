@@ -7,6 +7,8 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Invoice</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css"
+   integrity="sha512-cPHJ9+o07HHJdL+WqkK1V+gUXsImw1H7ZKsJdPvmG+TQ2Q2K7yLlWJf0KxG2Q6JvZzCtkW8mkXkKjJcB/IO/ew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="outputstyles.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +26,7 @@
     <!-- Navbar -->
     <nav class="bg-gray-900 bg-opacity-40 py-4 px-14 z-10">
         <div class="container mx-auto flex font-raleway justify-between items-center px-4">
-            <a href="homepage.php" class="text-gray-900 text-2xl font-raleway">NSU Canteen</a>
+            <a href="homepage.php" class="text-gray-900 text-2xl border-white font-raleway">NSU Canteen</a>
 
             <div>
                 <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full focus:outline-black 

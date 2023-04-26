@@ -67,9 +67,9 @@ include('protection.php');?>
                 <!-- cart button -->
             
                 <a href="invoice.php" class="p-4 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800
-                    hover:bg-pink-300 rounded-md border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">
+                    hover:bg-white rounded-md border-spacing-2 font-raleway focus:ring-2 hover:ring-2 hover:translate-0 hover:transition-shadow">
                     <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
-                    Cart(<span id="cart-count"><?php 
+                    Cart (<span class="m-1" id="cart-count"><?php 
                     $sql = "SELECT count(id)as `total` FROM cart where email='".$_SESSION["email"]."'";
                     $result = $conn->query($sql);
                     
