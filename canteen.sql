@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 10, 2023 at 10:17 PM
+-- Generation Time: Apr 26, 2023 at 07:22 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -50,8 +50,9 @@ INSERT INTO `BILL` (`OrderID`, `Order_Date`, `CustomerID`, `Total_Amount`) VALUE
 
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
+  `foodID` int(11) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
-  `foodID` int(11) NOT NULL,
+  `quantity` int(11) DEFAULT NULL,
   `timestamp` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -59,26 +60,27 @@ CREATE TABLE `cart` (
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`id`, `email`, `foodID`, `timestamp`) VALUES
-(1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(2, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(3, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(4, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(5, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(6, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(7, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(8, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(9, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(10, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(11, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(12, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(13, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(14, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(15, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(16, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(17, 'ayman@nsu.edu', 1, '2023-04-04'),
-(18, 'ayman@nsu.edu', 2, '2023-04-04'),
-(19, 'ayman@nsu.edu', 3, '2023-04-04');
+INSERT INTO `cart` (`id`, `foodID`, `email`, `quantity`, `timestamp`) VALUES
+(1, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(2, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(3, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(4, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(5, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(6, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(7, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(8, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(9, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(10, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(11, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(12, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(13, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(14, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(15, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(16, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(17, 1, 'ayman@nsu.edu', 5, '2023-04-04'),
+(21, 6, 'ayman@nsu.edu', 4, '2023-04-21'),
+(22, 2, 'ayman@nsu.edu', 2, '2023-04-26'),
+(23, 5, 'ayman@nsu.edu', 1, '2023-04-26');
 
 -- --------------------------------------------------------
 
@@ -242,7 +244,8 @@ ALTER TABLE `BILL`
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `foodID` (`foodID`);
 
 --
 -- Indexes for table `food_category`
@@ -301,7 +304,7 @@ ALTER TABLE `BILL`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `food_list`
@@ -324,6 +327,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `BILL`
   ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`foodID`) REFERENCES `food_list` (`id`);
 
 --
 -- Constraints for table `Orders`
