@@ -67,16 +67,16 @@
 
                     <div class="p-5 flex-grow">
                         <h3 class="text-base font-bold text-gray-900 mb-1">Name:
-                            <?php echo $rows["Name"]; ?>
+                            <?php echo $rows["name"]; ?>
                         </h3>
                         <p class="text-gray-700 font-medium">Email:
-                            <?php echo $rows["Email"]; ?>
+                            <?php echo $rows["email"]; ?>
                         </p>
                         <p class="text-gray-700 font-medium">Phone:
-                            <?php echo $rows["Phone"]; ?>
+                            <?php echo $rows["phone"]; ?>
                         </p>
                         <p class="text-gray-700 font-medium">Category:
-                            <?php echo $rows["Category"]; ?>
+                            <?php echo $rows["category"]; ?>
                         </p>
 
                         <a href="deleteAccount.php?id=<?php echo $rows["Email"]; ?>" name="delete" value="Delete Account" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
