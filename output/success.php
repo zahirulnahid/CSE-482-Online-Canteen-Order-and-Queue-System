@@ -10,12 +10,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css"
     integrity="sha512-cPHJ9+o07HHJdL+WqkK1V+gUXsImw1H7ZKsJdPvmG+TQ2Q2K7yLlWJf0KxG2Q6JvZzCtkW8mkXkKjJcB/IO/ew=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+    rel="stylesheet">
 </head>
 
+  <?php
+
+  if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    $paystatus=$_POST['pay_status'];
+   
+    $amount=$_POST['amount'];
+    $customerName=$_POST['cus_name'];
+    $cardNumber=$_POST['card_number'];
+    $time=$_POST['pay_time'];
+    $cardType=$_POST['card_type'];
+    
+    //you can get all parameter from post request
+    // print_r($_POST);
+  }
+  ?>
 
 
-<body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full"
+<body class="bg-pink-100 font-raleway min-h-screen bg-cover bg-no-repeat w-full"
   style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
+  
 
   <!-- navbar -->
   <nav class="bg-gray-900 bg-opacity-40 py-4 px-4 sm:px-6 lg:px-14 z-10">
@@ -40,26 +62,40 @@
     </div>
   </nav>
 
-
+  
   <div class="container mx-auto px-20 py-10">
-    <div class="bg-white rounded-lg shadow-md p-8">
+    <div class="bg-gray-100 rounded-lg shadow-2xl p-8">
       <div class="flex items-center justify-center">
         <svg class="w-12 h-12 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
           fill="currentColor">
-          <path fill-rule="evenodd"
-            d="M8.002 13.587a.5.5 0 0 0 .71-.005l5.3-5.3a.5.5 0 0 0-.005-.71l-.006-.006a.5.5 0 0 0-.71.005L8.707 11.88 5.47 8.643a.5.5 0 0 0-.71 0l-.006.006a.5.5 0 0 0 0 .71l3.235 3.234a.5.5 0 0 0 .005.005z"
-            clip-rule="evenodd" />
+          <!-- <path fill-rule="evenodd"
+            d="M8.002 13.587a.5.5 0 0 0 .71-.005l5.3-5.3a.5.5 0 0 0-.005-.71l-.006-.006a.5.5 0 0 0-.71.005L8.707 11.88 5.47
+             8.643a.5.5 0 0 0-.71 0l-.006.006a.5.5 0 0 0 0 .71l3.235 3.234a.5.5 0 0 0 .005.005z"
+            clip-rule="evenodd" /> -->
         </svg>
-        <h1 class="text-2xl font-bold text-green-500">Payment Successful</h1>
+        <h1 class="text-2xl font-bold text-pink-600">Payment <?php echo $paystatus ?> !!</h1>
       </div>
-      <p class="mt-4 text-gray-600">Thank you for your payment. Your transaction has been successfully processed.</p>
-      <p class="mt-4 text-gray-600">
-        <?php echo $status . " " . $tran_date . " " . $tran_id . " " . $card_type;
-        ?>
+      <h3 class="mt-4 text-gray-600">Thank you for your payment <?php echo $customerName ?>. Your transaction details:.</h3>
+      
+      <p class="mt-4 pl-4 text-gray-600">
+       
+       <li class="mt-4 p-4 text-pink-600">Amount : <?php echo $amount ?>
+        </li>
+        <li class="mt-4 p-4 text-pink-600">Payment Type :
+          <?php echo $cardType ?>
+        </li>
+        <li class="mt-4 p-4 text-pink-600">Card Number :
+          <?php echo $cardNumber ?>
+        </li>
+        <li class="mt-4 p-4 text-pink-600">Time :
+          <?php echo $time ?>
+        </li>
+      
+      
       </p>
       <div class="mt-6 flex justify-end">
         <a href="./homepage.php"
-          class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-full">Continue Shopping</a>
+          class="bg-pink-500 hover:bg-pink-600 text-white font-raleway py-2 px-4 rounded-full">Continue Shopping</a>
       </div>
     </div>
   </div>

@@ -166,8 +166,8 @@
         <form style='margin:0 auto; text-align:center;' action="https://sandbox.aamarpay.com/index.php" method="post"
           name="form1">
           <table border="0" cellpadding="4" cellspacing="2" align="center" style="border-collapse:collapse;">
-            <input type="hidden" name="store_id" value="aamarpay">
-            <input type="hidden" name="signature_key" value="28c78bb1f45112f5d40b956fe104645a">
+            <input type="hidden" name="store_id" value="aamarpaytest">
+            <input type="hidden" name="signature_key" value="dbb74894e82415a2f7ff0ec3a97e4183">
 
 
 
@@ -197,9 +197,9 @@
             <input type="hidden" name="amount_processingfee_ratio" value="0">
             <input type="hidden" name="amount_processingfee" value="0">
             <input type="hidden" name="desc" value="Products Name Payment">
-            <input type="hidden" name="success_url" value="http://localhost/aamarpay/success.php">
-            <input type="hidden" name="fail_url" value="http://localhost/aamarpay/fail.php">
-            <input type="hidden" name="cancel_url" value="http://localhost/fail.php">
+            <input type="hidden" name="success_url" value="http://localhost/CSE-482-Online-Canteen-Order-and-Queue-System/output/success.php">
+            <input type="hidden" name="fail_url" value="http://localhost/CSE-482-Online-Canteen-Order-and-Queue-System/output/success.php">
+            <input type="hidden" name="cancel_url" value="http://localhost/CSE-482-Online-Canteen-Order-and-Queue-System/output/success.php">
 
 
 
