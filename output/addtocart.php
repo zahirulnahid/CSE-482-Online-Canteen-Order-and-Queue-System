@@ -7,7 +7,7 @@ include("connection.php");
 
 if (isset($_GET["foodID"]))
   $id = $_GET["foodID"];
-$exists = "SELECT * FROM `cart` WHERE `foodID` = '$id' AND `email` = '".$_SESSION[email]."';";
+$exists = "SELECT * FROM `cart` WHERE `foodID` = '$id' AND `email` = '".$_SESSION["email"]."';";
 $sql = "INSERT INTO `cart`(`email`, `foodID`, `quantity`) VALUES ('".$_SESSION["email"]."', $id, 1)";
 $exists = $conn->query($exists);
 if (mysqli_num_rows($exists) == 0) {

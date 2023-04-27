@@ -157,7 +157,8 @@
       <div class="flex flex-col md:flex-row justify-center items-center mx-auto m-5">
 
 
-        <!-- ******************* PAyment gateway code *********************-->
+        <!-- ******************* Payment gateway code *********************-->
+        
         <a href="../output/homepage.php"
           class="bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 m-4 rounded-full border-pink-600
            focus:outline-black focus:ring-2 focus:ring-pink-400 max-w-fit hover:translate-0 hover:transition-shadow md:mx-2">
