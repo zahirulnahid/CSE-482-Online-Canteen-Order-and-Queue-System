@@ -9,7 +9,7 @@ $post_data['store_passwd'] = "cnf6448af550eff9@ssl";
 $post_data['total_amount'] = $_GET["price"];
 $post_data['currency'] = "BDT";
 $post_data['tran_id'] = "SSLCZ_TEST_".uniqid();
-$post_data['success_url'] = "www.nsucanteen.com/CSE-482-Online-Canteen-Order-and-Queue-System/output/paymentSuccess.php";
+$post_data['success_url'] = "http://www.nsucanteen.com/CSE-482-Online-Canteen-Order-and-Queue-System/output/success.php";
 $post_data['fail_url'] = "http://localhost/new_sslcz_gw/fail.php";
 $post_data['cancel_url'] = "http://localhost/new_sslcz_gw/cancel.php";
 # $post_data['multi_card_name'] = "mastercard,visacard,amexcard";  # DISABLE TO DISPLAY ALL AVAILABLE
@@ -65,7 +65,8 @@ $post_data['convenience_fee'] = "3";
 
 
 # REQUEST SEND TO SSLCOMMERZ
-$direct_api_url = "https://sandbox.sslcommerz.com/gwprocess/v4/api.php";
+
+$direct_api_url = "https://sandbox.sslcommerz.com/gwprocess/v3/api.php";
 
 $handle = curl_init();
 curl_setopt($handle, CURLOPT_URL, $direct_api_url );
@@ -77,7 +78,7 @@ curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, FALSE); # KEEP IT FALSE IF YOU RUN FROM LOCAL PC
 
 
-$content = curl_exec($handle );
+$content = curl_exec($handle);
 
 $code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
 
@@ -102,4 +103,3 @@ if(isset($sslcz['GatewayPageURL']) && $sslcz['GatewayPageURL']!="" ) {
 } else {
 	echo "JSON Data parsing error!";
 }
-?>

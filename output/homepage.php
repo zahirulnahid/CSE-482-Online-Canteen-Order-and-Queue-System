@@ -21,21 +21,28 @@ include('protection.php');?>
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
 
+<!-- NAVBAR -->
 
-    <!-- Navbar -->
-    <nav class="bg-gray-900 bg-opacity-40 py-4 px-14 z-10">
-        <div class="container mx-auto flex font-raleway justify-between items-center px-4">
-            <a href="homepage.php" class="text-gray-900 text-2xl font-raleway">NSU Canteen</a>
+<nav class="bg-gray-900 bg-opacity-40 py-4 px-4 sm:px-6 lg:px-14 z-10">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="homepage.php" class="text-gray-900 text-2xl border-white font-raleway">NSU Canteen</a>
+    <div class="hidden sm:block">
+      <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full
+       focus:outline-black focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">Log Out</a>
+    </div>
+    <button class="sm:hidden text-gray-400 hover:text-white focus:outline-black focus:ring-2 focus:ring-pink-400" id="menu-button">
+      <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+        <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+      </svg>
+    </button>
+  </div>
+  <div class="sm:hidden" id="menu">
+    <a href="login.php" class="flex bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full
+       focus:outline-black focus:ring-2 focus:ring-pink-400 w-fit mx-auto  hover:translate-0 hover:transition-shadow">Log Out</a>
+  </div>
+</nav>
 
-            <div>
-                <a href="login.php" class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full focus:outline-black 
-                                focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">Log
-                    Out</a>
-            </div>
-        </div>
-    </nav>
 
- 
 
 
 
@@ -44,50 +51,39 @@ include('protection.php');?>
 
     <h1 class="text-2xl mx-auto  text-center mb-8 ">Welcome, <?=$_SESSION["name"]?></h1>
 
-        <div class="flex">
-          <!-- search bar -->
-            
-            <div class="px-20 my-4 p-4 w-full float-left">
-              
-                <label class="block text-gray-700 font-raleway mb-2 " for="search">Search</label>
-                <form method="post"><input
-                    class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                    type="search" name="search" id="search">
-                   
-                    
-                <!-- <input type="submit" value="search" class=" p-3 min-w-fit  bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-300 hover:outline-2 rounded-full border-spacing-2
-                        font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"> -->
-                 <input type="image" src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30 border-spacing-2 font-raleway focus:ring-2 hover:translate-3 hover:transition-shadow">
+      <div class="flex flex-wrap justify-between items-center py-4 px-8 md:px-20">
+  <!-- search bar -->
+  <div class="w-full md:w-auto mb-4 md:mb-0">
+    <label class="block text-gray-700 font-raleway mb-2" for="search">Search</label>
+    <form method="post" class="flex items-center">
+      <input class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full md:w-auto mr-2" type="search" name="search" id="search">
+      <button type="submit" class="p-3 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-300 rounded-full font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">
+        <img src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30">
+      </button>
+    </form>
+  </div>
 
-                        
-                </form>
+  <!-- cart button -->
+  <div class="w-full md:w-auto">
+    <a href="invoice.php" class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-md font-raleway focus:ring-2 hover:ring-2 hover:translate-0 hover:transition-shadow flex items-center">
+      <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
+      <span class="mr-1">Cart (<span id="cart-count">
+        <?php 
+          $sql = "SELECT count(id)as `total` FROM cart where email='".$_SESSION["email"]."'";
+          $result = $conn->query($sql);
+          
+          if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+              echo $row["total"];
+            }
+          } else {
+            echo "0";
+          }
+        ?>
+      </span>)</span>
+    </a>
+  </div>
 </div>
-
- <div class="px-20 my-4 p-4  w-full float-left">
-                <!-- cart button -->
-            
-                <a href="invoice.php" class="p-4 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800
-                    hover:bg-white rounded-md border-spacing-2 font-raleway focus:ring-2 hover:ring-2 hover:translate-0 hover:transition-shadow">
-                    <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
-                    Cart (<span class="m-1" id="cart-count"><?php 
-                    $sql = "SELECT count(id)as `total` FROM cart where email='".$_SESSION["email"]."'";
-                    $result = $conn->query($sql);
-                    
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while($row = $result->fetch_assoc()) {
-                        echo  $row["total"];
-                        }
-                    } else {
-                        echo "0";
-                    }
-                    ?></span>)
-                </a>
-
-                </div>
-
-        </div>
-                </div>
 
 
         <!-- menu cards -->
@@ -95,34 +91,36 @@ include('protection.php');?>
         <?php
     
 
-    $sql = "SELECT * FROM `Food_List`";
-    if(isset($_POST["search"])) {
-        $search = mysqli_real_escape_string($conn, $_POST["search"]);
-        $sql = "SELECT * FROM `Food_List` WHERE Item_Name LIKE '%$search%' OR id ='$search'";
-    }
-    $result = $conn->query($sql);
+            $sql = "SELECT * FROM `Food_List`";
+            if(isset($_POST["search"])) {
+                $search = mysqli_real_escape_string($conn, $_POST["search"]);
+                $sql = "SELECT * FROM `Food_List` WHERE Item_Name LIKE '%$search%' OR id ='$search'";
+            }
+            $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-?>
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+        ?>
             <div class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                 <img src="<?php echo $row['Image_url'];?>" alt="Menu Item" class="rounded-t-lg mx-auto">
-                <div class="p-10">
+                <div class="p-10 ">
                     <h2 class="text-xl font-raleway mb-2"><?php echo $row['Item_Name']; ?></h2>
-                    <p class="text-gray-700"><?php echo $row['Description']; ?></p>
+                    <p class="text-gray-700 sm:min-h-min container"><?php echo $row['Description']; ?></p>
                     <p class="text-pink-500 font-semibold mt-4"><?php echo $row['Price']; ?> BDT</p>
                     <div class="flex items-center mt-4">
                         <button onClick="addtocart('<?php echo $row['id']; ?>')" class="bg-pink-500 text-center mx-auto hover:bg-pink-600 hover:transition duration-200 ease-in-out text-white font-raleway py-2 px-4 rounded mt-4">Add to Cart</button>
                     </div>
                 </div>
             </div>
-<?php
-        }
-    } else {
-        echo "<center>No food Found</center>";
-    }
-?>
+        <?php
+                }
+            } else {
+                echo "<center>No food Found</center>";
+            }
+        ?>
+
+        
 <script>
     function addtocart(id) {
   const xhr = new XMLHttpRequest();
