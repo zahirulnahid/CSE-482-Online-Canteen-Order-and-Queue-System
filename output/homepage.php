@@ -10,7 +10,7 @@ include('protection.php'); ?>
   <title>Home </title>
   <link rel="stylesheet" href="outputstyles.css">
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
@@ -99,7 +99,7 @@ include('protection.php'); ?>
 
 
     <!-- menu cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10  rounded-3xl p-16 text-center">
+    <div id="menu-cards" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10  rounded-3xl p-16 text-center">
       <?php
 
 
@@ -156,6 +156,22 @@ include('protection.php'); ?>
           };
           xhr.send();
         }
+        $(document).ready(function() {
+  $('#search').on('input', function() {
+    var search = $(this).val();
+
+    $.ajax({
+      url: 'search.php',
+      method: 'POST',
+      data: { search: search },
+      success: function(response) {
+        // Update the DOM with the search results
+        $('#menu-cards').html(response);
+      }
+    });
+  });
+});
+        
       </script>
 
     </div>
