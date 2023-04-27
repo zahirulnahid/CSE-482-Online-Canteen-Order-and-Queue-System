@@ -75,7 +75,8 @@ include('protection.php'); ?>
       <!-- cart button -->
       <div class="w-full md:w-auto">
         <a href="invoice.php"
-          class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-md font-raleway focus:ring-2 hover:ring-2 hover:translate-0 hover:transition-shadow flex items-center">
+          class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-md font-raleway focus:ring-2 hover:ring-2 hover:translate-0 
+          hover:transition-shadow flex items-center">
           <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24"
             width="24">
           <span class="mr-1">Cart (<span id="cart-count">

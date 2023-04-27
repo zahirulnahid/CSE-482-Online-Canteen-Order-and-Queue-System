@@ -7,7 +7,7 @@
   <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
   <title>ADMIN</title>
   <link rel="stylesheet" href="outputstyles.css">
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script src="https://kit.fontawesome.com/b5ef430a48.js" crossorigin="anonymous"></script>
@@ -160,9 +160,9 @@
               </div>
             </div>
           </div>
-        <?php } 
-        $conn->close();
-        ?>
+        <?php }
+      $conn->close();
+      ?>
     </div>
   </div>
   </div>

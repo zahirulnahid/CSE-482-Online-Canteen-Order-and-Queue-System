@@ -8,7 +8,7 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Server Dashboard</title>
     <link rel="stylesheet" href="outputstyles.css">
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
 
 
@@ -96,7 +96,7 @@
                 </div>
             </li>
             <?php
-        } 
+        }
         $conn->close();
         ?>
 

@@ -8,7 +8,7 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Sales Info</title>
     <link rel="stylesheet" href="outputstyles.css">
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
 
 
@@ -19,20 +19,21 @@
     <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
         <div class="container mx-auto flex font-serif justify-between items-center px-4">
             <a href="#" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
-          
+
             <div>
-            <button class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
+                <button
+                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
                                             focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
-                type="submit">Log Out</button>
+                    type="submit">Log Out</button>
             </div>
-            </div>
-        
+        </div>
+
     </nav>
 
     <div class="flex m-14">
 
-    
-    
+
+
     </div>
 
     <!-- menu list view -->
@@ -49,14 +50,14 @@
             </thead>
             <tbody>
                 <?php
-                    include('connection.php');
+                include('connection.php');
 
-                    $sql = "SELECT `SALES_REPORT`.*, `food_list`.`Item_Name`,`food_list`.`Price` 
+                $sql = "SELECT `SALES_REPORT`.*, `food_list`.`Item_Name`,`food_list`.`Price` 
                     FROM `SALES_REPORT`
                     INNER JOIN `food_list` ON `SALES_REPORT`.`ItemID`= `food_list`.`id`;
                     
                     ";
-                    $result = $conn->query($sql);
+                $result = $conn->query($sql);
 
                 //declare array to store the data of database
                 $row = [];
@@ -67,29 +68,40 @@
                 }
 
                 if (!empty($row))
-                    foreach ($row as $rows){
+                    foreach ($row as $rows) {
                         $total_Revenue += $rows['Total_Revenue'];
-                ?>
-                <tr class="bg-white">
-                    <td class="px-4 py-2"><?php echo $rows['Item_Name'];?></td>
-                    <td class="px-4 py-2"><?php echo $rows['Units_Sold'];?></td>
-                    <td class="px-4 py-2"><?php echo $rows['Price'];?> BDT</td>
-                    <td class="px-4 py-2"><?php echo $rows['Total_Revenue'];?> BDT</td>
-                </tr>
-                <?php }?>
+                        ?>
+                        <tr class="bg-white">
+                            <td class="px-4 py-2">
+                                <?php echo $rows['Item_Name']; ?>
+                            </td>
+                            <td class="px-4 py-2">
+                                <?php echo $rows['Units_Sold']; ?>
+                            </td>
+                            <td class="px-4 py-2">
+                                <?php echo $rows['Price']; ?> BDT
+                            </td>
+                            <td class="px-4 py-2">
+                                <?php echo $rows['Total_Revenue']; ?> BDT
+                            </td>
+                        </tr>
+                    <?php } ?>
             </tbody>
             <tfoot>
                 <tr class="bg-gray-200">
                     <td class="px-4 py-2 font-bold">Total</td>
                     <td class="px-4 py-2 font-bold"></td>
                     <td class="px-4 py-2 font-bold"></td>
-                    <td class="px-4 py-2 font-bold"><?php echo $total_Revenue?> BDT</td>
+                    <td class="px-4 py-2 font-bold">
+                        <?php echo $total_Revenue ?> BDT
+                    </td>
                 </tr>
             </tfoot>
         </table>
     </div>
-    <?php 
-    $conn->close();?> 
+    <?php
+    $conn->close(); ?>
 </body>
 </head>
+
 </html>

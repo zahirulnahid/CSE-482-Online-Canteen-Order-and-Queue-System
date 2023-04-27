@@ -2,37 +2,34 @@
 //
 include("protection.php");
 include("connection.php");
-$cookie_name="user";
+$cookie_name = "user";
 $cookie_email = $_COOKIE[$cookie_name];
 
-if(isset($_GET["foodID"]))
-    $id=$_GET["foodID"];
-if(isset($_GET["scope"]))    
-    $scope = $_GET["scope"];
+if (isset($_GET["foodID"]))
+  $id = $_GET["foodID"];
+if (isset($_GET["scope"]))
+  $scope = $_GET["scope"];
 $existsql = "SELECT * FROM `cart` WHERE `foodID` = '$id' AND `email` = '$cookie_email';";
 $exists = $conn->query($existsql);
-if ($exists ==TRUE){
+if ($exists == TRUE) {
   if ($scope == "add") {
     $row = $exists->fetch_assoc();
-    $sql = "UPDATE `cart` SET `quantity`=".$row['quantity'] +1 ."   WHERE foodID = $id AND email = '$cookie_email';";    
+    $sql = "UPDATE `cart` SET `quantity`=" . $row['quantity'] + 1 . "   WHERE foodID = $id AND email = '$cookie_email';";
     $conn->query($sql);
-  }
-  else if($scope == "remove"){
+  } else if ($scope == "remove") {
     $row = $exists->fetch_assoc();
-    if ($row['quantity'] > 0){
-      $sql = "UPDATE `cart` SET `quantity`=".$row['quantity'] -1 ."   WHERE foodID = $id AND email = '$cookie_email';";
+    if ($row['quantity'] > 0) {
+      $sql = "UPDATE `cart` SET `quantity`=" . $row['quantity'] - 1 . "   WHERE foodID = $id AND email = '$cookie_email';";
       $conn->query($sql);
-    }
-    else if($row['quantity'] == 0){
+    } else if ($row['quantity'] == 0) {
       $sql = "DELETE FROM `cart` WHERE foodID = $id AND email = '$cookie_email';";
       $conn->query($sql);
     }
   }
-}
-else {
+} else {
   echo "Connection error<br>";
 }
-  $exists = $conn->query($existsql);
-  $row = $exists->fetch_assoc();
-  echo $row['quantity'];
-  ?>
+$exists = $conn->query($existsql);
+$row = $exists->fetch_assoc();
+echo $row['quantity'];
+?>
