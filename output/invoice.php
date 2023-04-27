@@ -166,8 +166,8 @@
         <form style='margin:0 auto; text-align:center;' action="https://sandbox.aamarpay.com/index.php" method="post"
           name="form1">
           <table border="0" cellpadding="4" cellspacing="2" align="center" style="border-collapse:collapse;">
-            <input type="hidden" name="store_id" value="aamarpay">
-            <input type="hidden" name="signature_key" value="28c78bb1f45112f5d40b956fe104645a">
+            <input type="hidden" name="store_id" value="aamarpaytest">
+            <input type="hidden" name="signature_key" value="dbb74894e82415a2f7ff0ec3a97e4183">
 
 
 
