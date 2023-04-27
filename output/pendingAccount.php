@@ -44,29 +44,51 @@
 
     <!-- menu list view -->
     <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
+        <?php
+            include("connection.php");
+            include("protection.php");
+
+            $sql = "SELECT * FROM `users` WHERE `verified`= 'pending';";
+            $result = $conn->query($sql);
+    
+            //declare array to store the data of database
+            $row = [];
+            if ($result->num_rows > 0) {
+                // fetch all data from db into array 
+                $row = $result->fetch_all(MYSQLI_ASSOC);
+            }
+            else {
+                echo "No pending accounts";
+            }
+            if (!empty($row))
+                foreach ($row as $rows) {
+        ?>
+
         <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
             <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Labib Hasan</h3>
+            <h3 class="text-base font-bold text-gray-900 mb-1">Name:
+                            <?php echo $rows["name"]; ?>
+                        </h3>
+                        <p class="text-gray-700 font-medium">Email:
+                            <?php echo $rows["email"]; ?>
+                        </p>
+                        <p class="text-gray-700 font-medium">Phone:
+                            <?php echo $rows["phone"]; ?>
+                        </p>
+                        <p class="text-gray-700 font-medium">Category:
+                            <?php echo $rows["category"]; ?>
+                        </p>
                
-                <button class=" p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Aproved</button>
-                            <button class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Decline</button>                            
+                <a href="approveAccount.php?id=<?php echo $rows["email"]; ?>" class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Aprove</a>
+                <a href="deleteAccount.php?id=<?php echo $rows["email"]; ?>&redirect=pendingAccount.php" class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Decline</a>                            
             </div>
         </li>
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Product" class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
-            <div class="p-5 flex-grow">
-                <h3 class="text-base font-bold text-gray-900 mb-1">Zahirul Islam Nahid</h3>
-               
-                <button class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Aproved</button>
-                            <button class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Decline</button>                            
-            </div>
-        </li>
-        
+        <?php
+                }
+            $conn->close();
+            ?>
     </ul>
 </body>
 </head>
