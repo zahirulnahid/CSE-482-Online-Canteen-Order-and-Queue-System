@@ -85,7 +85,7 @@ unset($_COOKIE['user']); ?>
   </div>
 
 
-  <!-- java script -->
+  <!-- java script For form validation-->
   <script>
 
     function validateForm() {
