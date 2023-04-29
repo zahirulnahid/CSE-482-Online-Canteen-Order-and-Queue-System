@@ -14,10 +14,10 @@ if (mysqli_num_rows($exists) == 0) {
   $conn->query($sql);
 } else {
   $row = $exists->fetch_assoc();
-  $sql = "UPDATE `cart` SET `quantity`=" . $row['quantity'] + 1 . "   WHERE foodID = $id AND email = '".$_SESSION["email"]."';";
+ $sql = "UPDATE `cart` SET `quantity`=" . ($row['quantity'] + 1) . "   WHERE foodID = $id AND email = '".$_SESSION["email"]."';";
   $conn->query($sql);
 }
-$sql = "SELECT count(id)as `total` FROM cart where email='".$_SESSION["email"]."'";
+$sql = "SELECT sum(`quantity`)as `total` FROM cart where email='".$_SESSION["email"]."'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
