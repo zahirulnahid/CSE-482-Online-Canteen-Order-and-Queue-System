@@ -61,11 +61,11 @@
       ON DUPLICATE KEY UPDATE
         Units_Sold     =  (Units_Sold + '" . $row['quantity'] . "'),
         Total_Revenue =  (Total_Revenue + (" . $row['quantity'] * $row['Price'] . "))";
-      if ($conn->query($order) == true && $conn->query($updateSales) == true){
+      $deleteCartItems= "DELETE FROM `cart` WHERE `email`='". $_SESSION['email']."';";
+      if ($conn->query($order) == true && $conn->query($updateSales) == true && $conn->query($deleteCartItems)){
+        
       }
-      else {
-        echo "Cannot place order";
-      }
+
     }
   }
   }
