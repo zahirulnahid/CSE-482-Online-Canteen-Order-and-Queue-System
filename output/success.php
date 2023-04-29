@@ -62,8 +62,8 @@
         Units_Sold     =  (Units_Sold + '" . $row['quantity'] . "'),
         Total_Revenue =  (Total_Revenue + (" . $row['quantity'] * $row['Price'] . "))";
       $deleteCartItems= "DELETE FROM `cart` WHERE `email`='". $_SESSION['email']."';";
-      if ($conn->query($order) == true && $conn->query($updateSales) == true && $conn->query($deleteCartItems)){
-        
+      $addQueue = "INSERT INTO `QUEUE`( `OrderID`) VALUES ($order_id);";
+      if ($conn->query($order) == true && $conn->query($updateSales) == true && $conn->query($deleteCartItems) && $conn->query($addQueue)){
       }
 
     }

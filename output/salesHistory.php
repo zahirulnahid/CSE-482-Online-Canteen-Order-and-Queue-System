@@ -48,10 +48,9 @@
         <?php
         include('connection.php');
         //join queue table and order table
-        $sql = "SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`
+        $sql = "SELECT  `Orders`.`OrderID`, `Bill`.`Total_Amount`, `Bill`.`Order_Date`, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`, food_list.Price
         FROM `Orders`
         INNER JOIN food_list ON Orders.ItemID= food_list.id
-        INNER JOIN `QUEUE` ON `Orders`.OrderID= `QUEUE`.OrderID
         INNER JOIN `BILL` on `Orders`.`OrderID`=`BILL`.OrderID
         INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
         ;";
@@ -71,6 +70,19 @@
                     <?php
                     //all items in the same Order Number will be served in one queue
                     //group items having same OrderID together
+                        ?>
+                        <h2>Order ID: <?php echo $rows[$current]['OrderID']?></h2>
+                        </h3>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">
+                            Date: <?php echo $rows[$current]["Order_Date"]; ?>
+                        </h3>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">
+                            Customer Name: <?php echo $rows[$current]["Customer_Name"]; ?>
+                        </h3>
+                        <p class="text-base font-bold text-gray-900 mb-1">
+                            Customer Email:<?php echo $rows[$current]["Customer_Email"]; ?>
+                        </p>
+                        <?php
                     for ($j = $index; $j < $length; $j++) {
                         if ($rows[$j]["OrderID"] == $rows[$current]["OrderID"]) {
                             ?>
@@ -81,18 +93,6 @@
                         if ($rows[$j + 1]["OrderID"] == $rows[$current]["OrderID"])
                             $index++;
                     } ?>
-                    </h3>
-                    <h3 class="text-base font-bold text-gray-900 mb-1">
-                        <?php echo $rows[$current]["Customer_Name"]; ?>
-                    </h3>
-                    <p class="text-base font-bold text-gray-900 mb-1">
-                        <?php echo $rows[$current]["Customer_Email"]; ?>
-                    </p>
-                    <h3 class="text-base font-bold text-gray-900 mb-1">Queue No:
-                        <?php echo $rows[$current]["QueueNo"]; ?>
-                    </h3>
-                    <a href="removeQueue.php?id=<?php echo $rows[$current]['QueueNo']; ?>" class=" p-5 m-10 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>
                 </div>
             </li>
             <?php
