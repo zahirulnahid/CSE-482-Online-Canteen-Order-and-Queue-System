@@ -32,6 +32,43 @@
     //you can get all parameter from post request
     // print_r($_POST);
   }
+  //Creating Bill and Order
+  include('connection.php');
+  include('protection.php');
+
+  $sql = "SELECT `id` FROM `users` WHERE `email`= '".$_SESSION['email']."';";
+  if($conn->query($sql) == true){
+    $userid = $conn->query($sql)->fetch_assoc();
+    $userid= $userid['id'];
+  }
+  else {
+    echo "Cannot retrieve userID";
+  }
+
+  $bill = "INSERT INTO `BILL`( `Order_Date`, `CustomerID`, `Total_Amount`) VALUES (now(),'$userid','$amount');";
+  if($conn->query($bill) == TRUE){
+    $order_id = $conn->insert_id;
+  
+  $getItem = "SELECT cart.*, food_list.Item_Name, food_list.Price
+  FROM cart INNER JOIN food_list ON cart.foodID = food_list.id WHERE email='" . $_SESSION["email"] . "';";
+  $result = $conn->query($getItem);
+  if($result == true){
+    while ($row = $result->fetch_assoc()) {
+      $order = "INSERT INTO `Orders`(`OrderID`, `ItemID`, `Quantity`) VALUES ('$order_id','". $row["foodID"] ."','". $row["quantity"] ."');";
+      $updateSales = "INSERT INTO SALES_REPORT (`ItemID`, `Units_Sold`, `Total_Revenue`) 
+      VALUES
+       ('" . $row["foodID"] . "','" . $row["quantity"] . "', " . $row["quantity"] * $row["Price"] . ")
+      ON DUPLICATE KEY UPDATE
+        Units_Sold     =  (Units_Sold + '" . $row['quantity'] . "'),
+        Total_Revenue =  (Total_Revenue + (" . $row['quantity'] * $row['Price'] . "))";
+      if ($conn->query($order) == true && $conn->query($updateSales) == true){
+      }
+      else {
+        echo "Cannot place order";
+      }
+    }
+  }
+  }
   ?>
 
 
@@ -100,5 +137,4 @@
     </div>
   </div>
 </body>
-
 </html>
