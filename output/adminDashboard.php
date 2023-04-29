@@ -43,7 +43,7 @@
       <?php
       include("connection.php");
 
-      $sql = "SELECT COUNT(email) from users WHERE `verified`='pending';";
+      $sql = "SELECT COUNT(email) from users;";
 
       $result = $conn->query($sql);
       $result = mysqli_fetch_column($result);
@@ -53,10 +53,10 @@
         <!-- <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <div class="p-10">
           <h2 class="text-xl font-bold mb-2">🔁Pending Account</h2>
-          <a href="pendingAccount.php" class="text-pink-500 font-semibold mt-4">Click here to view pending accounts</a>
+
           <!-- <p class="text-pink-500 font-semibold mt-4">100 BDT</p> -->
           <div class="flex items-center mt-4">
-            👥Pending users - <?php echo $result;?>
+            <a href="pendingAccount.php"> 👥Pending users - 25000</a>
           </div>
         </div>
       </div>
@@ -64,12 +64,6 @@
       <div
         class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
-        <?php 
-          $sql = "SELECT COUNT(email) from users;";
-
-          $result = $conn->query($sql);
-          $result = mysqli_fetch_column($result);
-        ?>
         <div class="p-10">
           <h2 class="text-xl font-bold mb-2">Manage Account</h2>
           <a href="manageAccount.php" class="text-pink-500 font-semibold mt-4">Click here to manage your account
