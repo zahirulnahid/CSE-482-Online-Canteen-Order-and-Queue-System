@@ -47,6 +47,7 @@
     <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none p-16">
         <?php
         include('connection.php');
+        include('protection.php');
         //join queue table and order table
         $sql = "SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`
         FROM `Orders`

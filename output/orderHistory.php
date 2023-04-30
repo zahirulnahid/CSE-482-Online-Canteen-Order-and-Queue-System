@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <title>Sales History</title>
+    <title>Order History</title>
     <link rel="stylesheet" href="outputstyles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -48,12 +48,13 @@
         <?php
         include('connection.php');
         include('protection.php');
-        //join queue, order, bill, and users table
+        //join queue, order, bill, and users table for current customer
         $sql = "SELECT  `Orders`.`OrderID`, `Bill`.`Total_Amount`, `Bill`.`Order_Date`, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`, food_list.Price
         FROM `Orders`
         INNER JOIN food_list ON Orders.ItemID= food_list.id
         INNER JOIN `BILL` on `Orders`.`OrderID`=`BILL`.OrderID
         INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
+        WHERE users.email= '". $_SESSION['email'] ."'
         ;";
         $result = $conn->query($sql);
         $current = 0;
@@ -61,7 +62,16 @@
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         //total number of results
         $length = count($rows);
-
+        ?>
+        <h3 class="text-base font-bold text-gray-900 mb-1">
+            Customer Name:
+            <?php echo $_SESSION['name']; ?>
+        </h3>
+        <p class="text-base font-bold text-gray-900 mb-1">
+            Customer Name:
+            <?php echo $_SESSION['email']; ?>
+</p>
+        <?php
         //print
         for ($index = 0; $index < $length; $index++) {
             $current = $index;
@@ -77,12 +87,6 @@
                         <h3 class="text-base font-bold text-gray-900 mb-1">
                             Date: <?php echo $rows[$current]["Order_Date"]; ?>
                         </h3>
-                        <h3 class="text-base font-bold text-gray-900 mb-1">
-                            Customer Name: <?php echo $rows[$current]["Customer_Name"]; ?>
-                        </h3>
-                        <p class="text-base font-bold text-gray-900 mb-1">
-                            Customer Email:<?php echo $rows[$current]["Customer_Email"]; ?>
-                        </p>
                         <?php
                     for ($j = $index; $j < $length; $j++) {
                         if ($rows[$j]["OrderID"] == $rows[$current]["OrderID"]) {
@@ -94,12 +98,12 @@
                         if ($rows[$j + 1]["OrderID"] == $rows[$current]["OrderID"])
                             $index++;
                     } ?></h3>
-                    <h3 class="text-base font-bold text-gray-900 mb-1">
-                        Total Amount:
-                        <?php echo $rows[$current]['Total_Amount']; ?> BDT
-                    </h3>
-                </div>
-            </li>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">
+                            Total Amount:
+                            <?php echo $rows[$current]['Total_Amount']; ?> BDT
+                        </h3>
+                    </div>
+                </li>
             <?php
         }
         $conn->close();
