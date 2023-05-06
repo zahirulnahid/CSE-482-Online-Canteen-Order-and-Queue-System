@@ -60,7 +60,10 @@ include("protection.php");
         <?php
         include('connection.php');
 
-        $sql = "SELECT * FROM `users`;";
+        $sql = "SELECT users.*, user_category.id, user_category.category 
+        FROM `users` 
+        INNER JOIN user_category ON users.category = user_category.id
+        WHERE users.verified ='true';";
         $result = $conn->query($sql);
 
         //declare array to store the data of database
