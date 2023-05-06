@@ -19,9 +19,9 @@ include("protection.php");
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
-    <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
+    <nav class="bg-gray-900 bg-opacity-40 py-4 px-14">
         <div class="container mx-auto flex font-raleway justify-between items-center px-4">
-            <a href="#" class="text-gray-800 text-2xl font-raleway">NSU Canteen</a>
+            <a href="#" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
 
             <div>
                 <button
@@ -47,7 +47,7 @@ include("protection.php");
     </div>
 
     <!-- menu list view -->
-    <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
+    <ul class="grid grid-cols-1 gap-4 mx-auto my-18 p-10 container shadow-none">
         <?php
         include("connection.php");
 
@@ -81,9 +81,9 @@ include("protection.php");
                             <?php echo $rows["category"]; ?>
                         </p>
 
-                        <a href="approveAccount.php?id=<?php echo $rows["email"]; ?>" class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                        <a href="approveAccount.php?id=<?php echo $rows["email"]; ?>" class=" p-3 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-200 rounded-full border-spacing-2
                             font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Approve</a>
-                        <a href="deleteAccount.php?id=<?php echo $rows["email"]; ?>&redirect=pendingAccount.php" class=" p-5 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                        <a href="deleteAccount.php?id=<?php echo $rows["email"]; ?>&redirect=pendingAccount.php" class=" p-3 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-200 rounded-full border-spacing-2
                 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Decline</a>
                     </div>
                 </li>

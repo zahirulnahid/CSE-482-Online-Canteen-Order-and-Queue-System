@@ -25,9 +25,9 @@ include("protection.php");
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
-    <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
-        <div class="container mx-auto flex font-raleway justify-between items-center px-4">
-            <a href="#" class="text-gray-800 text-2xl font-raleway">NSU Canteen - Manage Account</a>
+    <nav class="bg-gray-900 bg-opacity-40 py-4 px-14">
+        <div class="container mx-auto flex font-bold justify-between items-center px-4">
+            <a href="#" class="text-gray-900 text-2xl font-raleway">NSU Canteen - Manage Account</a>
 
             <div>
                 <button
@@ -41,10 +41,14 @@ include("protection.php");
 
 
 
-    <div class="flex m-14">
+
+    <!-- menu list view -->
+    <div class="container mx-auto my-8">
+
+        <div class="flex m-14">
         <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
         <!-- search bar -->
-        <div class="px-20 my-4 p-4 w-full float-left">
+        <div class="px-20 my-4 w-full float-left">
             <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
             <input
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
@@ -55,8 +59,7 @@ include("protection.php");
 
     </div>
 
-    <!-- menu list view -->
-    <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
+    <ul class="grid grid-cols-1 gap-4 mx-auto my-18 p-10">
         <?php
         include('connection.php');
 
@@ -75,7 +78,7 @@ include("protection.php");
         if (!empty($row))
             foreach ($row as $rows) {
                 ?>
-                <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
+                <li class="bg-pink-50 rounded-xl shadow-xl mb-4 overflow-hidden flex">
 
                     <div class="p-5 flex-grow">
                         <h3 class="text-base font-bold text-gray-900 mb-1">Name:
@@ -103,6 +106,7 @@ include("protection.php");
         $conn->close();
         ?>
     </ul>
+    </div>
 
 </body>
 
