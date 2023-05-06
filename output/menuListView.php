@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="outputstyles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+    rel="stylesheet">
+</head>
+
 
 
 <body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
@@ -17,12 +23,12 @@
 
     <!-- Navbar -->
     <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
-        <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="#" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
+        <div class="container mx-auto flex font-raleway justify-between items-center px-4">
+            <a href="#" class="text-gray-800 text-2xl font-raleway">NSU Canteen</a>
 
             <div>
                 <button
-                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
+                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full focus:outline-black 
                                             focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
                     type="submit">Log Out</button>
             </div>
@@ -34,12 +40,12 @@
         <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
         <!-- search bar -->
         <div class="px-20 my-4 p-4 w-full float-left">
-            <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
+            <label class="block text-gray-700 font-raleway mb-2 " for="search">Search</label>
             <input
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="search" name="search" id="search">
             <button href="invoice.php" class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
+                            font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">
                 <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2"
                     height="24" width="24">
                 Cart(0)
@@ -74,7 +80,7 @@
                     <img src="<?php echo $rows['Image_url']; ?>" alt="Product"
                         class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
                     <div class="p-5 flex-grow">
-                        <h3 class="text-base font-bold text-gray-900 mb-1">
+                        <h3 class="text-base font-raleway text-gray-900 mb-1">
                             <?php echo $rows['Item_Name']; ?>
                         </h3>
                         <p class="text-gray-700 font-medium">

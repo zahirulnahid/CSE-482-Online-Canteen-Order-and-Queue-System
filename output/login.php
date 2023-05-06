@@ -17,7 +17,13 @@ unset($_COOKIE['user']); ?>
   <title>Login</title>
   <link rel="stylesheet" href="outputstyles.css">
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+    rel="stylesheet">
 </head>
+
 
 <body>
   <div class="flex flex-col md:flex-row">
@@ -27,29 +33,29 @@ unset($_COOKIE['user']); ?>
     <div class="w-full md:w-1/3 min-h-screen bg-gradient-to-t from-gray-200 to-gray-50 md:bg-transparent md:p-0">
       <div class="flex flex-col justify-center items-center h-full">
         <div class="bg-white p-6 rounded-lg shadow-2xl w-full md:w-96 sm:px-10 ">
-          <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">NSU cafeteria</h2>
+          <h2 class="text-2xl font-raleway mb-6 text-center text-gray-800">NSU cafeteria</h2>
 
           <!-- LOGIN FORM STARTS  -->
           <form name="myForm" method="POST" onsubmit="return validateForm()" action="authentication.php">
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="email">Email</label>
+              <label class="block text-gray-700 font-raleway mb-2" for="email">Email</label>
               <input
                 class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="text" name="email" id="email" required>
 
               <!-- error message if email is not valid -->
 
-              <p id="emailError" class="text-pink-500 font-bold"></p>
+              <p id="emailError" class="text-pink-500 font-raleway"></p>
             </div>
             <div class="mb-6">
-              <label class="block text-gray-700 font-bold mb-2" for="password">Password</label>
+              <label class="block text-gray-700 font-raleway mb-2" for="password">Password</label>
               <input
                 class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="password" name="password" id="password" required>
 
               <!-- error message is password is not valid -->
 
-              <p id="passwordError" class="text-pink-500 font-bold "></p>
+              <p id="passwordError" class="text-pink-500 font-raleway "></p>
             </div>
 
             <p id="passwordError" class="text-pink-500 font-extrabold ">
@@ -61,12 +67,12 @@ unset($_COOKIE['user']); ?>
               <input
                 class="form-checkbox w-4 h-4  border-gray-400 text-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="checkbox" name="remember_me" id="remember_me">
-              <label class="ml-2 text-gray-700 font-bold" for="remember_me">Remember me</label>
+              <label class="ml-2 text-gray-700 font-raleway" for="remember_me">Remember me</label>
             </div>
 
             <!-- log in button -->
 
-            <input type="submit" value="Login" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none 
+            <input type="submit" value="Login" class="bg-pink-500 hover:bg-pink-700 text-white font-raleway py-2 px-4 rounded-full focus:outline-none 
                     focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">
           </form>
 
@@ -74,9 +80,9 @@ unset($_COOKIE['user']); ?>
 
 
           <a href="./forgotPassword.php"
-            class="text-pink-500 font-bold hover:text-pink-700 block mt-4 hover:translate-x-0">Forgot Password</a>
+            class="text-pink-500 font-raleway hover:text-pink-700 block mt-4 hover:translate-x-0">Forgot Password</a>
           <p class="text-gray-800 mt-4 text-center">Don't have an account?
-            <a href="signUp.php" class="text-pink-500 font-bold hover:text-pink-700 hover:translate-x-0">Sign up
+            <a href="signUp.php" class="text-pink-500 font-raleway hover:text-pink-700 hover:translate-x-0">Sign up
               here.</a>
           </p>
         </div>

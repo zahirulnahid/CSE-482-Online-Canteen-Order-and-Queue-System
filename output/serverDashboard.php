@@ -13,6 +13,12 @@ include("protection.php");
     <link rel="stylesheet" href="outputstyles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+    rel="stylesheet">
+</head>
+
 
 
 <body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
@@ -20,12 +26,12 @@ include("protection.php");
 
     <!-- Navbar -->
     <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
-        <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="#" class="text-gray-700 text-2xl font-bold">NSU Canteen</a>
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#" class="text-gray-700 text-2xl font-comfortaa">NSU Canteen</a>
 
             <div>
                 <button
-                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold ml-5 py-3 px-5 float-right rounded-full focus:outline-black 
+                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway ml-5 py-3 px-5 float-right rounded-full focus:outline-black 
                                             focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
                     type="submit">Log Out</button>
             </div>
@@ -37,7 +43,7 @@ include("protection.php");
         <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
         <!-- search bar -->
         <div class="px-20 mx-auto p-4 w-full">
-            <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
+            <label class="block text-gray-700 font-raleway mb-2 " for="search">Search</label>
             <input
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="search" name="search" id="search">
@@ -78,7 +84,7 @@ include("protection.php");
                     for ($j = $index; $j < $length; $j++) {
                         if ($rows[$j]["OrderID"] == $rows[$current]["OrderID"]) {
                             ?>
-                            <h3 class="text-base font-bold text-gray-900 mb-1">
+                            <h3 class="text-base font-raleway text-gray-900 mb-1">
                                 <?php echo $rows[$j]["Quantity"] . " x ";
                                 echo $rows[$j]["Item_Name"];
                         }
@@ -86,20 +92,20 @@ include("protection.php");
                             $index++;
                     } ?>
                     </h3>
-                    <h3 class="text-base font-bold text-gray-900 mb-1">
+                    <h3 class="text-base font-raleway text-gray-900 mb-1">
                         <?php echo $rows[$current]["Customer_Name"]; ?>
                     </h3>
-                    <p class="text-base font-bold text-gray-900 mb-1">
+                    <p class="text-base font-raleway text-gray-900 mb-1">
                         <?php echo $rows[$current]["Customer_Email"]; ?>
                     </p>
-                    <h3 class="text-base font-bold text-gray-900 mb-1">Queue No:
+                    <h3 class="text-base font-raleway text-gray-900 mb-1">Queue No:
                         <?php echo $rows[$current]["QueueNo"]; ?>
                     </h3>
-                    <h3 class="text-base font-bold text-gray-900 mb-1">Order ID:
+                    <h3 class="text-base font-raleway text-gray-900 mb-1">Order ID:
                         <?php echo $rows[$current]["OrderID"]; ?>
                     </h3>
                     <a href="removeQueue.php?QueueID=<?php echo $rows[$current]['QueueNo']; ?>&orderID=<?php echo $rows[$current]['OrderID']; ?>" class=" p-5 m-10 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>
+                            font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>
                 </div>
             </li>
             <?php

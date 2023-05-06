@@ -13,19 +13,25 @@ include("protection.php");
     <link rel="stylesheet" href="outputstyles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+    rel="stylesheet">
+</head>
 
 
-<body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
+
+<body class="bg-pink-100 scroll-smooth font-raleway min-h-screen bg-cover bg-no-repeat w-full"
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
     <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
-        <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="#" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
+        <div class="container mx-auto flex  justify-between items-center px-4">
+            <a href="#" class="text-gray-800 text-2xl font-raleway">NSU Canteen</a>
 
             <div>
                 <button
-                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
+                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full focus:outline-black 
                                             focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
                     type="submit">Log Out</button>
             </div>
@@ -41,7 +47,7 @@ include("protection.php");
 
     <!-- menu list view -->
     <div class="container mx-auto px-4">
-        <h1 class="text-2xl font-bold mb-4">Sales Report</h1>
+        <h1 class="text-2xl font-raleway mb-4">Sales Report</h1>
         <table class="table-auto w-full">
             <thead>
                 <tr class="bg-gray-200">
@@ -92,10 +98,10 @@ include("protection.php");
             </tbody>
             <tfoot>
                 <tr class="bg-gray-200">
-                    <td class="px-4 py-2 font-bold">Total</td>
-                    <td class="px-4 py-2 font-bold"></td>
-                    <td class="px-4 py-2 font-bold"></td>
-                    <td class="px-4 py-2 font-bold">
+                    <td class="px-4 py-2 font-raleway">Total</td>
+                    <td class="px-4 py-2 font-raleway"></td>
+                    <td class="px-4 py-2 font-raleway"></td>
+                    <td class="px-4 py-2 font-raleway">
                         <?php echo $total_Revenue ?> BDT
                     </td>
                 </tr>
