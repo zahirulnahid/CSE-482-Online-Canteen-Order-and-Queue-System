@@ -32,12 +32,7 @@ include('protection.php'); ?>
        focus:outline-black focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">Log
           Out</a>
       </div>
-      <button class="sm:hidden text-gray-400 hover:text-white focus:outline-black focus:ring-2 focus:ring-pink-400"
-        id="menu-button">
-        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-          <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
-        </svg>
-      </button>
+      
     </div>
     <div class="sm:hidden" id="menu">
       <a href="login.php"
@@ -66,19 +61,17 @@ include('protection.php'); ?>
             class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full md:w-auto mr-2"
             type="search" name="search" id="search">
           <button type="submit"
-            class="p-3 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-300 rounded-full font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">
+            class="p-3 bg-opacity-0 text-gray-100 hover:text-gray-800 hover:bg-gray-400 rounded-full font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">
             <img src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30">
           </button>
         </form>
       </div>
 
-      <a href="invoice.php"
-          class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-md font-raleway focus:ring-2 hover:ring-2 hover:translate-0 
-          hover:transition-shadow flex items-center">My Orders</a>
+      
       <!-- cart button -->
       <div class="w-full md:w-auto">
         <a href="invoice.php"
-          class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-md font-raleway focus:ring-2 hover:ring-2 hover:translate-0 
+          class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 hover:ring-2 hover:translate-0 
           hover:transition-shadow flex items-center">
           <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24"
             width="24">
@@ -97,12 +90,16 @@ include('protection.php'); ?>
               ?>
             </span>)</span>
         </a>
+
+        <a href="invoice.php"
+          class="p-4 mt-4 text-center bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 hover:ring-2 hover:translate-0 
+          hover:transition-shadow flex items-center">My Orders</a>
       </div>
     </div>
 
 
     <!-- menu cards -->
-    <div id="menu-cards" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10  rounded-3xl p-16 text-center">
+    <div id="menu-cards" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10  rounded-3xl p-16 text-center">
       <?php
 
 
@@ -132,7 +129,7 @@ include('protection.php'); ?>
               </p>
               <div class="flex items-center mt-4">
                 <button onClick="addtocart('<?php echo $row['id']; ?>')"
-                  class="bg-pink-500 text-center mx-auto hover:bg-pink-600 hover:transition duration-200 ease-in-out text-white font-raleway py-2 px-4 rounded mt-4">Add
+                  class="bg-pink-700 text-center mx-auto hover:bg-pink-400 hover:transition duration-200 ease-in-out text-white font-raleway py-2 px-4 rounded-full mt-4">Add
                   to Cart</button>
               </div>
             </div>
@@ -186,7 +183,7 @@ include('protection.php'); ?>
 
   <footer class="bg-pink-600 py-5 px-14">
     <div class="mx-auto">
-      <h1 class="text-gray-200 font-raleway">Contact Zahirul islam Nahid </h1>
+      <h1 class="text-gray-200 font-raleway">Contact: </h1>
     </div>
   </footer>
   <?php $conn->close(); ?>

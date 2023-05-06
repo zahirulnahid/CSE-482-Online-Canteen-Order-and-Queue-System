@@ -14,20 +14,26 @@
     <link rel="stylesheet" href="outputstyles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+    rel="stylesheet">
 </head>
 
 
-<body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
+
+<body class="bg-pink-100 scroll-smooth font-raleway min-h-screen bg-cover bg-no-repeat w-full"
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
     <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
-        <div class="container mx-auto flex font-serif justify-between items-center px-4">
-            <a href="#" class="text-gray-700 text-2xl font-bold">NSU Canteen</a>
+        <div class="container mx-auto flex  justify-between items-center px-4">
+            <a href="#" class="text-gray-700 text-2xl font-raleway">NSU Canteen</a>
 
             <div>
                 <button
-                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold ml-5 py-3 px-5 float-right rounded-full focus:outline-black 
+                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway ml-5 py-3 px-5 float-right rounded-full focus:outline-black 
                                             focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
                     type="submit">Log Out</button>
             </div>
@@ -39,7 +45,7 @@
         <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
         <!-- search bar -->
         <div class="px-20 mx-auto p-4 w-full">
-            <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
+            <label class="block text-gray-700 font-raleway mb-2 " for="search">Search</label>
             <input
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="search" name="search" id="search">
