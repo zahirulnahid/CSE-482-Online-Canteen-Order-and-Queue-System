@@ -11,6 +11,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script src="https://kit.fontawesome.com/b5ef430a48.js" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+    rel="stylesheet">
 </head>
 
 <body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
@@ -21,11 +26,11 @@
 
 
   <nav class="bg-pink-600 bg-opacity-40 py-4 px-14 z-10">
-    <div class="container mx-auto flex font-serif justify-between items-center px-4">
-      <a href="homepage.php" class="text-gray-800 text-2xl font-bold">🍽 <b> NSU Canteen Admin</b></a>
+    <div class="container mx-auto flex font-raleway justify-between items-center px-4">
+      <a href="homepage.php" class="text-gray-800 text-2xl font-raleway">🍽NSU Canteen Admin</a>
       <div>
         <a href="login.php"
-          class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold ml-5 py-3 px-5 float-right rounded-full focus:outline-black 
+          class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway ml-5 py-3 px-5 float-right rounded-full focus:outline-black 
                                             focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">Log
           Out</a>
       </div>
@@ -37,9 +42,9 @@
 
   <div class="container mx-auto my-8 px-20 py-16 ">
     <center>
-      <h1 class="text-4xl m-10"><strong> 📊DASHBOARD </strong></h1>
+      <h1 class="text-4xl font-raleway m-10"> 📊DASHBOARD</h1>
     </center>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 rounded-3xl   text-center">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-10 rounded-3xl   text-center">
       <?php
       include("connection.php");
 
@@ -52,7 +57,7 @@
         class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <div class="p-10">
-          <h2 class="text-xl font-bold mb-2">🔁Pending Account</h2>
+          <h2 class="text-xl font-raleway mb-2">🔁Pending Account</h2>
           <a href="pendingAccount.php" class="text-pink-500 font-semibold mt-4">Click here to view pending accounts</a>
           <!-- <p class="text-pink-500 font-semibold mt-4">100 BDT</p> -->
           <div class="flex items-center mt-4">
@@ -71,7 +76,7 @@
           $result = mysqli_fetch_column($result);
         ?>
         <div class="p-10">
-          <h2 class="text-xl font-bold mb-2">Manage Account</h2>
+          <h2 class="text-xl font-raleway mb-2">Manage Account</h2>
           <a href="manageAccount.php" class="text-pink-500 font-semibold mt-4">Click here to manage your account
             settings</a>
           <!-- <p class="text-pink-500 font-semibold mt-4">70 BDT</p> -->
@@ -86,7 +91,7 @@
         class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <div class="p-10">
-          <h2 class="text-xl font-bold mb-2">Get sales Information</h2>
+          <h2 class="text-xl font-raleway mb-2">Get sales Info</h2>
           <a href="salesInfo.php" class="text-pink-500 font-semibold mt-4">Click here to view sales information</a>
           <!-- 
           <div class="flex items-center justify-center mt-4">
@@ -99,7 +104,7 @@
         class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <div class="p-10">
-          <h2 class="text-xl font-bold mb-2">Update Menu</h2>
+          <h2 class="text-xl font-raleway mb-2">Update Menu</h2>
           <a href="updateMenu.php" class="text-pink-500 font-semibold mt-4">Click here to update your menu items</a>
 
           <div class="flex items-center justify-center mt-4">
@@ -112,6 +117,20 @@
             echo $result;
             ?>
           </div>
+          
+        </div>
+        
+      </div>
+      <div
+        class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+       
+        <div class="p-10">
+          <h2 class="text-xl font-raleway mb-2">Get all orders</h2>
+          <a href="pendingAccount.php" class="text-pink-500 font-semibold mt-4">Click here to view all orders</a>
+         
+          
+
+
         </div>
       </div>
     </div>
@@ -124,7 +143,7 @@
   <!-- menu cards -->
   <div class="container mt-5 mx-auto">
     <center>
-      <h1 class="text-4xl mb-8"><b> 🍴EXPLORE ON-GOING ITEMS </b></h1>
+      <h1 class="text-4xl font-raleway mb-8"><h1>🍴EXPLORE ON-GOING ITEMS</h1>
     </center>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
       <?php
@@ -146,7 +165,7 @@
             class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
             <img src="../images/<?php echo $rows["Item_Name"]; ?>.png" alt="Menu Item" class="rounded-t-lg mx-auto">
             <div class="p-10">
-              <h2 class="text-xl font-bold mb-2">
+              <h2 class="text-xl font-raleway mb-2">
                 <?php echo $rows["Item_Name"]; ?>
               </h2>
               <p class="text-gray-700">
@@ -176,7 +195,7 @@
 
   <footer class="bg-pink-600 py-5 px-14">
     <div class="mx-auto">
-      <h1 class="text-gray-200 font-bold">Contact Zahirul islam Nahid</h1>
+      <h1 class="text-gray-200 font-raleway">Contact Zahirul islam Nahid</h1>
     </div>
   </footer>
 </body>

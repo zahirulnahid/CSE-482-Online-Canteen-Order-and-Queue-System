@@ -72,6 +72,9 @@ include('protection.php'); ?>
         </form>
       </div>
 
+      <a href="invoice.php"
+          class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-md font-raleway focus:ring-2 hover:ring-2 hover:translate-0 
+          hover:transition-shadow flex items-center">My Orders</a>
       <!-- cart button -->
       <div class="w-full md:w-auto">
         <a href="invoice.php"

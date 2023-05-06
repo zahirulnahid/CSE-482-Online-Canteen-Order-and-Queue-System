@@ -55,6 +55,7 @@
         INNER JOIN `BILL` on `Orders`.`OrderID`=`BILL`.OrderID
         INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
         WHERE users.email= '". $_SESSION['email'] ."'
+        ORDER BY OrderID DESC 
         ;";
         $result = $conn->query($sql);
         $current = 0;
