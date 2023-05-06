@@ -186,7 +186,7 @@ include('protection.php'); ?>
 
   <footer class="bg-pink-600 py-5 px-14">
     <div class="mx-auto">
-      <h1 class="text-gray-200 font-raleway">Contact Zahirul islam Nahid </h1>
+      <h1 class="text-gray-200 font-raleway">Contact: </h1>
     </div>
   </footer>
   <?php $conn->close(); ?>
