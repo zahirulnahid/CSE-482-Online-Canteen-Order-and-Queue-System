@@ -1,3 +1,6 @@
+<?php 
+include("protection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +37,6 @@
   }
   //Creating Bill and Order
   include('connection.php');
-  include('protection.php');
 
   $sql = "SELECT `id` FROM `users` WHERE `email`= '".$_SESSION['email']."';";
   if($conn->query($sql) == true){
@@ -54,7 +56,7 @@
   $result = $conn->query($getItem);
   if($result == true){
     while ($row = $result->fetch_assoc()) {
-      $order = "INSERT INTO `Orders`(`OrderID`, `ItemID`, `Quantity`) VALUES ('$order_id','". $row["foodID"] ."','". $row["quantity"] ."');";
+      $order = "INSERT INTO `Orders`(`OrderID`, `ItemID`, `Quantity`, `served`) VALUES ('$order_id','". $row["foodID"] ."','". $row["quantity"] ."', 'no');";
       $updateSales = "INSERT INTO SALES_REPORT (`ItemID`, `Units_Sold`, `Total_Revenue`) 
       VALUES
        ('" . $row["foodID"] . "','" . $row["quantity"] . "', " . $row["quantity"] * $row["Price"] . ")

@@ -1,3 +1,6 @@
+<?php
+include("protection.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -126,7 +129,7 @@
        
         <div class="p-10">
           <h2 class="text-xl font-raleway mb-2">Get all orders</h2>
-          <a href="pendingAccount.php" class="text-pink-500 font-semibold mt-4">Click here to view all orders</a>
+          <a href="orderHistory.php" class="text-pink-500 font-semibold mt-4">Click here to view all orders</a>
          
           
 

@@ -1,3 +1,6 @@
+<?php
+include("protection.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -78,7 +81,6 @@
       <ul class="flex-1 overflow-y-auto">
         <!-- Add items dynamically using JavaScript -->
         <?php
-        include("protection.php");
         $sql = "SELECT cart.*, food_list.Item_Name, food_list.Price
               FROM cart INNER JOIN food_list ON cart.foodID = food_list.id WHERE email='" . $_SESSION["email"] . "';";
 

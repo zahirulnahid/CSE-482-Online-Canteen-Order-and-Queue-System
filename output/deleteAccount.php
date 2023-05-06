@@ -1,4 +1,5 @@
 <?php
+include("protection.php");
 include('connection.php');
 $email = $_GET["id"]; // get id through query string
 

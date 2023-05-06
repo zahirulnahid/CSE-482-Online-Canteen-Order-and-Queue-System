@@ -1,3 +1,6 @@
+<?php
+include("protection.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -47,7 +50,6 @@
     <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
         <?php
         include("connection.php");
-        include("protection.php");
 
         $sql = "SELECT * FROM `users` WHERE `verified`= 'pending';";
         $result = $conn->query($sql);

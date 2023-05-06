@@ -1,3 +1,6 @@
+<?php
+include("protection.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -47,14 +50,14 @@
     <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none p-16">
         <?php
         include('connection.php');
-        include('protection.php');
         //join queue table and order table
-        $sql = "SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`
+        $sql = "SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `Orders`.served, `food_list`.`Item_Name`
         FROM `Orders`
         INNER JOIN food_list ON Orders.ItemID= food_list.id
         INNER JOIN `QUEUE` ON `Orders`.OrderID= `QUEUE`.OrderID
         INNER JOIN `BILL` on `Orders`.`OrderID`=`BILL`.OrderID
         INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
+        WHERE served = 'no'
         ;";
         $result = $conn->query($sql);
         $current = 0;
@@ -92,7 +95,10 @@
                     <h3 class="text-base font-bold text-gray-900 mb-1">Queue No:
                         <?php echo $rows[$current]["QueueNo"]; ?>
                     </h3>
-                    <a href="removeQueue.php?id=<?php echo $rows[$current]['QueueNo']; ?>" class=" p-5 m-10 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                    <h3 class="text-base font-bold text-gray-900 mb-1">Order ID:
+                        <?php echo $rows[$current]["OrderID"]; ?>
+                    </h3>
+                    <a href="removeQueue.php?QueueID=<?php echo $rows[$current]['QueueNo']; ?>&orderID=<?php echo $rows[$current]['OrderID']; ?>" class=" p-5 m-10 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>
                 </div>
             </li>
