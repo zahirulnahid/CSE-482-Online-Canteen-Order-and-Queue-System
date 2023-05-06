@@ -49,7 +49,7 @@ include("protection.php");
 
   $bill = "INSERT INTO `BILL`( `Order_Date`, `CustomerID`, `Total_Amount`) VALUES (now(),'$userid','$amount');";
   if($conn->query($bill) == TRUE){
-    $order_id = $conn->insert_id;
+    $order_id = mysqli_insert_id($conn);
   
   $getItem = "SELECT cart.*, food_list.Item_Name, food_list.Price
   FROM cart INNER JOIN food_list ON cart.foodID = food_list.id WHERE email='" . $_SESSION["email"] . "';";

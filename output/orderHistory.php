@@ -84,6 +84,21 @@
             }
         });
     });
+    $(document).ready(function() {
+  $('#search').on('input', function() {
+    var search = $(this).val();
+
+    $.ajax({
+      url: 'searchOrder.php',
+      method: 'POST',
+      data: { search: search },
+      success: function(response) {
+        // Update the DOM with the search results
+        $('#orders').html(response);
+      }
+    });
+  });
+});
 </script>
 
 </html>
