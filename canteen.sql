@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 26, 2023 at 07:22 AM
+-- Generation Time: May 06, 2023 at 08:58 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,7 +40,24 @@ CREATE TABLE `BILL` (
 
 INSERT INTO `BILL` (`OrderID`, `Order_Date`, `CustomerID`, `Total_Amount`) VALUES
 (1, '2023-04-05', 18, 220),
-(2, '2023-04-07', 17, 180);
+(2, '2023-04-07', 17, 180),
+(3, '2023-04-05', 17, 100),
+(24, '2023-04-29', 2, 999),
+(25, '2023-04-29', 2, 999),
+(26, '2023-04-29', 2, 999),
+(27, '2023-04-29', 2, 999),
+(28, '2023-04-29', 2, 999),
+(29, '2023-04-29', 2, 999),
+(30, '2023-04-29', 18, 720),
+(31, '2023-04-29', 18, 299),
+(32, '2023-04-29', 18, 299),
+(33, '2023-04-29', 18, 720),
+(34, '2023-04-29', 18, 720),
+(35, '2023-04-29', 18, 300),
+(36, '2023-04-30', 18, 210),
+(37, '2023-04-30', 18, 220),
+(38, '2023-04-30', 18, 70),
+(39, '2023-05-06', 18, 310);
 
 -- --------------------------------------------------------
 
@@ -76,11 +93,7 @@ INSERT INTO `cart` (`id`, `foodID`, `email`, `quantity`, `timestamp`) VALUES
 (13, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
 (14, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
 (15, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(16, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(17, 1, 'ayman@nsu.edu', 5, '2023-04-04'),
-(21, 6, 'ayman@nsu.edu', 4, '2023-04-21'),
-(22, 2, 'ayman@nsu.edu', 2, '2023-04-26'),
-(23, 5, 'ayman@nsu.edu', 1, '2023-04-26');
+(16, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04');
 
 -- --------------------------------------------------------
 
@@ -93,6 +106,16 @@ CREATE TABLE `food_category` (
   `category` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `food_category`
+--
+
+INSERT INTO `food_category` (`id`, `category`) VALUES
+(1, 'Beverage'),
+(2, 'Fast Food'),
+(3, 'Main Dish'),
+(4, 'Dessert');
+
 -- --------------------------------------------------------
 
 --
@@ -104,6 +127,7 @@ CREATE TABLE `food_list` (
   `Item_Name` varchar(30) NOT NULL,
   `Price` int(11) NOT NULL,
   `Description` varchar(200) NOT NULL,
+  `keywords` varchar(300) NOT NULL,
   `Image_url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -111,15 +135,15 @@ CREATE TABLE `food_list` (
 -- Dumping data for table `food_list`
 --
 
-INSERT INTO `food_list` (`id`, `Item_Name`, `Price`, `Description`, `Image_url`) VALUES
-(1, 'Burger', 100, 'A huge single or triple burger with all the fixings, cheese, lettuce, tomato, onions and special sauce or mayonnaise!', '../images/Burger.png'),
-(2, 'Chicken Biriyani', 90, 'A savory chicken and rice dish that includes layers of chicken, rice, and aromatics that are steamed together.\r\n', '../images/Chicken Biriyani.png'),
-(3, 'Chicken Curry', 70, 'A typical curry from the Indian subcontinent consists of chicken stewed in an onion- and tomato-based sauce\r\n', '../images/Chicken Curry.png'),
-(4, 'Dhakaiya Kacchi', 110, 'Introducing the spicy and tender dhakaiya kacchi where l,ayers of meat, rice, and potatoes are infused with delicious blends of aromatic spices.\r\n', '../images/Dhakaiya Kacchi.png'),
-(5, 'Kala Bhuna', 80, 'Authentic and spicy chatgaiya beef kalabhuna. Exclusive dark, flavourful and tender dish prepared with chunks of beef and traditional spices\r\n', '../images/Kala Bhuna.png'),
-(6, 'Khichuri', 40, 'Authentic bangali khichuri with all the original flavors of Bengal. Made of rice and lentils (dal) with numerous variations\r\n', '../images/Khichuri.png'),
-(7, 'Pasta', 80, 'This Spicy Chicken Pasta is the perfect level of spice, whilst absolutely bursting with flavour. It’s easy, creamy, hearty and delicious!.\r\n', '../images/Pasta.png'),
-(8, 'Pizza', 90, 'consists of a flattened disk of bread dough topped with some combination of olive oil, oregano, tomato, olives, mozzarella\r\n', '../images/Pizza.png');
+INSERT INTO `food_list` (`id`, `Item_Name`, `Price`, `Description`, `keywords`, `Image_url`) VALUES
+(1, 'Burger', 100, 'A huge single or triple burger with all the fixings, cheese, lettuce, tomato, onions and special sauce or mayonnaise!', '', '../images/Burger.png'),
+(2, 'Chicken Biriyani', 90, 'A savory chicken and rice dish that includes layers of chicken, rice, and aromatics that are steamed together.\r\n', '', '../images/Chicken Biriyani.png'),
+(3, 'Chicken Curry', 70, 'A typical curry from the Indian subcontinent consists of chicken stewed in an onion- and tomato-based sauce\r\n', '', '../images/Chicken Curry.png'),
+(4, 'Dhakaiya Kacchi', 110, 'Introducing the spicy and tender dhakaiya kacchi where l,ayers of meat, rice, and potatoes are infused with delicious blends of aromatic spices.\r\n', '', '../images/Dhakaiya Kacchi.png'),
+(5, 'Kala Bhuna', 80, 'Authentic and spicy chatgaiya beef kalabhuna. Exclusive dark, flavourful and tender dish prepared with chunks of beef and traditional spices\r\n', '', '../images/Kala Bhuna.png'),
+(6, 'Khichuri', 40, 'Authentic bangali khichuri with all the original flavors of Bengal. Made of rice and lentils (dal) with numerous variations\r\n', '', '../images/Khichuri.png'),
+(7, 'Pasta', 80, 'This Spicy Chicken Pasta is the perfect level of spice, whilst absolutely bursting with flavour. It’s easy, creamy, hearty and delicious!.\r\n', '', '../images/Pasta.png'),
+(8, 'Pizza', 90, 'consists of a flattened disk of bread dough topped with some combination of olive oil, oregano, tomato, olives, mozzarella\r\n', '', '../images/Pizza.png');
 
 -- --------------------------------------------------------
 
@@ -130,37 +154,63 @@ INSERT INTO `food_list` (`id`, `Item_Name`, `Price`, `Description`, `Image_url`)
 CREATE TABLE `Orders` (
   `OrderID` int(11) NOT NULL,
   `ItemID` int(11) NOT NULL,
-  `Quantity` int(11) NOT NULL
+  `Quantity` int(11) NOT NULL,
+  `served` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Orders`
 --
 
-INSERT INTO `Orders` (`OrderID`, `ItemID`, `Quantity`) VALUES
-(1, 1, 1),
-(1, 6, 1),
-(1, 5, 1),
-(2, 8, 2);
+INSERT INTO `Orders` (`OrderID`, `ItemID`, `Quantity`, `served`) VALUES
+(1, 1, 1, 'no'),
+(1, 6, 1, 'no'),
+(1, 5, 1, 'no'),
+(2, 8, 2, 'no'),
+(32, 1, 3, 'yes'),
+(32, 6, 4, 'yes'),
+(32, 2, 2, 'yes'),
+(32, 5, 1, 'yes'),
+(33, 1, 3, 'yes'),
+(33, 6, 4, 'yes'),
+(33, 2, 2, 'yes'),
+(33, 5, 1, 'yes'),
+(34, 1, 3, 'yes'),
+(34, 6, 4, 'yes'),
+(34, 2, 2, 'yes'),
+(34, 5, 1, 'yes'),
+(35, 2, 1, 'yes'),
+(35, 1, 1, 'yes'),
+(35, 4, 1, 'yes'),
+(36, 8, 1, 'yes'),
+(36, 6, 1, 'yes'),
+(36, 5, 1, 'yes'),
+(37, 4, 2, 'yes'),
+(38, 3, 1, 'no'),
+(39, 2, 3, 'no'),
+(39, 6, 1, 'no');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `QUEUE`
+-- Table structure for table `Queue`
 --
 
-CREATE TABLE `QUEUE` (
+CREATE TABLE `Queue` (
   `QueueNo` int(11) NOT NULL,
   `OrderID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `QUEUE`
+-- Dumping data for table `Queue`
 --
 
-INSERT INTO `QUEUE` (`QueueNo`, `OrderID`) VALUES
+INSERT INTO `Queue` (`QueueNo`, `OrderID`) VALUES
 (1, 1),
-(2, 2);
+(2, 2),
+(4, 38),
+(6, 39),
+(7, 39);
 
 -- --------------------------------------------------------
 
@@ -179,10 +229,14 @@ CREATE TABLE `SALES_REPORT` (
 --
 
 INSERT INTO `SALES_REPORT` (`ItemID`, `Units_Sold`, `Total_Revenue`) VALUES
-(1, 15, 1500),
+(1, 46, 4600),
+(2, 24, 1980),
+(3, 11, 770),
+(4, 3, 330),
+(5, 41, 3280),
+(6, 92, 3680),
 (7, 10, 800),
-(6, 50, 2000),
-(5, 30, 2400);
+(8, 1, 90);
 
 -- --------------------------------------------------------
 
@@ -205,8 +259,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `category`, `name`, `email`, `phone`, `password`, `verified`) VALUES
-(17, 1, 'Md. Zahirul Islam Nahid', 'zahirulnahid@gmail.com', '01554518620', '25d55ad283aa400af464c76d713c07ad', 'pending'),
-(18, 1, 'Ayman', 'ayman@nsu.edu', '11111111111', '1bbd886460827015e5d605ed44252251', 'pending');
+(2, 2, 'a', 'a', '2', 'a', 'true'),
+(17, 1, 'Md. Zahirul Islam Nahid', 'zahirulnahid@gmail.com', '01554518620', '25d55ad283aa400af464c76d713c07ad', 'true'),
+(18, 1, 'Ayman', 'ayman@nsu.edu', '11111111111', '1bbd886460827015e5d605ed44252251', 'true');
 
 -- --------------------------------------------------------
 
@@ -267,16 +322,17 @@ ALTER TABLE `Orders`
   ADD KEY `ItemID` (`ItemID`);
 
 --
--- Indexes for table `QUEUE`
+-- Indexes for table `Queue`
 --
-ALTER TABLE `QUEUE`
+ALTER TABLE `Queue`
+  ADD PRIMARY KEY (`QueueNo`),
   ADD KEY `OrderID` (`OrderID`);
 
 --
 -- Indexes for table `SALES_REPORT`
 --
 ALTER TABLE `SALES_REPORT`
-  ADD KEY `ItemID` (`ItemID`);
+  ADD UNIQUE KEY `ItemID` (`ItemID`);
 
 --
 -- Indexes for table `users`
@@ -298,19 +354,25 @@ ALTER TABLE `user_category`
 -- AUTO_INCREMENT for table `BILL`
 --
 ALTER TABLE `BILL`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `food_list`
 --
 ALTER TABLE `food_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `Queue`
+--
+ALTER TABLE `Queue`
+  MODIFY `QueueNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -342,9 +404,9 @@ ALTER TABLE `Orders`
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`ItemID`) REFERENCES `FOOD_LIST` (`id`);
 
 --
--- Constraints for table `QUEUE`
+-- Constraints for table `Queue`
 --
-ALTER TABLE `QUEUE`
+ALTER TABLE `Queue`
   ADD CONSTRAINT `queue_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`);
 
 --
