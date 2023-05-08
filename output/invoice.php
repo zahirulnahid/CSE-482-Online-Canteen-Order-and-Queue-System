@@ -103,14 +103,14 @@ include("protection.php");
               <div class="flex item mt-0.5">
                 <button onclick="updateCart('<?php echo $row['foodID']; ?>', 'remove')"
                   class="bg-pink-700 hover:bg-pink-50 hover:text-black
-              text-white font-raleway max-w-fit mr-1 py-1 px-2 rounded-md focus:outline-black focus:ring-2 focus:ring-pink-400 w-8 hover:translate-0 
+              text-white font-raleway max-w-fit mr-1 py-1 px-2 rounded-full focus:outline-black  hover:ring-pink-400 hover:ring-2 w-8 hover:translate-0 
               hover:transition-shadow mt-4">-</button>
 
                 <span id="quantity-<?php echo $row['foodID']; ?>" class="text-pink-700 font-bold text-center w-6"><?php echo $row["quantity"]; ?> </span>
 
                 <button onclick="updateCart('<?php echo $row['foodID']; ?>', 'add')"
-                  class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway max-w-fit ml-1 py-1 px-2 rounded-md focus:outline-black 
-                  focus:ring-2 focus:ring-pink-400 w-8 hover:translate-0 hover:transition-shadow mt-4">+</button>
+                  class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway max-w-fit ml-1 py-1 px-2 rounded-full focus:outline-black 
+                  focus:ring-2 hover:ring-pink-400 hover:ring-2 w-8 hover:translate-0 hover:transition-shadow mt-4">+</button>
               </div>
             </li>
             <?PHP
@@ -162,8 +162,8 @@ include("protection.php");
         <!-- ******************* Payment gateway code *********************-->
         
         <a href="../output/homepage.php"
-          class="bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 m-4 rounded-full border-pink-600
-           focus:outline-black focus:ring-2 focus:ring-pink-400 max-w-fit hover:translate-0 hover:transition-shadow md:mx-2">
+          class="bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 m-4 rounded-full ring-pink-400 ring-2
+           hover:ring-2 hover:ring-pink-100 max-w-fit hover:translate-0 hover:transition-shadow md:mx-2">
           Back to menu
         </a>
         <form style='margin:0 auto; text-align:center;' action="https://sandbox.aamarpay.com/index.php" method="post"
@@ -208,7 +208,7 @@ include("protection.php");
 
             <input type="submit"
               class='button bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
-                          focus:outline-4 focus:outline-pink-700 focus:ring-2 focus:ring-pink-400 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2">'
+                          hover:ring-2 hover:ring-pink-400 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2">'
               value="Proceed to Payment" name="pay">
           </table>
         </form>
