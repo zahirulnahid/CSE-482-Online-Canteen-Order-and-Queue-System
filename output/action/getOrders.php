@@ -1,6 +1,6 @@
 <?php
-include("connection.php");
-include("protection.php");
+include("../protection.php");
+include("../connection.php");
 //Implementation of lazy load
 $start = mysqli_real_escape_string($conn, $_POST['start']);
 
@@ -8,8 +8,9 @@ $start = mysqli_real_escape_string($conn, $_POST['start']);
 $sql = "SELECT  `Bill`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`
         FROM `Bill`
         INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
+        WHERE users.email= '" . $_SESSION['email'] . "'
         ORDER BY OrderID DESC 
-        LIMIT $start,3
+        LIMIT $start,5
         ;";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -40,13 +41,6 @@ if (mysqli_num_rows($result) > 0) {
                         </h3>
                         <h3 class='text-base font-bold text-gray-900 mb-1'>
                             Date: " . $rows['Order_Date'] .
-            "</h3>
-            </h3>
-                        <h3 class='text-base font-bold text-gray-900 mb-1'>
-                            Customer Name: " . $rows['Customer_Name'] .
-            "</h3>
-            <h3 class='text-base font-bold text-gray-900 mb-1'>
-                            Customer Email: " . $rows['Customer_Email'] .
             "</h3>";
 
         for ($index = 0; $index < $length; $index++) {

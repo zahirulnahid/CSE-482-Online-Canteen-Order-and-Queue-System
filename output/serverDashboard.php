@@ -25,19 +25,7 @@ include("protection.php");
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
    <!-- Navbar -->
-    <nav class="bg-gray-900 bg-opacity-40 py-4 px-14">
-        <div class="container mx-auto flex  justify-between items-center px-4">
-            <a href="#" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
-
-            <div>
-                <button
-                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full focus:outline-black 
-                                            focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
-                    type="submit">Log Out</button>
-            </div>
-        </div>
-
-    </nav>
+ <?php include('ui/header.php'); ?>
 
     <div class="flex m-14">
         <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->

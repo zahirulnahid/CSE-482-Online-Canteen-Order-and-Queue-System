@@ -25,19 +25,8 @@ include("protection.php");
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
-    <nav class="bg-gray-900 bg-opacity-40 py-4 px-14">
-        <div class="container mx-auto flex font-bold justify-between items-center px-4">
-            <a href="#" class="text-gray-900 text-2xl font-raleway">NSU Canteen - Manage Account</a>
+ <?php include('ui/header.php'); ?>
 
-            <div>
-                <button
-                    class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway py-3 px-5 rounded-full focus:outline-black 
-                                            focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
-                    type="submit">Log Out</button>
-            </div>
-        </div>
-
-    </nav>
 
 
 
@@ -94,7 +83,7 @@ include("protection.php");
                             <?php echo $rows["category"]; ?>
                         </p>
 
-                        <a href="deleteAccount.php?id=<?php echo $rows["email"]; ?>&redirect=manageAccount.php" name="delete"
+                        <a href="action/deleteAccount.php?id=<?php echo $rows["email"]; ?>&redirect=manageAccount.php" name="delete"
                             value="Delete Account" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Delete</a>
 

@@ -12,29 +12,22 @@ include("protection.php");
   <title>Update Menu</title>
   <link rel="stylesheet" href="outputstyles.css">
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
   style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
   <!-- Navbar -->
-  <nav class="bg-pink-700 bg-opacity-40 py-4 px-14">
-    <div class="container mx-auto flex font-serif justify-between items-center px-4">
-      <a href="#" class="text-gray-800 text-2xl font-bold">NSU Canteen</a>
+ <?php include('ui/header.php'); ?>
 
-      <div>
-        <button
-          class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-bold py-3 px-5 rounded-full focus:outline-black 
-                                            focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow"
-          type="submit">Log Out</button>
-      </div>
-    </div>
-
-  </nav>
 
 
   <!-- menu list view -->
-  <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">
+  <ul class="grid grid-cols-1 gap-4 mx-auto my-28 px-20 container shadow-none">
     <?php
     include('connection.php');
 
@@ -58,7 +51,7 @@ include("protection.php");
           <img src="<?php echo $rows['Image_url']; ?>" alt="Product"
             class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
           <div class="p-5 flex-grow">
-            <h3 class="text-base font-bold text-gray-900 mb-1">
+            <h3 class="text-base font-raleway text-gray-900 mb-1">
               <?php echo $rows['Item_Name']; ?>
             </h3>
             <p class="text-gray-700 font-medium">
@@ -69,7 +62,7 @@ include("protection.php");
             </p>
 
             <button onclick="openModal(<?php echo $rows['id'] ?>)" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Edit</button>
+                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Edit</button>
 
             <!-- The modal -->
           </div>
@@ -78,7 +71,7 @@ include("protection.php");
 
                 <!-- Modal content -->
                 <div class="modal-content bg-white rounded-lg shadow-xl px-6 py-4">
-                  <p class="text-lg font-bold mb-2">Update item</p>
+                  <p class="text-lg font-raleway mb-2">Update item</p>
                   <form method="POST">
                     <input type="hidden" name="itemID" id="itemID" value="<?php echo $rows['id']; ?>">
                     <label for="itemName">Item Name: </label>
@@ -92,14 +85,14 @@ include("protection.php");
                       class="box-content border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br><br>
                     <div class="flex justify-between">
                       <button class="px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow"
+                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
                         onclick="updateItem(<?php echo $rows['id']; ?>)">Update</button>
                       <button class="px-5 py-2 min-w-fit  float-right bg-red-700 text-gray-100 hover:text-gray-800 hover:bg-red-100 rounded-full border-spacing-2
-                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow"
+                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
                         onclick="deleteItem()">Delete</button>
                   </form>
                   <button class="px-5 py-2 bg-gray-500 text-white-100 hover:text-gray-800 hover:bg-gray-100 rounded-full border-spacing-2
-                    font-bold focus:ring-2 hover:translate-0 hover:transition-shadow"
+                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
                     onclick="closeModal(<?php echo $rows['id'] ?>)">Close</button>
                 </div>
               </div>

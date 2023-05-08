@@ -26,20 +26,9 @@ include("protection.php");
 
 
   <!-- Navbar -->
+  <?php include('ui/header.php'); ?>
 
-
-  <nav class="bg-pink-600 bg-opacity-40 py-4 px-14 z-10">
-    <div class="container mx-auto flex font-raleway justify-between items-center px-4">
-      <a href="homepage.php" class="text-gray-800 text-2xl font-raleway">🍽NSU Canteen Admin</a>
-      <div>
-        <a href="login.php"
-          class="bg-pink-700 hover:bg-pink-50 hover:text-black text-white font-raleway ml-5 py-3 px-5 float-right rounded-full focus:outline-black 
-                                            focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">Log
-          Out</a>
-      </div>
-    </div>
-  </nav>
-
+  
   <!-- Admin dashboard -->
 
 
