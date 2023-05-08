@@ -1,6 +1,6 @@
 <?php
-include('connection.php');
-include('protection.php');
+include("../protection.php");
+include("../connection.php");
 
 if (isset($_POST['search'])) {
     $search = $_POST['search'];

@@ -61,7 +61,7 @@ include('protection.php');
     loadMore(loadFlag);
     function loadMore(start) {
         jQuery.ajax({
-            url: 'getOrders.php',
+            url: 'action/getOrders.php',
             data: 'start=' + start,
             type: 'post',
             success: function (result) {

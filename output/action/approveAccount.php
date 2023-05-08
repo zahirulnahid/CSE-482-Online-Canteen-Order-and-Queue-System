@@ -1,6 +1,6 @@
 <?php
-include("protection.php");
-include('connection.php');
+include("../protection.php");
+include("../connection.php");
 
 $email = $_GET["id"]; // get id through query string
 $sql = "UPDATE `users` SET `verified`='true' WHERE `email`= '$email';";

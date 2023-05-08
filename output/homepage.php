@@ -96,7 +96,7 @@ include('protection.php'); ?>
         </a>
 
         <!-- my order button -->
-        <a href="#"
+        <a href="myOrders.php"
           class="p-4 mt-4 text-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
           ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex">My Orders</a>
       </div>
@@ -150,7 +150,7 @@ include('protection.php'); ?>
       <script>
         function addtocart(id) {
           const xhr = new XMLHttpRequest();
-          xhr.open("GET", "addtocart.php?foodID=" + id);
+          xhr.open("GET", "action/addtocart.php?foodID=" + id);
           xhr.onload = function () {
             if (xhr.status === 200) {
               console.log(xhr.responseText);
@@ -166,7 +166,7 @@ include('protection.php'); ?>
     var search = $(this).val();
 
     $.ajax({
-      url: 'search.php',
+      url: 'action/search.php',
       method: 'POST',
       data: { search: search },
       success: function(response) {

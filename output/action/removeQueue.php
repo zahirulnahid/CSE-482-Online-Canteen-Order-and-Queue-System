@@ -1,6 +1,6 @@
 <?php
-include('connection.php');
-include('protection.php');
+include("../protection.php");
+include("../connection.php");
 
 $queueNo = $_GET["QueueID"];
 $orderID = $_GET["OrderID"];

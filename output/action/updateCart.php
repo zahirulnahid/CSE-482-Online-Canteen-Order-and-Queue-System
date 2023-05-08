@@ -1,7 +1,7 @@
 <?php
 //
-include("protection.php");
-include("connection.php");
+include("../protection.php");
+include("../connection.php");
 
 
 if (isset($_GET["foodID"]))

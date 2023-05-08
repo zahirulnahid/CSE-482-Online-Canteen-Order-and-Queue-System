@@ -73,7 +73,7 @@
     loadMore(loadFlag);
     function loadMore(start){
         jQuery.ajax({
-            url: 'getAllOrders.php',
+            url: 'action/getAllOrders.php',
             data: 'start='+start,
             type: 'post',
             success:function(result){
@@ -94,7 +94,7 @@
     var search = $(this).val();
 
     $.ajax({
-      url: 'searchOrder.php',
+      url: 'action/searchOrder.php',
       method: 'POST',
       data: { search: search },
       success: function(response) {

@@ -104,7 +104,7 @@ include("protection.php");
                     <h3 class="text-base font-raleway text-gray-900 mb-1">Order ID:
                         <?php echo $rows[$current]["OrderID"]; ?>
                     </h3>
-                    <a href="removeQueue.php?QueueID=<?php echo $rows[$current]['QueueNo']; ?>&orderID=<?php echo $rows[$current]['OrderID']; ?>" class=" p-5 m-10 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+                    <a href="action/removeQueue.php?QueueID=<?php echo $rows[$current]['QueueNo']; ?>&orderID=<?php echo $rows[$current]['OrderID']; ?>" class=" p-5 m-10 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>
                 </div>
             </li>
