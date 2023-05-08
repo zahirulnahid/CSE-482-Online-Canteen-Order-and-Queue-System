@@ -83,7 +83,7 @@ include("protection.php");
                             <?php echo $rows["category"]; ?>
                         </p>
 
-                        <a href="action/deleteAccount.php?id=<?php echo $rows["email"]; ?>&redirect=manageAccount.php" name="delete"
+                        <a href="action/deleteAccount.php?id=<?php echo $rows["email"]; ?>&redirect=manageAccount.php&action=delete" name="delete"
                             value="Delete Account" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Delete</a>
 

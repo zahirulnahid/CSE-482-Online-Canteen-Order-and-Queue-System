@@ -21,7 +21,7 @@ $sql =  "Delete from `users` where Email = '$email'"; // delete query
 if ($conn->query($sql) === TRUE) {
     if ($_GET["redirect"] == "manageAccount.php") {
         mysqli_close($conn); // Close connection
-        header("location:../manageAccount.php"); // redirects to manageAccount page
+        header("location:../manageAccount.php");// redirects to manageAccount page
         exit;
     } else if ($_GET["redirect"] == "pendingAccount.php") {
         mysqli_close($conn); // Close connection
