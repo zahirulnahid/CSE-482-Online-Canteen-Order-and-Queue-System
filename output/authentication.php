@@ -22,8 +22,8 @@ if ($result->num_rows > 0) {
       $_SESSION["email"] = $email;
       $_SESSION["name"] = $row["name"];
 
-
-      header("location: homepage.php");
+      $_SESSION["userType"]=$row["category"];
+      header("location: ".$userType[$_SESSION["userType"]][0]."");
       $cookie_name = "user";
       $cookie_value = $_POST["email"];
       if (isset($_POST["remember_me"]))

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("connection.php");
+
 $cookie_name = "user";
 if (!$_SESSION["loggedin"]&&isset($_SESSION["loggedin"])){if (isset($_COOKIE[$cookie_name])) {
   $cookie_email = $_COOKIE[$cookie_name];
@@ -17,11 +18,11 @@ if (!$_SESSION["loggedin"]&&isset($_SESSION["loggedin"])){if (isset($_COOKIE[$co
       $cookie_value = $cookie_email;
       $_SESSION["email"] = $cookie_email;
       $_SESSION["name"] = $row["name"];
-
+      $_SESSION["userType"]=$row["category"];
       setcookie($cookie_name, $cookie_value, time() + (86400 * 30));
     }
     //Redirect to homepage if user is logged in
-    header("location: homepage.php");
+    header("location: ".$userType[$_SESSION["userType"]][0]."");
   } else {
     // Redirect to login page if user is not logged in
     header("location: login.php");
