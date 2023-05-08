@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 06, 2023 at 08:58 PM
+-- Generation Time: May 08, 2023 at 11:19 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `BILL` (
   `OrderID` int(11) NOT NULL,
-  `Order_Date` date NOT NULL,
+  `Order_Date` varchar(30) NOT NULL,
+  `Time` varchar(30) NOT NULL,
   `CustomerID` int(11) NOT NULL,
   `Total_Amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,26 +39,30 @@ CREATE TABLE `BILL` (
 -- Dumping data for table `BILL`
 --
 
-INSERT INTO `BILL` (`OrderID`, `Order_Date`, `CustomerID`, `Total_Amount`) VALUES
-(1, '2023-04-05', 18, 220),
-(2, '2023-04-07', 17, 180),
-(3, '2023-04-05', 17, 100),
-(24, '2023-04-29', 2, 999),
-(25, '2023-04-29', 2, 999),
-(26, '2023-04-29', 2, 999),
-(27, '2023-04-29', 2, 999),
-(28, '2023-04-29', 2, 999),
-(29, '2023-04-29', 2, 999),
-(30, '2023-04-29', 18, 720),
-(31, '2023-04-29', 18, 299),
-(32, '2023-04-29', 18, 299),
-(33, '2023-04-29', 18, 720),
-(34, '2023-04-29', 18, 720),
-(35, '2023-04-29', 18, 300),
-(36, '2023-04-30', 18, 210),
-(37, '2023-04-30', 18, 220),
-(38, '2023-04-30', 18, 70),
-(39, '2023-05-06', 18, 310);
+INSERT INTO `BILL` (`OrderID`, `Order_Date`, `Time`, `CustomerID`, `Total_Amount`) VALUES
+(1, '2023-04-05', '', 18, 220),
+(2, '2023-04-07', '', 17, 180),
+(3, '2023-04-05', '', 17, 100),
+(24, '2023-04-29', '', 2, 999),
+(25, '2023-04-29', '', 2, 999),
+(26, '2023-04-29', '', 2, 999),
+(27, '2023-04-29', '', 2, 999),
+(28, '2023-04-29', '', 2, 999),
+(29, '2023-04-29', '', 2, 999),
+(30, '2023-04-29', '', 18, 720),
+(31, '2023-04-29', '', 18, 299),
+(32, '2023-04-29', '', 18, 299),
+(33, '2023-04-29', '', 18, 720),
+(34, '2023-04-29', '', 18, 720),
+(35, '2023-04-29', '', 18, 300),
+(36, '2023-04-30', '', 18, 210),
+(37, '2023-04-30', '', 18, 220),
+(38, '2023-04-30', '', 18, 70),
+(39, '2023-05-06', '', 18, 310),
+(40, '2023-05-07', '', 18, 200),
+(41, '2023-05-08', '10:13 pm', 18, 120),
+(42, '2023-05-08', '10:18 pm', 18, 70),
+(43, '2023-05-08', '10:27 pm', 18, 260);
 
 -- --------------------------------------------------------
 
@@ -93,7 +98,8 @@ INSERT INTO `cart` (`id`, `foodID`, `email`, `quantity`, `timestamp`) VALUES
 (13, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
 (14, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
 (15, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(16, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04');
+(16, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
+(44, 2, 'ayman@nsu.edu', 1, '2023-05-08');
 
 -- --------------------------------------------------------
 
@@ -188,7 +194,12 @@ INSERT INTO `Orders` (`OrderID`, `ItemID`, `Quantity`, `served`) VALUES
 (37, 4, 2, 'yes'),
 (38, 3, 1, 'no'),
 (39, 2, 3, 'no'),
-(39, 6, 1, 'no');
+(39, 6, 1, 'no'),
+(40, 1, 2, 'no'),
+(40, 2, 0, 'no'),
+(41, 6, 1, 'no'),
+(42, 3, 1, 'no'),
+(43, 2, 2, 'no');
 
 -- --------------------------------------------------------
 
@@ -198,19 +209,22 @@ INSERT INTO `Orders` (`OrderID`, `ItemID`, `Quantity`, `served`) VALUES
 
 CREATE TABLE `Queue` (
   `QueueNo` int(11) NOT NULL,
-  `OrderID` int(11) NOT NULL
+  `OrderID` int(11) NOT NULL,
+  `Counter` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Queue`
 --
 
-INSERT INTO `Queue` (`QueueNo`, `OrderID`) VALUES
-(1, 1),
-(2, 2),
-(4, 38),
-(6, 39),
-(7, 39);
+INSERT INTO `Queue` (`QueueNo`, `OrderID`, `Counter`) VALUES
+(1, 1, 0),
+(2, 2, 0),
+(4, 38, 0),
+(6, 39, 0),
+(7, 39, 0),
+(8, 40, 0),
+(9, 40, 0);
 
 -- --------------------------------------------------------
 
@@ -229,12 +243,12 @@ CREATE TABLE `SALES_REPORT` (
 --
 
 INSERT INTO `SALES_REPORT` (`ItemID`, `Units_Sold`, `Total_Revenue`) VALUES
-(1, 46, 4600),
-(2, 24, 1980),
-(3, 11, 770),
+(1, 48, 4800),
+(2, 26, 2160),
+(3, 12, 840),
 (4, 3, 330),
 (5, 41, 3280),
-(6, 92, 3680),
+(6, 93, 3720),
 (7, 10, 800),
 (8, 1, 90);
 
@@ -261,7 +275,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `category`, `name`, `email`, `phone`, `password`, `verified`) VALUES
 (2, 2, 'a', 'a', '2', 'a', 'true'),
 (17, 1, 'Md. Zahirul Islam Nahid', 'zahirulnahid@gmail.com', '01554518620', '25d55ad283aa400af464c76d713c07ad', 'true'),
-(18, 1, 'Ayman', 'ayman@nsu.edu', '11111111111', '1bbd886460827015e5d605ed44252251', 'true');
+(18, 1, 'Ayman', 'ayman@nsu.edu', '11111111111', '1bbd886460827015e5d605ed44252251', 'true'),
+(19, 4, 'admin', 'admin@nsu.edu', '11111111111', '1bbd886460827015e5d605ed44252251', 'pending');
 
 -- --------------------------------------------------------
 
@@ -354,31 +369,31 @@ ALTER TABLE `user_category`
 -- AUTO_INCREMENT for table `BILL`
 --
 ALTER TABLE `BILL`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `food_list`
 --
 ALTER TABLE `food_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `Queue`
 --
 ALTER TABLE `Queue`
-  MODIFY `QueueNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `QueueNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
