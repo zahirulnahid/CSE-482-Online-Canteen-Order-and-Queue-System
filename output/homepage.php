@@ -166,7 +166,7 @@ include('protection.php'); ?>
     var search = $(this).val();
 
     $.ajax({
-      url: 'search.php',
+      url: 'action/search.php',
       method: 'POST',
       data: { search: search },
       success: function(response) {
