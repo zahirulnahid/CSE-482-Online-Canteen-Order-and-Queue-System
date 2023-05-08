@@ -166,7 +166,7 @@ include("protection.php");
     </center>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
       <?php
-      $sql = "SELECT * FROM `Food_List`";
+      $sql = "SELECT *,(SELECT units_sold FROM `SALES_REPORT` WHERE ItemID = `Food_List`.`id`) as `units_sold` FROM `Food_List`";
       $result = $conn->query($sql);
 
       //declare array to store the data of database
@@ -195,13 +195,7 @@ include("protection.php");
               </p>
               <div class="flex items-center mt-4">
                 💰Total Sold: -
-                <?php
-                $salesQuery = "SELECT units_sold FROM `SALES_REPORT` WHERE ItemID = '" . $rows["id"] . "'";
-                $sold = $conn->query($salesQuery);
-                $sold = mysqli_fetch_column($sold);
-                
-                echo $sold;
-                ?>
+                <?php echo $rows["units_sold"]; ?>
               </div>
             </div>
           </div>
