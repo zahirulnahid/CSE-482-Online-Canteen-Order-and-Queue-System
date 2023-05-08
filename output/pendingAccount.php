@@ -81,9 +81,9 @@ include("protection.php");
                             <?php echo $rows["category"]; ?>
                         </p>
 
-                        <a href="approveAccount.php?id=<?php echo $rows["email"]; ?>" class=" p-3 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-200 rounded-full border-spacing-2
+                        <a href="action/userHandle.php?id=<?php echo $rows["email"]; ?>&action=approve" class=" p-3 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-200 rounded-full border-spacing-2
                             font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Approve</a>
-                        <a href="deleteAccount.php?id=<?php echo $rows["email"]; ?>&redirect=pendingAccount.php" class=" p-3 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-200 rounded-full border-spacing-2
+                        <a href="action/userHandle.php?id=<?php echo $rows["email"]; ?>&action=delete" class=" p-3 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-200 rounded-full border-spacing-2
                 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Decline</a>
                     </div>
                 </li>
