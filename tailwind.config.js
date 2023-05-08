@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       fontFamily:{
         comfortaa: ["Comfortaa"],
-        raleway:["Raleway"]
+        raleway:["Raleway"],
+        fatface:["Abril+Fatface"]
       }
     },
   },
