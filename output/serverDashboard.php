@@ -54,64 +54,39 @@ include("protection.php");
 
     <!-- menu list view -->
     <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none p-16">
-        <?php
-        include('connection.php');
-        //join queue table and order table
-        $sql = "SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `Orders`.served, `food_list`.`Item_Name`
-        FROM `Orders`
-        INNER JOIN food_list ON Orders.ItemID= food_list.id
-        INNER JOIN `QUEUE` ON `Orders`.OrderID= `QUEUE`.OrderID
-        INNER JOIN `BILL` on `Orders`.`OrderID`=`BILL`.OrderID
-        INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
-        WHERE served = 'no'
-        ;";
-        $result = $conn->query($sql);
-        $current = 0;
-        //fetch results and store in an array
-        $rows = $result->fetch_all(MYSQLI_ASSOC);
-        //total number of results
-        $length = count($rows);
+    <?php
+include('connection.php');
 
-        //prin
-        for ($index = 0; $index < $length; $index++) {
-            $current = $index;
-            ?>
-            <li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-                <div class=" flex-grow">
-                    <?php
-                    //all items in the same Order Number will be served in one queue
-                    //group items having same OrderID together
-                    for ($j = $index; $j < $length; $j++) {
-                        if ($rows[$j]["OrderID"] == $rows[$current]["OrderID"]) {
-                            ?>
-                            <h3 class="text-base font-raleway text-gray-900 mb-1">
-                                <?php echo $rows[$j]["Quantity"] . " x ";
-                                echo $rows[$j]["Item_Name"];
-                        }
-                        if ($rows[$j + 1]["OrderID"] == $rows[$current]["OrderID"])
-                            $index++;
-                    } ?>
-                    </h3>
-                    <h3 class="text-base font-raleway text-gray-900 mb-1">
-                        <?php echo $rows[$current]["Customer_Name"]; ?>
-                    </h3>
-                    <p class="text-base font-raleway text-gray-900 mb-1">
-                        <?php echo $rows[$current]["Customer_Email"]; ?>
-                    </p>
-                    <h3 class="text-base font-raleway text-gray-900 mb-1">Queue No:
-                        <?php echo $rows[$current]["QueueNo"]; ?>
-                    </h3>
-                    <h3 class="text-base font-raleway text-gray-900 mb-1">Order ID:
-                        <?php echo $rows[$current]["OrderID"]; ?>
-                    </h3>
-                    <a href="removeQueue.php?QueueID=<?php echo $rows[$current]['QueueNo']; ?>&orderID=<?php echo $rows[$current]['OrderID']; ?>" class=" p-5 m-10 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>
-                </div>
-            </li>
-            <?php
-        }
-        $conn->close();
-        ?>
+$sql = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `Orders`.served, `food_list`.`Item_Name`
+        FROM `Orders`
+        INNER JOIN food_list ON Orders.ItemID = food_list.id
+        INNER JOIN `QUEUE` ON `Orders`.OrderID = `QUEUE`.OrderID
+        INNER JOIN `BILL` ON `Orders`.`OrderID` = `BILL`.OrderID
+        INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
+        WHERE served = 'no';";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">';
+        echo '<div class="flex-grow">';
+        echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $row["Quantity"] . ' x ' . $row["Item_Name"] . '</h3>';
+        echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $row["Customer_Name"] . '</h3>';
+        echo '<p class="text-base font-raleway text-gray-900 mb-1">' . $row["Customer_Email"] . '</p>';
+        echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Queue No: ' . $row["QueueNo"] . '</h3>';
+        echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Order ID: ' . $row["OrderID"] . '</h3>';
+        echo '<a href="removeQueue.php?QueueID=' . $row["QueueNo"] . '&orderID=' . $row["OrderID"] . '" class="p-5 m-10 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>';
+        echo '</div>';
+        echo '</li>';
+    }
+} else {
+    echo "No records found.";
+}
+
+$conn->close();
+?>
+
 
     </ul>
 
