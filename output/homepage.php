@@ -81,7 +81,7 @@ include('protection.php'); ?>
             width="24">
           <span class="mr-1">Cart (<span id="cart-count">
               <?php
-              $sql = "SELECT count(id)as `total` FROM cart where email='" . $_SESSION["email"] . "'";
+              $sql = "SELECT sum(quantity)as `total` FROM cart where email='" . $_SESSION["email"] . "'";
               $result = $conn->query($sql);
 
               if ($result->num_rows > 0) {
