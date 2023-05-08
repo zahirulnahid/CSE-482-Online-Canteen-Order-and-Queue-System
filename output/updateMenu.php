@@ -47,7 +47,7 @@ include("protection.php");
 
         ?>
 
-        <li class="bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
+        <li class="bg-gray-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
           <img src="<?php echo $rows['Image_url']; ?>" alt="Product"
             class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
           <div class="p-5 flex-grow">
@@ -61,43 +61,48 @@ include("protection.php");
               <?php echo $rows['Description']; ?>
             </p>
 
-            <button onclick="openModal(<?php echo $rows['id'] ?>)" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
+            <button onclick="openModal(<?php echo $rows['id'] ?>)" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:ring-2 hover:ring-pink-600 hover:bg-gray-100 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Edit</button>
 
             <!-- The modal -->
           </div>
           <div id="myModal_<?php echo $rows['id'] ?>" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
-              <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+              <div class="flex items-center justify-center min-h-screen pt-4 px-4 my-auto text-center sm:block sm:p-0">
 
                 <!-- Modal content -->
-                <div class="modal-content bg-white rounded-lg shadow-xl px-6 py-4">
-                  <p class="text-lg font-raleway mb-2">Update item</p>
+                <div class="modal-content bg-gray-500 text-gray-50 flex ring-4 ring-pink-600 justify-center items-center rounded-xl mt-20 px-6 py-4 m-auto max-w-fit shadow-2xl">
+                
+
+
                   <form method="POST">
                     <input type="hidden" name="itemID" id="itemID" value="<?php echo $rows['id']; ?>">
                     <label for="itemName">Item Name: </label>
                     <input type="text" name="itemName" id="itemName" placeholder="<?php echo $rows['Item_Name']; ?>"
-                      class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br><br>
+                      class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
                     <label for="price">Price: </label>
                     <input type="text" name="price" id="price" placeholder="<?php echo $rows['Price']; ?>"
-                      class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br><br>
+                      class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
                     <label for="description">Description: </label>
                     <input type="text" name="description" id="description" placeholder="<?php echo $rows["Description"]; ?>"
-                      class="box-content border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"><br><br>
+                      class="box-content border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
                     <div class="flex justify-between">
-                      <button class="px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
-                        onclick="updateItem(<?php echo $rows['id']; ?>)">Update</button>
-                      <button class="px-5 py-2 min-w-fit  float-right bg-red-700 text-gray-100 hover:text-gray-800 hover:bg-red-100 rounded-full border-spacing-2
+                      
+                      <button class="px-5 py-2 min-w-fit  float-right bg-white text-gray-900 hover:text-gray-100 hover:bg-pink-700 hover:ring-2 ring-pink-600 ring-600 ring-2 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
                         onclick="deleteItem()">Delete</button>
-                  </form>
-                  <button class="px-5 py-2 bg-gray-500 text-white-100 hover:text-gray-800 hover:bg-gray-100 rounded-full border-spacing-2
+                        <button class="px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
-                    onclick="closeModal(<?php echo $rows['id'] ?>)">Close</button>
+                        onclick="updateItem(<?php echo $rows['id']; ?>)">Update</button>
+
+                        <button class="px-5 py-2 bg-gray-50 text-gray-900 hover:bg-gray-900 hover:text-white ring-2 ring-pink-500 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2
+                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
+                        onclick="closeModal(<?php echo $rows['id'] ?>)">Close</button>
+                          </form>
+                      
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-        </li>
+            </li>
           
       <?php } ?>
   </ul>
