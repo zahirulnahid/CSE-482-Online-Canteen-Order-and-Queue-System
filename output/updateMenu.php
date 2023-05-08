@@ -90,6 +90,9 @@ include("protection.php");
                     font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">Edit</button>
 
             <!-- The modal -->
+          </div>
+
+        </li>
             <div id="myModal_<?php echo $rows['id'] ?>" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
               <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 
@@ -121,9 +124,6 @@ include("protection.php");
                 </div>
               </div>
             </div>
-          </div>
-
-        </li>
       <?php } ?>
   </ul>
 
@@ -137,41 +137,41 @@ include("protection.php");
       document.getElementById("myModal_" + x).classList.add("hidden");
     }
 
-    function updateItem(x) {
+    // function updateItem(x) {
 
-      <?php
-      $itemName = $_POST['itemName'];
-      $price = $_POST['price'];
-      $description = $_POST['description'];
+    //   <?php
+    //   $itemName = $_POST['itemName'];
+    //   $price = $_POST['price'];
+    //   $description = $_POST['description'];
 
-      foreach ($row as $rows) {
-        if ($rows['id'] == $_POST['itemID']) {
-          if (empty(trim($itemName))) {
-            $itemName = $rows['Item_Name'];
-          }
-          if (empty(trim($price))) {
-            $price = $rows['Price'];
-          }
-          if (empty(trim($description))) {
-            $description = $rows['Description'];
-          }
-        }
-      }
-      $update = "UPDATE `food_list` SET `Item_Name`='" . $itemName . "',`Price`='" . $price . "',`Description`='" . $description . "' WHERE `food_list`.`id` = '" . $_POST['itemID'] . "';";
-      $result = $conn->query($update);
-      ?>
-      setTimeout(function () {
-        window.location.reload();
-      }, 5000);
-    }
+    //   foreach ($row as $rows) {
+    //     if ($rows['id'] == $_POST['itemID']) {
+    //       if (empty(trim($itemName))) {
+    //         $itemName = $rows['Item_Name'];
+    //       }
+    //       if (empty(trim($price))) {
+    //         $price = $rows['Price'];
+    //       }
+    //       if (empty(trim($description))) {
+    //         $description = $rows['Description'];
+    //       }
+    //     }
+    //   }
+    //   $update = "UPDATE `food_list` SET `Item_Name`='" . $itemName . "',`Price`='" . $price . "',`Description`='" . $description . "' WHERE `food_list`.`id` = '" . $_POST['itemID'] . "';";
+    //   $result = $conn->query($update);
+    //   ?>
+    //   setTimeout(function () {
+    //     window.location.reload();
+    //   }, 5000);
+    // }
 
-    function deleteItem() {
-      <?php
-      $delete = "DELETE FROM `food_list` WHERE `food_list`.`id`= '" . $_POST['itemID'] . "';";
-      $result = $conn->query($delete);
-      $conn->close();
-      ?>
-    }
+    // function deleteItem() {
+    //   <?php
+    //   $delete = "DELETE FROM `food_list` WHERE `food_list`.`id`= '" . $_POST['itemID'] . "';";
+    //   $result = $conn->query($delete);
+    //   $conn->close();
+    //   ?>
+    // }
   </script>
    <?php include ('ui/footer.php');?>
 </body>
