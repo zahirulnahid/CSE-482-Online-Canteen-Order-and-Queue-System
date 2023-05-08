@@ -32,24 +32,6 @@ include("protection.php");
 
   </nav>
 
-  <div class="flex m-14">
-    <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
-    <!-- search bar -->
-    <div class="px-20 my-4 p-4 w-full float-left">
-      <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
-      <input
-        class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-        type="search" name="search" id="search">
-      <button href="invoice.php" class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                            font-bold focus:ring-2 hover:translate-0 hover:transition-shadow">
-        <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24"
-          width="24">
-        Cart(0)
-      </button>
-    </div>
-
-
-  </div>
 
   <!-- menu list view -->
   <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none">

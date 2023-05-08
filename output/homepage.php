@@ -81,7 +81,7 @@ include('protection.php'); ?>
             width="24">
           <span class="mr-1">Cart (<span id="cart-count">
               <?php
-              $sql = "SELECT count(id)as `total` FROM cart where email='" . $_SESSION["email"] . "'";
+              $sql = "SELECT sum(quantity)as `total` FROM cart where email='" . $_SESSION["email"] . "'";
               $result = $conn->query($sql);
 
               if ($result->num_rows > 0) {
@@ -150,7 +150,7 @@ include('protection.php'); ?>
       <script>
         function addtocart(id) {
           const xhr = new XMLHttpRequest();
-          xhr.open("GET", "addtocart.php?foodID=" + id);
+          xhr.open("GET", "action/addtocart.php?foodID=" + id);
           xhr.onload = function () {
             if (xhr.status === 200) {
               console.log(xhr.responseText);
