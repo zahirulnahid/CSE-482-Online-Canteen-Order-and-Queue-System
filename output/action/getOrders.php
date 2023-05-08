@@ -41,6 +41,8 @@ if (mysqli_num_rows($result) > 0) {
                         </h3>
                         <h3 class='text-base font-bold text-gray-900 mb-1'>
                             Date: " . $rows['Order_Date'] .
+            "</h3>            <h3 class='text-base font-bold text-gray-900 mb-1'>
+                            Time: " . $rows['Time'] .
             "</h3>";
 
         for ($index = 0; $index < $length; $index++) {
