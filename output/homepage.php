@@ -25,7 +25,7 @@ include('protection.php'); ?>
 
   <nav class="bg-gray-900 bg-opacity-50 py-4 px-4 sm:px-6 lg:px-14 z-10">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="homepage.php" class="text-gray-900 text-2xl border-white font-fatface">NSU Canteen</a>
+      <a href="homepage.php" class="text-gray-100 text-2xl border-white font-fatface">NSU Canteen</a>
       <div class="hidden sm:block">
         <a href="login.php" class="bg-pink-700 hover:bg-white hover:text-black text-white font-raleway py-3 px-5 rounded-full
       focus:outline-black focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">Log
