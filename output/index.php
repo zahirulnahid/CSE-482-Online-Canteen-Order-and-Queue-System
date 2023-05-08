@@ -2,7 +2,7 @@
 session_start();
 include("connection.php");
 $cookie_name = "user";
-if (isset($_COOKIE[$cookie_name])) {
+if (!$_SESSION["loggedin"]&&isset($_SESSION["loggedin"])){if (isset($_COOKIE[$cookie_name])) {
   $cookie_email = $_COOKIE[$cookie_name];
   echo $sql = "SELECT * FROM `users` WHERE `email`='$cookie_email'";
 
@@ -29,8 +29,8 @@ if (isset($_COOKIE[$cookie_name])) {
 
 
   //if($_SESSION["loginas"]=="user") header("location: homepage.php");else header("location: login.php");
-} else {
+}} else {
   // Redirect to login page if user is not logged in
-  header("location: login.php");
+  header("location: homepage.php");
 }
 ?>
