@@ -52,9 +52,14 @@ include("protection.php");
       include("connection.php");
 
       $sql = "SELECT COUNT(email) from users WHERE `verified`='pending';";
-
       $result = $conn->query($sql);
-      $result = mysqli_fetch_column($result);
+      if ($result) {
+        $row = $result->fetch_row();
+        $count = $row[0];
+        // Use $count as needed
+    } else {
+        // Handle the case where the query fails
+    }
       ?>
       <div
         class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
@@ -64,7 +69,7 @@ include("protection.php");
           <a href="pendingAccount.php" class="text-pink-500 font-semibold mt-4">Click here to view pending accounts</a>
           <!-- <p class="text-pink-500 font-semibold mt-4">100 BDT</p> -->
           <div class="flex items-center mt-4">
-            👥Pending users - <?php echo $result;?>
+            👥Pending users - <?php echo $count;?>
           </div>
         </div>
       </div>
@@ -76,7 +81,13 @@ include("protection.php");
           $sql = "SELECT COUNT(email) from users;";
 
           $result = $conn->query($sql);
-          $result = mysqli_fetch_column($result);
+          if ($result) {
+            $row = $result->fetch_row();
+            $count = $row[0];
+            // Use $count as needed
+        } else {
+            // Handle the case where the query fails
+        }
         ?>
         <div class="p-10">
           <h2 class="text-xl font-raleway mb-2">Manage Account</h2>
@@ -85,7 +96,7 @@ include("protection.php");
           <!-- <p class="text-pink-500 font-semibold mt-4">70 BDT</p> -->
           <div class="flex items-center mt-4">
             👥Total users: -
-            <?php echo $result; ?>
+            <?php echo $count; ?>
           </div>
         </div>
       </div>
@@ -116,8 +127,13 @@ include("protection.php");
             $sql = "SELECT COUNT(Item_Name) from FOOD_LIST;";
 
             $result = $conn->query($sql);
-            $result = mysqli_fetch_column($result);
-            echo $result;
+            if ($result) {
+              $row = $result->fetch_row();
+             echo $count = $row[0];
+              // Use $count as needed
+          } else {
+              // Handle the case where the query fails
+          }
             ?>
           </div>
           
@@ -183,6 +199,7 @@ include("protection.php");
                 $salesQuery = "SELECT units_sold FROM `SALES_REPORT` WHERE ItemID = '" . $rows["id"] . "'";
                 $sold = $conn->query($salesQuery);
                 $sold = mysqli_fetch_column($sold);
+                
                 echo $sold;
                 ?>
               </div>
