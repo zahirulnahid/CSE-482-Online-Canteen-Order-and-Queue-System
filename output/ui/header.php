@@ -1,3 +1,16 @@
+<?php
+$userType[4]=array('adminDashboard.php','manageAccount.php','pendingAccount.php','salesInfo.php','updateMenu.php','orderHistory.php');
+//(USER)
+$userType[1]=array('homepage.php','invoice.php','myOrders.php');
+$userType[2]=$userType[1];
+//(STAFF)
+$userType[3]=array('serverDashboard.php');
+$curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  
+if(in_array($curPageName,$userType[$_SESSION["userType"]])){
+
+}
+else header("location: ".$userType[$_SESSION["userType"]][0]."");
+?>
 <nav class="bg-gray-900 bg-opacity-50 py-4 px-4 sm:px-6 lg:px-14 z-10">
     <div class="container mx-auto flex justify-between items-center">
         <a href="<?php echo $userType[$_SESSION["userType"]][0]?>" class="text-gray-100 text-2xl border-white font-fatface">NSU Canteen</a>
