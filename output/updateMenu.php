@@ -74,25 +74,31 @@ include("protection.php");
                 
 
 
-                  <form method="POST">
+                  <form method="GET">
                     <input type="hidden" name="itemID" id="itemID" value="<?php echo $rows['id']; ?>">
                     <label for="itemName">Item Name: </label>
-                    <input type="text" name="itemName" id="itemName" placeholder="<?php echo $rows['Item_Name']; ?>"
+                    <input type="text" name="itemName" id="itemName" value="<?php echo $rows['Item_Name']; ?>"
                       class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
                     <label for="price">Price: </label>
-                    <input type="text" name="price" id="price" placeholder="<?php echo $rows['Price']; ?>"
+                    <input type="text" name="price" id="price" value="<?php echo $rows['Price']; ?>"
                       class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
                     <label for="description">Description: </label>
-                    <input type="text" name="description" id="description" placeholder="<?php echo $rows["Description"]; ?>"
+                    <input type="text" name="description" id="description" value="<?php echo $rows["Description"]; ?>"
                       class="box-content border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
                     <div class="flex justify-between">
-                      
+                    <label for="keyword">Keywords: </label>
+                    <input type="text" name="keyword" id="keyword" value="<?php echo $rows['keywords']; ?>"
+                      class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
+                    <label for="image">Image: </label>
+                    <input type="text" name="image" id="image" value="<?php echo $rows['Image_url']; ?>"
+                      class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
+
                       <button class="px-5 py-2 min-w-fit  float-right bg-white text-gray-900 hover:text-gray-100 hover:bg-pink-700 hover:ring-2 ring-pink-600 ring-600 ring-2 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
-                        onclick="deleteItem()">Delete</button>
+                        onclick="deleteItem(document.getElementById('itemID').value)">Delete</button>
                         <button class="px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
-                        onclick="updateItem(<?php echo $rows['id']; ?>)">Update</button>
+                        onclick="updateItem(document.getElementById('itemID'), document.getElementById('itemName').value, document.getElementById('price').value, document.getElementById('description').value, document.getElementById('keyword').value, document.getElementById('image').value)">Update</button>
 
                         <button class="px-5 py-2 bg-gray-50 text-gray-900 hover:bg-gray-900 hover:text-white ring-2 ring-pink-500 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
@@ -116,7 +122,27 @@ include("protection.php");
     function closeModal(x) {
       document.getElementById("myModal_" + x).classList.add("hidden");
     }
-
+    function updateItem(id, name, price, description, keyword, image) {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", "action/handleItem.php?action=update&foodID=" + id + "&name=" + name + "&price=" + price + "&description=" + description + "&keyword=" + keyword + "&image=" + image);
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              console.log("updated")
+            }
+          };
+          xhr.send();
+        }
+        function deleteItem(id) {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", "action/handleItem.php?action=delete&foodID=" + id);
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              console.log("Del")
+            }
+          };
+          xhr.send();
+        }
+    
     // function updateItem(x) {
 
     //   <?php
