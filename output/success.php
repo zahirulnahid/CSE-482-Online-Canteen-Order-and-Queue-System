@@ -1,5 +1,21 @@
 <?php
 include("protection.php");
+require('config.php');
+
+
+// \Stripe\Stripe::setVerifySslCerts(false);
+
+$token = $_POST['stripeToken'];
+
+
+$data= \Stripe\Charge::create(array (
+    "amount"=>$_POST["amount"],
+        "currency"=>"bdt",
+        "description"=>"NSU canteen",
+        "source"=>$token,
+  )
+);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,19 +38,19 @@ include("protection.php");
 
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if ( $data["status"]== "succeeded") {
 
-  $paystatus = $_POST['pay_status'];
+  $paystatus =$data["status"];
 
-  $amount = $_POST['amount'];
-  $customerName = $_POST['cus_name'];
-  $cardNumber = $_POST['card_number'];
-  $time = $_POST['pay_time'];
-  $cardType = $_POST['card_type'];
+ $amount = $data["amount"]/100;
+ $customerName =$data['customer'];
+  $cardNumber = $data['source']['last4'];
+  $time = $data['created'];
+  $cardType = $data['paid'];
 
   //you can get all parameter from post request
   // print_r($_POST);
-}
+
 //Creating Bill and Order
 include('connection.php');
 
@@ -73,6 +89,7 @@ if ($conn->query($bill) == TRUE) {
     }
   }
 }
+}
 ?>
 
 
@@ -102,16 +119,16 @@ if ($conn->query($bill) == TRUE) {
 
       <p class="mt-4 pl-4 text-gray-600">
 
-        <li class="mt-4 p-4 text-pink-600">Amount :
+        <li class="mt-4 p-4 text-pink-600">Amount :<?php echo $amount?>
          
         </li>
-        <li class="mt-4 p-4 text-pink-600">Payment Type :
+        <li class="mt-4 p-4 text-pink-600">Payment Type :<?php echo $cardType?>
           
         </li>
-        <li class="mt-4 p-4 text-pink-600">Card Number :
+        <li class="mt-4 p-4 text-pink-600">Card Number :<?php echo $cardNumber?>
           
         </li>
-        <li class="mt-4 p-4 text-pink-600">Time :
+        <li class="mt-4 p-4 text-pink-600">Time :<?php echo $date." ".$orderTime?>
          
         </li>
 

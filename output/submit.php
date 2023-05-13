@@ -8,13 +8,13 @@ $token = $_POST['stripeToken'];
 
 
 $data= \Stripe\Charge::create(array (
-    "amount"=>110,
-        "currency"=>"usd",
+    "amount"=>$_POST["amount"],
+        "currency"=>"bdt",
         "description"=>"NSU canteen",
         "source"=>$token,
   )
 );
-echo "<pre>";
-print_r($data);
-echo "</pre>";
+// echo "<pre>";
+// print_r($data);
+// echo "</pre>";
 ?>
