@@ -41,7 +41,7 @@ include("protection.php");
     </div>
 
     <!-- menu list view -->
-    <ul class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none p-16">
+    <ul class="grid grid-cols-1 gap-4 container shadow-none mx-auto p-28"> 
     <?php
 include('connection.php');
 
@@ -58,13 +58,13 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">';
-        echo '<div class="flex-grow">';
-        echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $row["Quantity"] . ' x ' . $row["Item_Name"] . '</h3>';
-        echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $row["Customer_Name"] . '</h3>';
-        echo '<p class="text-base font-raleway text-gray-900 mb-1">' . $row["Customer_Email"] . '</p>';
-        echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Queue No: ' . $row["QueueNo"] . '</h3>';
-        echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Order ID: ' . $row["OrderID"] . '</h3>';
-        echo '<a href="removeQueue.php?QueueID=' . $row["QueueNo"] . '&orderID=' . $row["OrderID"] . '" class="p-5 m-10 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>';
+        echo '<div class="flex-grow p-0">';
+            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $row["Quantity"] . ' x ' . $row["Item_Name"] . '</h3>';
+            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $row["Customer_Name"] . '</h3>';
+            echo '<p class="text-base font-raleway text-gray-900 mb-1">' . $row["Customer_Email"] . '</p>';
+            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Queue No: ' . $row["QueueNo"] . '</h3>';
+            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Order ID: ' . $row["OrderID"] . '</h3>';
+            echo '<a href="removeQueue.php?QueueID=' . $row["QueueNo"] . '&orderID=' . $row["OrderID"] . '" class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>';
         echo '</div>';
         echo '</li>';
     }

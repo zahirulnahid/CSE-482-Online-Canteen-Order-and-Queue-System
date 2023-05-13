@@ -90,32 +90,29 @@ if ($conn->query($bill) == TRUE) {
       <div class="flex items-center justify-center">
         <svg class="w-12 h-12 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
           fill="currentColor">
-          <!-- <path fill-rule="evenodd"
-            d="M8.002 13.587a.5.5 0 0 0 .71-.005l5.3-5.3a.5.5 0 0 0-.005-.71l-.006-.006a.5.5 0 0 0-.71.005L8.707 11.88 5.47
-             8.643a.5.5 0 0 0-.71 0l-.006.006a.5.5 0 0 0 0 .71l3.235 3.234a.5.5 0 0 0 .005.005z"
-            clip-rule="evenodd" /> -->
+          
         </svg>
         <h1 class="text-2xl font-bold text-pink-600">Payment
-          <?php echo $paystatus ?> !!
+          
         </h1>
       </div>
       <h3 class="mt-4 text-gray-600">Thank you for your payment
-        <?php echo $customerName ?>. Your transaction details:.
+         Your transaction details:.
       </h3>
 
       <p class="mt-4 pl-4 text-gray-600">
 
         <li class="mt-4 p-4 text-pink-600">Amount :
-          <?php echo $amount ?>
+         
         </li>
         <li class="mt-4 p-4 text-pink-600">Payment Type :
-          <?php echo $cardType ?>
+          
         </li>
         <li class="mt-4 p-4 text-pink-600">Card Number :
-          <?php echo $cardNumber ?>
+          
         </li>
         <li class="mt-4 p-4 text-pink-600">Time :
-          <?php echo $time ?>
+         
         </li>
 
 

@@ -140,59 +140,42 @@ include("protection.php");
       <div class="flex flex-col md:flex-row justify-center items-center mx-auto m-5">
 
 
-        <!-- ******************* Payment gateway code *********************-->
         
         <a href="../output/homepage.php"
-          class="bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 m-4 rounded-full ring-pink-400 ring-2
+          class="bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 m-4 rounded-full ring-pink-600 ring-2
            hover:ring-2 hover:ring-pink-100 max-w-fit hover:translate-0 hover:transition-shadow md:mx-2">
           Back to menu
         </a>
-        <form style='margin:0 auto; text-align:center;' action="https://sandbox.aamarpay.com/index.php" method="post"
-          name="form1">
-          <table border="0" cellpadding="4" cellspacing="2" align="center" style="border-collapse:collapse;">
-            <input type="hidden" name="store_id" value="aamarpaytest">
-            <input type="hidden" name="signature_key" value="dbb74894e82415a2f7ff0ec3a97e4183">
+    
+         <!-- ******************* Payment gateway code *********************-->
+                      
+<?php
+require('config.php');
+$paymentTotal=$total*100;
+?>
+        <form action="submit.php" method="POST" class="stripe-btn">
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
+                        ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2"
+                        data-key="pk_test_51N6wRoCTMtJu4CIwVY9pADeVsg3dgPlOnE669GWeuMskwfvrsOtfeeGjlgCgbrCpvqL1Ya0n9tEJhDn3KXjNpYQr00QAZNLran"
+                        data-amount="<?php echo $paymentTotal?>"
+                        data-name="NSU Canteen"
+                        data-description="NSU canteen payment"
+                        data-image=""
+                        data-currency="bdt"
+                        >
 
+          </script>
 
+          <!-- make this button functional so that it goes with the overall style -->
+          <input type="submit" class="stripe-button bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
+                        ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2" value="Proceed to payment">
 
-            <input type="hidden" name="tran_id" value="WEP-<?php echo "$cur_random_value"; ?>">
-
-            <!-- PAYMENT TOTAL   -->
-
-
-            <input type="hidden" name="amount" value="<?php echo $total; ?>  ">
-
-            <input type="hidden" name="currency" value="BDT">
-            <input type="hidden" name="cus_name" value="<?= $_SESSION["name"] ?>">
-            <input type="hidden" name="cus_email" value="<?= $_SESSION["email"] ?>">
-            <input type="hidden" name="cus_add1" value="Dhaka">
-            <input type="hidden" name="cus_add2" value="Dhaka">
-            <input type="hidden" name="cus_city" value="Dhaka">
-            <input type="hidden" name="cus_state" value="Dhaka">
-            <input type="hidden" name="cus_postcode" value="1206">
-            <input type="hidden" name="cus_country" value="Bangladesh">
-            <input type="hidden" name="cus_phone" value="010000000">
-            <input type="hidden" name="cus_fax" value="010000000">
-
-            <input type="hidden" name="amount_vatratio" value="0">
-            <input type="hidden" name="amount_vat" value="0">
-            <input type="hidden" name="amount_taxratio" value="0">
-            <input type="hidden" name="amount_tax" value="0">
-            <input type="hidden" name="amount_processingfee_ratio" value="0">
-            <input type="hidden" name="amount_processingfee" value="0">
-            <input type="hidden" name="desc" value="Products Name Payment">
-            <input type="hidden" name="success_url" value="http://localhost/CSE-482-Online-Canteen-Order-and-Queue-System/output/success.php">
-            <input type="hidden" name="fail_url" value="http://localhost/CSE-482-Online-Canteen-Order-and-Queue-System/output/success.php">
-            <input type="hidden" name="cancel_url" value="http://localhost/CSE-482-Online-Canteen-Order-and-Queue-System/output/success.php">
-
-
-
-            <input type="submit"
-              class='button bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
-                          hover:ring-2 hover:ring-pink-400 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2">'
-              value="Proceed to Payment" name="pay">
-          </table>
+       
         </form>
+            
+              
+          
+        
         </center>
 
 
