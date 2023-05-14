@@ -27,13 +27,13 @@ unset($_COOKIE['user']); ?>
 
 <body>
   <div class="flex flex-col md:flex-row">
-    <div class="w-full md:w-2/3 min-h-screen bg-cover bg-center"
+    <div class="w-full md:w-2/3 min-h-screen bg-cover bg-center  "
       style="background-image: url('../images/loginPageBg.png');"></div>
 
     <div class="w-full md:w-1/3 min-h-screen bg-gradient-to-t from-gray-200 to-gray-50 md:bg-transparent md:p-0">
       <div class="flex flex-col justify-center items-center h-full">
         <div class="bg-white p-6 rounded-lg shadow-2xl w-full md:w-96 sm:px-10 ">
-          <h2 class="text-2xl font-raleway mb-6 text-center text-gray-800">NSU cafeteria</h2>
+          <h2 class="text-2xl font-raleway mb-6 text-center font-bold text-gray-800">NSU cafeteria</h2>
 
           <!-- LOGIN FORM STARTS  -->
           <form name="myForm" method="POST" onsubmit="return validateForm()" action="authentication.php">
@@ -48,7 +48,7 @@ unset($_COOKIE['user']); ?>
               <p id="emailError" class="text-pink-500 font-raleway"></p>
             </div>
             <div class="mb-6">
-              <label class="block text-gray-700 font-raleway mb-2" for="password">Password</label>
+              <label class="block text-gray-700 font-raleway font-semibold mb-2" for="password">Password</label>
               <input
                 class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="password" name="password" id="password" required>
@@ -65,7 +65,7 @@ unset($_COOKIE['user']); ?>
 
             <div class="mb-4 flex items-center">
               <input
-                class="form-checkbox w-4 h-4  border-gray-400 text-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                class="form-checkbox w-4 h-4 font-semibold border-gray-400 text-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="checkbox" name="remember_me" id="remember_me">
               <label class="ml-2 text-gray-700 font-raleway" for="remember_me">Remember me</label>
             </div>
@@ -80,9 +80,9 @@ unset($_COOKIE['user']); ?>
 
 
           <a href="./forgotPassword.php"
-            class="text-pink-500 font-raleway hover:text-pink-700 block mt-4 hover:translate-x-0">Forgot Password</a>
+            class="text-pink-500 font-raleway hover:text-pink-700 block mt-4 font-bold hover:translate-x-0">Forgot Password</a>
           <p class="text-gray-800 mt-4 text-center">Don't have an account?
-            <a href="signUp.php" class="text-pink-500 font-raleway hover:text-pink-700 hover:translate-x-0">Sign up
+            <a href="signUp.php" class="text-pink-500 font-raleway font-bold hover:text-pink-700 hover:translate-x-0">Sign up
               here.</a>
           </p>
         </div>

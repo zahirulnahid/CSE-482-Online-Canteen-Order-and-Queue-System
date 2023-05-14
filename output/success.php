@@ -109,7 +109,7 @@ if ($conn->query($bill) == TRUE) {
           fill="currentColor">
           
         </svg>
-        <h1 class="text-2xl font-bold text-pink-600">Payment
+        <h1 class="text-2xl font-bold text-green-600">Transaction Details:
           
         </h1>
       </div>
@@ -136,7 +136,8 @@ if ($conn->query($bill) == TRUE) {
       </p>
       <div class="mt-6 flex justify-end">
         <a href="./homepage.php"
-          class="bg-pink-500 hover:bg-pink-600 text-white font-raleway py-2 px-4 rounded-full">Continue Shopping</a>
+          class="bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
+               ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2"">Continue Shopping</a>
       </div>
     </div>
   </div>

@@ -155,8 +155,7 @@ $paymentTotal=$total*100;
 ?>
         <form action="success.php" method="POST" class="stripe-btn">
           <input type="hidden" name="amount" value="<?php echo $paymentTotal?>">
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
-                        ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2"
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="pk_test_51N6wRoCTMtJu4CIwVY9pADeVsg3dgPlOnE669GWeuMskwfvrsOtfeeGjlgCgbrCpvqL1Ya0n9tEJhDn3KXjNpYQr00QAZNLran"
                         data-amount="<?php echo $paymentTotal?>"
                         data-name="NSU Canteen"

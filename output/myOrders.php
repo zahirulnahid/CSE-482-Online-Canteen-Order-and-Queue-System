@@ -22,14 +22,14 @@ include('protection.php');
 
 
 
-<body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
+<body class=" scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
     <?php include('ui/header.php'); ?>
 
     <!-- menu list view -->
-    <ul id="orders" class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none p-16">
+    <ul id="orders" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto my-28 container shadow-none p-16">
 
         <h3 class="text-base font-raleway text-gray-900 mb-1">
             Customer Name:
