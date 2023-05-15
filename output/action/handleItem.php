@@ -6,10 +6,11 @@ include('../connection.php');
 if ($_GET["action"] == "update") {
     $id = $_GET["foodID"];
     $itemName = $_GET["name"];
+    $price = $_GET["price"];
     $description = $_GET["description"];
     $keyword = $_GET["keyword"];
     $image = $_GET["image"];
-
+    
     $sql = "SELECT * FROM `food_list` WHERE `id` = $id;";
     $item = mysqli_query($conn, $sql);
     if ($item) {
@@ -17,7 +18,6 @@ if ($_GET["action"] == "update") {
         if ($item['id'] == $id) {
             if (empty(trim($itemName))) {
                 $itemName = $item['Item_Name'];
-                echo $id. " ".$itemName;
             }
             if (empty(trim($price))) {
                 $price = $item['Price'];
@@ -32,7 +32,8 @@ if ($_GET["action"] == "update") {
                 $image = $item['Image_url'];
             }
         }
-          $update = "UPDATE `food_list` SET `Item_Name`='" . $itemName . "',`Price`='" . $price . "',`Description`='" . $description . "' WHERE `food_list`.`id` = '" . $id . "';";
+          $update = "UPDATE `food_list` SET `Item_Name`='$itemName',`Price`='$price', `Description`='$description', `keywords`= '$keyword', `Image_url`= '$image' WHERE `food_list`.`id` = '" . $id . "';";
+        //   echo $update;
           $result = $conn->query($update);
           $conn->close();
     }

@@ -95,7 +95,7 @@ include("protection.php");
 
                       <button class="px-5 py-2 min-w-fit  float-right bg-white text-gray-900 hover:text-gray-100 hover:bg-pink-700 hover:ring-2 ring-pink-600 ring-600 ring-2 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
-                        onclick="deleteItem(document.getElementById('itemID').value)">Delete</button>
+                        onclick="deleteItem(document.getElementById('itemID')">Delete</button>
                         <button class="px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2
                     font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
                         onclick="updateItem(document.getElementById('itemID'), document.getElementById('itemName').value, document.getElementById('price').value, document.getElementById('description').value, document.getElementById('keyword').value, document.getElementById('image').value)">Update</button>
@@ -123,6 +123,7 @@ include("protection.php");
       document.getElementById("myModal_" + x).classList.add("hidden");
     }
     function updateItem(id, name, price, description, keyword, image) {
+          id =document.getElementById('itemID')
           const xhr = new XMLHttpRequest();
           xhr.open("GET", "action/handleItem.php?action=update&foodID=" + id + "&name=" + name + "&price=" + price + "&description=" + description + "&keyword=" + keyword + "&image=" + image);
           xhr.onload = function () {
@@ -133,6 +134,7 @@ include("protection.php");
           xhr.send();
         }
         function deleteItem(id) {
+          console.log("id: "+id);
           const xhr = new XMLHttpRequest();
           xhr.open("GET", "action/handleItem.php?action=delete&foodID=" + id);
           xhr.onload = function () {
