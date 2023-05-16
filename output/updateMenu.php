@@ -27,6 +27,8 @@ include("protection.php");
 
 
   <!-- menu list view -->
+  <a href="serverDashboard.php" class="p-4 float-right mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
+          hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow flex">Back to dashboard</a>
   <ul class="grid grid-cols-1 gap-4 mx-auto my-28 px-20 container shadow-none">
     <?php
     include('connection.php');
@@ -90,7 +92,7 @@ include("protection.php");
                     <input type="text" name="keyword" id="keyword" value="<?php echo $rows['keywords']; ?>"
                       class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
                     <label for="image">Image: </label>
-                    <input type="text" name="image" id="image" value="<?php echo $rows['Image_url']; ?>"
+                    <input type="text" name="image" id="image" value="<?php echo $rows['Image_url']; ?>> <br>
                       class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
 
                       <button class="px-5 py-2 min-w-fit  float-right bg-white text-gray-900 hover:text-gray-100 hover:bg-pink-700 hover:ring-2 ring-pink-600 ring-600 ring-2 rounded-full border-spacing-2

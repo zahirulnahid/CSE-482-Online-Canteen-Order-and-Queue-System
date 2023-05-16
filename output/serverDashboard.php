@@ -21,7 +21,7 @@ include("protection.php");
 
 
 
-<body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
+<body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat "
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
    <!-- Navbar -->
@@ -35,6 +35,9 @@ include("protection.php");
             <input
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="search" name="search" id="search">
+
+                
+      
         </div>
 
 

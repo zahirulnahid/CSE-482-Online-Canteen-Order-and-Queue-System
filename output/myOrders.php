@@ -29,16 +29,16 @@ include('protection.php');
     <?php include('ui/header.php'); ?>
 
     <!-- menu list view -->
-    <ul id="orders" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto my-28 container shadow-none p-16">
+    <ul id="orders" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto mt-10 my-28 container shadow-none md:px-32 py-10 sm:px-10">
 
-        <h3 class="text-base font-raleway text-gray-900 mb-1">
+        <h2 class=" text-lg font-raleway text-gray-900 mb-1">
             Customer Name:
             <?php echo $_SESSION['name']; ?>
-        </h3>
-        <p class="text-base font-raleway text-gray-900 mb-1">
+        </h2>
+        <h2 class="text-lg font-raleway text-gray-900 mb-1">
             Customer Name:
             <?php echo $_SESSION['email']; ?>
-        </p>
+        </h2>
     </ul>
 
     <?php include ('ui/footer.php');?>

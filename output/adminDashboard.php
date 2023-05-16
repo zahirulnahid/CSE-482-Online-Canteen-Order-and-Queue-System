@@ -34,7 +34,7 @@ include("protection.php");
 
   <div class="container mx-auto my-8 px-20 py-16 ">
     <center>
-      <h1 class="text-4xl font-raleway m-10"> 📊DASHBOARD</h1>
+      <h1 class="text-4xl font-raleway m-10"> 📊 ADMIN DASHBOARD</h1>
     </center>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-10 rounded-3xl   text-center">
       <?php
@@ -51,20 +51,22 @@ include("protection.php");
     }
       ?>
       <div
-        class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+        class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
+         <a href="pendingAccount.php">
         <div class="p-10">
           <h2 class="text-xl font-raleway mb-2">🔁Pending Account</h2>
-          <a href="pendingAccount.php" class="text-pink-500 font-semibold mt-4">Click here to view pending accounts</a>
+         <p  class="text-pink-500 font-semibold mt-4">Click here to view pending accounts</p>
           <!-- <p class="text-pink-500 font-semibold mt-4">100 BDT</p> -->
           <div class="flex items-center mt-4">
             👥Pending users - <?php echo $count;?>
           </div>
         </div>
+        </a>
       </div>
 
       <div
-        class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+        class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <?php 
           $sql = "SELECT COUNT(email) from users;";
@@ -78,37 +80,42 @@ include("protection.php");
             // Handle the case where the query fails
         }
         ?>
+        <a href="manageAccount.php" class=" font-semibold mt-4">
         <div class="p-10">
           <h2 class="text-xl font-raleway mb-2">Manage Account</h2>
-          <a href="manageAccount.php" class="text-pink-500 font-semibold mt-4">Click here to manage your account
-            settings</a>
+         <p class="text-pink-500"> Click here to manage your account settings</p>
+            
           <!-- <p class="text-pink-500 font-semibold mt-4">70 BDT</p> -->
           <div class="flex items-center mt-4">
             👥Total users: -
             <?php echo $count; ?>
           </div>
-        </div>
+        </div>       
+      </a>
       </div>
 
       <div
-        class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-        <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
+        class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+         <a href="salesInfo.php">
         <div class="p-10">
           <h2 class="text-xl font-raleway mb-2">Get sales Info</h2>
-          <a href="salesInfo.php" class="text-pink-500 font-semibold mt-4">Click here to view sales information</a>
+       <p class="text-pink-500 font-semibold mt-4"> Click here to view sales information</p>  
           <!-- 
           <div class="flex items-center justify-center mt-4">
             Total sales: - 1000
           </div> -->
         </div>
+      </a>
       </div>
+      
 
       <div
-        class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-        <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
+        class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+
+        <a href="updateMenu.php">
         <div class="p-10">
           <h2 class="text-xl font-raleway mb-2">Update Menu</h2>
-          <a href="updateMenu.php" class="text-pink-500 font-semibold mt-4">Click here to update your menu items</a>
+           <p class="text-pink-500 font-semibold mt-4">Click here to update your menu items</p>
 
           <div class="flex items-center justify-center mt-4">
             💰Total menu items:-
@@ -127,20 +134,21 @@ include("protection.php");
           </div>
           
         </div>
-        
+        </a>
       </div>
       <div
-        class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-       
+        class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+       <a href="orderHistory.php">
         <div class="p-10">
           <h2 class="text-xl font-raleway mb-2">Get all orders</h2>
-          <a href="orderHistory.php" class="text-pink-500 font-semibold mt-4">Click here to view all orders</a>
+         <p class="text-pink-500 font-semibold mt-4">Click here to view all orders</p>
          
           
 
 
         </div>
       </div>
+        </a>
     </div>
   </div>
 
@@ -151,7 +159,7 @@ include("protection.php");
   <!-- menu cards -->
   <div class="container mt-5 mx-auto">
     <center>
-      <h1 class="text-4xl font-raleway mb-8"><h1>🍴EXPLORE ON-GOING ITEMS</h1>
+      <h1 class="text-3xl font-raleway mb-8">🍴EXPLORE ON-GOING ITEMS</h1>
     </center>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
       <?php
@@ -170,7 +178,7 @@ include("protection.php");
         foreach ($row as $rows) {
           ?>
           <div
-            class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+            class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
             <img src="../images/<?php echo $rows["Item_Name"]; ?>.png" alt="Menu Item" class="rounded-t-lg mx-auto">
             <div class="p-10">
               <h2 class="text-xl font-raleway mb-2">

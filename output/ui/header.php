@@ -11,12 +11,12 @@ if(in_array($curPageName,$userType[$_SESSION["userType"]])){
 }
 else header("location: ".$userType[$_SESSION["userType"]][0]."");
 ?>
-<nav class="bg-pink-800 py-4 px-4 sm:px-6 lg:px-14 z-10">
+<nav class="bg-pink-800 py-4 px-4 sm:px-6 lg:px-14 rounded-b-xl z-10">
     <div class="container mx-auto flex justify-between items-center">
         <a href="<?php echo $userType[$_SESSION["userType"]][0]?>" class="text-gray-100 text-2xl border-white font-fatface">NSU Canteen</a>
         <div class="hidden sm:block">
             <a href="login.php" class="bg-gray-50 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 rounded-full
-             ring-2 ring-pink-900 hover:ring-2 hover:ring-pink-500 w-full hover:translate-0 hover:transition-shadow">Log
+             ring-2 ring-pink-900 hover:ring-2 hover:ring-white w-full hover:translate-0 hover:transition-shadow">Log
                 Out</a>
         </div>
         <!-- <button class="sm:hidden text-gray-400 hover:text-white focus:outline-black focus:ring-2 focus:ring-pink-400"

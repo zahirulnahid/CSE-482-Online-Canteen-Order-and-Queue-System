@@ -72,7 +72,7 @@ unset($_COOKIE['user']); ?>
 
             <!-- log in button -->
 
-            <input type="submit" value="Login" class="bg-pink-500 hover:bg-pink-700 text-white font-raleway py-2 px-4 rounded-full focus:outline-none 
+            <input type="submit" value="Login" class="hover:bg-pink-500 bg-pink-700 text-white font-raleway py-2 px-4 rounded-full focus:outline-none 
                     focus:ring-2 focus:ring-pink-400 w-full hover:translate-0 hover:transition-shadow">
           </form>
 

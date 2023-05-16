@@ -43,12 +43,17 @@ include("protection.php");
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="search" name="search" id="search">
 
+                
+            <a href="serverDashboard.php" class="p-4 float-right mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
+          hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow flex">Back to dashboard</a>
+      
+
         </div>
 
 
     </div>
 
-    <ul class="grid grid-cols-1 gap-4 mx-auto my-18 p-10">
+    <ul class="grid grid-cols-1 sm:grid-cold-2 md:grid-cols-3 gap-4 mx-auto my-18 p-28 pt-5">
         <?php
         include('connection.php');
 
@@ -67,7 +72,7 @@ include("protection.php");
         if (!empty($row))
             foreach ($row as $rows) {
                 ?>
-                <li class="bg-pink-50 rounded-xl shadow-xl mb-4 overflow-hidden flex">
+                <li class="bg-gray-100 rounded-xl shadow-2xl mb-4 overflow-hidden flex">
 
                     <div class="p-5 flex-grow">
                         <h3 class="text-base font-bold text-gray-900 mb-1">Name:
@@ -84,8 +89,8 @@ include("protection.php");
                         </p>
 
                         <a href="action/userHandle.php?id=<?php echo $rows["email"]; ?>&redirect=manageAccount.php&action=delete" name="delete"
-                            value="Delete Account" class=" px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
-                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Delete</a>
+                            value="Delete Account" class=" p-3 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 hover:ring-pink-700 hover:ring-2 hover:translate-0 
+          hover:transition-shadow ">Delete</a>
 
                     </div>
 
