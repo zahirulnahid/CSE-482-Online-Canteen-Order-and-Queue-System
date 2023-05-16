@@ -11,10 +11,13 @@ include('protection.php'); ?>
   <link rel="stylesheet" href="outputstyles.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/service-worker/main.js"></script>
 
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+    rel="stylesheet">
 </head>
 
 <body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
@@ -23,7 +26,7 @@ include('protection.php'); ?>
 
   <!-- NAVBAR -->
 
-<?php include('ui/header.php'); ?>
+  <?php include('ui/header.php'); ?>
 
 
 
@@ -51,11 +54,10 @@ include('protection.php'); ?>
         </form>
       </div>
 
-      
+
       <!-- cart button -->
       <div class="w-full md:w-auto">
-        <a href="invoice.php"
-          class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 hover:ring-pink-700 hover:ring-2 hover:translate-0 
+        <a href="invoice.php" class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 hover:ring-pink-700 hover:ring-2 hover:translate-0 
           hover:transition-shadow flex items-center">
           <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24"
             width="24">
@@ -76,15 +78,20 @@ include('protection.php'); ?>
         </a>
 
         <!-- my order button -->
-        <a href="myOrders.php"
-          class="p-4 mt-4 text-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
-          ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex">My Orders</a>
+        <a href="myOrders.php" class="p-4 mt-4 text-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
+          ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex">My
+          Orders</a>
+        <button class="p-4 mt-4 text-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
+          ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex" id="js-push-btn">
+          Subscribe Push Messaging
+        </button>
       </div>
     </div>
 
 
     <!-- menu cards -->
-    <div id="menu-cards" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10  rounded-3xl p-16 text-center">
+    <div id="menu-cards"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10  rounded-3xl p-16 text-center">
       <?php
 
 
@@ -141,29 +148,30 @@ include('protection.php'); ?>
           };
           xhr.send();
         }
-        $(document).ready(function() {
-  $('#search').on('input', function() {
-    var search = $(this).val();
+        $(document).ready(function () {
+          $('#search').on('input', function () {
+            var search = $(this).val();
 
-    $.ajax({
-      url: 'action/search.php',
-      method: 'POST',
-      data: { search: search },
-      success: function(response) {
-        // Update the DOM with the search results
-        $('#menu-cards').html(response);
-      }
-    });
-  });
-});
-        
+            $.ajax({
+              url: 'action/search.php',
+              method: 'POST',
+              data: { search: search },
+              success: function (response) {
+                // Update the DOM with the search results
+                $('#menu-cards').html(response);
+              }
+            });
+          });
+        });
+
       </script>
 
     </div>
 
   </div>
   </div>
-<?php include('ui/footer.php'); ?>
+  <?php include('ui/footer.php'); ?>
   <?php $conn->close(); ?>
 </body>
+
 </html>
