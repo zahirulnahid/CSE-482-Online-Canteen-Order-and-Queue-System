@@ -38,7 +38,7 @@ unset($_COOKIE['user']); ?>
           <!-- LOGIN FORM STARTS  -->
           <form name="myForm" method="POST" onsubmit="return validateForm()" action="authentication.php">
             <div class="mb-4">
-              <label class="block text-gray-700 font-raleway mb-2" for="email">Email</label>
+              <label class="block text-gray-700 font-semibold mb-2" for="email">Email</label>
               <input
                 class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="text" name="email" id="email" required>

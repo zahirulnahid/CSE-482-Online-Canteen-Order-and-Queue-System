@@ -44,7 +44,8 @@ include('protection.php'); ?>
             class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full md:w-auto mr-2"
             type="search" name="search" id="search">
           <button type="submit"
-            class="p-3 bg-opacity-0 text-gray-100 hover:text-gray-800 hover:bg-gray-400 rounded-full font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">
+            class="p-3 bg-opacity-0 text-gray-100 hover:text-gray-800 rounded-full font-raleway focus:ring-2 hover:translate-0
+            transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-150 hover:transition-shadow" allowfullscreen="" loading="lazy">
             <img src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30">
           </button>
         </form>
@@ -100,12 +101,12 @@ include('protection.php'); ?>
           ?>
           <div
             class="card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-            <img src="<?php echo $row['Image_url']; ?>" alt="Menu Item" class="rounded-t-lg mx-auto">
-            <div class="p-10 ">
+            <img src="<?php echo $row['Image_url']; ?>" alt="Menu Item" class="rounded-t-lg mx-auto h-50">
+            <div class="p-10  ">
               <h2 class="text-xl font-raleway mb-2">
                 <?php echo $row['Item_Name']; ?>
               </h2>
-              <p class="text-gray-700 sm:min-h-min container">
+              <p class="text-gray-700  ">
                 <?php echo $row['Description']; ?>
               </p>
               <p class="text-pink-500 font-semibold mt-4">

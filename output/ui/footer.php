@@ -1,7 +1,7 @@
-<footer class="bg-pink-900 text-white font-raleway py-10 ">
-  <div class="container mx-auto px-26">
+<footer class="bg-pink-800 text-white font-raleway  py-10 ">
+  <div class="container mx-auto p-5">
     <div class="flex flex-wrap justify-center">
-      <div class="w-full md:w-1/2 lg:w-1/4 mb-8">
+      <div class="w-full md:w-1/2 lg:w-1/4 m-5">
         <h3 class="text-xl font-bold mb-4">Contact Us</h3>
         <p class="text-sm">Bashundhara R/A, Dhaka, Bangladesh<br>+880-2-55668200<br>482@nsu.com</p>
         <div class="flex mt-4">
@@ -11,7 +11,7 @@
           <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i>Linked-In</a>
         </div>
       </div>
-      <div class="w-full md:w-1/2 lg:w-1/4 mb-8">
+      <div class="w-full md:w-1/2 lg:w-1/4 m-5">
         <h3 class="text-xl font-bold mb-4">Location</h3>
         <div class="aspect-w-3 aspect-h-2">
           <iframe

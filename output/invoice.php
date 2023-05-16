@@ -50,8 +50,8 @@ include("protection.php");
 
   ?>
 
-<!-- NAVBAR -->
-<?php include('ui/header.php'); ?>
+  <!-- NAVBAR -->
+  <?php include('ui/header.php'); ?>
 
 
 
@@ -82,8 +82,7 @@ include("protection.php");
                 <?php echo $row["Price"]; ?> BDT
               </span>
               <div class="flex item mt-0.5">
-                <button onclick="updateCart('<?php echo $row['foodID']; ?>', 'remove')"
-                  class="bg-pink-700 hover:bg-pink-50 hover:text-black
+                <button onclick="updateCart('<?php echo $row['foodID']; ?>', 'remove')" class="bg-pink-700 hover:bg-pink-50 hover:text-black
               text-white font-raleway max-w-fit mr-1 py-1 px-2 rounded-full focus:outline-black  hover:ring-pink-400 hover:ring-2 w-8 hover:translate-0 
               hover:transition-shadow mt-4">-</button>
 
@@ -140,42 +139,39 @@ include("protection.php");
       <div class="flex flex-col md:flex-row justify-center items-center mx-auto m-5">
 
 
-        
-        <a href="../output/homepage.php"
-          class="bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 m-4 rounded-full ring-pink-600 ring-2
+
+        <a href="../output/homepage.php" class="bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 m-4 rounded-full ring-pink-600 ring-2
            hover:ring-2 hover:ring-pink-100 max-w-fit hover:translate-0 hover:transition-shadow md:mx-2">
           Back to menu
         </a>
-    
-         <!-- ******************* Payment gateway code *********************-->
-                      
-<?php
-require('config.php');
-$paymentTotal=$total*100;
-?>
-        <form action="success.php" method="POST" class="stripe-btn">
-          <input type="hidden" name="amount" value="<?php echo $paymentTotal?>">
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="pk_test_51N6wRoCTMtJu4CIwVY9pADeVsg3dgPlOnE669GWeuMskwfvrsOtfeeGjlgCgbrCpvqL1Ya0n9tEJhDn3KXjNpYQr00QAZNLran"
-                        data-amount="<?php echo $paymentTotal?>"
-                        data-name="NSU Canteen"
-                        data-description="NSU canteen payment"
-                        data-image=""
-                        data-currency="bdt"
-                        >
 
-          </script>
+        <!-- ******************* Payment gateway code *********************-->
+
+        <?php
+        require('config.php');
+        $paymentTotal = $total * 100;
+        ?>
+        <form action="success.php" method="POST" class="stripe-btn">
+          <input type="hidden" name="amount" value="<?php echo $paymentTotal ?>">
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_51N6wRoCTMtJu4CIwVY9pADeVsg3dgPlOnE669GWeuMskwfvrsOtfeeGjlgCgbrCpvqL1Ya0n9tEJhDn3KXjNpYQr00QAZNLran"
+            data-amount="<?php echo $paymentTotal ?>" data-name="NSU Canteen" data-description="NSU canteen payment"
+            data-image="" data-currency="bdt">
+
+            </script>
 
           <!-- make this button functional so that it goes with the overall style -->
-          <input type="submit" class="stripe-button bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
-                        ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2" value="Proceed to payment">
+          <input type="submit"
+            class="stripe-button bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
+                        ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2"
+            value="Proceed to payment">
 
-       
+
         </form>
-            
-              
-          
-        
+
+
+
+
         </center>
 
 
@@ -192,7 +188,8 @@ $paymentTotal=$total*100;
     </div>
   </div>
 
-  <?php include ('ui/footer.php');?>
+
+
 
 </body>
 <?php $conn->close(); ?>
