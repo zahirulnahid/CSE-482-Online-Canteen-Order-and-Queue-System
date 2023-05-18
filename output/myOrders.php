@@ -36,7 +36,7 @@ include('protection.php');
             <?php echo $_SESSION['name']; ?>
         </h2>
         <h2 class="text-lg font-raleway text-gray-900 mb-1">
-            Customer Name:
+            Customer Email:
             <?php echo $_SESSION['email']; ?>
         </h2>
     </ul>
