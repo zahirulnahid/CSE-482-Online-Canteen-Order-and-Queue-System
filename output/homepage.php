@@ -77,11 +77,6 @@ include('protection.php'); ?>
         <a href="myOrders.php" class="p-4 mt-4 text-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
           ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex">My
           Orders</a>
-        <button class="p-4 mt-4 text-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
-          ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex"
-          id="js-push-btn">
-          Subscribe Push Messaging
-        </button>
       </div>
     </div>
 
