@@ -40,7 +40,7 @@ include("protection.php");
 
 
        
-        <!-- my order button -->
+        <!-- back to dashboard button -->
         <a href="serverDashboard.php" class="p-4 float-right mt-4 text-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
           ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex">Back to dashboard</a>
       
@@ -50,7 +50,7 @@ include("protection.php");
          
     </div>
 
-    <!-- menu list view -->
+    <!-- pending accounts list view -->
     <ul class="grid grid-cols-1 gap-4 mx-auto my-18 px-20  container shadow-none">
         <?php
         include("connection.php");

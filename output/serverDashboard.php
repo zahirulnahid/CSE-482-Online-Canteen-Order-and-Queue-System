@@ -43,7 +43,7 @@ include("protection.php");
 
     </div>
 
-    <!-- menu list view -->
+    <!-- Queue list view -->
     <ul class="grid grid-cols-1 gap-4 container shadow-none mx-auto p-28"> 
     <?php
 include('connection.php');

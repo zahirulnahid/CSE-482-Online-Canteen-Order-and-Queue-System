@@ -37,7 +37,7 @@ include("protection.php");
 
     </div>
 
-    <!-- menu list view -->
+    <!-- sales list view -->
     <div class="container mx-auto px-20 m-16 ">
         <h1 class="text-2xl font-bold mb-6 text-center">Sales Report</h1>
         <div class="shadow-2xl ">

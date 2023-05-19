@@ -37,4 +37,5 @@ if (isset($_POST['search'])) {
     echo "<center>No food Found</center>";
   }
 }
+$conn->close();
   ?>

@@ -9,7 +9,7 @@ $sql = "SELECT  `Bill`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Cus
         FROM `Bill`
         INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
         ORDER BY OrderID DESC 
-        LIMIT $start,3
+        LIMIT $start,4
         ;";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -66,5 +66,5 @@ if (mysqli_num_rows($result) > 0) {
     }
     echo $html;
 }
-
+$conn->close();
 ?>

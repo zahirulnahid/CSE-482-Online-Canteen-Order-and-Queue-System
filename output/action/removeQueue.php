@@ -13,4 +13,5 @@ if($conn->Query($removeQueue) == true && $conn->Query($completeOrder) == true){
 }
 else
     echo "Queue Not Removed";
+$conn->close();
 ?>

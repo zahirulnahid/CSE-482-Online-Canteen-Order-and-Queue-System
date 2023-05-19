@@ -68,4 +68,5 @@ if (isset($_POST['search'])) {
         echo $html;
     }
 }
+$conn->close();
 ?>

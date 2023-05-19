@@ -69,7 +69,7 @@
             type: 'post',
             success:function(result){
                 jQuery('#orders').append(result);
-                loadFlag+=5;
+                loadFlag+=4;
             }
         });
     }
