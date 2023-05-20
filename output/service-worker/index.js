@@ -8,7 +8,7 @@ const check = () => {
   }
   
   const registerServiceWorker = async () => {
-    const swRegistration = await navigator.serviceWorker.register('service.js')
+    const swRegistration = await navigator.serviceWorker.register('service-worker/service.js')
     return swRegistration
   }
   
@@ -52,10 +52,10 @@ const options = {
     "//": "Information Option. No visual affect.",
     "timestamp": "<Long>"
   }
-  const main = async () => {
+  const main = async (title, body) => {
     check();
     const swRegistration = await registerServiceWorker();
     const permission = await requestNotificationPermission();
-    showLocalNotification('This is title', 'this is the message', swRegistration);
+    showLocalNotification(title, body, swRegistration);
   }
   // main();// we will not call main in the beginning.

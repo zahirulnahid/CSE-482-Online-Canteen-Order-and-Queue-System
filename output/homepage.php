@@ -91,6 +91,7 @@ include('protection.php'); ?>
   </div>
   </div>
   <script>
+    notification();
     // Lazy loading menu
     var loadFlag = 0;
     loadMore(loadFlag);
@@ -125,6 +126,27 @@ include('protection.php'); ?>
       };
       xhr.send();
     }
+    var x=<?php echo $notificationCount?>;
+    function notification() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "action/userHandle.php?action=notification");
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          console.log(xhr.responseText);
+          const text = xhr.responseText;
+          const obj = JSON.parse(text);
+          document.getElementById("notification-count").innerHTML = obj.count;
+         if(x!=obj.count){main(obj.title,obj.details);x= obj.count;}
+         console.log("Value of x: "+x);
+        }
+      };
+      xhr.send();
+    }
+    function fetchData() {
+    // Code for the method you want to execute
+    notification()
+  }
+  setInterval(fetchData, 10000);
     $(document).ready(function () {
       $('#search').on('input', function () {
         var search = $(this).val();

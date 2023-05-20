@@ -34,5 +34,23 @@ if ($conn->query($sql) === TRUE) {
     echo "Error deleting record: " . $conn->error;
   }
 }
+
+if($_GET["action"]=="notification"){
+$sql = "SELECT * FROM notifications WHERE receiver_id = '".$_SESSION['id']."' AND status = 0";
+$res = mysqli_query($conn, $sql);
+$count=1;
+if (mysqli_num_rows($res) > 0) {
+    while ($rows = mysqli_fetch_assoc($res)) {
+        $myObj = new stdClass();
+        $myObj->title = $rows["title"];
+        $myObj->details = $rows["details"];
+        $myObj->count =$count;
+        $count++;
+        $myJSON = json_encode($myObj);
+        
+              
+    } echo $myJSON;
+}else echo 0;
+}
 $conn->close();
 ?>
