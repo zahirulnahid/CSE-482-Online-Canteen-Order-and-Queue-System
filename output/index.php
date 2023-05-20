@@ -19,6 +19,7 @@ if (!$_SESSION["loggedin"]&&isset($_SESSION["loggedin"])){if (isset($_COOKIE[$co
       $_SESSION["email"] = $cookie_email;
       $_SESSION["name"] = $row["name"];
       $_SESSION["userType"]=$row["category"];
+      $_SESSION["id"] = $row["id"];
       setcookie($cookie_name, $cookie_value, time() + (86400 * 30));
     }
     //Redirect to homepage if user is logged in

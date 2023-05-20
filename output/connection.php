@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "canteen";
-$password = "canteen";
+$username = "root";
+$password = "";
 $database = "canteen";
 
 // Create connection

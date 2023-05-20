@@ -37,8 +37,9 @@ if (mysqli_num_rows($result) > 0) {
               </div>";
 
   }
+  echo $html;
 }
 
-echo $html;
+
 $conn->close();
 ?>

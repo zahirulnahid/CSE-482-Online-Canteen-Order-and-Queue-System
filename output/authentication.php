@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
       $_SESSION["loginas"] = "user";
       $_SESSION["email"] = $email;
       $_SESSION["name"] = $row["name"];
-
+      $_SESSION["id"] = $row["id"];
       $_SESSION["userType"]=$row["category"];
       header("location: ".$userType[$_SESSION["userType"]][0]."");
       $cookie_name = "user";
