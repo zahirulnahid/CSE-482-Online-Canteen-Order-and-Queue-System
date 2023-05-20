@@ -5,10 +5,10 @@ include("../connection.php");
 $queueNo = $_GET["QueueID"];
 $orderID = $_GET["OrderID"];
 $removeQueue = "DELETE FROM Queue WHERE QueueNo = $queueNo;";
-$completeOrder = "UPDATE `Orders` SET `served`='yes' WHERE OrderID='$orderID'";
+$completeOrder = "UPDATE `bill` SET `served`='yes' WHERE OrderID='$orderID'";
 
 if($conn->Query($removeQueue) == true && $conn->Query($completeOrder) == true){
-    header("location:serverDashboard.php");
+    header("location:../serverDashboard.php");
     exit;
 }
 else

@@ -65,28 +65,35 @@ if ($conn->query($sql) == true) {
 $dt = new DateTime('now', new DateTimezone('Asia/Dhaka'));
 $date = $dt->format('Y-m-d');
 $orderTime = $dt->format('g:i a');
-$bill = "INSERT INTO `BILL`( `Order_Date`, `Time`, `CustomerID`, `Total_Amount`) VALUES ('$date', '$orderTime', '$userid','$amount');";
+//Create new Bill
+$bill = "INSERT INTO `BILL`( `Order_Date`, `Time`, `CustomerID`, `Total_Amount`, `served`) VALUES ('$date', '$orderTime', '$userid','$amount', 'no');";
 if ($conn->query($bill) == TRUE) {
   $order_id = mysqli_insert_id($conn);
 
+  // Get items from cart
   $getItem = "SELECT cart.*, food_list.Item_Name, food_list.Price
   FROM cart INNER JOIN food_list ON cart.foodID = food_list.id WHERE email='" . $_SESSION["email"] . "';";
   $result = $conn->query($getItem);
   if ($result == true) {
     while ($row = $result->fetch_assoc()) {
-      $order = "INSERT INTO `Orders`(`OrderID`, `ItemID`, `Quantity`, `served`) VALUES ('$order_id','" . $row["foodID"] . "','" . $row["quantity"] . "', 'no');";
+      // Create new order 
+      $order = "INSERT INTO `Orders`(`OrderID`, `ItemID`, `Quantity`) VALUES ('$order_id','" . $row["foodID"] . "','" . $row["quantity"] . "');";
+      // Update Sales Information
       $updateSales = "INSERT INTO SALES_REPORT (`ItemID`, `Units_Sold`, `Total_Revenue`) 
       VALUES
        ('" . $row["foodID"] . "','" . $row["quantity"] . "', " . $row["quantity"] * $row["Price"] . ")
       ON DUPLICATE KEY UPDATE
         Units_Sold     =  (Units_Sold + '" . $row['quantity'] . "'),
         Total_Revenue =  (Total_Revenue + (" . $row['quantity'] * $row['Price'] . "))";
+      // Remove items from cart
       $deleteCartItems = "DELETE FROM `cart` WHERE `email`='" . $_SESSION['email'] . "';";
+      // Add Queue
       $addQueue = "INSERT INTO `QUEUE`( `OrderID`) VALUES ($order_id);";
-      if ($conn->query($order) == true && $conn->query($updateSales) == true && $conn->query($deleteCartItems) && $conn->query($addQueue)) {
+      if ($conn->query($order) == true && $conn->query($updateSales) == true && $conn->query($deleteCartItems)) {
       }
 
     }
+    $conn->query($addQueue);
   }
 }
 }

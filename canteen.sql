@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 08, 2023 at 11:19 PM
+-- Generation Time: May 20, 2023 at 02:27 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,37 +32,42 @@ CREATE TABLE `BILL` (
   `Order_Date` varchar(30) NOT NULL,
   `Time` varchar(30) NOT NULL,
   `CustomerID` int(11) NOT NULL,
-  `Total_Amount` int(11) NOT NULL
+  `Total_Amount` int(11) NOT NULL,
+  `served` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `BILL`
 --
 
-INSERT INTO `BILL` (`OrderID`, `Order_Date`, `Time`, `CustomerID`, `Total_Amount`) VALUES
-(1, '2023-04-05', '', 18, 220),
-(2, '2023-04-07', '', 17, 180),
-(3, '2023-04-05', '', 17, 100),
-(24, '2023-04-29', '', 2, 999),
-(25, '2023-04-29', '', 2, 999),
-(26, '2023-04-29', '', 2, 999),
-(27, '2023-04-29', '', 2, 999),
-(28, '2023-04-29', '', 2, 999),
-(29, '2023-04-29', '', 2, 999),
-(30, '2023-04-29', '', 18, 720),
-(31, '2023-04-29', '', 18, 299),
-(32, '2023-04-29', '', 18, 299),
-(33, '2023-04-29', '', 18, 720),
-(34, '2023-04-29', '', 18, 720),
-(35, '2023-04-29', '', 18, 300),
-(36, '2023-04-30', '', 18, 210),
-(37, '2023-04-30', '', 18, 220),
-(38, '2023-04-30', '', 18, 70),
-(39, '2023-05-06', '', 18, 310),
-(40, '2023-05-07', '', 18, 200),
-(41, '2023-05-08', '10:13 pm', 18, 120),
-(42, '2023-05-08', '10:18 pm', 18, 70),
-(43, '2023-05-08', '10:27 pm', 18, 260);
+INSERT INTO `BILL` (`OrderID`, `Order_Date`, `Time`, `CustomerID`, `Total_Amount`, `served`) VALUES
+(1, '2023-04-05', '', 18, 220, 'yes'),
+(2, '2023-04-07', '', 17, 180, 'yes'),
+(3, '2023-04-05', '', 17, 100, 'yes'),
+(24, '2023-04-29', '', 2, 999, 'yes'),
+(25, '2023-04-29', '', 2, 999, 'yes'),
+(26, '2023-04-29', '', 2, 999, 'yes'),
+(27, '2023-04-29', '', 2, 999, 'yes'),
+(28, '2023-04-29', '', 2, 999, 'yes'),
+(29, '2023-04-29', '', 2, 999, 'yes'),
+(30, '2023-04-29', '', 18, 720, 'yes'),
+(31, '2023-04-29', '', 18, 299, 'yes'),
+(32, '2023-04-29', '', 18, 299, 'yes'),
+(33, '2023-04-29', '', 18, 720, 'yes'),
+(34, '2023-04-29', '', 18, 720, 'yes'),
+(35, '2023-04-29', '', 18, 300, 'yes'),
+(36, '2023-04-30', '', 18, 210, 'yes'),
+(37, '2023-04-30', '', 18, 220, 'yes'),
+(38, '2023-04-30', '', 18, 70, 'yes'),
+(39, '2023-05-06', '', 18, 310, 'yes'),
+(40, '2023-05-07', '', 18, 200, 'yes'),
+(41, '2023-05-08', '10:13 pm', 18, 120, 'yes'),
+(42, '2023-05-08', '10:18 pm', 18, 70, 'yes'),
+(43, '2023-05-08', '10:27 pm', 18, 260, 'yes'),
+(44, '2023-05-20', '5:07 pm', 18, 160, 'yes'),
+(45, '2023-05-20', '6:02 pm', 18, 290, 'yes'),
+(46, '2023-05-20', '6:23 pm', 18, 370, 'yes'),
+(47, '2023-05-20', '6:27 pm', 18, 230, 'yes');
 
 -- --------------------------------------------------------
 
@@ -98,8 +103,7 @@ INSERT INTO `cart` (`id`, `foodID`, `email`, `quantity`, `timestamp`) VALUES
 (13, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
 (14, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
 (15, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(16, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04'),
-(44, 2, 'ayman@nsu.edu', 1, '2023-05-08');
+(16, 1, 'zahirulnahid@gmail.com', 1, '2023-04-04');
 
 -- --------------------------------------------------------
 
@@ -154,52 +158,79 @@ INSERT INTO `food_list` (`id`, `Item_Name`, `Price`, `Description`, `keywords`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `receiver_id` varchar(200) NOT NULL,
+  `title` text NOT NULL,
+  `details` text NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0 = unseen, 1 = seen',
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Orders`
 --
 
 CREATE TABLE `Orders` (
   `OrderID` int(11) NOT NULL,
   `ItemID` int(11) NOT NULL,
-  `Quantity` int(11) NOT NULL,
-  `served` varchar(3) NOT NULL
+  `Quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Orders`
 --
 
-INSERT INTO `Orders` (`OrderID`, `ItemID`, `Quantity`, `served`) VALUES
-(1, 1, 1, 'no'),
-(1, 6, 1, 'no'),
-(1, 5, 1, 'no'),
-(2, 8, 2, 'no'),
-(32, 1, 3, 'yes'),
-(32, 6, 4, 'yes'),
-(32, 2, 2, 'yes'),
-(32, 5, 1, 'yes'),
-(33, 1, 3, 'yes'),
-(33, 6, 4, 'yes'),
-(33, 2, 2, 'yes'),
-(33, 5, 1, 'yes'),
-(34, 1, 3, 'yes'),
-(34, 6, 4, 'yes'),
-(34, 2, 2, 'yes'),
-(34, 5, 1, 'yes'),
-(35, 2, 1, 'yes'),
-(35, 1, 1, 'yes'),
-(35, 4, 1, 'yes'),
-(36, 8, 1, 'yes'),
-(36, 6, 1, 'yes'),
-(36, 5, 1, 'yes'),
-(37, 4, 2, 'yes'),
-(38, 3, 1, 'no'),
-(39, 2, 3, 'no'),
-(39, 6, 1, 'no'),
-(40, 1, 2, 'no'),
-(40, 2, 0, 'no'),
-(41, 6, 1, 'no'),
-(42, 3, 1, 'no'),
-(43, 2, 2, 'no');
+INSERT INTO `Orders` (`OrderID`, `ItemID`, `Quantity`) VALUES
+(1, 1, 1),
+(1, 6, 1),
+(1, 5, 1),
+(2, 8, 2),
+(32, 1, 3),
+(32, 6, 4),
+(32, 2, 2),
+(32, 5, 1),
+(33, 1, 3),
+(33, 6, 4),
+(33, 2, 2),
+(33, 5, 1),
+(34, 1, 3),
+(34, 6, 4),
+(34, 2, 2),
+(34, 5, 1),
+(35, 2, 1),
+(35, 1, 1),
+(35, 4, 1),
+(36, 8, 1),
+(36, 6, 1),
+(36, 5, 1),
+(37, 4, 2),
+(38, 3, 1),
+(39, 2, 3),
+(39, 6, 1),
+(40, 1, 2),
+(40, 2, 0),
+(41, 6, 1),
+(42, 3, 1),
+(43, 2, 2),
+(44, 2, 1),
+(44, 3, 1),
+(45, 8, 2),
+(45, 6, 1),
+(45, 3, 1),
+(46, 7, 1),
+(46, 8, 1),
+(46, 1, 2),
+(47, 6, 1),
+(47, 5, 1),
+(47, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -218,12 +249,6 @@ CREATE TABLE `Queue` (
 --
 
 INSERT INTO `Queue` (`QueueNo`, `OrderID`, `Counter`) VALUES
-(1, 1, 0),
-(2, 2, 0),
-(4, 38, 0),
-(6, 39, 0),
-(7, 39, 0),
-(8, 40, 0),
 (9, 40, 0);
 
 -- --------------------------------------------------------
@@ -243,14 +268,14 @@ CREATE TABLE `SALES_REPORT` (
 --
 
 INSERT INTO `SALES_REPORT` (`ItemID`, `Units_Sold`, `Total_Revenue`) VALUES
-(1, 48, 4800),
-(2, 26, 2160),
-(3, 12, 840),
-(4, 3, 330),
-(5, 41, 3280),
-(6, 93, 3720),
-(7, 10, 800),
-(8, 1, 90);
+(1, 50, 5000),
+(2, 27, 2250),
+(3, 14, 980),
+(4, 4, 440),
+(5, 42, 3360),
+(6, 95, 3800),
+(7, 11, 880),
+(8, 4, 360);
 
 -- --------------------------------------------------------
 
@@ -276,7 +301,8 @@ INSERT INTO `users` (`id`, `category`, `name`, `email`, `phone`, `password`, `ve
 (2, 2, 'a', 'a', '2', 'a', 'true'),
 (17, 1, 'Md. Zahirul Islam Nahid', 'zahirulnahid@gmail.com', '01554518620', '25d55ad283aa400af464c76d713c07ad', 'true'),
 (18, 1, 'Ayman', 'ayman@nsu.edu', '11111111111', '1bbd886460827015e5d605ed44252251', 'true'),
-(19, 4, 'admin', 'admin@nsu.edu', '11111111111', '1bbd886460827015e5d605ed44252251', 'pending');
+(19, 4, 'admin', 'admin@nsu.edu', '11111111111', '1bbd886460827015e5d605ed44252251', 'true'),
+(20, 3, 'kashundi', 'staff@nsu.edu', '11111111222', '1bbd886460827015e5d605ed44252251', 'true');
 
 -- --------------------------------------------------------
 
@@ -330,6 +356,12 @@ ALTER TABLE `food_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `Orders`
 --
 ALTER TABLE `Orders`
@@ -369,13 +401,13 @@ ALTER TABLE `user_category`
 -- AUTO_INCREMENT for table `BILL`
 --
 ALTER TABLE `BILL`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `food_list`
@@ -384,16 +416,22 @@ ALTER TABLE `food_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `Queue`
 --
 ALTER TABLE `Queue`
-  MODIFY `QueueNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `QueueNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
@@ -410,25 +448,6 @@ ALTER TABLE `BILL`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`foodID`) REFERENCES `food_list` (`id`);
-
---
--- Constraints for table `Orders`
---
-ALTER TABLE `Orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `BILL` (`OrderID`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`ItemID`) REFERENCES `FOOD_LIST` (`id`);
-
---
--- Constraints for table `Queue`
---
-ALTER TABLE `Queue`
-  ADD CONSTRAINT `queue_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`);
-
---
--- Constraints for table `SALES_REPORT`
---
-ALTER TABLE `SALES_REPORT`
-  ADD CONSTRAINT `sales_report_ibfk_1` FOREIGN KEY (`ItemID`) REFERENCES `FOOD_LIST` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

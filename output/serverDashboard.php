@@ -48,13 +48,11 @@ include("protection.php");
     <?php
 include('connection.php');
 
-$sql = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `Orders`.served, `food_list`.`Item_Name`
-        FROM `Orders`
-        INNER JOIN food_list ON Orders.ItemID = food_list.id
-        INNER JOIN `QUEUE` ON `Orders`.OrderID = `QUEUE`.OrderID
-        INNER JOIN `BILL` ON `Orders`.`OrderID` = `BILL`.OrderID
-        INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
-        WHERE served = 'no';";
+    $sql = "SELECT `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Bill`.*
+            FROM `bill`
+            INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
+            WHERE bill.served = 'no'
+            ORDER BY bill.OrderID DESC ;";
 
 $result = $conn->query($sql);
 
@@ -62,17 +60,33 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">';
         echo '<div class="flex-grow p-0">';
-            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $row["Quantity"] . ' x ' . $row["Item_Name"] . '</h3>';
-            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $row["Customer_Name"] . '</h3>';
-            echo '<p class="text-base font-raleway text-gray-900 mb-1">' . $row["Customer_Email"] . '</p>';
-            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Queue No: ' . $row["QueueNo"] . '</h3>';
+        $items = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `bill`.served, `food_list`.`Item_Name`
+        FROM `Orders`
+        INNER JOIN food_list ON Orders.ItemID = food_list.id
+        INNER JOIN `QUEUE` ON `Orders`.OrderID = `QUEUE`.OrderID
+        INNER JOIN `BILL` ON `Orders`.`OrderID` = `BILL`.OrderID
+        INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
+        WHERE bill.served = 'no' AND Queue.OrderID = ". $row['OrderID']."
+        ORDER BY OrderID DESC ; ";
+        $items = $conn->query($items);
+        //Fetch all items for the current OrderID and store in an array
+        $items = $items->fetch_all(MYSQLI_ASSOC);
+        //Counting number of rows
+        $length = count($items);
+        
+        for($i=0; $i< $length; $i++){
+            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $items[$i]["Quantity"] . ' x ' . $items[$i]["Item_Name"] . '</h3>';
+        }
+            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $items[0]["Customer_Name"] . '</h3>';
+            echo '<p class="text-base font-raleway text-gray-900 mb-1">' . $items[0]["Customer_Email"] . '</p>';
+            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Queue No: ' . $items[0]['QueueNo'] . '</h3>';
             echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Order ID: ' . $row["OrderID"] . '</h3>';
-            echo '<a href="removeQueue.php?QueueID=' . $row["QueueNo"] . '&orderID=' . $row["OrderID"] . '" class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>';
+            echo '<a href="action/removeQueue.php?QueueID=' . $items[0]["QueueNo"] . '&OrderID=' . $row["OrderID"] . '" class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>';
         echo '</div>';
         echo '</li>';
     }
 } else {
-    echo "No records found.";
+    echo "No Pending orders.";
 }
 
 $conn->close();
