@@ -91,28 +91,33 @@ include('protection.php'); ?>
   </div>
   </div>
   <script>
-    notification();
-    // Lazy loading menu
-    var loadFlag = 0;
-    loadMore(loadFlag);
-    function loadMore(start) {
-      jQuery.ajax({
-        url: 'action/getMenu.php',
-        data: 'start=' + start,
-        type: 'post',
-        success: function (result) {
-          jQuery('#menu-cards').append(result);
-          loadFlag += 4;
-        }
-      });
+   
+var loadFlag = 0;
+loadMore(loadFlag);
+
+function loadMore(start) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var result = xhr.responseText;
+      document.getElementById('menu-cards').innerHTML += result;
+      
     }
-    jQuery(document).ready(function () {
-      jQuery(window).scroll(function () {
-        if (jQuery(window).scrollTop() >= jQuery(document).height() - jQuery(window).height()) {
-          loadMore(loadFlag);
-        }
-      });
-    });
+  };
+  xhr.open('GET', 'action/getMenu.php?start=' + start, true);
+  xhr.send();
+}
+loadFlag += 4;console.log(loadFlag+"Load Flag Updated");
+window.addEventListener('DOMContentLoaded', function () {
+  window.addEventListener('scroll', function () {
+    if (window.pageYOffset >= document.documentElement.scrollHeight - (window.innerHeight)) {
+      loadMore(loadFlag);
+      console.log("Called " + loadFlag);
+    }
+  });
+});
+
+notification();
     function addtocart(id) {
       const xhr = new XMLHttpRequest();
       xhr.open("GET", "action/addtocart.php?foodID=" + id);

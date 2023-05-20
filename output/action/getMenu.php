@@ -4,7 +4,7 @@ include("../connection.php");
 
 //Implementation of lazy load
 //start variable holds the number
-$start = mysqli_real_escape_string($conn, $_POST['start']);
+$start = mysqli_real_escape_string($conn, $_GET['start']);
 
 //fetch 4 items from food_list table
 $sql = "SELECT * FROM `Food_List` LIMIT $start, 4";
