@@ -58,4 +58,4 @@ const options = {
     const permission = await requestNotificationPermission();
     showLocalNotification(title, body, swRegistration);
   }
-  // main();// we will not call main in the beginning.
+  // main();// we won't call main in the beginning.
