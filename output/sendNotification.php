@@ -46,18 +46,32 @@ include('protection.php');
 </head>
 <?php 
 	// include("connection.php"); //Created connection with DB//
+
 	// print_r($_SESSION);
 	// exit;
+
 	$sql = "SELECT id,name FROM users WHERE category != 4";
 	$userresult = mysqli_query($conn, $sql);
+	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 		// Get form data
 	    $senderid = $_SESSION['id']; // Admin id
-	    $userid = $_POST['userid'];
+	    $ud = $_POST['userid'];
+	    if(sizeof($ud) == 1 && $ud[0] == 'all'){
+	    	while($r = mysqli_fetch_assoc($userresult)){
+	    		$userid[] = $r['id'];
+	    	}
+	    }else{
+	    	$userid = $_POST['userid'];
+	    }
+
 	    $title = $_POST['title'];
 	    $details = $_POST['details'];
+
 	    $users = '';
 	    $userArrlen = sizeof($userid);
+
 	    /*
 	    foreach($userid as $key => $val){
 	    	if($userArrlen == 1 || $key == $userArrlen-1){
@@ -67,10 +81,12 @@ include('protection.php');
 	    		$users .= '"'.$val.'",';
 	    	}
 	    }
+
 	    $sql = "
 	    	INSERT INTO `notifications` (`id`, `sender_id`, `receiver_id`, `title`, `details`, `created_at`, `updated_at`) VALUES (NULL, '$senderid', '($users)', '$title', '$details', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 	    ";
 	    */
+
 	    foreach($userid as $key => $val){
 	    	$sql = "
 	    	INSERT INTO `notifications` (`id`, `sender_id`, `receiver_id`, `title`, `details`, `created_at`, `updated_at`) VALUES (NULL, '$senderid', '$val', '$title', '$details', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
@@ -80,10 +96,16 @@ include('protection.php');
 			        $success_message = "Notification send successfully";
 			    } else {
 			        $error_message = "Error: " . $sql . "<br>" . mysqli_error($conn);
-			    }
-	    } 
+			    }	    	
+	    }
+
+header("Location: ".$_SERVER['PHP_SELF']);
+
 	}
 	$conn->close();
+
+
+
 ?>
 <body class=" scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
@@ -93,18 +115,20 @@ include('protection.php');
         class=" notifycard card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <div class="p-10">
-        	<span class="form-title">Send Messaage</span>
+        	<span class="form-title">Send Message</span>
 	    	<form method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">
+
 	    		<div class="mb-4">
-	    			<label>User</label>
+	    			<label>Select Users</label>
 	    			<select name="userid[]" class="notify_selected_user border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" multiple>
 		    		<?php
-		    			echo '<option value="">Select User</option>';
+		    			echo '<option value="all">All User</option>';
 		    			if (mysqli_num_rows($userresult) > 0) {
 		    				while ($rows = mysqli_fetch_assoc($userresult)) {
 		    					echo '<option value="'.$rows["id"].'">'.$rows["name"].'</option>';
 		    				}
 		    			}
+
 	    			?>
 	    			</select>
 	    		</div>
@@ -128,9 +152,11 @@ include('protection.php');
 </body>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script>
+
 		$(document).ready(function(){
 			$('.notify_selected_user').select2();
 		});
+	    
 	    /*$(document).ready(function () {
 	        <?php if (isset($success_message)): ?>
 	            $('#successModal').modal('show');
@@ -140,13 +166,17 @@ include('protection.php');
 	        	$('#successModal').modal('hide');
 	        	$('#errorModal').modal('hide');
 	        <?php endif; ?>
+
 	    });*/
+
+	    
 	    jQuery(document).ready(function () {
 	        jQuery(window).scroll(function () {
 	            if (jQuery(window).scrollTop() >= jQuery(document).height() - jQuery(window).height()) {
 	                loadMore(loadFlag);
 	            }
 	        });
+	        
 	    });
 	</script>
 </html>
