@@ -20,8 +20,8 @@
 
 
     <!-- Ready Orders view -->
-    <h1 class="md:py-20 text-center text-3xl h-2 ">Orders Ready for pickup</h1>
-    <ul class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto mt-10 my-28 container shadow-none md:px-32 py-10 sm:px-10">
+    <h1 class="my-5 text-center text-3xl h-2 ">Orders Ready for pickup</h1>
+    <ul class="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mx-auto container shadow-none md:px-20 py-5 sm:px-10">
 
     <?php 
         include("connection.php");
@@ -31,7 +31,7 @@
         if( $result== true){
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {?>
-            <li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
+            <li class="p-2 bg-pink-50 rounded-xl shadow-lg overflow-hidden flex">
                     <div class="flex-grow p-0">
                         <?php
                         $orderDetails = "SELECT BILL.*, users.id,users.name, users.email 
@@ -67,9 +67,9 @@
     ?>
     </ul>
     <!-- Queue list -->
-    <h1 class="md:py-20 text-center text-3xl  h-2 ">Pending Orders</h1>
-    <ul class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto mt-10 my-10 container shadow-none md:px-32 py-10 sm:px-10">
-
+    <h1 class="md:py-5 text-center text-3xl  h-2 ">Pending Orders</h1>
+    <ul class="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mx-auto container shadow-none md:px-20 py-5 sm:px-10">
+            
     <?php 
         // Get called orders
         $sql = "SELECT * FROM Queue WHERE counter IS NULL";
@@ -77,7 +77,7 @@
         if( $result== true){
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {?>
-            <li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
+            <li class="p-2 bg-pink-50 rounded-xl shadow-lg overflow-hidden flex">
                     <div class="flex-grow p-0">
                         <?php
                         $orderDetails = "SELECT BILL.*, users.id,users.name, users.email 
