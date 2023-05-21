@@ -34,51 +34,50 @@ include('protection.php'); ?>
       <?= $_SESSION["name"] ?>
     </h1>
 
-    <div class="flex flex-wrap justify-between items-center py-4 px-8 md:px-20">
-      <!-- search bar -->
-      <div class="w-full md:w-auto mb-4 md:mb-0">
-        <label class="block text-gray-700 font-raleway mb-2" for="search">Search</label>
-        <form method="post" class="flex items-center">
-          <input
-            class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full md:w-auto mr-2"
-            type="search" name="search" id="search">
-          <button type="submit" class="p-3 bg-opacity-0 text-gray-100 hover:text-gray-800 rounded-full font-raleway focus:ring-2 hover:translate-0
-            transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-150 hover:transition-shadow"
-            allowfullscreen="" loading="lazy">
-            <img src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30">
-          </button>
-        </form>
-      </div>
+   <div class="flex flex-wrap justify-between items-center py-4 px-8 md:px-20">
+  <!-- search bar -->
+  <div class="w-full md:w-auto mb-4 md:mb-0">
+    
+    <form method="post"  class="flex items-center">
+      <input placeholder="search" class="border-2 border-pink-700 p-4 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400 w-full md:w-auto mr-2"
+        type="search" name="search" id="search">
+      <button type="submit" class="p-3 bg-opacity-0 text-gray-100 hover:text-gray-800 rounded-full font-raleway focus:ring-2 hover:translate-0
+        transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-150 hover:transition-shadow" allowfullscreen=""
+        loading="lazy">
+        <img src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30">
+      </button>
+    </form>
+  </div>
 
+  <!-- cart and my order buttons -->
+ <div class="flex flex-col md:flex-row md:items-center">
+    <!-- cart button -->
+    <a href="invoice.php" class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 
+      hover:ring-pink-700 hover:ring-2 hover:translate-0 hover:transition-shadow flex justify-center items-center mb-4 md:mb-0 md:mr-4">
+      <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24" width="24">
+      <span class="mr-1">Cart (<span id="cart-count">
+          <?php
+          $sql = "SELECT sum(quantity)as `total` FROM cart where email='" . $_SESSION["email"] . "'";
+          $result = $conn->query($sql);
 
-      <!-- cart button -->
-      <div class="w-full md:w-auto">
-        <a href="invoice.php" class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 
-        hover:ring-pink-700 hover:ring-2 hover:translate-0           hover:transition-shadow flex justify-center items-center">
-          <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24"
-            width="24">
-          <span class="mr-1">Cart (<span id="cart-count">
-              <?php
-              $sql = "SELECT sum(quantity)as `total` FROM cart where email='" . $_SESSION["email"] . "'";
-              $result = $conn->query($sql);
-
-              if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                  echo $row["total"];
-                }
-              } else {
-                echo "0";
-              }
-              ?>
-            </span>)</span>
-        </a>
-
-        <!-- my order button -->
-        <a href="myOrders.php" class="p-4 mt-4 text-center justify-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
-          ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow  flex">My
-          Orders</a>
-      </div>
-    </div>
+          if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+              echo $row["total"];
+            }
+          } else {
+            echo "0";
+          }
+          ?>
+        </span>)</span>
+    </a>
+  
+    <!-- my order button -->
+    <a href="myOrders.php" class="p-4 text-center justify-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
+          ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex">
+      My Orders
+    </a>
+  </div>
+  </div>
 
 
     <!-- menu cards -->
@@ -116,7 +115,7 @@ include('protection.php'); ?>
       });
     });
 
-    notification();
+   
     function addtocart(id) {
       const xhr = new XMLHttpRequest();
       xhr.open("GET", "action/addtocart.php?foodID=" + id);
@@ -188,7 +187,7 @@ include('protection.php'); ?>
     });
 
   </script>
-
+<script defer> notification();</script>
   <?php include('ui/footer.php'); ?>
   <?php $conn->close(); ?>
 </body>
