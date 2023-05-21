@@ -17,12 +17,12 @@ if (mysqli_num_rows($result) > 0) {
 
     $html .= "<div
                 class='card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105'>
-                <img src=' " . $row['Image_url'] . "' alt='Menu Item' class='rounded-t-lg mx-auto h-50'>
+                <img src=' " . $row['Image_url'] . "' alt='Menu Item' class='rounded-t-lg mx-auto h-60 w-full object-cover'>
                 <div class='p-10'>
                   <h2 class='text-xl font-raleway mb-2'>
                     " . $row['Item_Name'] . "
                   </h2>
-                  <p class='text-gray-700  '>
+                  <p class='text-gray-700 max-h-45 '>
                       " . $row['Description'] . "
                   </p>
                   <p class='text-pink-500 font-semibold mt-4'>
