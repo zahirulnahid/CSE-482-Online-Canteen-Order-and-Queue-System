@@ -68,7 +68,7 @@
     </ul>
     <!-- Queue list -->
     <h1 class="md:py-20 text-center text-3xl  h-2 ">Pending Orders</h1>
-    <ul class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto mt-10 my-28 container shadow-none md:px-32 py-10 sm:px-10">
+    <ul class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto mt-10 my-10 container shadow-none md:px-32 py-10 sm:px-10">
 
     <?php 
         // Get called orders
