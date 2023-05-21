@@ -27,8 +27,8 @@ include("protection.php");
 
 
   <!-- menu list view -->
-  <a href="serverDashboard.php" class="p-4 float-right mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
-          hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow flex">Back to dashboard</a>
+  <a href="serverDashboard.php" class="p-4 float-right mt-4 m-16 justify-center  hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
+          hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow">Back to dashboard</a>
   <ul class="grid grid-cols-1 gap-4 mx-auto my-28 px-20 container shadow-none">
     <?php
     include('connection.php');

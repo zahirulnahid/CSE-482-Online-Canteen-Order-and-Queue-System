@@ -54,7 +54,7 @@ if(isset($_GET['nid']) && !empty($_GET['nid'])){
                     ?>
                 </ul>
             </div>
-            <a href="login.php" class="inline-block bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 rounded-full hover:ring-2 hover:ring-white hover:translate-0 hover:transition-shadow ml-4">
+            <a href="login.php" class="inline-block flex justify-center items-center bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 rounded-full hover:ring-2 hover:ring-white hover:translate-0 hover:transition-shadow ml-4">
                 <i class="fas fa-sign-out-alt"></i> Log Out
             </a>
         </div>

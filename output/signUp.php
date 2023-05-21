@@ -162,10 +162,9 @@ $conn->close();
                             <label class="block text-gray-700 font-raleway mb-2" for="actor">
                                 Create Account As
                             </label>
-                            <input type="radio" id="Student" name="category" value="1" required>
-                            <label for="Student">Student</label>
-                            <input type="radio" id="Faculty" name="category" value="2" required>
-                            <label for="Faculty">Faculty</label>
+                            <input  type="radio" id="Customer" name="category" value="1" required>
+                            <label class="m-2" for="Student">Student</label>
+                            
                             <input type="radio" id="Staff" name="category" value="3" required>
                             <label for="Staff">Staff</label>
                         </div>
@@ -247,7 +246,7 @@ $conn->close();
         </div>
     </div>
 
-    <?php include ('ui/footer.php');?>
+    
 
 </body>
 
