@@ -50,7 +50,9 @@ if (mysqli_num_rows($res) > 0) {
         
               
     } echo $myJSON;
-}else echo 0;
+}else{ $myObj = new stdClass();$myObj->count =$count;echo $myJSON;
+
+}
 }
 $conn->close();
 ?>
