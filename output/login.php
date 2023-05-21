@@ -27,7 +27,7 @@ unset($_COOKIE['user']); ?>
 
 <body>
   <div class="flex flex-col md:flex-row">
-    <div class="w-full md:w-2/3 min-h-screen bg-cover bg-center  "
+    <div class="hidden md:block w-full md:w-2/3 min-h-screen bg-cover bg-center"
       style="background-image: url('../images/loginPageBg.png');"></div>
 
     <div class="w-full md:w-1/3 min-h-screen bg-gradient-to-t from-gray-200 to-gray-50 md:bg-transparent md:p-0">
