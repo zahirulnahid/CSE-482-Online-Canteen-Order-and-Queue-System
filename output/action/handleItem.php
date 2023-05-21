@@ -33,14 +33,23 @@ if ($_GET["action"] == "update") {
             }
         }
           $update = "UPDATE `food_list` SET `Item_Name`='$itemName',`Price`='$price', `Description`='$description', `keywords`= '$keyword', `Image_url`= '$image' WHERE `food_list`.`id` = '" . $id . "';";
-        //   echo $update;
-          $result = $conn->query($update);
+          
+          if ($conn->query($update) === TRUE) {
+            echo "Record updated successfully";
+          } else {
+            echo "Error updating record: " . $conn->error;
+          }
+          
           $conn->close();
     }
 }
 if ($_GET["action"] == "delete") {
     $delete = "DELETE FROM `food_list` WHERE `food_list`.`id`= '" . $_GET['foodID'] . "';";
-    $result = $conn->query($delete);
+    if ($conn->query($delete) === TRUE) {
+        echo "Record Deleted successfully";
+      } else {
+        echo "Error updating record: " . $conn->error;
+      }
     $conn->close();
 }
 ?>

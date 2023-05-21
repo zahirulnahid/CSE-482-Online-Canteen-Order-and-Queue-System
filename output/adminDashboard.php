@@ -179,7 +179,7 @@ include("protection.php");
           ?>
           <div
             class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-            <img src="../images/<?php echo $rows["Item_Name"]; ?>.png" alt="Menu Item" class="rounded-t-lg mx-auto">
+            <img src="<?php echo $rows["Image_url"]; ?>" alt="Menu Item" class="rounded-t-lg mx-auto">
             <div class="p-10">
               <h2 class="text-xl font-raleway mb-2">
                 <?php echo $rows["Item_Name"]; ?>

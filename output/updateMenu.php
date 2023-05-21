@@ -69,47 +69,42 @@ include("protection.php");
             <!-- The modal -->
           </div>
           <div id="myModal_<?php echo $rows['id'] ?>" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
-              <div class="flex items-center justify-center min-h-screen pt-4 px-4 my-auto text-center sm:block sm:p-0">
+  <div class="flex items-center justify-center min-h-screen pt-4 px-4 my-auto text-center sm:block sm:p-0">
+    <!-- Modal content -->
+    <div class="modal-content bg-gray-500 text-gray-50 flex ring-4 ring-pink-600 justify-center items-center rounded-xl mt-20 px-6 py-4 m-auto max-w-fit shadow-2xl">
+      <div>
+        <input type="hidden" name="itemID" id="itemID<?php echo $rows['id']; ?>" value="<?php echo $rows['id']; ?>">
+        <div class="mb-4">
+          <label for="itemName" class="block text-white">Item Name:</label>
+          <input type="text" name="itemName" id="itemName<?php echo $rows['id']; ?>" value="<?php echo $rows['Item_Name']; ?>" class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+        </div>
+        <div class="mb-4">
+          <label for="price" class="block text-white">Price:</label>
+          <input type="text" name="price" id="price<?php echo $rows['id']; ?>" value="<?php echo $rows['Price']; ?>" class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+        </div>
+        <div class="mb-4">
+          <label for="description" class="block text-white">Description:</label>
+          <input type="text" name="description" id="description<?php echo $rows['id']; ?>" value="<?php echo $rows["Description"]; ?>" class="box-content border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+        </div>
+        <div class="flex justify-between mb-4">
+          <label for="keyword" class="block text-white">Keywords:</label>
+          <input type="text" name="keyword" id="keyword<?php echo $rows['id']; ?>" value="<?php echo $rows['keywords']; ?>" class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+        </div>
+        <div class="mb-4">
+          <label for="image" class="block text-white">Image:</label>
+          <input type="text" name="image" id="image<?php echo $rows['id']; ?>" value="<?php echo $rows['Image_url']; ?>" class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+        </div>
+        <div class="flex justify-end">
+          <button class="px-5 py-2 min-w-fit bg-white text-gray-900 hover:text-gray-100 hover:bg-pink-700 hover:ring-2 ring-pink-600 ring-600 ring-2 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="deleteItem(document.getElementById('itemID<?php echo $rows['id']; ?>').value)">Delete</button>
+          <button class="px-5 py-2 min-w-fit bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="updateItem(document.getElementById('itemID<?php echo $rows['id']; ?>').value, document.getElementById('itemName<?php echo $rows['id']; ?>').value, document.getElementById('price<?php echo $rows['id']; ?>').value, document.getElementById('description<?php echo $rows['id']; ?>').value, document.getElementById('keyword<?php echo $rows['id']; ?>').value, document.getElementById('image<?php echo $rows['id']; ?>').value)">Update</button>
+          <button class="px-5 py-2 bg-gray-50 text-gray-900 hover:bg-gray-900 hover:text-white ring-2 ring-pink-500 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="closeModal(<?php echo $rows['id'] ?>)">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                <!-- Modal content -->
-                <div class="modal-content bg-gray-500 text-gray-50 flex ring-4 ring-pink-600 justify-center items-center rounded-xl mt-20 px-6 py-4 m-auto max-w-fit shadow-2xl">
-                
 
-
-                  <form method="GET">
-                    <input type="hidden" name="itemID" id="itemID" value="<?php echo $rows['id']; ?>">
-                    <label for="itemName">Item Name: </label>
-                    <input type="text" name="itemName" id="itemName" value="<?php echo $rows['Item_Name']; ?>"
-                      class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
-                    <label for="price">Price: </label>
-                    <input type="text" name="price" id="price" value="<?php echo $rows['Price']; ?>"
-                      class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
-                    <label for="description">Description: </label>
-                    <input type="text" name="description" id="description" value="<?php echo $rows["Description"]; ?>"
-                      class="box-content border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
-                    <div class="flex justify-between">
-                    <label for="keyword">Keywords: </label>
-                    <input type="text" name="keyword" id="keyword" value="<?php echo $rows['keywords']; ?>"
-                      class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
-                    <label for="image">Image: </label>
-                    <input type="text" name="image" id="image" value="<?php echo $rows['Image_url']; ?>> <br>
-                      class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"><br><br>
-
-                      <button class="px-5 py-2 min-w-fit  float-right bg-white text-gray-900 hover:text-gray-100 hover:bg-pink-700 hover:ring-2 ring-pink-600 ring-600 ring-2 rounded-full border-spacing-2
-                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
-                        onclick="deleteItem(document.getElementById('itemID')">Delete</button>
-                        <button class="px-5 py-2 min-w-fit  float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2
-                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
-                        onclick="updateItem(document.getElementById('itemID'), document.getElementById('itemName').value, document.getElementById('price').value, document.getElementById('description').value, document.getElementById('keyword').value, document.getElementById('image').value)">Update</button>
-
-                        <button class="px-5 py-2 bg-gray-50 text-gray-900 hover:bg-gray-900 hover:text-white ring-2 ring-pink-500 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2
-                    font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
-                        onclick="closeModal(<?php echo $rows['id'] ?>)">Close</button>
-                          </form>
-                      
-                    </div>
-                  </div>
-                </div>
             </li>
           
       <?php } ?>
@@ -125,12 +120,12 @@ include("protection.php");
       document.getElementById("myModal_" + x).classList.add("hidden");
     }
     function updateItem(id, name, price, description, keyword, image) {
-          id =document.getElementById('itemID')
+        
           const xhr = new XMLHttpRequest();
           xhr.open("GET", "action/handleItem.php?action=update&foodID=" + id + "&name=" + name + "&price=" + price + "&description=" + description + "&keyword=" + keyword + "&image=" + image);
           xhr.onload = function () {
             if (xhr.status === 200) {
-              console.log("updated")
+              console.log("action/handleItem.php?action=update&foodID=" + id + "&name=" + name + "&price=" + price + "&description=" + description + "&keyword=" + keyword + "&image=" + image)
             }
           };
           xhr.send();
@@ -141,7 +136,7 @@ include("protection.php");
           xhr.open("GET", "action/handleItem.php?action=delete&foodID=" + id);
           xhr.onload = function () {
             if (xhr.status === 200) {
-              console.log("Del")
+              console.log("action/handleItem.php?action=delete&foodID=" + id)
             }
           };
           xhr.send();
