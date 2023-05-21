@@ -21,7 +21,7 @@ include("protection.php");
 
 
 
-<body class="bg-pink-100 scroll-smooth font-raleway min-h-screen bg-cover bg-no-repeat w-full"
+<body class="bg-pink-100 scroll-smooth font-raleway min-h-screen bg-cover bg-no-repeat w-full "
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
@@ -38,10 +38,10 @@ include("protection.php");
     </div>
 
     <!-- sales list view -->
-    <div class="container mx-auto px-20 m-16 ">
-        <h1 class="text-2xl font-bold mb-6 text-center">Sales Report</h1>
-        <div class="shadow-2xl ">
-        <table class="table-auto w-full ">
+   <div class="container mx-auto px-4 sm:px-8 md:px-16 lg:px-20 m-4 sm:m-8">
+    <h1 class="text-2xl font-bold mb-6 text-center">Sales Report</h1>
+    <div class="shadow-lg overflow-x-auto">
+        <table class="w-full">
             <thead>
                 <tr class="bg-pink-700">
                     <th class="px-4 py-2 text-gray-200">Product Name</th>
@@ -56,20 +56,16 @@ include("protection.php");
 
                 $sql = "SELECT `SALES_REPORT`.*, `food_list`.`Item_Name`,`food_list`.`Price` 
                     FROM `SALES_REPORT`
-                    INNER JOIN `food_list` ON `SALES_REPORT`.`ItemID`= `food_list`.`id`;
-                    
-                    ";
+                    INNER JOIN `food_list` ON `SALES_REPORT`.`ItemID`= `food_list`.`id`;";
                 $result = $conn->query($sql);
 
-                //declare array to store the data of database
                 $row = [];
                 $total_Revenue = 0;
                 if ($result->num_rows > 0) {
-                    // fetch all data from db into array 
                     $row = $result->fetch_all(MYSQLI_ASSOC);
                 }
 
-                if (!empty($row))
+                if (!empty($row)) {
                     foreach ($row as $rows) {
                         $total_Revenue += $rows['Total_Revenue'];
                         ?>
@@ -87,21 +83,23 @@ include("protection.php");
                                 <?php echo $rows['Total_Revenue']; ?> BDT
                             </td>
                         </tr>
-                    <?php } ?>
+                    <?php }
+                } ?>
             </tbody>
             <tfoot>
-                <tr class="bg-pink-700 m-4 text-center">
-                    <td class="px-4 py-2 text-gray-200 p-4 font-bold">Total</td>
-                    <td class="px-4 py-2 text-gray-200 p-4 font-raleway"></td>
-                    <td class="px-4 py-2 text-gray-200 p-4 font-raleway"></td>
-                    <td class="px-4 py-2 text-gray-200 p-4 font-bold ">
+                <tr class="bg-pink-700 text-center">
+                    <td class="px-4 py-2 text-gray-200 font-bold">Total</td>
+                    <td></td>
+                    <td></td>
+                    <td class="px-4 py-2 text-gray-200 font-bold">
                         <?php echo $total_Revenue ?> BDT
                     </td>
                 </tr>
             </tfoot>
         </table>
-        </div>
     </div>
+</div>
+
     <?php
     $conn->close(); ?>
 

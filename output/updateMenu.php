@@ -27,9 +27,11 @@ include("protection.php");
 
 
   <!-- menu list view -->
-  <a href="serverDashboard.php" class="p-4 float-right mt-4 m-16 justify-center  hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
-          hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow">Back to dashboard</a>
-  <ul class="grid grid-cols-1 gap-4 mx-auto my-28 px-20 container shadow-none">
+  <a href="serverDashboard.php"
+  class="p-4 float-none mx-auto m-8 justify-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow block w-max">
+  Back to dashboard
+</a>
+  <ul class="grid sm:grid-cols-1 gap-4 mx-auto my-8 sm:my-12 md:my-16 px-4 sm:px-8 md:px-16 lg:px-20 container shadow-none">
     <?php
     include('connection.php');
 
@@ -49,7 +51,7 @@ include("protection.php");
 
         ?>
 
-        <li class="bg-gray-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
+        <li class="bg-gray-50 rounded-xl shadow-lg mb-6 overflow-hidden flex">
           <img src="<?php echo $rows['Image_url']; ?>" alt="Product"
             class="w-24 h-24 rounded-2xl m-5 object-cover flex-shrink-0">
           <div class="p-5 flex-grow">
@@ -59,7 +61,7 @@ include("protection.php");
             <p class="text-gray-700 font-medium">
               <?php echo $rows['Price']; ?> BDT
             </p>
-            <p class="text-gray-700">
+            <p class="text-gray-700 pb-4">
               <?php echo $rows['Description']; ?>
             </p>
 
@@ -86,18 +88,18 @@ include("protection.php");
           <label for="description" class="block text-white">Description:</label>
           <input type="text" name="description" id="description<?php echo $rows['id']; ?>" value="<?php echo $rows["Description"]; ?>" class="box-content border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
-        <div class="flex justify-between mb-4">
+        <div class=" mb-4">
           <label for="keyword" class="block text-white">Keywords:</label>
-          <input type="text" name="keyword" id="keyword<?php echo $rows['id']; ?>" value="<?php echo $rows['keywords']; ?>" class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+          <input type="text" name="keyword" placeholder="keywords:" id="keyword<?php echo $rows['id']; ?>" value="<?php echo $rows['keywords']; ?>" class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
         <div class="mb-4">
           <label for="image" class="block text-white">Image:</label>
           <input type="text" name="image" id="image<?php echo $rows['id']; ?>" value="<?php echo $rows['Image_url']; ?>" class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
         <div class="flex justify-end">
-          <button class="px-5 py-2 min-w-fit bg-white text-gray-900 hover:text-gray-100 hover:bg-pink-700 hover:ring-2 ring-pink-600 ring-600 ring-2 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="deleteItem(document.getElementById('itemID<?php echo $rows['id']; ?>').value)">Delete</button>
-          <button class="px-5 py-2 min-w-fit bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="updateItem(document.getElementById('itemID<?php echo $rows['id']; ?>').value, document.getElementById('itemName<?php echo $rows['id']; ?>').value, document.getElementById('price<?php echo $rows['id']; ?>').value, document.getElementById('description<?php echo $rows['id']; ?>').value, document.getElementById('keyword<?php echo $rows['id']; ?>').value, document.getElementById('image<?php echo $rows['id']; ?>').value)">Update</button>
-          <button class="px-5 py-2 bg-gray-50 text-gray-900 hover:bg-gray-900 hover:text-white ring-2 ring-pink-500 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="closeModal(<?php echo $rows['id'] ?>)">Close</button>
+          <button class="px-5 py-2 mx-2 min-w-fit bg-white text-gray-900 hover:text-gray-100 hover:bg-pink-700 hover:ring-2 ring-pink-600 ring-600 ring-2 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="deleteItem(document.getElementById('itemID<?php echo $rows['id']; ?>').value)">Delete</button>
+          <button class="px-5 py-2 mx-2 min-w-fit bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="updateItem(document.getElementById('itemID<?php echo $rows['id']; ?>').value, document.getElementById('itemName<?php echo $rows['id']; ?>').value, document.getElementById('price<?php echo $rows['id']; ?>').value, document.getElementById('description<?php echo $rows['id']; ?>').value, document.getElementById('keyword<?php echo $rows['id']; ?>').value, document.getElementById('image<?php echo $rows['id']; ?>').value)">Update</button>
+          <button class="px-5 py-2 mx-2 bg-gray-50 text-gray-900 hover:bg-gray-900 hover:text-white ring-2 ring-pink-500 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="closeModal(<?php echo $rows['id'] ?>)">Close</button>
         </div>
       </div>
     </div>
