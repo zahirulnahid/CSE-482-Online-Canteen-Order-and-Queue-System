@@ -180,14 +180,14 @@ include("protection.php");
     $row = $result->fetch_all(MYSQLI_ASSOC);
   }
 
-  if (!empty($row))
+  if (!empty($row)) {
     foreach ($row as $rows) {
       $description = $rows["Description"];
       $truncatedDescription = strlen($description) > 60 ? substr($description, 0, 60) . '...' : $description;
-
+  
       ?>
-      <div
-        class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+  
+      <div class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <img src="<?php echo $rows["Image_url"]; ?>" alt="Menu Item" class="rounded-t-lg mx-auto h-60 w-full object-cover">
         <div class="p-10">
           <h2 class="text-xl font-raleway mb-2">
@@ -195,56 +195,45 @@ include("protection.php");
           </h2>
           <p id="description_<?php echo $rows["id"]; ?>" class="text-gray-700">
             <?php echo $truncatedDescription; ?>
-            <?php if (strlen($description) > 60) { ?>
-              <a href="#" class="text-blue-500 hover:text-blue-700 underline see-more-link"
-                data-id="<?php echo $rows["id"]; ?>">See More</a>
-            <?php } ?>
           </p>
+  
+          <button class="show-more-btn text-blue-500 font-semibold mt-2" onclick="toggleDescription(<?php echo $rows["id"]; ?>)">
+            Show More
+          </button>
+  
           <p class="text-pink-500 font-semibold mt-4">
             <?php echo $rows["Price"]; ?> BDT
           </p>
           <div class="flex items-center mt-4">
-            💰Total Sold:
-            <?php echo $rows["units_sold"]; ?>
+            💰Total Sold: <?php echo $rows["units_sold"]; ?>
           </div>
         </div>
       </div>
-    <?php }
+  
+      <script>
+        function toggleDescription(id) {
+          var description = document.getElementById('description_' + id);
+          var button = document.querySelector('#description_' + id + ' + .show-more-btn');
+  
+          if (description.classList.contains('expanded')) {
+            description.textContent = '<?php echo $truncatedDescription; ?>';
+            button.textContent = 'Show More';
+          } else {
+            description.textContent = '<?php echo $description; ?>';
+            button.textContent = 'Show Less';
+          }
+  
+          description.classList.toggle('expanded');
+        }
+      </script>
+  
+      <?php
+    }
+  }
+  
   $conn->close();
+  
   ?>
 </div>
 
 
-<script>
-  // Get all the "See More" links
-  var seeMoreLinks = document.getElementsByClassName('see-more-link');
-
-  // Add click event listener to each link
-  Array.from(seeMoreLinks).forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-
-      // Get the ID of the clicked link
-      var itemId = this.getAttribute('data-id');
-
-      // Get the description element by ID
-      var descriptionElement = document.getElementById('description_' + itemId);
-
-      // Toggle the display of the full description
-      descriptionElement.classList.toggle('show-full-description');
-
-      // Update the link text based on the description visibility
-      if (descriptionElement.classList.contains('show-full-description')) {
-        this.textContent = 'See Less';
-      } else {
-        this.textContent = 'See More';
-      }
-    });
-  });
-</script>
-
-
-  <?php include ('ui/footer.php');?>
-</body>
-
-</html>
