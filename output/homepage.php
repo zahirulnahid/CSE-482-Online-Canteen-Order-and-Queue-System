@@ -91,33 +91,32 @@ include('protection.php'); ?>
   </div>
   </div>
   <script>
-   
-var loadFlag = 0;
-loadMore(loadFlag);
 
-function loadMore(start) {
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      var result = xhr.responseText;
-      document.getElementById('menu-cards').innerHTML += result;
-      
-    }
-  };
-  xhr.open('GET', 'action/getMenu.php?start=' + start, true);
-  xhr.send();
-}
-loadFlag += 4;console.log(loadFlag+"Load Flag Updated");
-window.addEventListener('DOMContentLoaded', function () {
-  window.addEventListener('scroll', function () {
-    if (window.pageYOffset >= document.documentElement.scrollHeight - (window.innerHeight)) {
-      loadMore(loadFlag);
-      console.log("Called " + loadFlag);
-    }
-  });
-});
+    var loadFlag = 0;
+    loadMore(loadFlag);
 
-notification();
+    function loadMore(start) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var result = xhr.responseText;
+          document.getElementById('menu-cards').innerHTML += result;
+          loadFlag += 4;
+        }
+      };
+      xhr.open('GET', 'action/getMenu.php?start=' + start, true);
+      xhr.send();
+    }
+    window.addEventListener('DOMContentLoaded', function () {
+      window.addEventListener('scroll', function () {
+        if (window.pageYOffset >= document.documentElement.scrollHeight - (window.innerHeight)) {
+          loadMore(loadFlag);
+          console.log("Called " + loadFlag);
+        }
+      });
+    });
+
+    notification();
     function addtocart(id) {
       const xhr = new XMLHttpRequest();
       xhr.open("GET", "action/addtocart.php?foodID=" + id);
@@ -131,7 +130,7 @@ notification();
       };
       xhr.send();
     }
-    var x=<?php echo $notificationCount?>;
+    var x = <?php echo $notificationCount ?>;
     function notification() {
       const xhr = new XMLHttpRequest();
       xhr.open("GET", "action/userHandle.php?action=notification");
@@ -141,17 +140,17 @@ notification();
           const text = xhr.responseText;
           const obj = JSON.parse(text);
           document.getElementById("notification-count").innerHTML = obj.count;
-         if(x!=obj.count){main(obj.title,obj.details);x= obj.count;}
-         console.log("Value of x: "+x);
+          if (x != obj.count) { main(obj.title, obj.details); x = obj.count; }
+          console.log("Value of x: " + x);
         }
       };
       xhr.send();
     }
     function fetchData() {
-    // Code for the method you want to execute
-    notification()
-  }
-  setInterval(fetchData, 10000);
+      // Code for the method you want to execute
+      notification()
+    }
+    setInterval(fetchData, 10000);
     $(document).ready(function () {
       $('#search').on('input', function () {
         var search = $(this).val();

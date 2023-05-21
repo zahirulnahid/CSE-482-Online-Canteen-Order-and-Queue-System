@@ -14,9 +14,9 @@ include("protection.php");
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+        rel="stylesheet">
 </head>
 
 
@@ -24,8 +24,8 @@ include("protection.php");
 <body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat "
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
-   <!-- Navbar -->
- <?php include('ui/header.php'); ?>
+    <!-- Navbar -->
+    <?php include('ui/header.php'); ?>
 
     <div class="flex m-14">
         <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
@@ -36,68 +36,104 @@ include("protection.php");
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="search" name="search" id="search">
 
-                
-      
+
+
         </div>
 
 
     </div>
 
     <!-- Queue list view -->
-    <ul class="grid grid-cols-1 gap-4 container shadow-none mx-auto p-28"> 
-    <?php
-include('connection.php');
+    <ul class="grid grid-cols-1 gap-4 container shadow-none mx-auto p-28">
+        <?php
+        include('connection.php');
 
-    $sql = "SELECT `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Bill`.*
+        $sql = "SELECT `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Bill`.*
             FROM `bill`
             INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
             WHERE bill.served = 'no'
             ORDER BY bill.OrderID DESC ;";
 
-$result = $conn->query($sql);
+        $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo '<li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">';
-        echo '<div class="flex-grow p-0">';
-        $items = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `bill`.served, `food_list`.`Item_Name`
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) { ?>
+                <li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
+                    <div class="flex-grow p-0">
+                        <?php
+                        $items = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `bill`.served, `food_list`.`Item_Name`
         FROM `Orders`
         INNER JOIN food_list ON Orders.ItemID = food_list.id
         INNER JOIN `QUEUE` ON `Orders`.OrderID = `QUEUE`.OrderID
         INNER JOIN `BILL` ON `Orders`.`OrderID` = `BILL`.OrderID
         INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
-        WHERE bill.served = 'no' AND Queue.OrderID = ". $row['OrderID']."
+        WHERE bill.served = 'no' AND Queue.OrderID = " . $row['OrderID'] . "
         ORDER BY OrderID DESC ; ";
-        $items = $conn->query($items);
-        //Fetch all items for the current OrderID and store in an array
-        $items = $items->fetch_all(MYSQLI_ASSOC);
-        //Counting number of rows
-        $length = count($items);
-        
-        for($i=0; $i< $length; $i++){
-            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $items[$i]["Quantity"] . ' x ' . $items[$i]["Item_Name"] . '</h3>';
-        }
-            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">' . $items[0]["Customer_Name"] . '</h3>';
-            echo '<p class="text-base font-raleway text-gray-900 mb-1">' . $items[0]["Customer_Email"] . '</p>';
-            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Queue No: ' . $items[0]['QueueNo'] . '</h3>';
-            echo '<h3 class="text-base font-raleway text-gray-900 mb-1">Order ID: ' . $row["OrderID"] . '</h3>';
-            echo '<a href="action/removeQueue.php?QueueID=' . $items[0]["QueueNo"] . '&OrderID=' . $row["OrderID"] . '" class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>';
-        echo '</div>';
-        echo '</li>';
-    }
-} else {
-    echo "No Pending orders.";
-}
+                        $items = $conn->query($items);
+                        //Fetch all items for the current OrderID and store in an array
+                        $items = $items->fetch_all(MYSQLI_ASSOC);
+                        //Counting number of rows
+                        $length = count($items);
 
-$conn->close();
-?>
+                        for ($i = 0; $i < $length; $i++) { ?>
+                            <h3 class="text-base font-raleway text-gray-900 mb-1">
+                                <?php echo $items[$i]["Quantity"] . ' x ' . $items[$i]["Item_Name"] ?>
+                            </h3>
+                        <?php } ?>
+                        <h3 class="text-base font-raleway text-gray-900 mb-1">
+                            <?php echo $items[0]["Customer_Name"] ?>
+                        </h3>
+                        <p class="text-base font-raleway text-gray-900 mb-1">
+                            <?php echo $items[0]["Customer_Email"] ?>
+                        </p>
+                        <h3 class="text-base font-raleway text-gray-900 mb-1">Queue No:
+                            <?php echo $items[0]['QueueNo'] ?>
+                        </h3>
+                        <h3 class="text-base font-raleway text-gray-900 mb-1">Order ID:
+                            <?php echo $row["OrderID"] ?>
+                        </h3>
+                        Counter: <input type="text" list="counterNo" name="counter">
+
+                        <datalist id="counterNo">
+                            <option value="1">
+                            <option value="2">
+                            <option value="3">
+                            <option value="4">
+                            <option value="5">
+                        </datalist>
+                        <a href="action/removeQueue.php?QueueID=<?php echo $items[0]["QueueNo"] ?>&OrderID=<?php echo $row["OrderID"] ?>"
+                            class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>
+                        <button
+                            onClick="callCustomer(document.getElementsByName('counter')[0].value, <?php echo $row["OrderID"] ?>, <?php echo $_SESSION['id']; ?>,<?php echo $row["CustomerID"]; ?>)"
+                            class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Call</button>
+                    </div>
+                </li>
+            <?php }
+        } else {
+            echo "No Pending orders.";
+        }
+
+        $conn->close();
+        ?>
 
 
     </ul>
 
-    <?php include ('ui/footer.php');?>
+    <?php include('ui/footer.php'); ?>
+    <script>
+        function callCustomer(counter, orderID, staffID, customerID) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "action/call.php?counter=" + counter + "&OrderID=" + orderID + "&sid=" + staffID + "&cid=" + customerID);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText);
 
+                }
+            }
+            xhr.send();
+        }
+    </script>
 </body>
-</head>
+
 
 </html>
