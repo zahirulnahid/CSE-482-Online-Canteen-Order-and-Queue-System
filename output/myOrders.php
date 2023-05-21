@@ -28,9 +28,16 @@ include('protection.php');
     <!-- Navbar -->
     <?php include('ui/header.php'); ?>
 
-    <!-- menu list view -->
-    <ul id="orders" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto mt-10 my-28 container shadow-none md:px-32 py-10 sm:px-10">
+    <div class="flex mx-auto justify-end m-10 sm:px-6 md:px-14 ">
+          <a href="../output/homepage.php" class="bg-gray-100 mx-auto hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 m-4 rounded-full ring-pink-600 ring-2
+           hover:ring-2 hover:ring-pink-100 max-w-fit hover:translate-0 hover:transition-shadow md:mx-2">
+          Back to menu
+        </a>
+    </div>
 
+    <ul id="orders" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto mt-10 my-28 container shadow-none md:px-20 py-10 sm:px-">
+        
+       
         <h2 class=" text-lg font-raleway text-gray-900 mb-1">
             Customer Name:
             <?php echo $_SESSION['name']; ?>
@@ -39,6 +46,8 @@ include('protection.php');
             Customer Email:
             <?php echo $_SESSION['email']; ?>
         </h2>
+          
+        
     </ul>
 
     <?php include ('ui/footer.php');?>

@@ -162,10 +162,9 @@ $conn->close();
                             <label class="block text-gray-700 font-raleway mb-2" for="actor">
                                 Create Account As
                             </label>
-                            <input type="radio" id="Student" name="category" value="1" required>
-                            <label for="Student">Student</label>
-                            <input type="radio" id="Faculty" name="category" value="2" required>
-                            <label for="Faculty">Faculty</label>
+                            <input  type="radio" id="Customer" name="category" value="1" required>
+                            <label class="m-2" for="Student">Student</label>
+                            
                             <input type="radio" id="Staff" name="category" value="3" required>
                             <label for="Staff">Staff</label>
                         </div>
@@ -176,7 +175,7 @@ $conn->close();
                                 Name
                             </label>
                             <input
-                                class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="text" name="name" id="name" placeholder="Enter name" required>
                         </div>
 
@@ -186,7 +185,7 @@ $conn->close();
                                 Email
                             </label>
                             <input
-                                class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="email" name="email" id="email" placeholder="Enter valid email" required>
                             <!-- email error -->
                             <p id="emailError" class="text-pink-500 font-raleway "></p>
@@ -200,7 +199,7 @@ $conn->close();
                             <!--   NUMBER ERROR -->
                             <p id="numberError" class="text-pink-500 font-raleway "></p>
                             <input
-                                class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="text" name="phone" id="phone" placeholder="11-digit Phone number" required>
                         </div>
 
@@ -214,7 +213,7 @@ $conn->close();
                             <p id="passwordError" class="text-pink-500 font-raleway "></p>
 
                             <input
-                                class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="password" name="password" id="password" placeholder="8-32 charcter password"
                                 required>
                         </div>
@@ -227,14 +226,14 @@ $conn->close();
                             <!-- CONFIRM PASSWORD ERROR -->
                             <p id="confirmPasswordError" class="text-pink-500 font-raleway "></p>
                             <input
-                                class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
                                 type="password" name="confirmPassword" id="confirmPassword"
                                 placeholder="Re-enter Password" required>
                         </div>
 
                         <!-- REGISTER BUTTON -->
                         <input type="submit" value="Register"
-                            class="bg-pink-500 hover:bg-pink-700 text-white font-raleway py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-pink-400">
+                            class="bg-pink-700 hover:bg-pink-100 hover:text-gray-900 hover:ring-2 hover:ring-pink-700 text-white font-raleway  py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400">
 
                     </form>
 
@@ -247,7 +246,7 @@ $conn->close();
         </div>
     </div>
 
-    <?php include ('ui/footer.php');?>
+    
 
 </body>
 

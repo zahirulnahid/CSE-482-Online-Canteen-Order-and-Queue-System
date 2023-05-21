@@ -54,7 +54,7 @@ include('protection.php'); ?>
       <!-- cart button -->
       <div class="w-full md:w-auto">
         <a href="invoice.php" class="p-4 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 
-        hover:ring-pink-700 hover:ring-2 hover:translate-0           hover:transition-shadow flex items-center">
+        hover:ring-pink-700 hover:ring-2 hover:translate-0           hover:transition-shadow flex justify-center items-center">
           <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2" height="24"
             width="24">
           <span class="mr-1">Cart (<span id="cart-count">
@@ -74,8 +74,8 @@ include('protection.php'); ?>
         </a>
 
         <!-- my order button -->
-        <a href="myOrders.php" class="p-4 mt-4 text-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
-          ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex">My
+        <a href="myOrders.php" class="p-4 mt-4 text-center justify-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
+          ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow  flex">My
           Orders</a>
       </div>
     </div>

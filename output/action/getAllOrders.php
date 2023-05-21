@@ -30,7 +30,7 @@ if (mysqli_num_rows($result) > 0) {
         $length = count($items);
 
 
-        $html .= "<li class='p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex'>
+        $html .= "<li class='p-10 bg-gray-50 rounded-xl shadow-lg mb-4 overflow-hidden flex'>
                 <div class='flex-grow'>";
 
         //all items in the same Order Number will be served in one queue

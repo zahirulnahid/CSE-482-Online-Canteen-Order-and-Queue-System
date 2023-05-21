@@ -21,7 +21,7 @@ include("protection.php");
 </head>
 
 
-<body class="bg-pink-100 scroll-smooth font-raleway min-h-screen bg-cover bg-no-repeat w-full"
+<body class="bg-pink-100 scroll-smooth min-h-screen bg-cover bg-no-repeat w-full"
     style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
@@ -37,15 +37,15 @@ include("protection.php");
         <div class="flex m-14">
         <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
         <!-- search bar -->
-        <div class="px-20 my-4 w-full float-left">
-            <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
+        <div class="px-20 my-4 w-full">
+            <!-- <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
             <input
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                type="search" name="search" id="search">
+                type="search" name="search" id="search"> -->
 
                 
-            <a href="serverDashboard.php" class="p-4 float-right mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
-          hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow flex">Back to dashboard</a>
+            <a href="serverDashboard.php" class="p-4 justify-center mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
+          hover:ring-pink-700 ring-2 ring-white hover:ring-2  hover:translate-0 hover:transition-shadow">Back to dashboard</a>
       
 
         </div>
