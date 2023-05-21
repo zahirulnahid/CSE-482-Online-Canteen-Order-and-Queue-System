@@ -8,7 +8,7 @@ if (isset($_GET["counter"]) && isset($_GET["OrderID"])) {
     $senderid = $_GET["sid"];
     $val = $_GET["cid"];
 
-    $title = "Order Ready";
+    $title = "Yay! Order Ready.";
     $details = "Collect your food from counter $counterNo";
 
     // Update Counter Number
