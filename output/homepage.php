@@ -130,22 +130,42 @@ include('protection.php'); ?>
       };
       xhr.send();
     }
-    var x = <?php echo $notificationCount ?>;
-    function notification() {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", "action/userHandle.php?action=notification");
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          console.log(xhr.responseText);
-          const text = xhr.responseText;
-          const obj = JSON.parse(text);
-          document.getElementById("notification-count").innerHTML = obj.count;
-          if (x != obj.count) { main(obj.title, obj.details); x = obj.count; }
-          console.log("Value of x: " + x);
+
+  var x = <?php echo $_SESSION["notificationCount"] ?>;
+  function notification() {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "action/userHandle.php?action=notification");
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+
+      const text = xhr.responseText;
+      const obj = JSON.parse(text);
+      const ulElement = document.getElementById('notification');
+     
+
+      
+      if (x != obj.count&& x!=0) {
+
+        ulElement.innerHTML = ''; // Clear existing li items
+        // Update notification count
+        document.getElementById("notification-count").innerHTML = obj.count;
+        let i = 0;
+        // Create new li elements and append them to the ul
+        for (i; i < obj.notifications.length; i++) {
+          const liElement = document.createElement('li');
+          liElement.innerHTML = '<a href="' + obj.notifications[i].link + '" class="block px-4 py-3 hover:bg-gray-100">' + obj.notifications[i].title + '<br>' + obj.notifications[i].details + '</a>';
+          ulElement.appendChild(liElement);
+          console.log("ssss");
         }
-      };
-      xhr.send();
+        // Update x with the new notification count
+        x = obj.count;console.log("Value of x: " + x);
+      main(obj.notifications[i-1].title, obj.notifications[i-1].details);
+      }
     }
+  };
+  xhr.send();
+}
     function fetchData() {
       // Code for the method you want to execute
       notification()
