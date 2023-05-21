@@ -19,9 +19,17 @@ include("protection.php");
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
     rel="stylesheet">
+
+<style>
+  .show-full-description {
+    white-space: normal !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+</style>
 </head>
 
-<body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
+<body class=" font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
   style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
 
@@ -159,52 +167,82 @@ include("protection.php");
 
 
   <!-- menu cards -->
-  <div class="container mt-5 mx-auto">
-    <center>
-      <h1 class="text-3xl font-raleway mb-8">🍴EXPLORE ON-GOING ITEMS</h1>
-    </center>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
-      <?php
-      $sql = "SELECT *,(SELECT units_sold FROM `SALES_REPORT` WHERE ItemID = `Food_List`.`id`) as `units_sold` FROM `Food_List`";
-      $result = $conn->query($sql);
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
+  <?php
+  $sql = "SELECT *, (SELECT units_sold FROM `SALES_REPORT` WHERE ItemID = `Food_List`.`id`) as `units_sold` FROM `Food_List`";
+  $result = $conn->query($sql);
 
-      //declare array to store the data of database
-      $row = [];
+  //declare array to store the data of the database
+  $row = [];
 
-      if ($result->num_rows > 0) {
-        // fetch all data from db into array 
-        $row = $result->fetch_all(MYSQLI_ASSOC);
-      }
+  if ($result->num_rows > 0) {
+    // fetch all data from the database into an array
+    $row = $result->fetch_all(MYSQLI_ASSOC);
+  }
 
-      if (!empty($row))
-        foreach ($row as $rows) {
-          ?>
-          <div
-            class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-            <img src="<?php echo $rows["Image_url"]; ?>" alt="Menu Item" class="rounded-t-lg mx-auto">
-            <div class="p-10">
-              <h2 class="text-xl font-raleway mb-2">
-                <?php echo $rows["Item_Name"]; ?>
-              </h2>
-              <p class="text-gray-700">
-                <?php echo $rows["Description"]; ?>
-              </p>
-              <p class="text-pink-500 font-semibold mt-4">
-                <?php echo $rows["Price"]; ?> BDT
-              </p>
-              <div class="flex items-center mt-4">
-                💰Total Sold: -
-                <?php echo $rows["units_sold"]; ?>
-              </div>
-            </div>
-          </div>
-        <?php }
-      $conn->close();
+  if (!empty($row))
+    foreach ($row as $rows) {
+      $description = $rows["Description"];
+      $truncatedDescription = strlen($description) > 60 ? substr($description, 0, 60) . '...' : $description;
+
       ?>
-    </div>
-  </div>
-  </div>
-  </div>
+      <div
+        class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+        <img src="<?php echo $rows["Image_url"]; ?>" alt="Menu Item" class="rounded-t-lg mx-auto h-60 w-full object-cover">
+        <div class="p-10">
+          <h2 class="text-xl font-raleway mb-2">
+            <?php echo $rows["Item_Name"]; ?>
+          </h2>
+          <p id="description_<?php echo $rows["id"]; ?>" class="text-gray-700">
+            <?php echo $truncatedDescription; ?>
+            <?php if (strlen($description) > 60) { ?>
+              <a href="#" class="text-blue-500 hover:text-blue-700 underline see-more-link"
+                data-id="<?php echo $rows["id"]; ?>">See More</a>
+            <?php } ?>
+          </p>
+          <p class="text-pink-500 font-semibold mt-4">
+            <?php echo $rows["Price"]; ?> BDT
+          </p>
+          <div class="flex items-center mt-4">
+            💰Total Sold:
+            <?php echo $rows["units_sold"]; ?>
+          </div>
+        </div>
+      </div>
+    <?php }
+  $conn->close();
+  ?>
+</div>
+
+
+<script>
+  // Get all the "See More" links
+  var seeMoreLinks = document.getElementsByClassName('see-more-link');
+
+  // Add click event listener to each link
+  Array.from(seeMoreLinks).forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Get the ID of the clicked link
+      var itemId = this.getAttribute('data-id');
+
+      // Get the description element by ID
+      var descriptionElement = document.getElementById('description_' + itemId);
+
+      // Toggle the display of the full description
+      descriptionElement.classList.toggle('show-full-description');
+
+      // Update the link text based on the description visibility
+      if (descriptionElement.classList.contains('show-full-description')) {
+        this.textContent = 'See Less';
+      } else {
+        this.textContent = 'See More';
+      }
+    });
+  });
+</script>
+
 
   <?php include ('ui/footer.php');?>
 </body>
