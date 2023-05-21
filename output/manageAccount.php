@@ -31,36 +31,19 @@ include("protection.php");
 
 
 
-    <!-- menu list view -->
-    <div class="container mx-auto my-8">
+  <div class="container mx-auto my-8">
+  <div class="flex flex-col items-center">
+    <a href="serverDashboard.php" class="p-4 justify-center mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 ring-2 ring-white hover:ring-2 hover:translate-0 hover:transition-shadow">Back to dashboard</a>
+  </div>
 
-        <div class="flex m-14">
-        <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
-        <!-- search bar -->
-        <div class="px-20 my-4 w-full">
-            <!-- <label class="block text-gray-700 font-bold mb-2 " for="search">Search</label>
-            <input
-                class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-                type="search" name="search" id="search"> -->
-
-                
-            <a href="serverDashboard.php" class="p-4 justify-center mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
-          hover:ring-pink-700 ring-2 ring-white hover:ring-2  hover:translate-0 hover:transition-shadow">Back to dashboard</a>
-      
-
-        </div>
-
-
-    </div>
-
-    <ul class="grid grid-cols-1 sm:grid-cold-2 md:grid-cols-3 gap-4 mx-auto my-18 p-28 pt-5">
-        <?php
+  <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto my-18 p-4 sm:p-8 md:p-16">
+    <?php
         include('connection.php');
 
         $sql = "SELECT users.*, user_category.id, user_category.category 
-        FROM `users` 
-        INNER JOIN user_category ON users.category = user_category.id
-        WHERE users.verified ='true';";
+    FROM `users` 
+    INNER JOIN user_category ON users.category = user_category.id
+    WHERE users.verified ='true';";
         $result = $conn->query($sql);
 
         //declare array to store the data of database
@@ -88,9 +71,9 @@ include("protection.php");
                             <?php echo $rows["category"]; ?>
                         </p>
 
-                        <a href="action/userHandle.php?id=<?php echo $rows["email"]; ?>&redirect=manageAccount.php&action=delete" name="delete"
-                            value="Delete Account" class=" p-3 min-w-fit  m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 hover:ring-pink-700 hover:ring-2 hover:translate-0 
-          hover:transition-shadow ">Delete</a>
+                        <a href="action/userHandle.php?id=<?php echo $rows["email"]; ?>&redirect=manageAccount.php&action=delete"
+                            name="delete" value="Delete Account"
+                            class="p-3 min-w-fit m-3 float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-white rounded-full font-raleway focus:ring-2 hover:ring-pink-700 hover:ring-2 hover:translate-0 hover:transition-shadow">Delete</a>
 
                     </div>
 
@@ -100,7 +83,8 @@ include("protection.php");
         $conn->close();
         ?>
     </ul>
-    </div>
+</div>
+
 
     <?php include ('ui/footer.php');?>
 
