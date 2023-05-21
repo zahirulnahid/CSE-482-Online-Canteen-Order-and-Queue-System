@@ -29,15 +29,14 @@
     <!-- Navbar -->
  <?php include('ui/header.php'); ?>
 
-    <div class="flex m-14">
-        <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
+    <div class="flex m-8">
         <!-- search bar -->
-        <!-- <div class="px-20 mx-auto p-4 w-full">
+         <div class="px-20 mx-auto p-2 w-full">
             <label class="block text-gray-700 font-raleway mb-2 " for="search">Search</label>
             <input
                 class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
                 type="search" name="search" id="search">
-        </div> -->
+        </div> 
   <a href="serverDashboard.php" class="p-4 float-right mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
           hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow flex">Back to dashboard</a>
    
@@ -46,7 +45,7 @@
     <!-- menu list view -->
 
      <h3 class="font-raleway text-4xl "><center>Order History</center></h3>
-    <ul id="orders" class="grid grid-cols-1 gap-4 mx-auto my-28 container shadow-none p-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <ul id="orders" class="grid grid-cols-1 gap-4 mx-auto container shadow-none p-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
             <?php
         $conn->close();

@@ -28,17 +28,13 @@ include("protection.php");
   <!-- Navbar -->
   <?php include('ui/header.php'); ?>
 
-  
   <!-- Admin dashboard -->
-
-
   <div class="container mx-auto my-6 px-20 py-16 ">
-
 
     <center>
       <h1 class="text-4xl font-raleway m-10"> 📊 ADMIN DASHBOARD</h1>
     </center>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-10 rounded-3xl   text-center">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10 rounded-3xl   text-center">
       <?php
       include("connection.php");
 
@@ -48,115 +44,117 @@ include("protection.php");
         $row = $result->fetch_row();
         $count = $row[0];
         // Use $count as needed
-    } else {
+      } else {
         // Handle the case where the query fails
-    }
+      }
       ?>
       <div
         class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
-         <a href="pendingAccount.php">
-        <div class="p-10">
-          <h2 class="text-xl font-raleway mb-2">🔁Pending Account</h2>
-         <p  class="text-pink-500 font-semibold mt-4">Click here to view pending accounts</p>
-          <!-- <p class="text-pink-500 font-semibold mt-4">100 BDT</p> -->
-          <div class="flex items-center mt-4">
-            👥Pending users - <?php echo $count;?>
+        <a href="pendingAccount.php">
+          <div class="p-10">
+            <h2 class="text-xl font-raleway mb-2">🔁Pending Account</h2>
+            <p class="text-pink-500 font-semibold mt-4">Click here to view pending accounts</p>
+            <!-- <p class="text-pink-500 font-semibold mt-4">100 BDT</p> -->
+            <div class="flex items-center mt-4">
+              👥Pending users -
+              <?php echo $count; ?>
+            </div>
           </div>
-        </div>
         </a>
       </div>
 
       <div
         class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
-        <?php 
-          $sql = "SELECT COUNT(email) from users;";
+        <?php
+        $sql = "SELECT COUNT(email) from users;";
 
-          $result = $conn->query($sql);
-          if ($result) {
-            $row = $result->fetch_row();
-            $count = $row[0];
-            // Use $count as needed
+        $result = $conn->query($sql);
+        if ($result) {
+          $row = $result->fetch_row();
+          $count = $row[0];
+          // Use $count as needed
         } else {
-            // Handle the case where the query fails
+          // Handle the case where the query fails
         }
         ?>
         <a href="manageAccount.php" class=" font-semibold mt-4">
-        <div class="p-10">
-          <h2 class="text-xl font-raleway mb-2">Manage Account</h2>
-         <p class="text-pink-500"> Click here to manage your account settings</p>
-            
-          <!-- <p class="text-pink-500 font-semibold mt-4">70 BDT</p> -->
-          <div class="flex items-center mt-4">
-            👥Total users: -
-            <?php echo $count; ?>
+          <div class="p-10">
+            <h2 class="text-xl font-raleway mb-2">Manage Account</h2>
+            <p class="text-pink-500"> Click here to manage your account settings</p>
+
+            <!-- <p class="text-pink-500 font-semibold mt-4">70 BDT</p> -->
+            <div class="flex items-center mt-4">
+              👥Total users: -
+              <?php echo $count; ?>
+            </div>
           </div>
-        </div>       
-      </a>
+        </a>
       </div>
 
       <div
         class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-         <a href="salesInfo.php">
-        <div class="p-10">
-          <h2 class="text-xl font-raleway mb-2">Get sales Info</h2>
-       <p class="text-pink-500 font-semibold mt-4"> Click here to view sales information</p>  
-          <!-- 
+        <a href="salesInfo.php">
+          <div class="p-10">
+            <h2 class="text-xl font-raleway mb-2">Get sales Info</h2>
+            <p class="text-pink-500 font-semibold mt-4"> Click here to view sales information</p>
+            <!-- 
           <div class="flex items-center justify-center mt-4">
             Total sales: - 1000
           </div> -->
-        </div>
-      </a>
+          </div>
+        </a>
       </div>
-      
+
 
       <div
         class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
 
         <a href="updateMenu.php">
-        <div class="p-10">
-          <h2 class="text-xl font-raleway mb-2">Update Menu</h2>
-           <p class="text-pink-500 font-semibold mt-4">Click here to update your menu items</p>
+          <div class="p-10">
+            <h2 class="text-xl font-raleway mb-2">Update Menu</h2>
+            <p class="text-pink-500 font-semibold mt-4">Click here to update your menu items</p>
 
-          <div class="flex items-center justify-center mt-4">
-            💰Total menu items:-
-            <?php
-            $sql = "SELECT COUNT(Item_Name) from FOOD_LIST;";
+            <div class="flex items-center justify-center mt-4">
+              💰Total menu items:-
+              <?php
+              $sql = "SELECT COUNT(Item_Name) from FOOD_LIST;";
 
-            $result = $conn->query($sql);
-            if ($result) {
-              $row = $result->fetch_row();
-             echo $count = $row[0];
-              // Use $count as needed
-          } else {
-              // Handle the case where the query fails
-          }
-            ?>
+              $result = $conn->query($sql);
+              if ($result) {
+                $row = $result->fetch_row();
+                echo $count = $row[0];
+                // Use $count as needed
+              } else {
+                // Handle the case where the query fails
+              }
+              ?>
+            </div>
+
           </div>
-          
-        </div>
         </a>
       </div>
       <div
         class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-       <a href="orderHistory.php">
-        <div class="p-10">
-          <h2 class="text-xl font-raleway mb-2">Get all orders</h2>
-         <p class="text-pink-500 font-semibold mt-4">Click here to view all orders</p>
-         
-          
-
-
-        </div>
-      </div>
+        <a href="orderHistory.php">
+          <div class="p-10">
+            <h2 class="text-xl font-raleway mb-2">Get all orders</h2>
+            <p class="text-pink-500 font-semibold mt-4">Click here to view all orders</p>
+          </div>
         </a>
+      </div>
+      <div
+        class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+        <a href="sendNotification.php">
+          <div class="p-10">
+            <h2 class="text-xl font-raleway mb-2">Make Announcement</h2>
+            <p class="text-pink-500 font-semibold mt-4">Click here to send notifications to users</p>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
-
-
-
-
 
   <!-- menu cards -->
   <div class="container mt-5 mx-auto">
@@ -206,7 +204,7 @@ include("protection.php");
   </div>
   </div>
 
-  <?php include ('ui/footer.php');?>
+  <?php include('ui/footer.php'); ?>
 </body>
 
 </html>
