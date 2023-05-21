@@ -116,7 +116,7 @@ include('protection.php'); ?>
       });
     });
 
-    notification();
+   
     function addtocart(id) {
       const xhr = new XMLHttpRequest();
       xhr.open("GET", "action/addtocart.php?foodID=" + id);
@@ -188,7 +188,7 @@ include('protection.php'); ?>
     });
 
   </script>
-
+<script defer> notification();</script>
   <?php include('ui/footer.php'); ?>
   <?php $conn->close(); ?>
 </body>
