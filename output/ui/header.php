@@ -26,7 +26,7 @@ if(isset($_GET['nid']) && !empty($_GET['nid'])){
 <script src="service-worker/index.js"></script>
 <nav class="bg-gray-900 bg-opacity-50 py-4 px-4 sm:px-6 lg:px-14 z-10">
     <div class="container mx-auto flex justify-between items-center">
-        <a href="<?php echo $userType[$_SESSION["userType"]][0];$notificationCount=0 ?>" class="text-gray-100 text-2xl border-white font-fatface">NSU Canteen</a>
+        <a href="<?php echo $userType[$_SESSION["userType"]][0];?>" class="text-gray-100 text-2xl border-white font-fatface">NSU Canteen</a>
         <div class="relative flex items-center">
             <div class="dropdown inline-block relative">
                 <button class="notify bg-red-500 text-white font-semibold py-2 px-4 rounded-full">
@@ -37,19 +37,22 @@ if(isset($_GET['nid']) && !empty($_GET['nid'])){
                     echo "(<span id='notification-count'>" . $rows['totalsms'] . "</span>)";
                     ?>
                 </button>
-                <ul class="dropdown-menu absolute hidden text-gray-700 bg-white mt-2 rounded-lg divide-y divide-gray-200">
+                <ul id="notification" class="dropdown-menu absolute hidden text-gray-700 bg-white mt-2 rounded-lg divide-y divide-gray-200">
                     <?php
                     $sql = "SELECT * FROM notifications WHERE receiver_id = '$userid' AND status = 0";
                     $res = mysqli_query($conn, $sql);
-
-                    if (mysqli_num_rows($res) > 0) {
+                    if (mysqli_num_rows($res) > 0) {$_SESSION["notificationCount"]=0;
                         while ($rows = mysqli_fetch_assoc($res)) {
                             $notificationId = $rows["id"];
-                            echo"<script>main('".$rows["title"]."','".$rows["details"]."')</script>";
+                          //  echo"<script>main('".$rows["title"]."','".$rows["details"]."')</script>";
                             echo '<li><a href="' . $_SERVER['PHP_SELF'] . '?nid=' . $notificationId . '" class="block px-4 py-3 hover:bg-gray-100">' . $rows["title"] . '<br>' . $rows["details"] . '</a></li>';
-                            $notificationCount++; }
+
+                            $_SESSION["notificationCount"]++;
+
+                         }
                     } else {
-                        echo '<li><span class="block px-4 py-3">No notification</span></li>';$notificationCount=0;
+                        echo '<li><span class="block px-4 py-3">No notification</span></li>';$_SESSION["notificationCount"]=0;
+                        $_SESSION["notificationCount"]=0;
                     }
                     ?>
                 </ul>

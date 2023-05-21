@@ -40,17 +40,32 @@ $sql = "SELECT * FROM notifications WHERE receiver_id = '".$_SESSION['id']."' AN
 $res = mysqli_query($conn, $sql);
 $count=1;
 if (mysqli_num_rows($res) > 0) {
+    $notifications = []; // Initialize an empty array to store notifications
+
     while ($rows = mysqli_fetch_assoc($res)) {
-        $myObj = new stdClass();
-        $myObj->title = $rows["title"];
-        $myObj->details = $rows["details"];
-        $myObj->count =$count;
-        $count++;
-        $myJSON = json_encode($myObj);
-        
-              
-    } echo $myJSON;
-}else{ $myObj = new stdClass();$myObj->count =$count;echo $myJSON;
+        $notification = new stdClass();
+        $notification->title = $rows["title"];
+        $notification->id =$rows["id"];
+        $notification->details = $rows["details"];
+        $notifications[] = $notification; // Add the notification object to the array
+    }
+    
+    $count = count($notifications); // Get the count of notifications
+    
+    $responseObj = new stdClass();
+    $responseObj->notifications = $notifications;
+    $responseObj->count = $count;
+    
+    $myJSON = json_encode($responseObj); echo $myJSON;
+}else{ 
+    $notifications = [];
+    $myObj = new stdClass();
+    $myObj->title = "No notification";
+    $myObj->details = "";
+    $myObj->count = "0";
+    $responseObj = new stdClass();
+    $responseObj->notifications = $notifications;
+    $myJSON = json_encode($responseObj); echo $myJSON;
 
 }
 }
