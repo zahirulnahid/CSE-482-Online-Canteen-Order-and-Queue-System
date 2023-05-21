@@ -32,7 +32,9 @@ include("protection.php");
   <!-- Admin dashboard -->
 
 
-  <div class="container mx-auto my-8 px-20 py-16 ">
+  <div class="container mx-auto my-6 px-20 py-16 ">
+
+
     <center>
       <h1 class="text-4xl font-raleway m-10"> 📊 ADMIN DASHBOARD</h1>
     </center>
@@ -161,7 +163,7 @@ include("protection.php");
     <center>
       <h1 class="text-3xl font-raleway mb-8">🍴EXPLORE ON-GOING ITEMS</h1>
     </center>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
       <?php
       $sql = "SELECT *,(SELECT units_sold FROM `SALES_REPORT` WHERE ItemID = `Food_List`.`id`) as `units_sold` FROM `Food_List`";
       $result = $conn->query($sql);

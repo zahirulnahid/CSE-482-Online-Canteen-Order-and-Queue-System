@@ -24,7 +24,7 @@ include("protection.php");
     <div class="flex mb-10 p-10 ">
       <div class="flex flex-wrap justify-between items-center py-4 px-8 md:px-20">
       <!-- search bar -->
-      <div class="w-full md:w-auto mb-4 md:mb-0">
+      <!-- <div class="w-full md:w-auto mb-4 md:mb-0">
         <label class="block text-gray-700 font-raleway mb-2" for="search">Search</label>
         <form method="post" class="flex items-center">
           <input
@@ -37,13 +37,14 @@ include("protection.php");
           </button>
         </form>
       </div>
-
+ -->
 
        
         <!-- back to dashboard button -->
-        <a href="serverDashboard.php" class="p-4 float-right mt-4 text-center bg-gray-100 text-gray-900 hover:text-gray-100 hover:bg-pink-700 rounded-full font-raleway
-          ring-pink-700 ring-2 hover:ring-2 hover:ring-pink-100 hover:translate-0 hover:transition-shadow flex">Back to dashboard</a>
-      
+<a href="serverDashboard.php"
+  class="p-4 float-none mx-auto mt-4 justify-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow block w-max">
+  Back to dashboard
+</a>      
       </div>
     </div>
         
