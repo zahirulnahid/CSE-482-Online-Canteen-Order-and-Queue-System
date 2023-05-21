@@ -129,6 +129,7 @@ include("protection.php");
             }
           };
           xhr.send();
+          location.reload();
         }
         function deleteItem(id) {
           console.log("id: "+id);
@@ -140,6 +141,7 @@ include("protection.php");
             }
           };
           xhr.send();
+          location.reload();
         }
     
     // function updateItem(x) {
