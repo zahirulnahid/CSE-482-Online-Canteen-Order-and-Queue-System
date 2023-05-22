@@ -103,7 +103,7 @@ include("protection.php");
       <script>
         function updateCart(id, scope) {
           const xhr = new XMLHttpRequest();
-          xhr.open("GET", "updatecart.php?foodID=" + id + "&scope=" + scope, true);
+          xhr.open("GET", "updateCart.php?foodID=" + id + "&scope=" + scope, true);
           console.log("ID: " + id + " scope: " + scope + "\n");
           xhr.onload = function () {
             if (xhr.status === 200) {
@@ -119,7 +119,7 @@ include("protection.php");
       <script>
         function updateCart(id, scope) {
           const xhr = new XMLHttpRequest();
-          xhr.open("GET", "action/updatecart.php?foodID=" + id + "&scope=" + scope, true);
+          xhr.open("GET", "action/updateCart.php?foodID=" + id + "&scope=" + scope, true);
           console.log("ID: " + id + " scope: " + scope + "\n");
           xhr.onload = function () {
             if (xhr.status === 200) {
