@@ -13,7 +13,7 @@ unset($_COOKIE['user']); ?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <title>Login</title>
   <link rel="stylesheet" href="outputstyles.css">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -28,7 +28,7 @@ unset($_COOKIE['user']); ?>
 <body>
   <div class="flex flex-col md:flex-row">
     <div class="hidden md:block w-full md:w-2/3 min-h-screen bg-cover bg-center"
-      style="background-image: url('../images/loginPageBg.png');"></div>
+      style="background-image: url('images/loginPageBg.png');"></div>
 
     <div class="w-full md:w-1/3 min-h-screen bg-gradient-to-t from-gray-200 to-gray-50 md:bg-transparent md:p-0">
       <div class="flex flex-col justify-center items-center h-full">

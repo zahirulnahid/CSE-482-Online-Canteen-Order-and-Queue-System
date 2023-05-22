@@ -7,7 +7,7 @@ include('protection.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <title>Send Notification</title>
     <link rel="stylesheet" href="outputstyles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
@@ -108,12 +108,12 @@ header("Location: ".$_SERVER['PHP_SELF']);
 
 ?>
 <body class=" scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
-    style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
+    style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
     <!-- Navbar -->
     <?php include('ui/header.php'); ?>
     <div
         class=" notifycard card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-        <!-- <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
+        <!-- <img src="images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <div class="p-10">
         	<span class="form-title">Send Message</span>
 	    	<form method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">

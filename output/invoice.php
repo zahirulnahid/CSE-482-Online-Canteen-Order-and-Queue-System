@@ -7,7 +7,7 @@ include("protection.php");
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <title>Invoice</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css"
@@ -26,7 +26,7 @@ include("protection.php");
 </head>
 
 <body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full"
-  style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
+  style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
 
   <!-- PHP for PAYMENT GATEWAY -->

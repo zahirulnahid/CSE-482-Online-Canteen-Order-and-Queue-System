@@ -8,7 +8,7 @@ include("protection.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <title>Pending Accounts</title>
     <link rel="stylesheet" href="outputstyles.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,7 +16,7 @@ include("protection.php");
 
 
 <body class="bg-pink-100 scroll-smooth font-raleway min-h-screen bg-cover bg-no-repeat w-full"
-    style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
+    style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
     <?php include('ui/header.php'); ?>
@@ -33,7 +33,7 @@ include("protection.php");
           <button type="submit"
             class="p-3 bg-opacity-0 text-gray-100 hover:text-gray-800 rounded-full font-raleway focus:ring-2 hover:translate-0
             transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-150 hover:transition-shadow" allowfullscreen="" loading="lazy">
-            <img src="../images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30">
+            <img src="images/search.png" alt="Search" class="inline-block align-middle mr-2" height="30" width="30">
           </button>
         </form>
       </div>

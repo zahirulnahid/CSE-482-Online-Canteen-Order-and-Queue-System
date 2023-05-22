@@ -7,7 +7,7 @@ include("protection.php");
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <title>ADMIN</title>
   <link rel="stylesheet" href="outputstyles.css">
 
@@ -30,7 +30,7 @@ include("protection.php");
 </head>
 
 <body class=" font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
-  style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
+  style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
 
   <!-- Navbar -->
@@ -58,7 +58,7 @@ include("protection.php");
       ?>
       <div
         class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-        <!-- <img src="../images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
+        <!-- <img src="images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <a href="pendingAccount.php">
           <div class="p-10">
             <h2 class="text-xl font-raleway mb-2">🔁Pending Account</h2>
@@ -74,7 +74,7 @@ include("protection.php");
 
       <div
         class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-        <!-- <img src="../images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
+        <!-- <img src="images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <?php
         $sql = "SELECT COUNT(email) from users;";
 

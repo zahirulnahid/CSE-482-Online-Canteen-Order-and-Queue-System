@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <title>Sign Up</title>
     <link rel="stylesheet" href="outputstyles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -144,11 +144,11 @@ $conn->close();
 <body>
     <div class="flex flex-col md:flex-row">
         <div class="w-full md:w-2/3 min-h-screen bg-cover bg-center"
-            style="background-image: url('../images/loginPageBg.png');">
+            style="background-image: url('images/loginPageBg.png');">
         </div>
 
         <div class="w-full md:w-1/3 min-h-screen bg-gradient-to-t from-gray-200 to-gray-50"
-            style="background-image: url('../images/loginFormBg.png'); background-size: cover;">
+            style="background-image: url('images/loginFormBg.png'); background-size: cover;">
             <div class="flex flex-col justify-center items-center h-full">
                 <div class="bg-white p-6 rounded-lg shadow-2xl w-96">
                     <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">NSU Canteen Register</h2>

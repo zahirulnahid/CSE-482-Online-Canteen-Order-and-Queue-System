@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <title>Menu List view</title>
     <link rel="stylesheet" href="outputstyles.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,7 +19,7 @@
 
 
 <body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
-    style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
+    style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
     <?php include('ui/header.php'); ?>
@@ -35,7 +35,7 @@
                 type="search" name="search" id="search">
             <button href="invoice.php" class=" p-5 min-w-fit   float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2
                             font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">
-                <img src="../images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2"
+                <img src="images/shopping-cart.png" alt="Cart Icon" class="inline-block align-middle mr-2"
                     height="24" width="24">
                 Cart(0)
             </button>

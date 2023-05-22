@@ -8,7 +8,7 @@ include("protection.php");
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <title>Update Menu</title>
   <link rel="stylesheet" href="outputstyles.css">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,7 +19,7 @@ include("protection.php");
 </head>
 
 <body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
-  style="background-image: url('../images/Homepage bg .png'); backdrop-filter:blur(3px);">
+  style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
   <!-- Navbar -->
  <?php include('ui/header.php'); ?>
