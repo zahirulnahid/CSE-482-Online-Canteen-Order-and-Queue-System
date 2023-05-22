@@ -79,8 +79,8 @@ unset($_COOKIE['user']); ?>
           <!--LOGIN FORM ENDS  -->
 
 
-          <a href="./forgotPassword.php"
-            class="text-pink-500 font-raleway hover:text-pink-700 block mt-4 font-bold hover:translate-x-0">Forgot Password</a>
+          <!-- <a href="./forgotPassword.php"
+            class="text-pink-500 font-raleway hover:text-pink-700 block mt-4 font-bold hover:translate-x-0">Forgot Password</a> -->
           <p class="text-gray-800 mt-4 text-center">Don't have an account?
             <a href="signUp.php" class="text-pink-500 font-raleway font-bold hover:text-pink-700 hover:translate-x-0">Sign up
               here.</a>
