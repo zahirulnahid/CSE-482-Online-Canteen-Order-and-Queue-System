@@ -28,6 +28,9 @@ if(isset($_GET['nid']) && !empty($_GET['nid'])){
     <div class="container mx-auto flex justify-between items-center">
         <a href="<?php echo $userType[$_SESSION["userType"]][0];?>" class="text-gray-100 text-2xl border-white font-fatface">NSU Canteen</a>
         <div class="relative flex items-center">
+        <a href="queue.php" class="inline-block flex justify-center items-center bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 rounded-full hover:ring-2 hover:ring-white hover:translate-0 hover:transition-shadow ml-4 mr-4">
+                Queue
+            </a>
             <div class="dropdown inline-block relative">
                 <button class="notify bg-yellow-100 bg-opacity-0 text-white font-semibold py-3 px-5 rounded-full ring-2 ring-yellow-300 hover:ring-2 hover:ring-white hover:translate-0 hover:transition-shadow">
                 🔔
