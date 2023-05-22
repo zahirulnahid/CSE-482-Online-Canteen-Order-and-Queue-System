@@ -35,7 +35,7 @@ include("protection.php");
     <?php
     include('connection.php');
 
-    $sql = "SELECT * FROM `Food_List`";
+    $sql = "SELECT * FROM `food_list`";
     $result = $conn->query($sql);
 
     //declare array to store the data of database
@@ -131,7 +131,7 @@ include("protection.php");
             }
           };
           xhr.send();
-          location.reload();
+          setTimeout(function(){ window. location. reload(); }, 5000); 
         }
         function deleteItem(id) {
           console.log("id: "+id);

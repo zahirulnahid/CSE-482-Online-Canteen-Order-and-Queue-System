@@ -127,7 +127,7 @@ include("protection.php");
             <div class="flex items-center justify-center mt-4">
               💰Total menu items:-
               <?php
-              $sql = "SELECT COUNT(Item_Name) from FOOD_LIST;";
+              $sql = "SELECT COUNT(Item_Name) from food_list;";
 
               $result = $conn->query($sql);
               if ($result) {
@@ -167,7 +167,7 @@ include("protection.php");
   <!-- menu cards -->
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 rounded-3xl p-16 text-center">
   <?php
-  $sql = "SELECT *, (SELECT units_sold FROM `SALES_REPORT` WHERE ItemID = `Food_List`.`id`) as `units_sold` FROM `Food_List`";
+  $sql = "SELECT *, (SELECT units_sold FROM `SALES_REPORT` WHERE ItemID = `food_list`.`id`) as `units_sold` FROM `food_list`";
   $result = $conn->query($sql);
 
   //declare array to store the data of the database
