@@ -19,7 +19,9 @@ include("protection.php");
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
     rel="stylesheet">
-
+<style>.wc-stripe-payment-request-button-separator {
+ display: none !important; 
+}</style>
 
 </head>
 
@@ -151,7 +153,7 @@ include("protection.php");
         require('config.php');
         $paymentTotal = $total * 100;
         ?>
-        <form action="success.php" method="POST" class="stripe-btn">
+        <form action="success.php" method="POST" >
           <input type="hidden" name="amount" value="<?php echo $paymentTotal ?>">
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_51N6wRoCTMtJu4CIwVY9pADeVsg3dgPlOnE669GWeuMskwfvrsOtfeeGjlgCgbrCpvqL1Ya0n9tEJhDn3KXjNpYQr00QAZNLran"
