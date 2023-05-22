@@ -41,7 +41,7 @@ include("protection.php");
 
        
         <!-- back to dashboard button -->
-<a href="serverDashboard.php"
+<a href="adminDashboard.php"
   class="p-4 float-none mx-auto mt-4 justify-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow block w-max">
   Back to dashboard
 </a>      

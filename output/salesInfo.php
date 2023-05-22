@@ -30,7 +30,7 @@ include("protection.php");
 
     <div class="flex m-14">
           
-            <a href="serverDashboard.php" class="p-4 mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
+            <a href="adminDashboard.php" class="p-4 mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
           hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow flex">Back to dashboard</a>
       
 

@@ -33,7 +33,7 @@ include("protection.php");
 
   <div class="container mx-auto my-8">
   <div class="flex flex-col items-center">
-    <a href="serverDashboard.php" class="p-4 justify-center mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 ring-2 ring-white hover:ring-2 hover:translate-0 hover:transition-shadow">Back to dashboard</a>
+    <a href="adminDashboard.php" class="p-4 justify-center mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 ring-2 ring-white hover:ring-2 hover:translate-0 hover:transition-shadow">Back to dashboard</a>
   </div>
 
   <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto my-18 p-4 sm:p-8 md:p-16">
