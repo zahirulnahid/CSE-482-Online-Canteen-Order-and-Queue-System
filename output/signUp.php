@@ -213,7 +213,7 @@ $conn->close();
 
                             <input
                                 class="border-2 border-gray-400 p-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
-                                type="password" name="password" id="password" placeholder="8-32 charcter password"
+                                type="password" name="password" id="password" placeholder="8-32 character password"
                                 required>
                         </div>
 
