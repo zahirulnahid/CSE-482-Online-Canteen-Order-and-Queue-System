@@ -21,7 +21,7 @@ include('protection.php'); ?>
 </head>
 
 <body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
-  style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
+  backdrop-filter:blur(3px);">
 
   <!-- NAVBAR -->
 
