@@ -4,7 +4,7 @@ include('../protection.php');
 
 if (isset($_POST['search'])) {
   $search = $_POST['search'];
-  $sql = "SELECT * FROM `Food_List` WHERE Item_Name LIKE '%$search%' OR id ='$search'";
+  $sql = "SELECT * FROM `food_list` WHERE Item_Name LIKE '%$search%' OR id ='$search'";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {

@@ -19,7 +19,7 @@ CREATE TABLE pending_users (\
     Primary key(Email)\
 );\
 \
-CREATE TABLE FOOD_LIST (\
+CREATE TABLE food_list (\
     Item_Name VARCHAR(30) NOT NULL PRIMARY KEY,\
     Price int NOT NULL,\
     Description VARCHAR(200) NOT NULL,\
@@ -42,14 +42,14 @@ CREATE TABLE `Orders` (\
     ItemID int NOT NULL,\
     Quantity int NOT NULL,\
     FOREIGN KEY(`OrderID`) REFERENCES `BILL`(`OrderID`),\
-    FOREIGN KEY(`ItemID`) REFERENCES `FOOD_LIST`(`id`)\
+    FOREIGN KEY(`ItemID`) REFERENCES `food_list`(`id`)\
     );\
 \
 CREATE TABLE SALES_REPORT (\
     ItemID int NOT NULL,\
     Units_Sold int NOT NULL,\
     Total_Revenue int NOT NULL,\
-    FOREIGN KEY(ItemID) REFERENCES `FOOD_LIST`(`id`)\
+    FOREIGN KEY(ItemID) REFERENCES `food_list`(`id`)\
     );\
 \
 CREATE TABLE `QUEUE` (\

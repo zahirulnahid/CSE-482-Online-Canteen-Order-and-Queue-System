@@ -49,7 +49,7 @@
         <?php
         include('connection.php');
 
-        $sql = "SELECT * FROM `Food_List`";
+        $sql = "SELECT * FROM `food_list`";
         $result = $conn->query($sql);
 
         //declare array to store the data of database

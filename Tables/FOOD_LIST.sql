@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `FOOD_LIST`
+-- Table structure for table `food_list`
 --
 
-CREATE TABLE `FOOD_LIST` (
+CREATE TABLE `food_list` (
   `Item_Name` varchar(30) NOT NULL,
   `Price` int(11) NOT NULL,
   `Description` varchar(200) NOT NULL,
@@ -35,10 +35,10 @@ CREATE TABLE `FOOD_LIST` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `FOOD_LIST`
+-- Dumping data for table `food_list`
 --
 
-INSERT INTO `FOOD_LIST` (`Item_Name`, `Price`, `Description`, `Image_url`) VALUES
+INSERT INTO `food_list` (`Item_Name`, `Price`, `Description`, `Image_url`) VALUES
 ('Burger', 100, 'Non vegan', '[value-4]'),
 ('Chicken Biriyani', 90, 'A savory chicken and rice dish that includes layers of chicken, rice, and aromatics that are steamed together.\r\n', ''),
 ('Chicken Curry', 70, 'A typical curry from the Indian subcontinent consists of chicken stewed in an onion- and tomato-based sauce\r\n', '[value-4]'),
@@ -53,9 +53,9 @@ INSERT INTO `FOOD_LIST` (`Item_Name`, `Price`, `Description`, `Image_url`) VALUE
 --
 
 --
--- Indexes for table `FOOD_LIST`
+-- Indexes for table `food_list`
 --
-ALTER TABLE `FOOD_LIST`
+ALTER TABLE `food_list`
   ADD PRIMARY KEY (`Item_Name`);
 COMMIT;
 

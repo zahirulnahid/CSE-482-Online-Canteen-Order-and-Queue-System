@@ -7,7 +7,7 @@ include("../connection.php");
 $start = mysqli_real_escape_string($conn, $_GET['start']);
 
 //fetch 4 items from food_list table
-$sql = "SELECT * FROM `Food_List` LIMIT $start, 4";
+$sql = "SELECT * FROM `food_list` LIMIT $start, 4";
 
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
