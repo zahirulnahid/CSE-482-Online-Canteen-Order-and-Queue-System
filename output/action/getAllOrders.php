@@ -5,9 +5,9 @@ include("../connection.php");
 $start = mysqli_real_escape_string($conn, $_POST['start']);
 
 //fetch orderIDs for current user
-$sql = "SELECT  `Bill`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`
-        FROM `Bill`
-        INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
+$sql = "SELECT  `BILL`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`
+        FROM `BILL`
+        INNER JOIN `users`  ON `BILL`.`CustomerID`= `users`.`id`
         ORDER BY OrderID DESC 
         LIMIT $start,4
         ;";
@@ -17,11 +17,11 @@ if (mysqli_num_rows($result) > 0) {
     while ($rows = mysqli_fetch_assoc($result)) {
 
         //Get all item details for current OrderID
-        $getItems = "SELECT `Orders`.`OrderID`, `Bill`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`, food_list.Price
+        $getItems = "SELECT `Orders`.`OrderID`, `BILL`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`, food_list.Price
             FROM `Orders`
             INNER JOIN food_list ON Orders.ItemID= food_list.id
             INNER JOIN `BILL` on `Orders`.`OrderID`=`BILL`.OrderID
-            INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
+            INNER JOIN `users`  ON `BILL`.`CustomerID`= `users`.`id`
             WHERE Orders.OrderID =" . $rows['OrderID'];
         $items = $conn->query($getItems);
         //Fetch all items for the current OrderID and store in an array
