@@ -21,30 +21,23 @@ include("protection.php");
 
 
 
-<body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat "
-    style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
+<body class="bg-pink-100 scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat" style="background-image: url('images/Homepage bg .webp'); backdrop-filter: blur(3px);">
 
     <!-- Navbar -->
     <?php include('ui/header.php'); ?>
 
-    <div class="flex m-14">
-        <!-- <h1 class="text-4xl mx-auto  text-center mb-8 ">Our Menu</h1> -->
+    <div class="flex flex-col items-center m-6 md:m-14">
         <!-- search bar -->
-        <div class="px-20 mx-auto p-4 w-full">
-            <label class="block text-gray-700 font-raleway mb-2 " for="search">Search</label>
+        <div class="w-full md:w-2/3 px-4">
+            <label class="block text-gray-700 font-raleway mb-2" for="search">Search</label>
             <input
-                class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+                class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full"
                 type="search" name="search" id="search">
-
-
-
         </div>
-
-
     </div>
 
     <!-- Queue list view -->
-    <ul class="grid grid-cols-1 gap-4 container shadow-none mx-auto p-28">
+    <ul class="grid grid-cols-1 gap-4 container mx-auto p-4 md:p-10">
         <?php
         include('connection.php');
 
@@ -52,14 +45,14 @@ include("protection.php");
             FROM `bill`
             INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
             WHERE bill.served = 'no'
-            ORDER BY bill.OrderID DESC ;";
+            ORDER BY bill.OrderID DESC;";
 
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) { ?>
-                <li class="p-10 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex">
-                    <div class="flex-grow p-0">
+                <li class="p-4 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex flex-col md:flex-row items-start">
+                    <div class="flex-grow">
                         <?php
                         $items = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `bill`.served, `food_list`.`Item_Name`
         FROM `Orders`
@@ -68,7 +61,7 @@ include("protection.php");
         INNER JOIN `BILL` ON `Orders`.`OrderID` = `BILL`.OrderID
         INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
         WHERE bill.served = 'no' AND Queue.OrderID = " . $row['OrderID'] . "
-        ORDER BY OrderID DESC ; ";
+        ORDER BY OrderID DESC; ";
                         $items = $conn->query($items);
                         //Fetch all items for the current OrderID and store in an array
                         $items = $items->fetch_all(MYSQLI_ASSOC);
@@ -92,8 +85,10 @@ include("protection.php");
                         <h3 class="text-base font-raleway text-gray-900 mb-1">Order ID:
                             <?php echo $row["OrderID"] ?>
                         </h3>
-                        Counter: <input type="text" list="counterNo" name="counter">
-
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        Counter:
+                        <input type="text" list="counterNo" name="counter" class="ring-2 ring-pink-700 rounded-full p-2">
                         <datalist id="counterNo">
                             <option value="1">
                             <option value="2">
@@ -102,10 +97,10 @@ include("protection.php");
                             <option value="5">
                         </datalist>
                         <a href="action/removeQueue.php?QueueID=<?php echo $items[0]["QueueNo"] ?>&OrderID=<?php echo $row["OrderID"] ?>"
-                            class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>
+                            class="p-2 min-w-fit bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Served</a>
                         <button
                             onClick="callCustomer(document.getElementsByName('counter')[0].value, <?php echo $row["OrderID"] ?>, <?php echo $_SESSION['id']; ?>,<?php echo $row["CustomerID"]; ?>)"
-                            class="p-5 min-w-fit float-right bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Call</button>
+                            class="p-2 min-w-fit mt-2 md:mt-0 ml-0 md:ml-2 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-pink-100 rounded-full font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">Call</button>
                     </div>
                 </li>
             <?php }
@@ -115,11 +110,10 @@ include("protection.php");
 
         $conn->close();
         ?>
-
-
     </ul>
+</body>
 
-    <?php include('ui/footer.php'); ?>
+
     <script>
         function callCustomer(counter, orderID, staffID, customerID) {
             const xhr = new XMLHttpRequest();
@@ -134,6 +128,6 @@ include("protection.php");
         }
     </script>
 </body>
-
+<?php include('ui/footer.php'); ?>
 
 </html>

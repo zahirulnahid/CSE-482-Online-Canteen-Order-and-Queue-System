@@ -126,9 +126,11 @@ unset($_COOKIE['user']); ?>
 
   </script>
 
-<?php include ('ui/footer.php');?>
 
 </body>
+
+  <?php include('ui/footer.php'); ?>
+
 
 
 

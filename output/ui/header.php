@@ -31,35 +31,35 @@ if(isset($_GET['nid']) && !empty($_GET['nid'])){
         <a href="queue.php" class="inline-block flex justify-center items-center bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 rounded-full hover:ring-2 hover:ring-white hover:translate-0 hover:transition-shadow ml-4 mr-4">
                 Queue
             </a>
-            <div class="dropdown inline-block relative">
-                <button class="notify bg-yellow-100 bg-opacity-0 text-white font-semibold py-3 px-5 rounded-full ring-2 ring-yellow-300 hover:ring-2 hover:ring-white hover:translate-0 hover:transition-shadow">
-                🔔
-                    <?php
-                   
-                    $rows = mysqli_fetch_assoc($result);
-                    echo "(<span id='notification-count'>" . $rows['totalsms'] . "</span>)";
-                    ?>
-                </button>
-                <ul id="notification" class="dropdown-menu absolute hidden text-gray-700 bg-white mt-2 rounded-lg divide-y divide-gray-200">
-                    <?php
-                    $sql = "SELECT * FROM notifications WHERE receiver_id = '$userid' AND status = 0";
-                    $res = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($res) > 0) {$_SESSION["notificationCount"]=0;
-                        while ($rows = mysqli_fetch_assoc($res)) {
-                            $notificationId = $rows["id"];
-                          //  echo"<script>main('".$rows["title"]."','".$rows["details"]."')</script>";
-                            echo '<li><a href="' . $_SERVER['PHP_SELF'] . '?nid=' . $notificationId . '" class="block px-4 py-3 hover:bg-gray-100">' . $rows["title"] . '<br>' . $rows["details"] . '</a></li>';
+       <div class="dropdown inline-block relative">
+  <button class="notify bg-yellow-100 bg-opacity-0 text-white font-semibold py-3 px-5 rounded-full ring-2 ring-yellow-300 hover:ring-2 hover:ring-white hover:translate-0 hover:transition-shadow">
+    🔔
+    <?php
+            $rows = mysqli_fetch_assoc($result);
+            echo "(<span id='notification-count'>" . $rows['totalsms'] . "</span>)";
+            ?>
+        </button>
+        <ul id="notification"
+            class="dropdown-menu absolute hidden text-gray-700 bg-gray-200 ring-1 ring-pink-700 mt-2 z-10 rounded-lg divide-y divide-gray-200 max-h-60 overflow-y-auto sm:max-h-96 w-72">
+            <!-- Dropdown menu items -->
+            <?php
+            $sql = "SELECT * FROM notifications WHERE receiver_id = '$userid' AND status = 0";
+            $res = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($res) > 0) {
+                $_SESSION["notificationCount"] = 0;
+                while ($rows = mysqli_fetch_assoc($res)) {
+                    $notificationId = $rows["id"];
+                    echo '<li><a href="' . $_SERVER['PHP_SELF'] . '?nid=' . $notificationId . '" class="block px-4 py-3 hover:bg-white">' . $rows["title"] . '<br>' . $rows["details"] . '</a></li>';
+                    $_SESSION["notificationCount"]++;
+                }
+            } else {
+                echo '<li><span class="block px-4 py-3">No notification</span></li>';
+                $_SESSION["notificationCount"] = 0;
+            }
+            ?>
+        </ul>
+    </div>
 
-                            $_SESSION["notificationCount"]++;
-
-                         }
-                    } else {
-                        echo '<li><span class="block px-4 py-3">No notification</span></li>';$_SESSION["notificationCount"]=0;
-                        $_SESSION["notificationCount"]=0;
-                    }
-                    ?>
-                </ul>
-            </div>
             <a href="login.php" class="inline-block flex justify-center items-center bg-gray-100 hover:bg-pink-700 hover:text-white text-black font-raleway py-3 px-5 rounded-full hover:ring-2 hover:ring-white hover:translate-0 hover:transition-shadow ml-4">
                 <i class="fas fa-sign-out-alt"></i> Log Out
             </a>

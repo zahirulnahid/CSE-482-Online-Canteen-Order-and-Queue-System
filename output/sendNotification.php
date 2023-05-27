@@ -18,7 +18,7 @@ include('protection.php');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
     rel="stylesheet">
-   <style type="text/css">
+   <!-- <style type="text/css">
    	.notifycard {
 	    width: 60%;
 	    margin: 0 auto;
@@ -42,141 +42,125 @@ include('protection.php');
 	    font-weight: 600;
 	    margin-bottom: 20px;
 	}
-   </style>
+   </style> -->
 </head>
-<?php 
-	// include("connection.php"); //Created connection with DB//
+<?php
+// include("connection.php"); //Created connection with DB//
 
-	// print_r($_SESSION);
-	// exit;
+// print_r($_SESSION);
+// exit;
 
-	$sql = "SELECT id,name FROM users WHERE category != 4";
-	$userresult = mysqli_query($conn, $sql);
-	
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$sql = "SELECT id,name FROM users WHERE category != 4";
+$userresult = mysqli_query($conn, $sql);
 
-		// Get form data
-	    $senderid = $_SESSION['id']; // Admin id
-	    $ud = $_POST['userid'];
-	    if(sizeof($ud) == 1 && $ud[0] == 'all'){
-	    	while($r = mysqli_fetch_assoc($userresult)){
-	    		$userid[] = $r['id'];
-	    	}
-	    }else{
-	    	$userid = $_POST['userid'];
-	    }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-	    $title = $_POST['title'];
-	    $details = $_POST['details'];
+	// Get form data
+	$senderid = $_SESSION['id']; // Admin id
+	$ud = $_POST['userid'];
+	if (sizeof($ud) == 1 && $ud[0] == 'all') {
+		while ($r = mysqli_fetch_assoc($userresult)) {
+			$userid[] = $r['id'];
+		}
+	} else {
+		$userid = $_POST['userid'];
+	}
 
-	    $users = '';
-	    $userArrlen = sizeof($userid);
+	$title = $_POST['title'];
+	$details = $_POST['details'];
 
-	    /*
-	    foreach($userid as $key => $val){
-	    	if($userArrlen == 1 || $key == $userArrlen-1){
-	    		$users .= '"'.$val.'"';
-	    		break;
-	    	}else{
-	    		$users .= '"'.$val.'",';
-	    	}
-	    }
+	$users = '';
+	$userArrlen = sizeof($userid);
 
-	    $sql = "
-	    	INSERT INTO `notifications` (`id`, `sender_id`, `receiver_id`, `title`, `details`, `created_at`, `updated_at`) VALUES (NULL, '$senderid', '($users)', '$title', '$details', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-	    ";
-	    */
+	/*
+	   foreach($userid as $key => $val){
+		   if($userArrlen == 1 || $key == $userArrlen-1){
+			   $users .= '"'.$val.'"';
+			   break;
+		   }else{
+			   $users .= '"'.$val.'",';
+		   }
+	   }
 
-	    foreach($userid as $key => $val){
-	    	$sql = "
+	   $sql = "
+		   INSERT INTO `notifications` (`id`, `sender_id`, `receiver_id`, `title`, `details`, `created_at`, `updated_at`) VALUES (NULL, '$senderid', '($users)', '$title', '$details', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+	   ";
+	   */
+
+	foreach ($userid as $key => $val) {
+		$sql = "
 	    	INSERT INTO `notifications` (`id`, `sender_id`, `receiver_id`, `title`, `details`, `created_at`, `updated_at`) VALUES (NULL, '$senderid', '$val', '$title', '$details', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 			    ";
-			  	
-			    if (mysqli_query($conn, $sql)) {
-			        $success_message = "Notification send successfully";
-			    } else {
-			        $error_message = "Error: " . $sql . "<br>" . mysqli_error($conn);
-			    }	    	
-	    }
 
-header("Location: ".$_SERVER['PHP_SELF']);
-
+		if (mysqli_query($conn, $sql)) {
+			$success_message = "Notification sent successfully";
+		} else {
+			$error_message = "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
 	}
-	$conn->close();
 
+	header("Location: " . $_SERVER['PHP_SELF']);
 
-
+}
+$conn->close();
 ?>
-<body class=" scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
-    style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
-    <!-- Navbar -->
-    <?php include('ui/header.php'); ?>
-    <div
-        class=" notifycard card text-center shadow-xl rounded-xl bg-slate-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-        <!-- <img src="images/Burger.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
-        <div class="p-10">
-        	<span class="form-title">Send Message</span>
-	    	<form method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">
 
-	    		<div class="mb-4">
-	    			<label>Select Users</label>
-	    			<select name="userid[]" class="notify_selected_user border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" multiple>
-		    		<?php
-		    			echo '<option value="all">All User</option>';
-		    			if (mysqli_num_rows($userresult) > 0) {
-		    				while ($rows = mysqli_fetch_assoc($userresult)) {
-		    					echo '<option value="'.$rows["id"].'">'.$rows["name"].'</option>';
-		    				}
-		    			}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
+	style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
-	    			?>
-	    			</select>
-	    		</div>
-		        <div class="mb-4">
-		        	<label>Title</label>
-		            <input
-		                class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-		                type="text" name="title" id="title" placeholder="Enter title" required />
-		        </div>
-		        <div class="mb-4">
-		        	<label>Details</label>
-		            <textarea
-		                class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-		                type="text" name="details" id="details" placeholder="Enter details" required ></textarea>
-		        </div>
-		        <button type="submit" value="sbmt" class="bg-pink-500 hover:bg-pink-700 text-white font-raleway py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-pink-400" />Send Message</button>
-		    </form>
-		</div>
-	</div>
-    <?php include ('ui/footer.php');?>
-</body>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Send Message</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+</head>
+
+<body>
+	<!-- Navbar -->
+	<?php include('ui/header.php'); ?>
+<div class="notifycard card text-center shadow-2xl rounded-xl bg-gray-200 p-10 m-4 md:m-10 lg:m-20">
+    <span class="form-title">Send Message</span>
+    <form method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">
+        <div class="mb-4">
+            <label class="block mb-2">Select Users</label>
+            <select name="userid[]" class="notify_selected_user border-2 border-gray-400 p-2 max-w-fit rounded-lg ring-2 ring-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400" multiple>
+                <?php
+                echo '<option value="all">All User</option>';
+                if (mysqli_num_rows($userresult) > 0) {
+                    while ($rows = mysqli_fetch_assoc($userresult)) {
+                        echo '<option value="' . $rows["id"] . '">' . $rows["name"] . '</option>';
+                    }
+                }
+                ?>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label class="block mb-2">Title</label>
+            <input class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" type="text" name="title" id="title" placeholder="Enter title" required />
+        </div>
+        <div class="mb-4">
+            <label class="block mb-2">Details</label>
+            <textarea class="border-2 border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" name="details" id="details" placeholder="Enter details" required></textarea>
+        </div>
+        <div class="flex flex-col md:flex-row md:justify-between items-center">
+            <button type="submit" value="sbmt" class="bg-pink-700  text-white hover:bg-gray-100 hover:text-gray-900 font-raleway p-4 rounded-full focus:outline-none focus:ring-2  hover:ring-pink-700 hover:ring-2  mb-4 md:mb-0">Send Message</button>
+            <a href="adminDashboard.php" class="p-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 hover:ring-2 hover:translate-0 hover:transition-shadow self-start">Back to dashboard</a>
+        </div>
+    </form>
+</div>
+
+
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script>
-
-		$(document).ready(function(){
+		$(document).ready(function () {
 			$('.notify_selected_user').select2();
 		});
-	    
-	    /*$(document).ready(function () {
-	        <?php if (isset($success_message)): ?>
-	            $('#successModal').modal('show');
-	        <?php elseif (isset($error_message)): ?>
-	            $('#errorModal').modal('show');
-	        <?php else: ?>
-	        	$('#successModal').modal('hide');
-	        	$('#errorModal').modal('hide');
-	        <?php endif; ?>
-
-	    });*/
-
-	    
-	    jQuery(document).ready(function () {
-	        jQuery(window).scroll(function () {
-	            if (jQuery(window).scrollTop() >= jQuery(document).height() - jQuery(window).height()) {
-	                loadMore(loadFlag);
-	            }
-	        });
-	        
-	    });
 	</script>
+</body>
+<?php include('ui/footer.php'); ?>
 </html>

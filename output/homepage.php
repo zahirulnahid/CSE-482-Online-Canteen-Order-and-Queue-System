@@ -20,8 +20,8 @@ include('protection.php'); ?>
     rel="stylesheet">
 </head>
 
-<body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
-  backdrop-filter:blur(3px);">
+<body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat relative z-0 w-full scroll-smooth "
+   style="background-image: url('https://res.cloudinary.com/dq8h4hhir/image/upload/v1685159747/Homepage_bg_jh5jo5.png'); backdrop-filter:blur(3px);">
 
   <!-- NAVBAR -->
 
@@ -34,7 +34,7 @@ include('protection.php'); ?>
       <?= $_SESSION["name"] ?>
     </h1>
 
-   <div class="flex flex-wrap justify-between items-center py-4 px-8 md:px-20">
+   <div class="flex flex-wrap justify-between items-center py-4 relative z-0 px-8 md:px-20">
   <!-- search bar -->
   <div class="w-full md:w-auto mb-4 md:mb-0">
     
