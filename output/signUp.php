@@ -90,61 +90,15 @@ $conn->close();
 </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        <?php if (isset($success_message)): ?>
-            $('#successModal').modal('show');
-        <?php elseif (isset($error_message)): ?>
-            $('#errorModal').modal('show');
-        <?php endif; ?>
 
-    });
-
-    function validateForm() {
-        // PASSWORD LENGTH MUST BE BETWEEN 8-32 CHARACTERS
-        let x = document.forms["myForm"]["password"].value.length;
-        var password = document.getElementById('password').value;
-        if (!(password.length <= 32 && password.length >= 8)) {
-            document.getElementById("passwordError").innerHTML =
-                "Password length must between 8-32 characters";
-            return false;
-        }
-
-        // password confirm
-        if ((document.forms["myForm"]["password"].value != document.forms["myForm"]["confirmPassword"].value)) {
-            document.getElementById("confirmPasswordError").innerHTML =
-                "Password not matched";
-            return false;
-        }
-
-        //EMAIL VALIDATION
-        var email = document.forms["myForm"]["email"].value;
-        var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-
-        if (!email.match(mailformat)) {
-            document.getElementById("emailError").innerHTML =
-                "Please enter a valid Email";
-            return false;
-        }
-
-        //PHONE NUMBER SHOULD BE NUMERIC CHARS ONLY 
-        var numbers = /^[0-9]+$/;
-        var numLen = document.forms["myForm"]["phone"].value.length;
-
-        if (!document.forms["myForm"]["phone"].value.match(numbers) || numLen != 11) {
-            document.getElementById("numberError").innerHTML =
-                "Please enter a valid number";
-            return false;
-        }
-    }
-</script>
 
 
 
 <body>
     <div class="flex flex-col md:flex-row">
     <div class="hidden md:block w-full md:w-2/3 min-h-screen bg-cover bg-center"
-      style="background-image: url('images/loginPageBg.png');"></div>
+      style="background-image: url('images/loginPageBg.png');">
+    </div>
 
         <div class="w-full md:w-1/3 min-h-screen bg-gradient-to-t from-gray-200 to-gray-50"
             style="background-image: url('images/loginFormBg.png'); background-size: cover;">
@@ -244,7 +198,54 @@ $conn->close();
             </div>
         </div>
     </div>
+<script>
+    $(document).ready(function () {
+        <?php if (isset($success_message)): ?>
+            $('#successModal').modal('show');
+        <?php elseif (isset($error_message)): ?>
+            $('#errorModal').modal('show');
+        <?php endif; ?>
 
+    });
+
+    function validateForm() {
+        // PASSWORD LENGTH MUST BE BETWEEN 8-32 CHARACTERS
+        let x = document.forms["myForm"]["password"].value.length;
+        var password = document.getElementById('password').value;
+        if (!(password.length <= 32 && password.length >= 8)) {
+            document.getElementById("passwordError").innerHTML =
+                "Password length must between 8-32 characters";
+            return false;
+        }
+
+        // password confirm
+        if ((document.forms["myForm"]["password"].value != document.forms["myForm"]["confirmPassword"].value)) {
+            document.getElementById("confirmPasswordError").innerHTML =
+                "Password not matched";
+            return false;
+        }
+
+        //EMAIL VALIDATION
+        var email = document.forms["myForm"]["email"].value;
+        var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (!email.match(mailformat)) {
+            document.getElementById("emailError").innerHTML =
+                "Please enter a valid Email";
+            return false;
+        }
+
+        //PHONE NUMBER SHOULD BE NUMERIC CHARS ONLY 
+        var numbers = /^[0-9]+$/;
+        var numLen = document.forms["myForm"]["phone"].value.length;
+
+        if (!document.forms["myForm"]["phone"].value.match(numbers) || numLen != 11) {
+            document.getElementById("numberError").innerHTML =
+                "Please enter a valid number";
+            return false;
+        }
+    }
+</script>
     
 
 </body>
