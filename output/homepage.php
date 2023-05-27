@@ -190,6 +190,7 @@ include('protection.php'); ?>
 
   </script>
 <script defer> notification();</script>
+
   <?php include('ui/footer.php'); ?>
   <?php $conn->close(); ?>
 </body>

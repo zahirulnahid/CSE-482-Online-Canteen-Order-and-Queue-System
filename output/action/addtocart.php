@@ -13,7 +13,7 @@ $exists = $conn->query($exists);
 
 //Add item to cart if it doesn't exist in the cart already, else update the quantity
 if (mysqli_num_rows($exists) == 0) {
-  $conn->query($sql);
+  $conn->query($sql); //insert into the cart after calling the sql query
 } else {
   $row = $exists->fetch_assoc();
  $sql = "UPDATE `cart` SET `quantity`=" . ($row['quantity'] + 1) . "   WHERE foodID = $id AND email = '".$_SESSION["email"]."';";

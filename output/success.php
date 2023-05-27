@@ -87,6 +87,7 @@ if ($conn->query($bill) == TRUE) {
         Total_Revenue =  (Total_Revenue + (" . $row['quantity'] * $row['Price'] . "))";
       // Remove items from cart
       $deleteCartItems = "DELETE FROM `cart` WHERE `email`='" . $_SESSION['email'] . "';";
+
       // Add Queue
       $addQueue = "INSERT INTO `QUEUE`( `OrderID`) VALUES ($order_id);";
       if ($conn->query($order) == true && $conn->query($updateSales) == true && $conn->query($deleteCartItems)) {
@@ -144,7 +145,7 @@ if ($conn->query($bill) == TRUE) {
       <div class="mt-6 flex justify-end">
         <a href="./homepage.php"
           class="bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
-               ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2"">Continue Shopping</a>
+               ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2">Continue Shopping</a>
       </div>
     </div>
   </div>
