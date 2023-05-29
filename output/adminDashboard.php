@@ -76,7 +76,7 @@ include("protection.php");
         class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <!-- <img src="images/chicken%20curry.png" alt="Menu Item" class="rounded-t-lg mx-auto"> -->
         <?php
-        $sql = "SELECT COUNT(email) from users;";
+        $sql = "SELECT COUNT(email) from users WHERE users.category != 4 AND users.verified = 'true';";
 
         $result = $conn->query($sql);
         if ($result) {

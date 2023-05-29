@@ -11,7 +11,7 @@ if (isset($_POST['search'])) {
     $sql = "SELECT  `BILL`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`
           FROM `BILL`
           INNER JOIN `users`  ON `BILL`.`CustomerID`= `users`.`id`
-          WHERE users.email LIKE '%$search%' OR name LIKE '%$search%'
+          WHERE users.email LIKE '%$search%' OR name LIKE '%$search%' OR OrderID = '$search'
           ORDER BY OrderID DESC 
           ;";
     $result = mysqli_query($conn, $sql);
