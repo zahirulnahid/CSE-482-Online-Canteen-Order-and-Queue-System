@@ -17,7 +17,7 @@ if ($approveAccount) {
 if($_GET["action"]=="delete"){
 $email = $_GET["id"]; // get id through query string
 
-$sql =  "Delete from `users` where Email = '$email'"; // delete query
+$sql =  "Delete from `users` where email = '$email'"; // delete query
 if ($conn->query($sql) === TRUE) {
     if ($_GET["redirect"] == "manageAccount.php") {
         mysqli_close($conn); // Close connection
