@@ -18,8 +18,8 @@ include('protection.php'); ?>
 
 </head>
 
-<body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
-  backdrop-filter:blur(3px);">
+<body class="bg-gray-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
+  style="backdrop-filter:blur(3px);">
 
   <!-- NAVBAR -->
 

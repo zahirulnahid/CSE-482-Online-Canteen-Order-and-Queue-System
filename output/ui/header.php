@@ -40,7 +40,7 @@ if(isset($_GET['nid']) && !empty($_GET['nid'])){
             ?>
         </button>
         <ul id="notification"
-            class="dropdown-menu absolute hidden text-gray-700 bg-gray-200 ring-1 ring-pink-700 mt-2 z-10 rounded-lg divide-y divide-gray-200 max-h-60 overflow-y-auto sm:max-h-96 w-72 sm:max-w-xl">
+            class="dropdown-menu absolute hidden text-gray-700 bg-gray-200 ring-1 ring-pink-700 mt-2 z-10 rounded-lg divide-y divide-gray-200 max-h-60 overflow-y-auto sm:max-h-96 w-72 sm:max-w-fit md:max-w-lg">
             <!-- Dropdown menu items -->
             <?php
             $sql = "SELECT * FROM notifications WHERE receiver_id = '$userid' AND status = 0";
