@@ -7,9 +7,8 @@ if ($_POST["action"] == "add") {
   $itemName = $_POST["itemName"];
   $price = $_POST["price"];
   $description = $_POST["description"];
-  $keyword = $_POST["keyword"];
   $image = $_POST["image"];
-  $add = "INSERT INTO `food_list` (`Item_Name`, `Price`, `Description`, `keywords`, `Image_url`) VALUES ('$itemName', '$price', '$description', '$keyword', '$image');";
+  $add = "INSERT INTO `food_list` (`Item_Name`, `Price`, `Description`, `Image_url`) VALUES ('$itemName', '$price', '$description', '$image');";
   if ($conn->query($add) === TRUE) {
     echo "Item Added Successfully";
     header('Location: ../updateMenu.php');
@@ -22,7 +21,6 @@ if ($_POST["action"] == "add") {
   $itemName = $_GET["name"];
   $price = $_GET["price"];
   $description = $_GET["description"];
-  $keyword = $_GET["keyword"];
   $image = $_GET["image"];
 
   $sql = "SELECT * FROM `food_list` WHERE `id` = $id;";
@@ -39,14 +37,11 @@ if ($_POST["action"] == "add") {
       if (empty(trim($description))) {
         $description = $item['Description'];
       }
-      if (empty(trim($keyword))) {
-        $keyword = $item['keywords'];
-      }
       if (empty(trim($description))) {
         $image = $item['Image_url'];
       }
     }
-    $update = "UPDATE `food_list` SET `Item_Name`='$itemName',`Price`='$price', `Description`='$description', `keywords`= '$keyword', `Image_url`= '$image' WHERE `food_list`.`id` = '" . $id . "';";
+    $update = "UPDATE `food_list` SET `Item_Name`='$itemName',`Price`='$price', `Description`='$description', `Image_url`= '$image' WHERE `food_list`.`id` = '" . $id . "';";
 
     if ($conn->query($update) === TRUE) {
       echo "Record updated successfully";
