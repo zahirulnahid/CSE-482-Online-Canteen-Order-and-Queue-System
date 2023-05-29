@@ -26,9 +26,10 @@ include("protection.php");
     <!-- Add Item form -->
     <div class="flex items-center justify-center min-h-screen mt-5 pt-4 px-4 my-auto text-center sm:block sm:p-0">
         <h2>Add New Item</h2>
-        <form method="POST" action="actionm/handleItem.php?action=add">
+        <form method="get" action="action/handleItem.php?">
             <div>
                 <div class="mb-4">
+                    <input type="hidden" name="action" id="action" value="add">
                     <label for="itemName" class="block text-black">Item Name:</label>
                     <input type="text" name="itemName" id="itemName"
                         class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
@@ -45,7 +46,7 @@ include("protection.php");
                 </div>
                 <div class=" mb-4">
                     <label for="keyword" class="block text-black">Keywords:</label>
-                    <input type="text" name="keyword" id="keywords"
+                    <input type="text" name="keyword" id="keyword"
                         class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
                 </div>
                 <div class="mb-4">
@@ -54,24 +55,11 @@ include("protection.php");
                         class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
                 </div>
                 <div class="flex justify-end">
-                    <input class="px-5 py-2 mx-2 min-w-fit bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" type="submit" name="add" id="add" value="Add">
+                    <input class="px-5 py-2 mx-2 min-w-fit bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" type="submit" value="Add">
                 </div>
         </form>
     </div>
 
-<script>
-    function callCustomer(counter, orderID, staffID, customerID) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "action/call.php?counter=" + counter + "&OrderID=" + orderID + "&sid=" + staffID + "&cid=" + customerID);
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                console.log(xhr.responseText);
-
-            }
-        }
-        xhr.send();
-    }
-</script>
 </body>
 <?php include('ui/footer.php'); ?>
 
