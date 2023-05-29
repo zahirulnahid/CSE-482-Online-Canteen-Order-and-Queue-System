@@ -29,7 +29,7 @@ include("protection.php");
     <div class="flex items-center justify-center min-h-screen mt-5 pt-4 px-4">
         <div class="w-full container bg-slate-50 p-10 rounded-xl shadow-2xl max-w-md">
             <h2 class="text-center">Add New Item</h2>
-            <form method="POST" action="action/handleItem.php?action=add">
+            <form method="post" action="action/handleItem.php">
                 <div class="mb-4">
                     <input type="hidden" name="action" id="action" value="add">
                     <label for="itemName" class="block text-black">Item Name:</label>
@@ -59,7 +59,7 @@ include("protection.php");
                 <div class="flex justify-end">
                     <input
                         class="px-5 py-2 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
-                        type="submit" name="add" id="add" value="Add">
+                        type="submit" value="Add">
                 </div>
             </form>
         </div>

@@ -3,12 +3,12 @@ include("../protection.php");
 include('../connection.php');
 
 //Update Item in menu
-if ($_GET["action"] == "add") {
-  $itemName = $_GET["itemName"];
-  $price = $_GET["price"];
-  $description = $_GET["description"];
-  $keyword = $_GET["keyword"];
-  $image = $_GET["image"];
+if ($_POST["action"] == "add") {
+  $itemName = $_POST["itemName"];
+  $price = $_POST["price"];
+  $description = $_POST["description"];
+  $keyword = $_POST["keyword"];
+  $image = $_POST["image"];
   $add = "INSERT INTO `food_list` (`Item_Name`, `Price`, `Description`, `keywords`, `Image_url`) VALUES ('$itemName', '$price', '$description', '$keyword', '$image');";
   if ($conn->query($add) === TRUE) {
     echo "Item Added Successfully";
