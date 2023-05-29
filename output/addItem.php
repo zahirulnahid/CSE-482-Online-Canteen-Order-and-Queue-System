@@ -47,11 +47,6 @@ include("protection.php");
                         class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
                 </div>
                 <div class="mb-4">
-                    <label for="keyword" class="block text-black">Keywords:</label>
-                    <input type="text" name="keyword" id="keyword"
-                        class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
-                </div>
-                <div class="mb-4">
                     <label for="image" class="block text-black">Image:</label>
                     <input type="text" name="image" id="image"
                         class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
