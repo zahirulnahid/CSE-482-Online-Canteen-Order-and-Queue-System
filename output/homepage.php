@@ -1,6 +1,6 @@
 <?php
 include('protection.php'); ?>
-
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -10,18 +10,16 @@ include('protection.php'); ?>
   <title>Home </title>
   <link rel="stylesheet" href="outputstyles.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
-    rel="stylesheet">
+
 </head>
 
-<body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat relative z-0 w-full scroll-smooth "
-   style="background-image: url('https://res.cloudinary.com/dq8h4hhir/image/upload/v1685159747/Homepage_bg_jh5jo5.png'); backdrop-filter:blur(3px);">
+<body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
+  backdrop-filter:blur(3px);">
 
   <!-- NAVBAR -->
 
@@ -34,7 +32,7 @@ include('protection.php'); ?>
       <?= $_SESSION["name"] ?>
     </h1>
 
-   <div class="flex flex-wrap justify-between items-center py-4 relative z-0 px-8 md:px-20">
+   <div class="flex flex-wrap justify-between items-center py-4 px-8 md:px-20">
   <!-- search bar -->
   <div class="w-full md:w-auto mb-4 md:mb-0">
     
@@ -155,7 +153,7 @@ include('protection.php'); ?>
         // Create new li elements and append them to the ul
         for (i; i < obj.notifications.length; i++) {
           const liElement = document.createElement('li');
-          liElement.innerHTML = '<a href="' + obj.notifications[i].link + '" class="block px-4 py-3 hover:bg-gray-100">' + obj.notifications[i].title + '<br>' + obj.notifications[i].details + '</a>';
+          liElement.innerHTML = '<a href="homepage.php?nid=' + obj.notifications[i].id + '" class="block px-4 py-3 hover:bg-gray-100">' + obj.notifications[i].title + '<br>' + obj.notifications[i].details + '</a>';
           ulElement.appendChild(liElement);
           console.log("ssss");
         }
@@ -190,7 +188,6 @@ include('protection.php'); ?>
 
   </script>
 <script defer> notification();</script>
-
   <?php include('ui/footer.php'); ?>
   <?php $conn->close(); ?>
 </body>

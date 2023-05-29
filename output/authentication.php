@@ -24,10 +24,17 @@ if ($result->num_rows > 0) {
       $_SESSION["id"] = $row["id"];
       $_SESSION["userType"]=$row["category"];
       header("location: ".$userType[$_SESSION["userType"]][0]."");
-      $cookie_name = "user";
-      $cookie_value = $_POST["email"];
-      if (isset($_POST["remember_me"]))
+      $cookie_name = "token";
+      $cookie_value = md5($_POST["email"].date("hisaYmd"));
+      if (isset($_POST["remember_me"])){
         setcookie($cookie_name, $cookie_value, time() + (86400 * 30));
+        $sql="UPDATE `users` SET `token`='$cookie_value' WHERE `email`='$email'";
+        if ($conn->query($sql) === TRUE) {
+       
+        } else {
+        echo "Error updating record: " . $conn->error;
+}  
+      }
     } else {
       header("location: login.php");
       $_SESSION["errorMessage"] = "Wrong Password!";

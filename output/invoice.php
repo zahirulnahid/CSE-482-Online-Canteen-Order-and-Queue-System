@@ -1,7 +1,7 @@
 <?php
 include("protection.php");
 ?>
-
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -163,10 +163,10 @@ include("protection.php");
             </script>
 
           <!-- make this button functional so that it goes with the overall style -->
-          <input type="submit"
-            class="stripe-button bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full
-                        ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2"
-            value="Proceed to payment">
+          <!--<input type="submit"-->
+          <!--  class="stripe-button bg-pink-700 hover:bg-gray-100 hover:text-black text-white font-raleway py-3 px-5 m-4 rounded-full-->
+          <!--              ring-white ring-2  hover:ring-2 hover:ring-pink-600 max-w-sm hover:translate-0 hover:transition-shadow md:mx-2"-->
+          <!--  value="Proceed to payment">-->
 
 
         </form>

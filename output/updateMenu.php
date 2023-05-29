@@ -91,13 +91,17 @@ Add New Item
           <label for="description" class="block text-white">Description:</label>
           <input type="text" name="description" id="description<?php echo $rows['id']; ?>" value="<?php echo $rows["Description"]; ?>" class="box-content border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
+        <div class=" mb-4">
+          <label for="keyword" class="block text-white">Keywords:</label>
+          <input type="text" name="keyword" placeholder="keywords:" id="keyword<?php echo $rows['id']; ?>" value="<?php echo $rows['keywords']; ?>" class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+        </div>
         <div class="mb-4">
           <label for="image" class="block text-white">Image:</label>
           <input type="text" name="image" id="image<?php echo $rows['id']; ?>" value="<?php echo $rows['Image_url']; ?>" class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
         <div class="flex justify-end">
           <button class="px-5 py-2 mx-2 min-w-fit bg-white text-gray-900 hover:text-gray-100 hover:bg-pink-700 hover:ring-2 ring-pink-600 ring-600 ring-2 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="deleteItem(document.getElementById('itemID<?php echo $rows['id']; ?>').value)">Delete</button>
-          <button class="px-5 py-2 mx-2 min-w-fit bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="updateItem(document.getElementById('itemID<?php echo $rows['id']; ?>').value, document.getElementById('itemName<?php echo $rows['id']; ?>').value, document.getElementById('price<?php echo $rows['id']; ?>').value, document.getElementById('description<?php echo $rows['id']; ?>').value, document.getElementById('image<?php echo $rows['id']; ?>').value)">Update</button>
+          <button class="px-5 py-2 mx-2 min-w-fit bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="updateItem(document.getElementById('itemID<?php echo $rows['id']; ?>').value, document.getElementById('itemName<?php echo $rows['id']; ?>').value, document.getElementById('price<?php echo $rows['id']; ?>').value, document.getElementById('description<?php echo $rows['id']; ?>').value, document.getElementById('keyword<?php echo $rows['id']; ?>').value, document.getElementById('image<?php echo $rows['id']; ?>').value)">Update</button>
           <button class="px-5 py-2 mx-2 bg-gray-50 text-gray-900 hover:bg-gray-900 hover:text-white ring-2 ring-pink-500 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" onclick="closeModal(<?php echo $rows['id'] ?>)">Close</button>
         </div>
       </div>
@@ -120,13 +124,13 @@ Add New Item
     function closeModal(x) {
       document.getElementById("myModal_" + x).classList.add("hidden");
     }
-    function updateItem(id, name, price, description, image) {
+    function updateItem(id, name, price, description, keyword, image) {
         
           const xhr = new XMLHttpRequest();
-          xhr.open("GET", "action/handleItem.php?action=update&foodID=" + id + "&name=" + name + "&price=" + price + "&description=" + description + "&image=" + image);
+          xhr.open("GET", "action/handleItem.php?action=update&foodID=" + id + "&name=" + name + "&price=" + price + "&description=" + description + "&keyword=" + keyword + "&image=" + image);
           xhr.onload = function () {
             if (xhr.status === 200) {
-              console.log("action/handleItem.php?action=update&foodID=" + id + "&name=" + name + "&price=" + price + "&description=" + description + "&image=" + image)
+              console.log("action/handleItem.php?action=update&foodID=" + id + "&name=" + name + "&price=" + price + "&description=" + description + "&keyword=" + keyword + "&image=" + image)
             }
           };
           xhr.send();
