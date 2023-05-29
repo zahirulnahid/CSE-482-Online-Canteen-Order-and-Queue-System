@@ -11,7 +11,7 @@
           <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
-      <div class="w-full md:w-1/2 lg:w-1/4 m-5">
+      <!-- <div class="w-full md:w-1/2 lg:w-1/4 m-5">
         <h3 class="text-xl font-bold mb-4">Location</h3>
         <div class="aspect-w-3 aspect-h-2">
           <iframe
@@ -20,7 +20,7 @@
             referrerpolicy="no-referrer-when-downgrade" 
             class="rounded-3xl"></iframe>
         </div>
-      </div>
+      </div> -->
 
     </div>
     <p class="text-center">&copy; 2023 CSE-482™️ All Rights Reserved</p>
