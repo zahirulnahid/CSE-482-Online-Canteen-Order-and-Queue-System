@@ -29,8 +29,9 @@ include("protection.php");
     <div class="flex items-center justify-center min-h-screen mt-5 pt-4 px-4">
         <div class="w-full container bg-slate-50 p-10 rounded-xl shadow-2xl max-w-md">
             <h2 class="text-center">Add New Item</h2>
-            <form method="POST" action="actionm/handleItem.php?action=add">
+            <form method="POST" action="action/handleItem.php?action=add">
                 <div class="mb-4">
+                    <input type="hidden" name="action" id="action" value="add">
                     <label for="itemName" class="block text-black">Item Name:</label>
                     <input type="text" name="itemName" id="itemName"
                         class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
@@ -47,8 +48,8 @@ include("protection.php");
                 </div>
                 <div class="mb-4">
                     <label for="keyword" class="block text-black">Keywords:</label>
-                    <input type="text" name="keyword" id="keywords"
-                        class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
+                    <input type="text" name="keyword" id="keyword"
+                        class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
                 </div>
                 <div class="mb-4">
                     <label for="image" class="block text-black">Image:</label>
@@ -64,19 +65,6 @@ include("protection.php");
         </div>
     </div>
 
-<script>
-    function callCustomer(counter, orderID, staffID, customerID) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "action/call.php?counter=" + counter + "&OrderID=" + orderID + "&sid=" + staffID + "&cid=" + customerID);
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                console.log(xhr.responseText);
-
-            }
-        }
-        xhr.send();
-    }
-</script>
 </body>
 <?php include('ui/footer.php'); ?>
 
