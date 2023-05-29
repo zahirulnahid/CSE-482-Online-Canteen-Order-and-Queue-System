@@ -24,13 +24,16 @@ include("protection.php");
   <!-- Navbar -->
  <?php include('ui/header.php'); ?>
 
-
-
-  <!-- menu list view -->
-  <a href="adminDashboard.php"
-  class="p-4 float-none mx-auto m-8 justify-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow block w-max">
-  Back to dashboard
+<!-- Buttons -->
+ <a href="adminDashboard.php"
+ class="p-4 float-none mx-auto m-8 justify-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow block w-max">
+ Back to dashboard
 </a>
+<a href="addItem.php"
+class="p-4 float-none mx-auto m-8 justify-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow block w-max">
+Add New Item
+</a>
+<!-- menu list view -->
   <ul class="grid sm:grid-cols-1 gap-4 mx-auto my-8 sm:my-12 md:my-16 px-4 sm:px-8 md:px-16 lg:px-20 container shadow-none">
     <?php
     include('connection.php');
