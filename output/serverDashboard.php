@@ -26,16 +26,6 @@ include("protection.php");
     <!-- Navbar -->
     <?php include('ui/header.php'); ?>
 
-    <div class="flex flex-col items-center m-6 md:m-14">
-        <!-- search bar -->
-        <div class="w-full md:w-2/3 px-4">
-            <label class="block text-gray-700 font-raleway mb-2" for="search">Search</label>
-            <input
-                class="border-2 border-gray-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 w-full"
-                type="search" name="search" id="search">
-        </div>
-    </div>
-
     <!-- Queue list view -->
     <ul class="grid grid-cols-1 gap-4 container mx-auto p-4 md:p-10">
         <?php
