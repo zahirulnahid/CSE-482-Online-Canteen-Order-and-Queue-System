@@ -1,5 +1,5 @@
 <?php
-$userType[4]=array('adminDashboard.php','manageAccount.php','pendingAccount.php','salesInfo.php','updateMenu.php','sendNotification.php','orderHistory.php');
+$userType[4]=array('adminDashboard.php','manageAccount.php','pendingAccount.php','salesInfo.php','updateMenu.php','sendNotification.php','orderHistory.php', 'addItem.php');
 //(USER)
 $userType[1]=array('homepage.php','invoice.php','myOrders.php','success.php');
 $userType[2]=$userType[1];
