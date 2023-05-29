@@ -2,10 +2,10 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\BillingPortal;
+namespace Stripe\BILLingPortal;
 
 /**
- * The Billing customer portal is a Stripe-hosted UI for subscription and billing
+ * The BILLing customer portal is a Stripe-hosted UI for subscription and BILLing
  * management.
  *
  * A portal configuration describes the functionality and features that you want to
@@ -13,18 +13,18 @@ namespace Stripe\BillingPortal;
  *
  * A portal session describes the instantiation of the customer portal for a
  * particular customer. By visiting the session's URL, the customer can manage
- * their subscriptions and billing details. For security reasons, sessions are
+ * their subscriptions and BILLing details. For security reasons, sessions are
  * short-lived and will expire if the customer does not visit the URL. Create
  * sessions on-demand when customers intend to manage their subscriptions and
- * billing details.
+ * BILLing details.
  *
  * Learn more in the <a
- * href="https://stripe.com/docs/billing/subscriptions/integrating-customer-portal">integration
+ * href="https://stripe.com/docs/BILLing/subscriptions/integrating-customer-portal">integration
  * guide</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string|\Stripe\BillingPortal\Configuration $configuration The configuration used by this session, describing the features available.
+ * @property string|\Stripe\BILLingPortal\Configuration $configuration The configuration used by this session, describing the features available.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $customer The ID of the customer for this session.
  * @property null|\Stripe\StripeObject $flow Information about a specific flow for the customer to go through. See the <a href="https://stripe.com/docs/customer-management/portal-deep-links">docs</a> to learn more about using customer portal deep links and flows.
@@ -36,7 +36,7 @@ namespace Stripe\BillingPortal;
  */
 class Session extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = 'billing_portal.session';
+    const OBJECT_NAME = 'BILLing_portal.session';
 
     use \Stripe\ApiOperations\Create;
 }

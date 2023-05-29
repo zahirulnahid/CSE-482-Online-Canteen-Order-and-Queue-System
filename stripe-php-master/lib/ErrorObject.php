@@ -60,7 +60,7 @@ class ErrorObject extends StripeObject
     const CODE_BANK_ACCOUNT_UNUSABLE = 'bank_account_unusable';
     const CODE_BANK_ACCOUNT_UNVERIFIED = 'bank_account_unverified';
     const CODE_BANK_ACCOUNT_VERIFICATION_FAILED = 'bank_account_verification_failed';
-    const CODE_BILLING_INVALID_MANDATE = 'billing_invalid_mandate';
+    const CODE_BILLING_INVALID_MANDATE = 'BILLing_invalid_mandate';
     const CODE_BITCOIN_UPGRADE_REQUIRED = 'bitcoin_upgrade_required';
     const CODE_CARD_DECLINE_RATE_LIMIT_EXCEEDED = 'card_decline_rate_limit_exceeded';
     const CODE_CARD_DECLINED = 'card_declined';
@@ -129,7 +129,7 @@ class ErrorObject extends StripeObject
     const CODE_PAYMENT_INTENT_UNEXPECTED_STATE = 'payment_intent_unexpected_state';
     const CODE_PAYMENT_METHOD_BANK_ACCOUNT_ALREADY_VERIFIED = 'payment_method_bank_account_already_verified';
     const CODE_PAYMENT_METHOD_BANK_ACCOUNT_BLOCKED = 'payment_method_bank_account_blocked';
-    const CODE_PAYMENT_METHOD_BILLING_DETAILS_ADDRESS_MISSING = 'payment_method_billing_details_address_missing';
+    const CODE_PAYMENT_METHOD_BILLING_DETAILS_ADDRESS_MISSING = 'payment_method_BILLing_details_address_missing';
     const CODE_PAYMENT_METHOD_CURRENCY_MISMATCH = 'payment_method_currency_mismatch';
     const CODE_PAYMENT_METHOD_INVALID_PARAMETER = 'payment_method_invalid_parameter';
     const CODE_PAYMENT_METHOD_INVALID_PARAMETER_TESTMODE = 'payment_method_invalid_parameter_testmode';

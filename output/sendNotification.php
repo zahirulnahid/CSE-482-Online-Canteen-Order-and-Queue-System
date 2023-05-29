@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <?php
 include('protection.php');
 ?>
@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 
-<!DOCTYPE html>
+
 <html lang="en" class="scroll-smooth font-semibold min-h-screen bg-cover bg-no-repeat w-full"
 	style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
 

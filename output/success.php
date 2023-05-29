@@ -17,7 +17,7 @@ $data= \Stripe\Charge::create(array (
 );
 
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -51,7 +51,7 @@ if ( $data["status"]== "succeeded") {
   //you can get all parameter from post request
   // print_r($_POST);
 
-//Creating Bill and Order
+//Creating BILL and Order
 include('connection.php');
 
 $sql = "SELECT `id` FROM `users` WHERE `email`= '" . $_SESSION['email'] . "';";
@@ -65,9 +65,9 @@ if ($conn->query($sql) == true) {
 $dt = new DateTime('now', new DateTimezone('Asia/Dhaka'));
 $date = $dt->format('Y-m-d');
 $orderTime = $dt->format('g:i a');
-//Create new Bill
-$bill = "INSERT INTO `BILL`( `Order_Date`, `Time`, `CustomerID`, `Total_Amount`, `served`) VALUES ('$date', '$orderTime', '$userid','$amount', 'no');";
-if ($conn->query($bill) == TRUE) {
+//Create new BILL
+$BILL = "INSERT INTO `BILL`( `Order_Date`, `Time`, `CustomerID`, `Total_Amount`, `served`) VALUES ('$date', '$orderTime', '$userid','$amount', 'no');";
+if ($conn->query($BILL) == TRUE) {
   $order_id = mysqli_insert_id($conn);
 
   // Get items from cart

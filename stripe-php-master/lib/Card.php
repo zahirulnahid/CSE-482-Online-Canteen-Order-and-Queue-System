@@ -16,7 +16,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string|\Stripe\Account $account The account this card belongs to. This attribute will not be in the card object if the card belongs to a customer or recipient instead.
  * @property null|string $address_city City/District/Suburb/Town/Village.
- * @property null|string $address_country Billing address country, if provided when creating card.
+ * @property null|string $address_country BILLing address country, if provided when creating card.
  * @property null|string $address_line1 Address line 1 (Street address/PO Box/Company name).
  * @property null|string $address_line1_check If <code>address_line1</code> was provided, results of the check: <code>pass</code>, <code>fail</code>, <code>unavailable</code>, or <code>unchecked</code>.
  * @property null|string $address_line2 Address line 2 (Apartment/Suite/Unit/Building).

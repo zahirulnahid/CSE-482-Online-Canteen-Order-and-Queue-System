@@ -1,6 +1,6 @@
 <?php
 include('protection.php');
-?><!DOCTYPE html>
+?>
 <html>
 
 <head>
@@ -34,7 +34,7 @@ include('protection.php');
         </a>
     </div>
 
-    <ul id="orders" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto mt-10 my-28 container shadow-none md:px-20 py-10 sm:px-">
+    <ul id="Orders" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto mt-10 my-28 container shadow-none md:px-20 py-10 sm:px-">
         
        
         <h2 class=" text-lg font-raleway text-gray-900 mb-1">
@@ -61,7 +61,7 @@ include('protection.php');
             data: 'start=' + start,
             type: 'post',
             success: function (result) {
-                jQuery('#orders').append(result);
+                jQuery('#Orders').append(result);
                 loadFlag += 4;
             }
         });

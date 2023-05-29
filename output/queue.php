@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -44,7 +44,7 @@
 
         <?php
         include("connection.php");
-        // Get called orders
+        // Get called Orders
         $sql = "SELECT * FROM Queue WHERE counter IS NOT NULL";
         $result = $conn->Query($sql);
         if ($result == true) {
@@ -95,7 +95,7 @@
     <ul class="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mx-auto container shadow-none md:px-20 py-5 sm:px-10">
 
         <?php
-        // Get called orders
+        // Get called Orders
         $sql = "SELECT * FROM Queue WHERE counter IS NULL";
         $result = $conn->Query($sql);
         if ($result == true) {

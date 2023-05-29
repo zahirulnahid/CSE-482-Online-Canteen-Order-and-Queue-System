@@ -13,7 +13,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|string $billing_zip The ZIP or postal code of the card used, if applicable.
+ * @property null|string $BILLing_zip The ZIP or postal code of the card used, if applicable.
  * @property null|string|\Stripe\Charge $charge The charge associated with this review.
  * @property null|string $closed_reason The reason the review was closed, or null if it has not yet been closed. One of <code>approved</code>, <code>refunded</code>, <code>refunded_as_fraud</code>, <code>disputed</code>, or <code>redacted</code>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.

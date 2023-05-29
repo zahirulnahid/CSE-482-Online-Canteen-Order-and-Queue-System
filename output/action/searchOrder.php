@@ -8,9 +8,9 @@ if (isset($_POST['search'])) {
     $start = mysqli_real_escape_string($conn, $_POST['start']);
 
     //fetch orderIDs for a user with user name or email
-    $sql = "SELECT  `Bill`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`
-          FROM `Bill`
-          INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
+    $sql = "SELECT  `BILL`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`
+          FROM `BILL`
+          INNER JOIN `users`  ON `BILL`.`CustomerID`= `users`.`id`
           WHERE users.email LIKE '%$search%' OR name LIKE '%$search%'
           ORDER BY OrderID DESC 
           ;";
@@ -20,11 +20,11 @@ if (isset($_POST['search'])) {
         while ($rows = mysqli_fetch_assoc($result)) {
 
             //Get all item details for current OrderID
-            $getItems = "SELECT `Orders`.`OrderID`, `Bill`.`Total_Amount`, `Bill`.`Order_Date`, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`, food_list.Price
+            $getItems = "SELECT `Orders`.`OrderID`, `BILL`.`Total_Amount`, `BILL`.`Order_Date`, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Email`, `Orders`.Quantity, `food_list`.`Item_Name`, food_list.Price
             FROM `Orders`
             INNER JOIN food_list ON Orders.ItemID= food_list.id
             INNER JOIN `BILL` on `Orders`.`OrderID`=`BILL`.OrderID
-            INNER JOIN `users`  ON `bill`.`CustomerID`= `users`.`id`
+            INNER JOIN `users`  ON `BILL`.`CustomerID`= `users`.`id`
             WHERE Orders.OrderID =" . $rows['OrderID'];
             $items = $conn->query($getItems);
             //Fetch all items for the current OrderID and store in an array

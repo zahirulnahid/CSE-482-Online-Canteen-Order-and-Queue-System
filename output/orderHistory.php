@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <?php
         include('connection.php');
         include('protection.php');
@@ -45,7 +45,7 @@
     <!-- menu list view -->
 
      <h3 class="font-raleway text-4xl "><center>Order History</center></h3>
-    <ul id="orders" class="grid grid-cols-1 gap-4 mx-auto container shadow-none p-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <ul id="Orders" class="grid grid-cols-1 gap-4 mx-auto container shadow-none p-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
             <?php
         $conn->close();
@@ -67,7 +67,7 @@
             data: 'start='+start,
             type: 'post',
             success:function(result){
-                jQuery('#orders').append(result);
+                jQuery('#Orders').append(result);
                 loadFlag+=4;
             }
         });
@@ -89,7 +89,7 @@
       data: { search: search },
       success: function(response) {
         // Update the DOM with the search results
-        $('#orders').html(response);
+        $('#Orders').html(response);
       }
     });
   });

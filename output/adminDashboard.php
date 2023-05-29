@@ -1,7 +1,7 @@
 <?php
 include("protection.php");
 ?>
-<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -147,8 +147,8 @@ include("protection.php");
         class="card text-center shadow-xl rounded-xl bg-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <a href="orderHistory.php">
           <div class="p-10">
-            <h2 class="text-xl font-raleway mb-2">Get all orders</h2>
-            <p class="text-pink-500 font-semibold mt-4">Click here to view all orders</p>
+            <h2 class="text-xl font-raleway mb-2">Get all Orders</h2>
+            <p class="text-pink-500 font-semibold mt-4">Click here to view all Orders</p>
           </div>
         </a>
       </div>

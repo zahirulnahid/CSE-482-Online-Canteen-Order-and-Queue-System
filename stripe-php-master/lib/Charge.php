@@ -24,7 +24,7 @@ namespace Stripe;
  * @property null|int $application_fee_amount The amount of the application fee (if any) requested for the charge. <a href="https://stripe.com/docs/connect/direct-charges#collecting-fees">See the Connect documentation</a> for details.
  * @property null|string $authorization_code Authorization code on the charge.
  * @property null|string|\Stripe\BalanceTransaction $balance_transaction ID of the balance transaction that describes the impact of this charge on your account balance (not including refunds or disputes).
- * @property \Stripe\StripeObject $billing_details
+ * @property \Stripe\StripeObject $BILLing_details
  * @property null|string $calculated_statement_descriptor The full statement descriptor that is passed to card networks, and that is displayed on your customers' credit card and bank statements. Allows you to see what the statement descriptor looks like after the static and dynamic portions are combined.
  * @property bool $captured If the charge was created without capturing, this Boolean represents whether it is still uncaptured or has since been captured.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.

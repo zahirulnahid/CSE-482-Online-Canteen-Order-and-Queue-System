@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\BillingPortal;
+namespace Stripe\BILLingPortal;
 
 /**
  * A portal configuration describes the functionality and behavior of a portal
@@ -24,7 +24,7 @@ namespace Stripe\BillingPortal;
  */
 class Configuration extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = 'billing_portal.configuration';
+    const OBJECT_NAME = 'BILLing_portal.configuration';
 
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Create;

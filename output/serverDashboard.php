@@ -1,7 +1,7 @@
 <?php
 include("protection.php");
 ?>
-<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -41,11 +41,11 @@ include("protection.php");
         <?php
         include('connection.php');
 
-        $sql = "SELECT `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Bill`.*
-            FROM `bill`
-            INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
-            WHERE bill.served = 'no'
-            ORDER BY bill.OrderID DESC;";
+        $sql = "SELECT `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `BILL`.*
+            FROM `BILL`
+            INNER JOIN `users` ON `BILL`.`CustomerID` = `users`.`id`
+            WHERE BILL.served = 'no'
+            ORDER BY BILL.OrderID DESC;";
 
         $result = $conn->query($sql);
 
@@ -54,13 +54,13 @@ include("protection.php");
                 <li class="p-4 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex flex-col md:flex-row items-start">
                     <div class="flex-grow">
                         <?php
-                        $items = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `bill`.served, `food_list`.`Item_Name`
+                        $items = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `BILL`.served, `food_list`.`Item_Name`
         FROM `Orders`
         INNER JOIN food_list ON Orders.ItemID = food_list.id
         INNER JOIN `QUEUE` ON `Orders`.OrderID = `QUEUE`.OrderID
         INNER JOIN `BILL` ON `Orders`.`OrderID` = `BILL`.OrderID
-        INNER JOIN `users` ON `bill`.`CustomerID` = `users`.`id`
-        WHERE bill.served = 'no' AND Queue.OrderID = " . $row['OrderID'] . "
+        INNER JOIN `users` ON `BILL`.`CustomerID` = `users`.`id`
+        WHERE BILL.served = 'no' AND Queue.OrderID = " . $row['OrderID'] . "
         ORDER BY OrderID DESC; ";
                         $items = $conn->query($items);
                         //Fetch all items for the current OrderID and store in an array
@@ -105,7 +105,7 @@ include("protection.php");
                 </li>
             <?php }
         } else {
-            echo "No Pending orders.";
+            echo "No Pending Orders.";
         }
 
         $conn->close();

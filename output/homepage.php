@@ -1,6 +1,6 @@
 <?php
 include('protection.php'); ?>
-<!DOCTYPE html>
+
 <html>
 
 <head>

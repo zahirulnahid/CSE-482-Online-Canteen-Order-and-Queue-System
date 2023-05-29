@@ -7,7 +7,7 @@ session_destroy();
 setcookie("user", "", time() - 3600);
 unset($_COOKIE['user']); ?>
 
-<!DOCTYPE html>
+
 <html>
 
 <head>

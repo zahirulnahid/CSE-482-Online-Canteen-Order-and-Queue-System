@@ -62,7 +62,7 @@ SELECT `QUEUE`.*, `users`.`Name`AS `Customer_Name`,`users`.Email AS `Customer_Em
 FROM `Orders`\
 INNER JOIN `QUEUE` ON `Orders`.OrderID= `QUEUE`.OrderID\
 INNER JOIN `BILL` on `ORDER`.`OrderID`=`BILL`.OrderID\
-INNER JOIN `users`  ON `bill`.`Customer_Email`= `users`.Email\
+INNER JOIN `users`  ON `BILL`.`Customer_Email`= `users`.Email\
 ;\
 create table cart (\
     id int not null AUTO_INCREMENT,\

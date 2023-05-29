@@ -441,7 +441,7 @@ ALTER TABLE `users`
 -- Constraints for table `BILL`
 --
 ALTER TABLE `BILL`
-  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `BILL_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `cart`
