@@ -3,7 +3,9 @@ session_start();
 
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: login.php");
+    $cookie_name = "token";
+   if(!isset($_COOKIE[$cookie_name])) header("location: login.php");
+   else header("location: index.php");
     exit;
     //auth or send to login page
 } else

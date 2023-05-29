@@ -51,13 +51,13 @@ include("protection.php");
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) { ?>
-                <li class="p-4 bg-gray-200 rounded-xl shadow-lg mb-4 overflow-hidden flex flex-col md:flex-row items-start">
+                <li class="p-4 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex flex-col md:flex-row items-start">
                     <div class="flex-grow">
                         <?php
-                        $items = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `BILL`.served, `food_list`.`Item_Name`
+                        $items = "SELECT `Queue`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `BILL`.served, `food_list`.`Item_Name`
         FROM `Orders`
         INNER JOIN food_list ON Orders.ItemID = food_list.id
-        INNER JOIN `QUEUE` ON `Orders`.OrderID = `QUEUE`.OrderID
+        INNER JOIN `Queue` ON `Orders`.OrderID = `Queue`.OrderID
         INNER JOIN `BILL` ON `Orders`.`OrderID` = `BILL`.OrderID
         INNER JOIN `users` ON `BILL`.`CustomerID` = `users`.`id`
         WHERE BILL.served = 'no' AND Queue.OrderID = " . $row['OrderID'] . "
@@ -88,7 +88,7 @@ include("protection.php");
                     </div>
                     <div class="mt-4 md:mt-0">
                         Counter:
-                        <input type="text" list="counterNo" name="counter" class="ring-2 ring-pink-700 rounded-full p-2">
+                        <input type="text" list="counterNo" name="counter" class="ring-2 ring-pink-700 rounded-full p-2" required>
                         <datalist id="counterNo">
                             <option value="1">
                             <option value="2">

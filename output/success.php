@@ -53,14 +53,24 @@ if ( $data["status"]== "succeeded") {
 
 //Creating BILL and Order
 include('connection.php');
-
-$sql = "SELECT `id` FROM `users` WHERE `email`= '" . $_SESSION['email'] . "';";
+$userid;
+$phone="";
+$sql = "SELECT * FROM `users` WHERE `email`= '" . $_SESSION['email'] . "';";
 if ($conn->query($sql) == true) {
-  $userid = $conn->query($sql)->fetch_assoc();
-  $userid = $userid['id'];
+  $row = $conn->query($sql)->fetch_assoc();
+  $userid = $row['id'];
+  $phone=$row['phone'];
+  $name=$row['name'];
 } else {
   echo "Cannot retrieve userID";
 }
+
+//SMS GATEWAY
+$token = "2982195918168536875862cce48d1811b610cfe11674963f251f";
+$url = "http://api.greenweb.com.bd/api.php?json";
+
+
+
 
 $dt = new DateTime('now', new DateTimezone('Asia/Dhaka'));
 $date = $dt->format('Y-m-d');
@@ -89,12 +99,24 @@ if ($conn->query($BILL) == TRUE) {
       $deleteCartItems = "DELETE FROM `cart` WHERE `email`='" . $_SESSION['email'] . "';";
 
       // Add Queue
-      $addQueue = "INSERT INTO `QUEUE`( `OrderID`) VALUES ($order_id);";
+      $addQueue = "INSERT INTO `Queue`( `OrderID`) VALUES ($order_id);";
       if ($conn->query($order) == true && $conn->query($updateSales) == true && $conn->query($deleteCartItems)) {
       }
 
     }
     $conn->query($addQueue);
+         $last_id = $conn->insert_id;
+         $message="Dear $name, You have successfully paid $amount BDT. Please wait for Queue call $last_id. Thank You From NSU Canteen.";
+         $data= array('to'=>"$phone",'message'=>"$message",'token'=>"$token"); 
+$ch = curl_init(); 
+curl_setopt($ch, CURLOPT_URL,$url);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($ch, CURLOPT_ENCODING, '');
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$smsresult = curl_exec($ch);
+//echo $smsresult;
   }
 }
 }

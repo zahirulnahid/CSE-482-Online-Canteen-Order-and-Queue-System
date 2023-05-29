@@ -4,8 +4,8 @@ if (isset($_SESSION["errorMessage"]))
 else
   $errorMessage = "";
 session_destroy();
-setcookie("user", "", time() - 3600);
-unset($_COOKIE['user']); ?>
+setcookie("token", "", time() - 3600);
+unset($_COOKIE['token']); ?>
 
 
 <html>

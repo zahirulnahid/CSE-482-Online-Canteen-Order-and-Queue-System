@@ -2,10 +2,10 @@
 session_start();
 include("connection.php");
 
-$cookie_name = "user";
-if (!$_SESSION["loggedin"]&&isset($_SESSION["loggedin"])){if (isset($_COOKIE[$cookie_name])) {
-  $cookie_email = $_COOKIE[$cookie_name];
-  echo $sql = "SELECT * FROM `users` WHERE `email`='$cookie_email'";
+$cookie_name = "token";
+if (isset($_COOKIE[$cookie_name])) {
+  $token = $_COOKIE[$cookie_name];
+  $sql = "SELECT * FROM `users` WHERE `token`='$token'";
 
   $result = $conn->query($sql);
 
@@ -14,12 +14,12 @@ if (!$_SESSION["loggedin"]&&isset($_SESSION["loggedin"])){if (isset($_COOKIE[$co
     while ($row = $result->fetch_assoc()) {
       $_SESSION["loggedin"] = true;
       $_SESSION["loginas"] = "user";
-      $cookie_name = "user";
-      $cookie_value = $cookie_email;
-      $_SESSION["email"] = $cookie_email;
+      $_SESSION["email"] = $row["email"];
       $_SESSION["name"] = $row["name"];
       $_SESSION["userType"]=$row["category"];
       $_SESSION["id"] = $row["id"];
+      $cookie_name = "token";
+      $cookie_value = $token;
       setcookie($cookie_name, $cookie_value, time() + (86400 * 30));
     }
     //Redirect to homepage if user is logged in
@@ -31,8 +31,13 @@ if (!$_SESSION["loggedin"]&&isset($_SESSION["loggedin"])){if (isset($_COOKIE[$co
 
 
   //if($_SESSION["loginas"]=="user") header("location: homepage.php");else header("location: login.php");
-}} else {
+}
+
+if(isset($_SESSION["userType"])){
+    header("location: ".$userType[$_SESSION["userType"]][0]."");
+}
+else {
   // Redirect to login page if user is not logged in
-  header("location: homepage.php");
+ header("location: login.php");
 }
 ?>

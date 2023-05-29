@@ -47,15 +47,16 @@ include("protection.php");
                         class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
                 </div>
                 <div class="mb-4">
+                    <label for="keyword" class="block text-black">Keywords:</label>
+                    <input type="text" name="keyword" id="keyword"
+                        class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                </div>
+                <div class="mb-4">
                     <label for="image" class="block text-black">Image:</label>
                     <input type="text" name="image" id="image"
                         class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
                 </div>
-                <div class="flex justify-evenly">
-                    <a href="updateMenu.php"
-                        class="px-5 py-2 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow">
-                        Back
-                    </a>
+                <div class="flex justify-end">
                     <input
                         class="px-5 py-2 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
                         type="submit" value="Add">
