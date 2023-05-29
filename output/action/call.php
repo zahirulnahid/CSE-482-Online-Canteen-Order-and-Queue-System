@@ -12,7 +12,7 @@ if (isset($_GET["counter"]) && isset($_GET["OrderID"])) {
     $details = "Collect your food from counter $counterNo";
 
     // Update Counter Number
-    $updateCounter = "UPDATE Queue SET counter = $counterNo WHERE OrderID = $orderID;";
+    $updateCounter = "UPDATE Queue SET Counter = $counterNo WHERE OrderID = $orderID;";
     // Send notification to user
     $sql = "INSERT INTO `notifications` (`id`, `sender_id`, `receiver_id`, `title`, `details`, `created_at`, `updated_at`) VALUES (NULL, '$senderid', '$val', '$title', '$details', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
 
@@ -20,7 +20,7 @@ if (isset($_GET["counter"]) && isset($_GET["OrderID"])) {
         header("location:../serverDashboard.php");
         exit;
     } else
-        echo "Queue Not Removed";
+        echo "Customer Not Called";
     $conn->close();
 }
 ?>
