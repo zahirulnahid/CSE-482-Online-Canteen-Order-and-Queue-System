@@ -51,7 +51,7 @@ include("protection.php");
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) { ?>
-                <li class="p-4 bg-pink-50 rounded-xl shadow-lg mb-4 overflow-hidden flex flex-col md:flex-row items-start">
+                <li class="p-4 bg-gray-200 rounded-xl shadow-lg mb-4 overflow-hidden flex flex-col md:flex-row items-start">
                     <div class="flex-grow">
                         <?php
                         $items = "SELECT `QUEUE`.*, `users`.`Name` AS `Customer_Name`, `users`.Email AS `Customer_Email`, `Orders`.Quantity, `BILL`.served, `food_list`.`Item_Name`
