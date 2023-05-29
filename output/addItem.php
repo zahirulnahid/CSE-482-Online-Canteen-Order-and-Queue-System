@@ -12,6 +12,7 @@ include("protection.php");
     <title>Server Dashboard</title>
     <link rel="stylesheet" href="outputstyles.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
@@ -23,28 +24,29 @@ include("protection.php");
 
     <!-- Navbar -->
     <?php include('ui/header.php'); ?>
+
     <!-- Add Item form -->
-    <div class="flex items-center justify-center min-h-screen mt-5 pt-4 px-4 my-auto text-center sm:block sm:p-0">
-        <h2>Add New Item</h2>
-        <form method="get" action="action/handleItem.php?">
-            <div>
+    <div class="flex items-center justify-center min-h-screen mt-5 pt-4 px-4">
+        <div class="w-full container bg-slate-50 p-10 rounded-xl shadow-2xl max-w-md">
+            <h2 class="text-center">Add New Item</h2>
+            <form method="POST" action="action/handleItem.php?action=add">
                 <div class="mb-4">
                     <input type="hidden" name="action" id="action" value="add">
                     <label for="itemName" class="block text-black">Item Name:</label>
                     <input type="text" name="itemName" id="itemName"
-                        class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
                 </div>
                 <div class="mb-4">
                     <label for="price" class="block text-black">Price:</label>
                     <input type="text" name="price" id="price"
-                        class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
                 </div>
                 <div class="mb-4">
                     <label for="description" class="block text-black">Description:</label>
                     <input type="text" name="description" id="description"
-                        class="box-content border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
                 </div>
-                <div class=" mb-4">
+                <div class="mb-4">
                     <label for="keyword" class="block text-black">Keywords:</label>
                     <input type="text" name="keyword" id="keyword"
                         class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
@@ -52,12 +54,15 @@ include("protection.php");
                 <div class="mb-4">
                     <label for="image" class="block text-black">Image:</label>
                     <input type="text" name="image" id="image"
-                        class="border-2 border-pink-400 p-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        class="border-2 border-pink-400 p-2 text-black rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 w-full">
                 </div>
                 <div class="flex justify-end">
-                    <input class="px-5 py-2 mx-2 min-w-fit bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow" type="submit" value="Add">
+                    <input
+                        class="px-5 py-2 bg-pink-700 text-gray-100 hover:text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-pink-700 rounded-full border-spacing-2 font-raleway focus:ring-2 hover:translate-0 hover:transition-shadow"
+                        type="submit" name="add" id="add" value="Add">
                 </div>
-        </form>
+            </form>
+        </div>
     </div>
 
 </body>
