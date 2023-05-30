@@ -87,20 +87,21 @@ if ($conn->query($BILL) == TRUE) {
   if ($result == true) {
     while ($row = $result->fetch_assoc()) {
       // Create new order 
-      $order = "INSERT INTO `Orders`(`OrderID`, `ItemID`, `Quantity`) VALUES ('$order_id','" . $row["foodID"] . "','" . $row["quantity"] . "');";
+      $order = "INSERT INTO `Orders`(`OrderID`, `ItemID`, `Price`, `Quantity`) VALUES ('$order_id','" . $row["foodID"] . "','" . $row["Price"] . "','" . $row["quantity"] . "');";
       // Update Sales Information
-      $updateSales = "INSERT INTO SALES_REPORT (`ItemID`, `Units_Sold`, `Total_Revenue`) 
-      VALUES
-       ('" . $row["foodID"] . "','" . $row["quantity"] . "', " . $row["quantity"] * $row["Price"] . ")
-      ON DUPLICATE KEY UPDATE
-        Units_Sold     =  (Units_Sold + '" . $row['quantity'] . "'),
-        Total_Revenue =  (Total_Revenue + (" . $row['quantity'] * $row['Price'] . "))";
+      // $updateSales = "INSERT INTO SALES_REPORT (`ItemID`, `Units_Sold`, `Total_Revenue`) 
+      // VALUES
+      //  ('" . $row["foodID"] . "','" . $row["quantity"] . "', " . $row["quantity"] * $row["Price"] . ")
+      // ON DUPLICATE KEY UPDATE
+      //   Units_Sold     =  (Units_Sold + '" . $row['quantity'] . "'),
+      //   Total_Revenue =  (Total_Revenue + (" . $row['quantity'] * $row['Price'] . "))";
       // Remove items from cart
       $deleteCartItems = "DELETE FROM `cart` WHERE `email`='" . $_SESSION['email'] . "';";
 
       // Add Queue
       $addQueue = "INSERT INTO `Queue`( `OrderID`) VALUES ($order_id);";
-      if ($conn->query($order) == true && $conn->query($updateSales) == true && $conn->query($deleteCartItems)) {
+      // $conn->query($updateSales) == true &&
+      if ($conn->query($order) == true && $conn->query($deleteCartItems)) {
       }
 
     }

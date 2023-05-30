@@ -14,9 +14,9 @@ include("protection.php");
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+        rel="stylesheet">
 </head>
 
 
@@ -25,85 +25,110 @@ include("protection.php");
     style="background-image: url('images/Homepage bg .png'); backdrop-filter:blur(3px);">
 
     <!-- Navbar -->
-   <?php include('ui/header.php'); ?>
+    <?php include('ui/header.php'); ?>
 
 
     <div class="flex m-14">
-          
-            <a href="adminDashboard.php" class="p-4 mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
-          hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow flex">Back to dashboard</a>
-      
+
+        <a href="adminDashboard.php" class="p-4 mt-4 text-center hover:bg-gray-100 hover:text-gray-900 text-gray-100 bg-pink-700 rounded-full font-raleway
+          hover:ring-pink-700 ring-2 hover:ring-2  hover:translate-0 hover:transition-shadow flex">Back to
+            dashboard</a>
+
 
 
     </div>
 
     <!-- sales list view -->
-   <div class="container mx-auto px-4 sm:px-8 md:px-16 lg:px-20 m-4 sm:m-8">
-    <h1 class="text-2xl font-bold mb-6 text-center">Sales Report</h1>
-    <div class="shadow-lg overflow-x-auto">
-        <table class="w-full">
-            <thead>
-                <tr class="bg-pink-700">
-                    <th class="px-4 py-2 text-gray-200">Product Name</th>
-                    <th class="px-4 py-2 text-gray-200">Units Sold</th>
-                    <th class="px-4 py-2 text-gray-200">Price per Unit</th>
-                    <th class="px-4 py-2 text-gray-200">Total Revenue</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                include('connection.php');
+    <div class="container mx-auto px-4 sm:px-8 md:px-16 lg:px-20 m-4 sm:m-8">
+        <h1 class="text-2xl font-bold mb-6 text-center">Sales Report</h1>
+        <div class="shadow-lg overflow-x-auto">
 
-                $sql = "SELECT `SALES_REPORT`.*, `food_list`.`Item_Name`,`food_list`.`Price` 
-                    FROM `SALES_REPORT`
-                    INNER JOIN `food_list` ON `SALES_REPORT`.`ItemID`= `food_list`.`id`;";
-                $result = $conn->query($sql);
+            <?php
+            include('connection.php');
 
-                $row = [];
-                $total_Revenue = 0;
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_all(MYSQLI_ASSOC);
+            $sql = "SELECT
+                MONTH(b.Order_Date) AS month,
+                YEAR(b.Order_Date) AS year,
+                f.Item_Name AS Item_Name,
+                f.Price as Price,
+                SUM(o.quantity) AS Units_Sold,
+                SUM(o.quantity * o.price) AS Total_Revenue
+            FROM
+                food_list f
+            INNER JOIN
+                orders o ON f.id = o.itemID
+            INNER JOIN
+                bill b ON o.orderID = b.OrderID
+            GROUP BY
+                month, year, Item_Name
+            ORDER BY
+                year DESC, month DESC
+              ";
+            $result = $conn->query($sql);
+
+            // Check if the query was successful
+            if ($result === false) {
+                echo "Error executing the query: " . $conn->error;
+                exit;
+            }
+
+            // Loop through the results and display separate tables for each month
+            $currentMonth = null;
+            while ($row = $result->fetch_assoc()) {
+                $monthYear = date('F Y', strtotime($row['month'] . '/1/' . $row['year']));
+                if ($currentMonth != $monthYear) {                    
+                    // Start a new table for the month
+                    if ($currentMonth !== null) {
+                        echo '</tbody><tfoot>
+                             <tr class="bg-pink-700 text-center">
+                                 <td class="px-4 py-2 text-gray-200 font-bold">Total</td>
+                                 <td></td>
+                                 <td></td>
+                                 <td class="px-4 py-2 text-gray-200 font-bold">
+                                    ' . $total_Revenue . ' BDT
+                                 </td>
+                             </tr>
+                         </tfoot></table>'; // Close the previous table
+                    }
+                    $total_Revenue = 0;
+                    echo '<h2 class="text-2xl font-bold mb-6 text-center">' . $monthYear . '</h2>';
+                    echo '<table class="w-full mb-10">';
+                    echo '<thead>';
+                    echo '<tr class="bg-pink-700">';
+                    echo '<th class="px-4 py-2 text-gray-200">Product Name</th>';
+                    echo '<th class="px-4 py-2 text-gray-200">Price</th>';
+                    echo '<th class="px-4 py-2 text-gray-200">Total Quantity</th>';
+                    echo '<th class="px-4 py-2 text-gray-200">Revenue</th>';
+                    echo '</tr>';
+                    echo '</thead>';
+                    echo '<tbody>';
+                    $currentMonth = $monthYear;
                 }
+                // Display the data in the current table
+                echo "<tr class='bg-gray-100 text-center'>";
+                echo '<td class="px-4 py-2 font-semibold">' . $row['Item_Name'] . '</td>';
+                echo '<td class="px-4 py-2 font-semibold">' . $row['Price'] . '</td>';
+                echo '<td class="px-4 py-2 font-semibold">' . $row['Units_Sold'] . '</td>';
+                echo '<td class="px-4 py-2 font-semibold">' . $row['Total_Revenue'] . ' BDT </td>';
+                $total_Revenue += $row["Total_Revenue"];
+                echo '</tr>';
 
-                if (!empty($row)) {
-                    foreach ($row as $rows) {
-                        $total_Revenue += $rows['Total_Revenue'];
-                        ?>
-                        <tr class="bg-gray-100 text-center">
-                            <td class="px-4 py-2 font-semibold">
-                                <?php echo $rows['Item_Name']; ?>
-                            </td>
-                            <td class="px-4 py-2">
-                                <?php echo $rows['Units_Sold']; ?>
-                            </td>
-                            <td class="px-4 py-2">
-                                <?php echo $rows['Price']; ?> BDT
-                            </td>
-                            <td class="px-4 py-2 text-pink-600 font-semibold">
-                                <?php echo $rows['Total_Revenue']; ?> BDT
-                            </td>
-                        </tr>
-                    <?php }
-                } ?>
-            </tbody>
-            <tfoot>
-                <tr class="bg-pink-700 text-center">
-                    <td class="px-4 py-2 text-gray-200 font-bold">Total</td>
-                    <td></td>
-                    <td></td>
-                    <td class="px-4 py-2 text-gray-200 font-bold">
-                        <?php echo $total_Revenue ?> BDT
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-</div>
-
-    <?php
-    $conn->close(); ?>
-
-<?php include ('ui/footer.php');?>
+            }
+            echo '</tbody><tfoot>
+                 <tr class="bg-pink-700 text-center">
+                     <td class="px-4 py-2 text-gray-200 font-bold">Total</td>
+                     <td></td>
+                     <td></td>
+                     <td class="px-4 py-2 text-gray-200 font-bold">
+                        ' . $total_Revenue . ' BDT
+                     </td>
+                 </tr>
+             </tfoot></table>'; // Close the last table
+            
+            // Close the database connection
+            $conn->close();
+            ?>
+            <?php include('ui/footer.php'); ?>
 
 </body>
 </head>
