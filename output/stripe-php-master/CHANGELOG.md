@@ -115,7 +115,7 @@
 
 ## 10.1.0 - 2022-12-06
 * [#1405](https://github.com/stripe/stripe-php/pull/1405) API Updates
-  * Add support for `flow` on `BILLingPortal.Session`
+  * Add support for `flow` on `BillingPortal.Session`
 * [#1404](https://github.com/stripe/stripe-php/pull/1404) API Updates
   * Remove support for resources `Order` and `Sku`
   * Remove support for `all`, `cancel`, `create`, `list_line_items`, `reopen`, `retrieve`, `submit`, and `update` methods on resource `Order`
@@ -190,7 +190,7 @@ $resource = Price::update('price_123', [
 
 ## 9.4.0 - 2022-08-26
 * [#1362](https://github.com/stripe/stripe-php/pull/1362) API Updates
-  * Add support for `login_page` on `BILLingPortal.Configuration`
+  * Add support for `login_page` on `BillingPortal.Configuration`
 * [#1360](https://github.com/stripe/stripe-php/pull/1360) Add test coverage using Coveralls
 * [#1361](https://github.com/stripe/stripe-php/pull/1361) fix: Fix type hints for error objects.
   * Update `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `SetupAttempt.setup_error` and `SetupIntent.setup_error` type to be `StripeObject`.
@@ -382,7 +382,7 @@ Breaking changes that arose during code generation of the library that we postpo
 ## 7.126.0 - 2022-05-03
 * [#1276](https://github.com/stripe/stripe-php/pull/1276) API Updates
   * Add support for new resource `CashBalance`
-  * Change type of `BILLingPortal.Configuration.application` from `$Application` to `deletable($Application)`
+  * Change type of `BillingPortal.Configuration.application` from `$Application` to `deletable($Application)`
   * Add support for `cash_balance` on `Customer`
   * Add support for `application` on `Invoice`, `Quote`, `SubscriptionSchedule`, and `Subscription`
   * Add support for new value `eu_oss_vat` on enum `TaxId.type`
@@ -499,7 +499,7 @@ Breaking changes that arose during code generation of the library that we postpo
 
 ## 7.107.0 - 2021-12-09
 * [#1219](https://github.com/stripe/stripe-php/pull/1219) API Updates
-  * Add support for `metadata` on `BILLingPortal.Configuration`
+  * Add support for `metadata` on `BillingPortal.Configuration`
   * Add support for `wallets` on `Issuing.Card`
 
 ## 7.106.0 - 2021-12-09
@@ -566,7 +566,7 @@ Breaking changes that arose during code generation of the library that we postpo
 
 ## 7.93.0 - 2021-08-11
 * [#1172](https://github.com/stripe/stripe-php/pull/1172) API Updates
-  * Add support for `locale` on `BILLingPortal.Session`
+  * Add support for `locale` on `BillingPortal.Session`
 
 * [#1171](https://github.com/stripe/stripe-php/pull/1171) Fix typo in docblock `CurlClient::executeStreamingRequestWithRetries`
 
@@ -594,7 +594,7 @@ Breaking changes that arose during code generation of the library that we postpo
 * [#1152](https://github.com/stripe/stripe-php/pull/1152) API Updates
   * Add support for new resource `Quote`
   * Add support for `quote` on `Invoice`
-  * Add support for new value `quote_accept` on enum `Invoice.BILLing_reason`
+  * Add support for new value `quote_accept` on enum `Invoice.billing_reason`
 * [#1155](https://github.com/stripe/stripe-php/pull/1155) Add streaming methods to Service infra
   * Add support for `setStreamingHttpClient` and `streamingHttpClient` to `ApiRequestor`
   * Add support for `getStreamingClient` and `requestStream` to `AbstractService`
@@ -665,7 +665,7 @@ Breaking changes that arose during code generation of the library that we postpo
 * [#1088](https://github.com/stripe/stripe-php/pull/1088) Make possibility to extend CurlClient
 
 ## 7.75.0 - 2021-02-22
-* [#1094](https://github.com/stripe/stripe-php/pull/1094) Add support for BILLing Portal Configuration API
+* [#1094](https://github.com/stripe/stripe-php/pull/1094) Add support for Billing Portal Configuration API
 
 ## 7.74.0 - 2021-02-17
 * [#1093](https://github.com/stripe/stripe-php/pull/1093) Update PHPDocs
@@ -796,7 +796,7 @@ Breaking changes that arose during code generation of the library that we postpo
 * [#973](https://github.com/stripe/stripe-php/pull/973) Multiple PHPDoc fixes
 
 ## 7.41.0 - 2020-07-14
-* [#971](https://github.com/stripe/stripe-php/pull/971) Adds enum values for `BILLing_address_collection` on Checkout `Session`
+* [#971](https://github.com/stripe/stripe-php/pull/971) Adds enum values for `billing_address_collection` on Checkout `Session`
 
 ## 7.40.0 - 2020-07-06
 * [#964](https://github.com/stripe/stripe-php/pull/964) Add OAuthService
@@ -851,7 +851,7 @@ Breaking changes that arose during code generation of the library that we postpo
 * [#924](https://github.com/stripe/stripe-php/pull/924) Add support for the `Price` resource and APIs
 
 ## 7.29.0 - 2020-04-22
-* [#920](https://github.com/stripe/stripe-php/pull/920) Add support for the `Session` resource and APIs on the `BILLingPortal` namespace
+* [#920](https://github.com/stripe/stripe-php/pull/920) Add support for the `Session` resource and APIs on the `BillingPortal` namespace
 
 ## 7.28.1 - 2020-04-10
 * [#915](https://github.com/stripe/stripe-php/pull/915) Improve PHPdocs for many classes
@@ -1421,7 +1421,7 @@ Pull requests included in this release (cf. [#552](https://github.com/stripe/str
 
 ## 6.6.0 - 2018-04-11
 
--   [#460](https://github.com/stripe/stripe-php/pull/460) Add support for flexible BILLing primitives
+-   [#460](https://github.com/stripe/stripe-php/pull/460) Add support for flexible billing primitives
 
 ## 6.5.0 - 2018-04-05
 
@@ -1709,7 +1709,7 @@ Pull requests included in this release:
 
 ## 3.14.0 - 2016-05-25
 
--   Add support for returning Relay Orders
+-   Add support for returning Relay orders
 
 ## 3.13.0 - 2016-05-04
 

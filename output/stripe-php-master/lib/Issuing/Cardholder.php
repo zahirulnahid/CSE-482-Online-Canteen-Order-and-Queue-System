@@ -14,7 +14,7 @@ namespace Stripe\Issuing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property \Stripe\StripeObject $BILLing
+ * @property \Stripe\StripeObject $billing
  * @property null|\Stripe\StripeObject $company Additional information about a <code>company</code> cardholder.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $email The cardholder's email address.

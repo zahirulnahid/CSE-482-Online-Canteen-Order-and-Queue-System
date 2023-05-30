@@ -17,21 +17,21 @@ namespace Stripe;
  * This can be particularly useful when combined with a <a
  * href="https://stripe.com/docs/api/subscriptions">subscription</a>. Sometimes you
  * want to add a charge or credit to a customer, but actually charge or credit the
- * customer’s card only at the end of a regular BILLing cycle. This is useful for
+ * customer’s card only at the end of a regular billing cycle. This is useful for
  * combining several charges (to minimize per-transaction fees), or for having
- * Stripe tabulate your usage-based BILLing totals.
+ * Stripe tabulate your usage-based billing totals.
  *
  * Related guides: <a
  * href="https://stripe.com/docs/invoicing/integration">Integrate with the
  * Invoicing API</a>, <a
- * href="https://stripe.com/docs/BILLing/invoices/subscription#adding-upcoming-invoice-items">Subscription
+ * href="https://stripe.com/docs/billing/invoices/subscription#adding-upcoming-invoice-items">Subscription
  * Invoices</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Amount (in the <code>currency</code> specified) of the invoice item. This should always be equal to <code>unit_amount * quantity</code>.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property string|\Stripe\Customer $customer The ID of the customer who will be BILLed when this invoice item is BILLed.
+ * @property string|\Stripe\Customer $customer The ID of the customer who will be billed when this invoice item is billed.
  * @property int $date Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property bool $discountable If true, discounts will apply to this invoice item. Always false for prorations.

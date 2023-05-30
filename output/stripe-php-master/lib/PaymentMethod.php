@@ -25,7 +25,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $au_becs_debit
  * @property null|\Stripe\StripeObject $bacs_debit
  * @property null|\Stripe\StripeObject $bancontact
- * @property \Stripe\StripeObject $BILLing_details
+ * @property \Stripe\StripeObject $billing_details
  * @property null|\Stripe\StripeObject $blik
  * @property null|\Stripe\StripeObject $boleto
  * @property null|\Stripe\StripeObject $card

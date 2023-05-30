@@ -2,10 +2,10 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Service\BILLingPortal;
+namespace Stripe\Service\BillingPortal;
 
 /**
- * Service factory class for API resources in the BILLingPortal namespace.
+ * Service factory class for API resources in the BillingPortal namespace.
  *
  * @property ConfigurationService $configurations
  * @property SessionService $sessions

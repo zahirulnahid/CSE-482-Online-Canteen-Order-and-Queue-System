@@ -1,0 +1,2 @@
+[30-May-2023 01:02:23 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/amartabl/482.amartable.com/action/handleItem.php:14) in /home/amartabl/482.amartable.com/action/handleItem.php on line 15
+[30-May-2023 01:03:49 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/amartabl/482.amartable.com/action/handleItem.php:13) in /home/amartabl/482.amartable.com/action/handleItem.php on line 14
