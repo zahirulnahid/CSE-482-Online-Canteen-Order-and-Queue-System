@@ -10,16 +10,18 @@ include('protection.php'); ?>
   <title>Home </title>
   <link rel="stylesheet" href="outputstyles.css">
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comfortaa:wght@700&family=Raleway:wght@200;500&display=swap"
+    rel="stylesheet">
 </head>
 
-<body class="bg-gray-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
-  style="backdrop-filter:blur(3px);">
+<body class="bg-pink-100 font-semibold min-h-screen bg-cover bg-no-repeat w-full scroll-smooth"
+  backdrop-filter:blur(3px);">
 
   <!-- NAVBAR -->
 

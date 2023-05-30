@@ -8,7 +8,9 @@ $userType[3]=array('serverDashboard.php');
 $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
 if(in_array($curPageName,$userType[$_SESSION["userType"]])){
 }
-else header("location: ".$userType[$_SESSION["userType"]][0]."");
+else {
+    //header("location: ".$userType[$_SESSION["userType"]][0]."");
+echo '<script>window.location.replace("'.$userType[$_SESSION["userType"]][0].'")</script>';}
 include("connection.php"); //Created connection with DB//
 // Notification counter
 $userid = $_SESSION['id'];
@@ -24,6 +26,28 @@ if(isset($_GET['nid']) && !empty($_GET['nid'])){
 }
 ?>
 <script src="service-worker/index.js"></script>
+<script>
+        
+ // Check internet connection on page load
+    window.addEventListener('load', function () {
+      checkInternetConnection();
+    });
+
+    // Check internet connection when online/offline status changes
+    window.addEventListener('online', checkInternetConnection);
+    window.addEventListener('offline', checkInternetConnection);
+
+    function checkInternetConnection() {
+      
+      if (navigator.onLine) {
+
+      } else {
+        main('You are offline','Please Check Your internet connection.');
+        console.log("Offline");
+      }
+    }
+    
+</script>
 <nav class="bg-pink-700 py-4 px-4 sm:px-6 md:px-14 z-10">
     <div class="container mx-auto flex justify-between items-center">
         <a href="<?php echo $userType[$_SESSION["userType"]][0];?>" class="text-gray-100 text-2xl border-white font-fatface">NSU Canteen</a>

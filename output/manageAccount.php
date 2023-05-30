@@ -43,7 +43,7 @@ include("protection.php");
         $sql = "SELECT users.*, user_category.id, user_category.category 
     FROM `users` 
     INNER JOIN user_category ON users.category = user_category.id
-    WHERE users.category  != 4 AND users.verified ='true';";
+    WHERE users.verified ='true';";
         $result = $conn->query($sql);
 
         //declare array to store the data of database

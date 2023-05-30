@@ -51,17 +51,17 @@ include("protection.php");
                 YEAR(b.Order_Date) AS year,
                 f.Item_Name AS Item_Name,
                 f.Price as Price,
-                SUM(o.quantity) AS Units_Sold,
-                SUM(o.quantity * o.price) AS Total_Revenue
+                SUM(o.Quantity) AS Units_Sold,
+                SUM(o.Quantity * o.Price) AS Total_Revenue
             FROM
                 food_list f
             INNER JOIN
-                orders o ON f.id = o.itemID
+                Orders o ON f.id = o.itemID
             INNER JOIN
-                bill b ON o.orderID = b.OrderID
+                BILL b ON o.OrderID = b.OrderID
             GROUP BY
                 month, year, Item_Name
-            ORDER BY
+            Order BY
                 year DESC, month DESC
               ";
             $result = $conn->query($sql);

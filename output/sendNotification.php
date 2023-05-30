@@ -1,4 +1,3 @@
-
 <?php
 include('protection.php');
 ?>
@@ -50,7 +49,7 @@ include('protection.php');
 // print_r($_SESSION);
 // exit;
 
-$sql = "SELECT id,name FROM users WHERE category != 4";
+$sql = "SELECT id,name FROM users WHERE category != 4 AND  `verified`!='deactive'";
 $userresult = mysqli_query($conn, $sql);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -99,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	}
 
-	header("Location: " . $_SERVER['PHP_SELF']);
+	//header("Location: " . $_SERVER['PHP_SELF']);
 
 }
 $conn->close();
