@@ -1,4 +1,17 @@
 # __Credentials__
+user Type: Customer- nafis@gmail.com
+           Password- 12345678
+           card details for payment: email- any valid mail
+                                    card number 4242 4242 4242 4242
+                                    expire date- 12/33
+                                    cvc=123
+
+           Admin- admin@nsu.edu
+           password- 12345678
+
+           Staff- staff@nsu.edu
+           password- 12345678  
+Live Demo: https://482.amartable.com
 
 
 # __Internet & Web Technology__
